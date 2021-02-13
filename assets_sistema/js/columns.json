@@ -1,0 +1,10 @@
+[
+  {"name":"Id","title":"ID","breakpoints":"xs sm","type":"number","style":{"width":80,"maxWidth":80}},
+  {"name":"name","title":"First Name"},
+  {"name":"email","title":"Last Name"},
+  {"name":"phone","title":"Last Name"},
+  {"name":"date","title":"Date of Birth","type":"date","breakpoints":"xs sm md","formatString":"DD MMM YYYY"},
+  {"name":"message","title":"Last Name"},
+  {"name":"employe","title":"Last Name"},
+  {"name":"Estado","title":"Status"}
+]

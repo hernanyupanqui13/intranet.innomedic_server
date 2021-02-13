@@ -1,0 +1,41 @@
+http://sib.reniec.gob.pe/consultaHuellas/  por huella
+
+https://eldni.com/buscar-por-dni dniu riniec
+
+https://www.redecodifica.com/consultar-nombres-con-el-dni-reniec-peru-con-php-javascript/  ok codigo
+
+
+lista de universidades
+
+
+
+
+
+https://www.genesisvargasj.com/blog/insertar-y-consultar-con-ajax-php-y-mysql
+
+
+https://www.sunedu.gob.pe/lista-universidades/
+
+
+actualiozar en el mismo registro
+
+https://www.webslesson.info/2018/09/inline-table-crud-in-codeigniter-using-ajax-jquery.html
+
+se implementara  mas adelante
+
+
+adjuntamos los accesos al sistema de , evariston escudero huillcamascco
+
+
+problemas se pueden solucionar dandole los siguinetes pasos
+https://stackoverflow.com/questions/44162752/the-requested-url-was-not-found-on-this-server
+
+
+Libreria de factutraxionb lectronica
+
+https://github.com/thegreenter/greenter
+
+
+para detectar el escanner
+
+https://www.it-swarm.dev/es/javascript/detecta-cuando-el-cuadro-de-entrada-se-llena-con-el-teclado-y-cuando-con-el-escaner-de-codigo-de-barras./1068562714/

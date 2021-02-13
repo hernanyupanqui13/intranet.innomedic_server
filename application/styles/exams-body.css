@@ -1,0 +1,30 @@
+.informacion-medicos-item {
+    display: flex;
+}
+
+.informacion-medicos-item span:first-child {
+    font-weight: bold;
+}
+
+.heading-exam {
+    padding: 5px;
+    font-weight: bold;
+    background-color: #343a40;
+    color: white;
+}
+
+
+.resultado_grupo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.table-recomendaciones {
+    margin-top: 40px;
+}
+
+
+iframe {
+    height: 70vh;
+}

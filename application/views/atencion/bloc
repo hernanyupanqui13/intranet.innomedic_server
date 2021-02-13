@@ -1,0 +1,142 @@
+    <!-- <tbody id="cargar_resultadox">
+                                             <?php $cont=0; if($lista_historia_registro_x_usuario): ?>   
+                                                <?php foreach($lista_historia_registro_x_usuario as $xx): $cont+=1;?>
+                                                <tr id="codigo_id<?php echo $xx->Id;?>">
+                                                    <td><?php echo $cont; ?></td>
+                                                    <td><?php echo $xx->fecha;?></td>
+                                                    <td><?php echo $xx->empresa ?></td>
+                                                    <td><?php echo $xx->paciente;?></td>
+                                                    <td><?php echo $xx->dni;?></td>
+                                                    <td>22 Jun 1972</td>
+
+                                                    <td><span class="label label-table label-success">Active</span></td>
+                                                   <td>
+                                                    <a class="btn-outline-success btn "  data-id="<?php echo $xx->Id;?>" href="javascript:void(0)"><i class="fas fa-eye"></i></a>
+                                                    <a class="btn-outline-primary btn edit-product"  data-id="<?php echo $xx->Id;?>" href="javascript:void(0)"><i class="fas fa-edit"></i></a>
+                                                    <a class="btn-outline-danger btn delete-user delete-product"  data-id="<?php echo $xx->Id;?>" href="javascript:void(0)"><i class="fas fa-window-close"></i></a>
+                                                    
+                                                   </td>
+                                                </tr>
+                                                <?php endforeach;?>
+                                                <?php endif; ?> -->
+
+
+<script type="text/javascript">
+/*
+   function cargar_historial_clinica() {
+
+        $.ajax({
+        url: "<?php echo base_url().'Atencion/Historial/Cargar_historial/';?>",
+        method:"POST",
+        contentType:false,
+        processData:false,
+        async: true,
+        success:function(data){
+
+            var resultado = JSON.parse(data);
+            var contenido = '';
+            var contador = 0;
+            $.each(resultado, function(index, value) {
+                contador+=1;
+                contenido += `<tr>
+                    <td>`+contador+`</td>
+                    <td>`+value.fecha+ `</td>
+                    <td>`+value.empresa+`</td>
+                    <td>`+value.paciente+ `</td>
+                    <td>`+value.dni+`</td>
+                    <td>`+value.check+`</td>
+                    <td>`+value.estado+`</td>
+                    <td><a href="javascript:void(0)" class="btn btn-danger delete" id="`+value.Id+`"><i class=" fas fa-trash-alt"></i></a>
+                    </td>
+                </tr>
+                `;
+            });
+
+            $("#cargar_resultado").html(contenido);
+
+          
+        },
+        complete: function() { 
+    /* solo una vez que la petición se completa (success o no success) 
+       pedimos una nueva petición en 3 segundos *
+           setTimeout(function(){
+           // console.log();// cargar_historial_clinica();
+           }, 3000);
+          }
+    })
+  };
+
+    $(function() {
+        cargar_historial_clinica();
+    });
+    
+</script>
+
+
+
+public function Actualizar_historial_update()
+    {
+
+        if ($this->session->userdata("session_id")=="") {
+            redirect(base_url().'Inicio/Zona_roja/');
+        }
+
+        $id_usuario = $this->session->userdata("session_id");
+        $where = $this->input->post("id");
+
+        if ($this->input->method() === 'post') {
+            $query = $this->db->query("select * from ts_historial_registro where dni='".$this->input->post("dni")."'");
+            $row = $query->row();
+            if(isset($row)){ // cuando es mayor que vacio o cero
+              echo json_encode(array('error'=>'El paciente ya se encuentra registrado'));
+             $this->output->set_status_header(400);
+        }else{
+        $data = array(
+            'id_usuario' => $id_usuario,
+            'codigo_id' => $this->input->post("codigo_id"),
+            'fecha_modi' => date('Y-m-d h:i:s'),
+            'paciente' => $this->input->post("paciente"),
+            'dni' => $this->input->post("dni"),
+            'empresa' => $this->input->post("empresa"),
+            'check' => $this->input->post("check"),
+            'observaciones' => $this->input->post('observaciones'),
+            'estado' => "1",
+        );
+        $this->Historial_model->Actualizar_registrar_historial($where,$data);
+      //  echo json_encode(array("status" => TRUE));
+        echo json_encode(array('mensaje'=>'Se registro de manera Correcta'));
+        }
+        }else{
+            redirect(base_url().'Inicio/Zona_roja/');
+        }
+    }
+
+
+    $id_usuario = $this->session->userdata("session_id");
+        $id = $this->input->post("id");
+
+        if ($this->input->method() === 'post') {
+            $query = $this->db->query("select * from ts_historial_registro where dni='".$this->input->post("dni")."'");
+            $row = $query->row();
+            if(isset($row)){ // cuando es mayor que vacio o cero
+              echo json_encode(array('error'=>'El paciente ya se encuentra registrado'));
+             $this->output->set_status_header(400);
+        }else{
+        $data = array(
+            'id_usuario' => $id_usuario,
+            'codigo_id' => $this->input->post("codigo_id"),
+            'fecha' => date('Y-m-d h:i:s'),
+            'paciente' => $this->input->post("paciente"),
+            'dni' => $this->input->post("dni"),
+            'empresa' => $this->input->post("empresa"),
+            'check' => $this->input->post("check"),
+            'observaciones' => $this->input->post('observaciones'),
+            'estado' => "1",
+        );
+        $this->Historial_model->actualizar_registrar_historial($data);
+      //  echo json_encode(array("status" => TRUE));
+        echo json_encode(array('mensaje'=>'Se actualizo de manera Correcta'));
+        }
+        }else{
+            redirect(base_url().'Inicio/Zona_roja/');
+        }

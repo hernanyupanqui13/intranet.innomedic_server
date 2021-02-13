@@ -1,0 +1,5 @@
+[07-Oct-2020 17:12:16 UTC] PHP Warning:  file_get_contents(https://eldni.com/pe/buscar-por-dni?dni=70301121): failed to open stream: Connection timed out in /home/ae6y1hsudrp1/intranet.metjetsac.com/assets_sistema/reniec/simple_html_dom.php on line 82
+[07-Oct-2020 17:12:16 UTC] PHP Fatal error:  Uncaught Error: Call to a member function find() on bool in /home/ae6y1hsudrp1/intranet.metjetsac.com/assets_sistema/reniec/consulta_reniec.php:20
+Stack trace:
+#0 {main}
+  thrown in /home/ae6y1hsudrp1/intranet.metjetsac.com/assets_sistema/reniec/consulta_reniec.php on line 20
