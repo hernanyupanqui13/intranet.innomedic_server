@@ -1,0 +1,46 @@
+<IfModule mod_rewrite.c>
+
+
+    RewriteEngine On
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.*)$ index.php/$1 [L]
+
+
+  	#RewriteCond %{HTTP_HOST} ^innomedic.pe [NC]
+	#RewriteRule ^(.*)$ http://www.innomedic.pe/$1 [L,R=301]
+
+    RewriteCond %{REQUEST_URI} ^system.*
+    RewriteRule ^(.*)$ /index.php?/$1 [L]
+
+    RewriteCond %{REQUEST_URI} ^application.*
+    RewriteRule ^(.*)$ /index.php?/$1 [L]
+
+
+    RewriteCond %{REQUEST_URI} ^assets.*
+    RewriteRule ^(.*)$ /index.php?/$1 [L]
+
+    RewriteCond %{REQUEST_URI} ^assets_sistema.*
+    RewriteRule ^(.*)$ /index.php?/$1 [L]
+
+    RewriteCond %{REQUEST_URI} ^upload.*
+    RewriteRule ^(.*)$ /index.php?/$1 [L]
+
+    Options All -Indexes
+
+
+      
+  
+
+
+    php_value upload_max_filesize 1000M
+    php_value post_max_size 1000M
+
+
+
+
+
+</IfModule>
+
+
+
