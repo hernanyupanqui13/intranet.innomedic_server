@@ -9,7 +9,7 @@ $(document).on('submit', '#registrar_prueba_molecular', function(event) {
     }
 
     $.ajax({
-        url: window.location.origin + "/intranet.innomedic.pe"+"/Laboratorio/Laboratorio/uploadMolecular/",
+        url: `${window.location.origin}/Laboratorio/Laboratorio/uploadMolecular/`,
         type: 'POST',
         data: new FormData(this),
         processData: false,

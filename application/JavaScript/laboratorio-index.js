@@ -11,7 +11,7 @@ function actualizarLabEstado(nuevo_estado="default") {
     let id = getExamId();
 
     $.ajax({
-        url: window.location.origin + "/intranet.innomedic.pe" + "/Laboratorio/Laboratorio/actualizarLabEstado/",
+        url: `${window.location.origin}/Laboratorio/Laboratorio/actualizarLabEstado/`,
         type: 'POST',
         data: {            
             status: nuevo_estado,

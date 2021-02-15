@@ -416,7 +416,7 @@ $(document).ready(function() {
 
       // Load data for the table's content from an Ajax source
       "ajax": {
-        "url": window.location.origin + "/intranet.innomedic.pe" + "/Examenes/Examenes/mostrar_datos_busqueda_avanzada/",
+        "url": `${window.location.origin}/Examenes/Examenes/mostrar_datos_busqueda_avanzada/`,
         "type": "POST",
         "data": {
           "fecha_inicio" : fecha_inicio,
@@ -563,7 +563,7 @@ function tipo_paquete_() {
   $.ajax({
           type: "POST",
           async:true,
-          url: window.location.origin + "/intranet.innomedic.pe" + "/Examenes/Examenes/cargar_paquete/",
+          url: `${window.location.origin}/Examenes/Examenes/cargar_paquete/`,
           success: function(response)
           {
               $('.mostrararea select').html(response).fadeIn();

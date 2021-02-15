@@ -9,7 +9,7 @@ $(document).on('submit', '#registrar_prueba_antigeno', function(event) {
     }
 
     $.ajax({
-        url: window.location.origin + "/intranet.innomedic.pe"+"/Laboratorio/Laboratorio/actualizar_prueba_rapida/",
+        url: `${window.location.origin}/Laboratorio/Laboratorio/actualizar_prueba_rapida/`,
         type: 'POST',
         data: $("#registrar_prueba_antigeno").serialize(),
     })

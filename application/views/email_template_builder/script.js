@@ -118,7 +118,7 @@ function saveTemplate() {
                 renderItemList();  
             }
         };
-        xhttp.open("POST", window.location.origin + "/intranet.innomedic.pe/" + "Correo_generator/guardarPlantilla", true);
+        xhttp.open("POST", `${window.location.origin}/Correo_generator/guardarPlantilla`, true);
         xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         xhttp.send("template=" + template + "&name=" + name);
     });
@@ -159,7 +159,7 @@ function requestData() {
             }
         }
 
-        xhttp.open("GET", window.location.origin + "/intranet.innomedic.pe/" + "Correo_generator/obtainSavedTemplatesList", true);
+        xhttp.open("GET", `${window.location.origin}/Correo_generator/obtainSavedTemplatesList`, true);
         xhttp.send();
     })
 }   
@@ -217,7 +217,7 @@ function editSavedTemplate(template_id, event_target)  {
         }
     }
 
-    xhttp.open("GET", window.location.origin + "/intranet.innomedic.pe/" + "Correo_generator/obtainSavedTemplate/" + template_id, true);
+    xhttp.open("GET", `${window.location.origin}/Correo_generator/obtainSavedTemplate/${template_id}`, true);
     xhttp.send();
 }
 
@@ -235,7 +235,7 @@ function removeTemplate(id) {
             renderItemList(); 
         }
     };
-    xhttp.open("POST", window.location.origin + "/intranet.innomedic.pe/" + "Correo_generator/removeTemplate", true);
+    xhttp.open("POST", `${window.location.origin}/Correo_generator/removeTemplate`, true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send("template_id=" + id);
 }
@@ -302,11 +302,11 @@ function sendEmail(config, content) {
         if (this.readyState == 4 && this.status == 200) {
             console.log("success");
             console.log(this.responseText);
-            window.location = window.location.origin + "/intranet.innomedic.pe/" + 'Correo_generator/download/';
+            window.location = `${window.location.origin}/Correo_generator/download/`;
 
         }
     };
-    xhttp.open("POST", window.location.origin + "/intranet.innomedic.pe/" + "Correo_generator/enviarCorreo", true);
+    xhttp.open("POST", `${window.location.origin}/Correo_generator/enviarCorreo`, true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send("config=" + config + "&content=" + content);
 

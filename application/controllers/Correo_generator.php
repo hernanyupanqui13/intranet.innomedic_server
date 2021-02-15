@@ -101,12 +101,6 @@ class Correo_generator extends CI_Controller
 
         
         $this->Correo_generator_model->saveTemplate($creator_user_id, $template, $template_name);
-        /*$file_path = "http://intranet.innomedic.pe/upload/plantillas_editables_guardadas/testing" .  rand(1, 10000) . ".html";
-        $saved_template = fopen($file_path , "w");
-        fwrite($saved_template, "hola");
-        fclose($saved_template);*/
-
-
         
         echo json_encode($template); 
     }

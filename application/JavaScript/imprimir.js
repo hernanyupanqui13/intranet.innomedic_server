@@ -17,7 +17,7 @@ function getPlantilla(plantilla, id=null) {
 		}
 	};
 
-    xhttp.open("GET", window.location.origin + "/intranet.innomedic.pe" + "/Impresion/Impresion/getPlantilla/" + plantilla + "/" + id, false);
+    xhttp.open("GET", `${window.location.origin}/Impresion/Impresion/getPlantilla/${plantilla}/${id}`, false);
     xhttp.send();
     return response;
 }
@@ -34,7 +34,7 @@ function getData(id) {
 		}
 	};
 
-	xhttp.open("GET", window.location.origin + "/intranet.innomedic.pe" + "/Impresion/Impresion/getData/" + id, false);
+	xhttp.open("GET", `${window.location.origin}/Impresion/Impresion/getData/${id}`, false);
     xhttp.send();
     return response;
 }
@@ -81,7 +81,7 @@ function fillData(data) {
     
     
     if(data.molecular_url!= null) {
-        document.getElementById("imprimir_molecular_container").src=window.location.origin + "/intranet.innomedic.pe/" + "/upload/resultados_molecular/" + data.molecular_url;
+        document.getElementById("imprimir_molecular_container").src=`${window.location.origin}/upload/resultados_molecular/${data.molecular_url}`;
     }
 }
 
@@ -144,7 +144,7 @@ function getImpresionFinal(id_del_examen) {
             response = this.responseText;
         }
     };
-    xhttp.open("GET", window.location.origin + "/intranet.innomedic.pe" + '/Impresion/Impresion/getPlantillaFinal/' + id_del_examen, false);
+    xhttp.open("GET", `${window.location.origin}/Impresion/Impresion/getPlantillaFinal/${id_del_examen}`, false);
     xhttp.send();
     return response;
 }
@@ -185,7 +185,7 @@ function isAllowedToPrint(id_del_examen) {
             response = response.respuesta;
         }
     };
-    xhttp.open("GET", window.location.origin + "/intranet.innomedic.pe" + '/Impresion/Impresion/isAllowedToPrint/' + id_del_examen, false);
+    xhttp.open("GET", `${window.location.origin}/Impresion/Impresion/isAllowedToPrint/${id_del_examen}`, false);
     xhttp.send();
 
     return response;    

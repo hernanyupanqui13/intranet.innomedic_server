@@ -23,7 +23,7 @@ jQuery(function($){
                 
             ],
         "rows": jQuery.get({
-            "url": window.location.origin + "/intranet.innomedic.pe/" + "Examenes/Ordenes/obtener_registro_ajax/",
+            "url": `${window.location.origin}/Examenes/Ordenes/obtener_registro_ajax/`,
             "dataType": "json",					
         }),		
     })		
@@ -87,7 +87,7 @@ $(document).ready(function() {
             ],
 
             "rows": jQuery.get({
-                "url": window.location.origin + "/intranet.innomedic.pe/" + 'Examenes/Ordenes/obtener_registro_ajax/' + parameters,
+                "url": `${window.location.origin}/Examenes/Ordenes/obtener_registro_ajax/${parameters}`,
                 "dataType": "json",					
             }),
        });                  
@@ -103,9 +103,9 @@ function limpiar_campos() {
 }		
 
 function laboraorio(id) {
-    window.open(window.location.origin + "/intranet.innomedic.pe/" + "Laboratorio/Laboratorio/Mostrar_registros/" + id, '_blank');
+    window.open(`${window.location.origin}/Laboratorio/Laboratorio/Mostrar_registros/${id}`, '_blank');
 }
 
 function rayosx(url) {
-    window.open(window.location.origin + "/intranet.innomedic.pe/" + 'Rayos/Rayos/Mostrar_registros/' + url, '_blank');
+    window.open(`${window.location.origin}/Rayos/Rayos/Mostrar_registros/${url}`, '_blank');
 }
