@@ -1,0 +1,5 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/mjfs4r8ajmst/test/
+    - /bin/cp -R * $DEPLOYPATH
