@@ -274,17 +274,17 @@ class ResultadoFinal extends CI_Controller {
 
         // Creando la configuracion del correo
         $mail->isSMTP();
-        $mail->Host     = 'ssl://smtpout.secureserver.net';
+        $mail->Host     = 'localhost';
         $mail->SMTPSecure = false;
         $mail->SMTPDebug  = 3;
         $mail->Username = 'reenviadores@innomedic.pe';
         $mail->Password = 's1st3m4s2411';
-        $mail->SMTPAuth = true;
+        $mail->SMTPAuth = false;
         $mail->SMTPAutoTLS = false; 
-        $mail->SMTPSecure = 'ssl';   
-        $mail->Port     = 465;
+        $mail->SMTPSecure = '';   
+        $mail->Port     = 25;
         $mail->CharSet = 'UTF-8';
-        $mail->AllowEmpty = true;
+        $mail->AllowEmpty = true;    
 
         // De: 
         $mail->setFrom('reenviadores@innomedic.pe', 'Innomedic.pe | Resultados de la Clinica Innomedic International E.I.R.L');
