@@ -99,18 +99,13 @@
 		                      		</div>
 		                      		<div class="col-md-4 col-lg-4 col-xl-4 col-sm-12 col-xs-12" >
 	                      				
-	                      					<div class="form-group">
-			                      				<label  for="">Seleccione UNI/CAJA/CANTIDADES</label>
-												  <select name="unidad" id="unidad" class="form-control select2 btn btn-rounded"  style="width: 100%; height: 50px;">
-												  <option value="">--Seleccione-- </option>
-													  <?php $lista_unidad_medida = $this->db->query("select * from ts_unidad");
-													   foreach ($lista_unidad_medida->result() as $xx) {?>
-			                      						<option value="<?php echo $xx->Id;?>"><?php echo $xx->nombre?></option>
-			                      					<?php } ?>
-			                      					
-			                      				</select>
-			                      				
-			                      			</div>
+									  	<div class="form-group">
+											<label  for="">Seleccione UNIDADES</label>
+												<select name="unidad" id="unidad" class="form-control select2 btn btn-rounded"  style="width: 100%; height: 50px;">
+												<option value="">--Seleccione-- </option>													  
+												<option value="1">UND</option>			                      					
+											</select>											
+										</div>
 			                      	
 		                      		</div>
 		                      		<div class='col-md-2'>
