@@ -32,6 +32,15 @@ class Usuario extends CI_Controller
 		$this->load->view('intranet_view/footer',$data);
 	}
 
+	public function getDefaultPhoto($genero) {
+		if ($genero == "1") {
+			return "varon.png";
+		} elseif ($genero=="2") {
+			return "mujer.png";
+		}
+	}
+
+
 	public function Agregar_nuevo()
 	{
 		if ($this->session->userdata('session_id')=='') {
@@ -51,10 +60,10 @@ class Usuario extends CI_Controller
                     $uploadData = $this->upload->data();
                     $picture = $uploadData['file_name'];
                 }else{
-                    $picture = '';
+                    $picture = $this->getDefaultPhoto($this->input->post('id_genero'));;
                 }
             }else{
-                $picture = '';
+                $picture = $this->getDefaultPhoto($this->input->post('id_genero'));;
             }
 
             if ($this->input->method() === 'post') {
