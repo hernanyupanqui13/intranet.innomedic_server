@@ -92,7 +92,7 @@
         </tr>
         <tr>
           <th scope="row">Telefono movil:&nbsp;</th>
-          <td colspan="1"><?=$impr->telefono_movil?></td>          
+          <td colspan="1"><?=$impr->celular?></td>          
         
           <th scope="row">Telefono domicilio:&nbsp;</th>
           <td colspan="1"><?=$impr->telefono_domicilio?></td>          
