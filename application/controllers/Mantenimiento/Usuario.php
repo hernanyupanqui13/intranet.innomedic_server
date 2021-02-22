@@ -34,9 +34,9 @@ class Usuario extends CI_Controller
 
 	public function getDefaultPhoto($genero) {
 		if ($genero == "1") {
-			return "varon.png";
+			return "varon.jpg";
 		} elseif ($genero=="2") {
-			return "mujer.png";
+			return "mujer.jpg";
 		}
 	}
 
