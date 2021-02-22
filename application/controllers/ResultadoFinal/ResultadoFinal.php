@@ -277,8 +277,8 @@ class ResultadoFinal extends CI_Controller {
         $mail->Host     = 'localhost';
         $mail->SMTPSecure = false;
         $mail->SMTPDebug  = 3;
-        $mail->Username = 'reenviadores@innomedic.pe';
-        $mail->Password = 's1st3m4s2411';
+        $mail->Username = 'reenviadorweb@innomedic.pe';
+        $mail->Password = 's0p0rt32411';
         $mail->SMTPAuth = false;
         $mail->SMTPAutoTLS = false; 
         $mail->SMTPSecure = '';   
@@ -287,7 +287,7 @@ class ResultadoFinal extends CI_Controller {
         $mail->AllowEmpty = true;    
 
         // De: 
-        $mail->setFrom('reenviadores@innomedic.pe', 'Innomedic.pe | Resultados de la Clinica Innomedic International E.I.R.L');
+        $mail->setFrom('reenviadorweb@innomedic.pe', 'Innomedic.pe | Resultados de la Clinica Innomedic International E.I.R.L');
 
         // Archivo a adjuntar en el correo. El archivo ya fue subido
         $archivo1 = 'upload/Resultado_analisis/'.$archivo1_xx;
@@ -295,7 +295,7 @@ class ResultadoFinal extends CI_Controller {
 
         
        //Mandamos a los correos
-        $mail->addReplyTo('reenviadores@innomedic.pe', 'Innomedic.pe | Reenviar Email');
+        $mail->addReplyTo('reenviadorweb@innomedic.pe', 'Innomedic.pe | Reenviar Email');
         $mail->addAddress($correo_paciente,  $nombrex); 
         $mail->Subject = 'Innomedic.pe '.$nombrex.' | Verificar Tus resultados';
        

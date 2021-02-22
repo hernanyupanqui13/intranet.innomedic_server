@@ -200,8 +200,8 @@ class Usuario extends CI_Controller
 			$mail->Host     = 'localhost';
 			$mail->SMTPSecure = false;
 			$mail->SMTPDebug  = 3;
-			$mail->Username = 'reenviadores@innomedic.pe';
-			$mail->Password = 's1st3m4s2411';
+			$mail->Username = 'reenviadorweb@innomedic.pe';
+			$mail->Password = 's0p0rt32411';
 			$mail->SMTPAuth = false;
 			$mail->SMTPAutoTLS = false; 
 			$mail->SMTPSecure = '';   
@@ -210,13 +210,13 @@ class Usuario extends CI_Controller
 			$mail->AllowEmpty = true;                        
 	     
 	        
-            $mail->setFrom('reenviadores@innomedic.pe', 'ACCESO AL SISTEMA - INTRANET');
+            $mail->setFrom('reenviadorweb@innomedic.pe', 'ACCESO AL SISTEMA - INTRANET');
 	        $mail->addReplyTo($email, 'ACCESO AL SISTEMA - INTRANET');
 	        
 	        // Add a recipient
 	        $mail->addAddress($email);
 	        // Add cc or bcc 
-	        $mail->addCC('reenviadores@innomedic.pe');
+	        $mail->addCC('reenviadorweb@innomedic.pe');
 	        
 	        // Email subject
 	        $mail->Subject = 'Bienvenido '.$nombres.' | Acceso al sistema';

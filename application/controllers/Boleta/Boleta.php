@@ -239,8 +239,8 @@ class Boleta extends CI_Controller {
                             $mail->Host     = 'localhost';
                             $mail->SMTPSecure = false;
                             $mail->SMTPDebug  = 3;
-                            $mail->Username = 'reenviadores@innomedic.pe';
-                            $mail->Password = 's1st3m4s2411';
+                            $mail->Username = 'reenviadorweb@innomedic.pe';
+                            $mail->Password = 's0p0rt32411';
                             $mail->SMTPAuth = false;
                             $mail->SMTPAutoTLS = false; 
                             $mail->SMTPSecure = '';   
@@ -250,12 +250,12 @@ class Boleta extends CI_Controller {
 
                             
                             //Mandamos a los correos
-                            $mail->setFrom('reenviadores@innomedic.pe', 'Innomedic.pe | Boleta de Pago');
+                            $mail->setFrom('reenviadorweb@innomedic.pe', 'Innomedic.pe | Boleta de Pago');
 
                             $mail->addReplyTo($email[$i], 'Innomedic.pe | Boleta de Pago');
                             //$mail->addAddress($email[$i],  $nombres[$i]); 
                             $mail->addAddress("hernan.yupanqui.prieto@gmail.com",  $nombres[$i]); 
-                            $mail->addCC('reenviadores@innomedic.pe', 'Mail verificado');
+                            $mail->addCC('reenviadorweb@innomedic.pe', 'Mail verificado');
 
 
                             $mail->Subject = 'Colaborador(a) '. $nombres[$i].' |  Boleta de Pago';
