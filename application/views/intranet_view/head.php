@@ -112,6 +112,7 @@
         href="<?php echo base_url().'assets_sistema/';?>node_modules/datatables.net-bs4/css/dataTables.bootstrap4.css">
     <link rel="stylesheet" type="text/css"
         href="<?php echo base_url().'assets_sistema/';?>node_modules/datatables.net-bs4/css/responsive.dataTables.min.css">
+    <script src="https://kit.fontawesome.com/dc5ae8b9ac.js" crossorigin="anonymous"></script>
     <style>
 
         ::-webkit-scrollbar{
@@ -377,6 +378,15 @@
 
                         <?php } ?>
 
+                        <!-- Seguridad y Salud en el Trabajo -->
+                        <li><a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="ti-layout-grid2"></i><span class="hide-menu">Seguridad y Salud en el Trabajo</span></a>
+                            <ul  aria-expanded="false" class="collapse">
+                                <li><a href="<?php echo base_url();?>/sst/sst/politicas"><i class="fas fa-hard-hat"></i>&nbsp;Politicas</a></li>
+                                <li><a href="<?php echo base_url();?>/sst/sst/reglamentos"><i class="fas fa-book"></i></i>&nbsp;Reglamentos</a></li>
+                                <li><a href="<?php echo base_url();?>/sst/sst/planProgramasSst"><i class="fas fa-thumbtack"></i>&nbsp;Plan y Programas de SST</a></li>
+                            </ul>
+                        </li>
+
                         <?php 
                             if ($this->session->userdata("session_perfil")==14 || $this->session->userdata("session_perfil")==23 || $this->session->userdata("session_perfil")==38 || $this->session->userdata("session_perfil")==1 || $this->session->userdata("session_perfil")==12) {?>
                                 <li> <a class="waves-effect waves-dark" href="<?php echo base_url().'Examenes/Examenes/' ?>" aria-expanded="false"><i class="far fa-circle text-success"></i><span class="hide-menu">Exámenes Clínicos</span></a></li>
@@ -390,6 +400,9 @@
                         <?php if ($this->session->userdata("session_perfil")==38 || $this->session->userdata("session_perfil")==1 || $this->session->userdata("session_perfil")==12) {?>
                              <li> <a class="waves-effect waves-dark" href="<?php echo base_url().'ResultadoFinal/ResultadoFinal/Process/';?>" aria-expanded="false"><i class="far fa-circle text-info"></i><span class="hide-menu">Resultado Final</span></a></li>
                         <?php } ?>
+
+                        
+
                         <!-- Generaor de plantillas de correo -->
                         <?php if ($this->session->userdata("session_perfil") == 2) { ?>
                         <li> <a class="waves-effect waves-dark" href="<?php echo base_url().'Correo_generator/';?>" aria-expanded="false"><i class="far fa-circle text-info"></i><span class="hide-menu">Editor de Plantillas</span></a></li>

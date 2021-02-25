@@ -27,7 +27,8 @@ class ResultadoFinal extends CI_Controller {
 		if($this->session->userdata('session_id')==''){
             redirect(base_url());
         }
-         $data = array(
+        
+        $data = array(
             'title' =>array("estas viendo Resultado Final","Resultado Final","","<a target='_blank' href='https://www.facebook.com/escudero05' title=''>Evaristo Escudero Huillcamascco</a>"),
         );
         
