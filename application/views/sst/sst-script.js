@@ -1,8 +1,8 @@
 let data = [
-    {nombre: "Plan 1", url: "http://localhost:80/upload/archivos/sst/politicas_sst.pdf"},
-    {nombre: "Programa 2021", url: "http://localhost:80/upload/archivos/sst/reglamento_actual.pdf"},
-    {nombre: "Planes futuros", url: "http://localhost:80/upload/archivos/sst/politicas_sst.pdf"},
-    {nombre: "Responsabilidades del Trabajador", url: "http://localhost:80/upload/archivos/sst/reglamento_actual.pdf"}
+    {nombre: "Plan 1", url: `${window.location.origin}/upload/archivos/sst/politicas_sst.pdf`},
+    {nombre: "Programa 2021", url: `${window.location.origin}/upload/archivos/sst/reglamento_actual.pdf`},
+    {nombre: "Planes futuros", url: `${window.location.origin}/upload/archivos/sst/politicas_sst.pdf`},
+    {nombre: "Responsabilidades del Trabajador", url: `${window.location.origin}/upload/archivos/sst/reglamento_actual.pdf`}
 ]
 
 let activated_template;
