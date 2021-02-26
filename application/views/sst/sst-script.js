@@ -1,8 +1,5 @@
 let data = [
-    {nombre: "Plan 1", url: `${window.location.origin}/upload/archivos/sst/politicas_sst.pdf`},
-    {nombre: "Programa 2021", url: `${window.location.origin}/upload/archivos/sst/reglamento_actual.pdf`},
-    {nombre: "Planes futuros", url: `${window.location.origin}/upload/archivos/sst/politicas_sst.pdf`},
-    {nombre: "Responsabilidades del Trabajador", url: `${window.location.origin}/upload/archivos/sst/reglamento_actual.pdf`}
+    {nombre: "Plan de capacitacion de seguridad y salud en el trabajo", url: `${window.location.origin}/upload/archivos/sst/plan_capacitacion.pdf`}
 ]
 
 let activated_template;
@@ -39,6 +36,3 @@ function viewDocument(the_url, event_target)  {
     console.log(document.querySelector("iframe"));
     document.querySelector("iframe").src = the_url;
 }
-
-
-console.log("extern loadded");

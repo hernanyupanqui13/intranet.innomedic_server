@@ -21,7 +21,7 @@ class Sst extends CI_Controller {
 
         $data = array(
             'title' =>array("estas viendo SST","SST","","<a target='_blank' href='javascript:void(0)' title=''>Area de Sistemas</a>"),
-            "reglamento_file_path"=>base_url()."/upload/archivos/sst/politicas_sst.pdf"
+            "reglamento_file_path"=>base_url()."upload/archivos/sst/politicas_sst.pdf"
         );
           
         $this->load->view("intranet_view/head",$data);
@@ -40,7 +40,7 @@ class Sst extends CI_Controller {
 
         $data = array(
             'title' =>array("estas viendo SST","SST","","<a target='_blank' href='javascript:void(0)' title=''>Area de Sistemas</a>"),
-            "reglamento_file_path"=>base_url()."/upload/archivos/sst/politicas_sst.pdf"
+            "reglamento_file_path"=>base_url()."upload/archivos/sst/politicas_sst.pdf"
         );
           
         $this->load->view("intranet_view/head",$data);
