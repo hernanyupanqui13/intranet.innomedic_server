@@ -13,7 +13,7 @@ class Sst extends CI_Controller {
 
 
 
-    function politicas() {
+    public function politicas() {
         if($this->session->userdata('session_id')==''){
             redirect(base_url());
         }
@@ -31,7 +31,7 @@ class Sst extends CI_Controller {
     }
 
 
-    function reglamentos() {
+    public function reglamentos() {
         if($this->session->userdata('session_id')==''){
             redirect(base_url());
         }
@@ -49,7 +49,7 @@ class Sst extends CI_Controller {
     }
 
 
-    function planProgramasSst() {
+    public function planProgramasSst() {
         if($this->session->userdata('session_id')==''){
             redirect(base_url());
         }
