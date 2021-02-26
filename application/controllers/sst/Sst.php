@@ -12,10 +12,11 @@ class Sst extends CI_Controller {
 
 
 
+
     public function politicas() {
         if($this->session->userdata('session_id')==''){
             redirect(base_url());
-        }  
+        }
 
 
         $data = array(
