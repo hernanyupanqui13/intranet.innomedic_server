@@ -56,4 +56,4 @@
     
 </style>
 
-<script src="<?=base_url();?>/application/views/sst/sst-script.js"></script>
+<script src="<?=base_url();?>/application/views/sst/reglamentos-script.js"></script>

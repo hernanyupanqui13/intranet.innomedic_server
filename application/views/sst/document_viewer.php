@@ -7,3 +7,5 @@
     >
     </iframe>
 </div>
+
+<script src="<?=base_url();?>/application/views/sst/document_viewer-script.js"></script>

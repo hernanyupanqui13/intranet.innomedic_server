@@ -7,6 +7,7 @@ class Sst extends CI_Controller {
         parent::__construct();
         
         ini_set('date.timezone', 'America/Lima');
+        $this->load->model("Sst_model");
     }
     
 
@@ -19,6 +20,7 @@ class Sst extends CI_Controller {
         }
 
 
+
         $data = array(
             'title' =>array("estas viendo SST","SST","","<a target='_blank' href='javascript:void(0)' title=''>Area de Sistemas</a>"),
             "reglamento_file_path"=>base_url()."upload/archivos/sst/politicas_sst.pdf"
@@ -29,6 +31,18 @@ class Sst extends CI_Controller {
         $this->load->view('sst/document_viewer',$data);
         $this->load->view("intranet_view/footer",$data);
         
+    }
+
+    public function getDocumentIdByName() {
+        
+        echo $this->Sst_model->getDocumentIdByName($_POST["document_name"]);
+    }
+
+    public function viewSstDocuments() {
+        
+        $user_id = $this->session->userdata('session_id');
+        echo $this->Sst_model->viewSstDocuments($user_id, $_POST["document_id"]);
+         
     }
 
 
