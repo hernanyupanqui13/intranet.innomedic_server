@@ -45,6 +45,20 @@ class Sst_model extends CI_Model
 
     }
     
+    public function checkIfWasConfirmed($user_id, $document_id) {
+        $query_string = (
+            "SELECT EXISTS (SELECT sd.user_id
+                FROM sst_document_users sd
+                WHERE sd.user_id = $user_id
+                AND sst_document_id = $document_id
+                AND was_viewed = 1) 
+                AS result"
+        );
+
+        $query = $this->db->query($query_string);
+
+        return $query->row()->result;
+    }
     
 
 

@@ -1,5 +1,23 @@
 $(document).ready(function() {
+    let data = new FormData;
+    let document_name = "Politica Integrada de SST";
+    data.append("document_name", document_name);
 
+    fetch(`${window.location.origin}/sst/Sst/checkIfWasConfirmed`, {
+        method: "post",
+        body: data
+    })
+    .then(response => response.text())
+    .then(data => {
+        if (data != "1") {
+            requestConfirmation(document_name);
+        }
+    });
+
+
+});
+
+function requestConfirmation(the_document_name) {
     Swal.fire({
         title: 'Confirmacion de lectura',
         text: `Estas a punto de leer las Politicas de Sst. 
@@ -14,7 +32,7 @@ $(document).ready(function() {
       }).then(async (result) => {
         console.log(result);
         if (result.value) {
-            let ajax_state = await confirmViewedDocument("Politica Integrada de SST");
+            let ajax_state = await confirmViewedDocument(the_document_name);
             console.log(ajax_state);
             
             // Si se guardo la informacion correctamente o si hubo un problema
@@ -43,10 +61,7 @@ $(document).ready(function() {
             'error'
         );
     });
-
-
-
-});
+}
 
 
 

@@ -9,9 +9,6 @@ class Sst extends CI_Controller {
         ini_set('date.timezone', 'America/Lima');
         $this->load->model("Sst_model");
     }
-    
-
-
 
 
     public function politicas() {
@@ -33,11 +30,19 @@ class Sst extends CI_Controller {
         
     }
 
-    public function getDocumentIdByName() {
-        
-        echo $this->Sst_model->getDocumentIdByName($_POST["document_name"]);
-    }
+    public function getDocumentIdByName($document_name=NULL) {
 
+        if($document_name == NULL) {
+            $document_name = $_POST["document_name"];
+            echo $this->Sst_model->getDocumentIdByName($document_name);
+
+        } else {
+            return $this->Sst_model->getDocumentIdByName($document_name);
+        }
+        
+
+    }
+    // Cambia el estado del documento a visto en la base de datos
     public function viewSstDocuments() {
         
         $user_id = $this->session->userdata('session_id');
@@ -54,7 +59,7 @@ class Sst extends CI_Controller {
 
         $data = array(
             'title' =>array("estas viendo SST","SST","","<a target='_blank' href='javascript:void(0)' title=''>Area de Sistemas</a>"),
-            "reglamento_file_path"=>base_url()."upload/archivos/sst/politicas_sst.pdf"
+            "reglamento_file_path"=>base_url()."upload/archivos/sst/riss.pdf"
         );
           
         $this->load->view("intranet_view/head",$data);
@@ -74,11 +79,22 @@ class Sst extends CI_Controller {
             'title' =>array("estas viendo SST","SST","","<a target='_blank' href='javascript:void(0)' title=''>Area de Sistemas</a>"),
             "reglamento_file_path"=>base_url()."/upload/archivos/sst/politicas_sst.pdf"
         );
-          
+
         $this->load->view("intranet_view/head",$data);
         $this->load->view("intranet_view/title",$data);
         $this->load->view('sst/reglamentos',$data);
         $this->load->view("intranet_view/footer",$data);
+    }
+
+    public function checkIfWasConfirmed() {
+        $user_id = $this->session->userdata('session_id');
+        $document_id = $this->getDocumentIdByName($_POST["document_name"]);
+        
+        if($document_id == "No se encontro un documento con ese nombre") {
+            echo "No se encontro un documento con ese nombre";
+        } else {
+            echo $this->Sst_model->checkIfWasConfirmed($user_id, $document_id); 
+        }        
     }
 
 
