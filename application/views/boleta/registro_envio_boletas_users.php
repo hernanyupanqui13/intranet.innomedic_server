@@ -146,11 +146,14 @@
 
                              //  $(".ver_cabcera").load(location.href+" .ver_cabcera>*","");
                             }else{
+                              let counter = 0;
+
                                $.each(resultado,function(index, value) {
-                                var $sr = ($(".jdr1").length += 1);
+                                //var counter = ($(".jdr1").length += 1);
+                                counter += 1;
                                 contenido +=`
                                 <tr>
-                                    <td  class="jdr1">`+$sr+`</td>
+                                    <td  class="jdr1">`+counter+`</td>
                                     <td>`+value.nombres+`</td>
                                     <td>`+value.nro_documento+`</td>
                                     <td>`+value.puesto+`</td>
@@ -254,10 +257,11 @@
                                       $(".ver").hide();
                                        $("#mostrar_data_dowload").hide();
                                     }else{
+                                      let counter = 0;
                                     $.each(resultado,function(index, value) {
-                                       var $sr = ($(".jdr1s").length += 1);
+                                       counter += 1;
                                       if (value.fecha_enviado_xx=="" || value.fecha_enviado_xx==null || value.fecha_enviado_xx=="0000-00-00 00:00:00" ) {
-                                          data_fecha = "<span class='label label-danger'> No se ha visualizado la boleta</span>";
+                                          data_fecha = "<span class='label label-danger'> Colaborador aún no visualiza boleta</span>";
                                         }else if (value.view == "2" && value.conforme == null){
                                           data_fecha = "<span class='label label-warning'>"+value.fecha_enviado_xx+"</span>";
                                         } else if(value.view == "2" && value.conforme == "1") {
@@ -265,7 +269,7 @@
                                         }
                                         contenido +=`
                                         <tr>
-                                            <td class="jdr1s">`+ $sr + `</td>
+                                            <td class="jdr1s">`+ counter + `</td>
                                             <td>`+value.para+`</td>
                                             <td>`+value.dni+`</td>
                                             <td>`+value.boleta+`</td>
