@@ -236,17 +236,14 @@ class Boleta extends CI_Controller {
 
                             // Creando la configuracion del correo
                             $mail->isSMTP();
-                            $mail->Host     = 'localhost';
-                            $mail->SMTPSecure = false;
+                            $mail->Host = 'smtpout.secureserver.net';
+                            $mail->SMTPSecure  = 'tls';
+                            $mail->SMTPAuth = true;
                             $mail->SMTPDebug  = 3;
                             $mail->Username = 'reenviadorweb@innomedic.pe';
                             $mail->Password = 's0p0rt32411';
-                            $mail->SMTPAuth = false;
-                            $mail->SMTPAutoTLS = false; 
-                            $mail->SMTPSecure = '';   
-                            $mail->Port     = 25;
+                            $mail->Port = 80; 
                             $mail->CharSet = 'UTF-8';
-                            $mail->AllowEmpty = true;
 
                             
                             //Mandamos a los correos
@@ -254,7 +251,6 @@ class Boleta extends CI_Controller {
 
                             $mail->addReplyTo($email[$i], 'Innomedic.pe | Boleta de Pago');
                             $mail->addAddress($email[$i],  $nombres[$i]); 
-                            //$mail->addAddress("hernan.yupanqui.prieto@gmail.com",  $nombres[$i]); 
                             $mail->addCC('reenviadorweb@innomedic.pe', 'Mail verificado');
 
 
