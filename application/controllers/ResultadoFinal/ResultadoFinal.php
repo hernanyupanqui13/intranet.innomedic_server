@@ -95,7 +95,7 @@ class ResultadoFinal extends CI_Controller {
             $data[] = $row;
         }
 
-        $output = $data;
+        $output = array("rows"=>$data, "list_data"=>$list);
 
      
         // Devolviendo los datos en JSON

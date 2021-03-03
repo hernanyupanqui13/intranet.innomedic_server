@@ -30,15 +30,12 @@ jQuery(function($){
 
         "columns": footable_columns,
             
-        "rows": jQuery.get({
-            "url": `${window.location.origin}/ResultadoFinal/ResultadoFinal/mostrar_datos_busqueda_avanzada/`,
-            "dataType": "json",					
-        }),
+        "rows": getRowsData(),
 
         "on": {
             "ready.ft.table": function(e, ft){
                 fillEstadoProgreso();
-Z					}, 
+					}, 
             "after.ft.paging": function(e, ft){
                 fillEstadoProgreso();
             } 					
@@ -310,10 +307,7 @@ $(document).ready(function() {
                    $('#showcase-example-1').footable({
                     "columns": footable_columns,
 
-                    "rows": jQuery.get({
-                        "url": `${window.location.origin}/ResultadoFinal/resultadofinal/mostrar_datos_busqueda_avanzada/`,
-                        "dataType": "json",                        
-                    }),
+                    "rows": getRowsData(),
 
                     "on": {
                         "ready.ft.table": function(e, ft){
@@ -386,11 +380,7 @@ $(document).ready(function() {
             $('#showcase-example-1').footable({
                 "columns": footable_columns,
 
-                "rows": jQuery.get({
-                    "url": `${window.location.origin}/ResultadoFinal/resultadofinal/mostrar_datos_busqueda_avanzada/`,
-                    "dataType": "json",
-                    
-                }),
+                "rows": getRowsData(),
 
                 "on": {
                     "ready.ft.table": function(e, ft){
@@ -529,11 +519,20 @@ function getRowsData(fecha_inicio = null, fecha_fin = null, nombre_busqueda = nu
     if (fecha_inicio ===null && fecha_fin===null && nombre_busqueda===null && dni_busqueda===null ) {
         data = jQuery.get({
             "url": `${window.location.origin}/ResultadoFinal/ResultadoFinal/mostrar_datos_busqueda_avanzada/`,
-            "dataType": "json",
-            success: function(response) {
+            "dataType": "json"		
+        })
+        .then(r => {
 
-            }				
+            // This is a global variable to store the data when we want to download
+            console.log("assignning the global");
+            data_for_download = r.list_data;
+            console.log(data_for_download);
+            return r.rows;
+
         });
+
+
+        return data;
     } else {
         data = jQuery.post({
             "url": `${window.location.origin}/ResultadoFinal/ResultadoFinal/mostrar_datos_busqueda_avanzada/`,
@@ -551,9 +550,14 @@ function getRowsData(fecha_inicio = null, fecha_fin = null, nombre_busqueda = nu
                 console.log(errorThrown);
                 alert("error");
             }
+        })
+        .then( r => {
+            // This is a global variable to store the data when we want to download
+            data_for_download = r.list_data;
+            return r.rows;
         });
 
-        console.log(data);
+        
         return data;
     }
 }
@@ -565,4 +569,9 @@ function getRowsData(fecha_inicio = null, fecha_fin = null, nombre_busqueda = nu
 DESCARGAR DATOS DE LA TABLA
 -------------------------------------------------------------------------------------------
 */
-
+data_for_download ="mimama";
+document.getElementById("dowload_button").addEventListener("click", function () {
+    
+    console.log(data_for_download);
+});
+data_for_download ="mipapa";
