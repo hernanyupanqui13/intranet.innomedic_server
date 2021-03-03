@@ -335,7 +335,7 @@ class ResultadoFinal extends CI_Controller {
 			          				&reg; Av. Javier Prado Este 2638, San Borja, Lima, Perú<br/>
 			                        <a target="_blank" href="http://innomedic.metjetsac.com/soporte/" style="color: #ffffff;"><font color="#ffffff">Mas informacion</font></a> Área de Sistemas T.I
 			                        <br /><br />
-			                        <a href="https://www.facebook.com/escudero05/" color="#ffffff" style="color: #ffffff;">Desarrollado por: Area de Sistemas</a>
+			                        <a color="#ffffff" style="color: #ffffff;">Desarrollado por: Area de Sistemas</a>
 			          			</td>
 
 			          			<td width="22" style="width: 22px">&nbsp;</td>

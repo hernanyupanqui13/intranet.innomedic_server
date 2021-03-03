@@ -425,7 +425,7 @@
 <!-- Innomedic Zendesk Widget script -->
 <!--<script id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key=82749fb2-dc7d-4202-9b16-67546e8d59dd"> </script>-->
 <div class="chat_rrhh">
-    <a href="<?=base_url();?>/chat/chat" class="chat_rrhh_a">
+    <a href="<?=base_url();?>/Chat/Chat" class="chat_rrhh_a">
         <span>Chat RRHH</span>
         <i class="fa fa-comment-dots"></i>    
     </a>

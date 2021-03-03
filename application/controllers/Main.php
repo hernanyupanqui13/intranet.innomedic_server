@@ -278,7 +278,7 @@ class Main extends CI_Controller {
                                                         &reg; Av. Javier Prado Este 2638, San Borja, Lima, Perú<br/>
                                                         <a href="#" style="color: #ffffff;"><font color="#ffffff">Mas informacion</font></a> Área de Sistemas T.I
                                                         <br /><br />
-                                                        <a href="https://www.facebook.com/escudero05/" color="#ffffff" style="color: #ffffff;">Desarrollado por: Evaristo Escudero Huillcamascco</a>
+                                                        <a color="#ffffff" style="color: #ffffff;">Desarrollado por: Area de Sistemas</a>
                                                     </td>
                                                     <td align="right" width="25%">
                                                         <table border="0" cellpadding="0" cellspacing="0">
@@ -518,7 +518,7 @@ class Main extends CI_Controller {
                                                         &reg; Av. Javier Prado Este 2638, San Borja, Lima, Perú<br/>
                                                         <a href="#" style="color: #ffffff;"><font color="#ffffff">Mas informacion</font></a> Área de Sistemas T.I
                                                         <br /><br />
-                                                        <a href="https://www.facebook.com/escudero05/" color="#ffffff" style="color: #ffffff;">Desarrollado por: Evaristo Escudero Huillcamascco</a>
+                                                        <a color="#ffffff" style="color: #ffffff;">Desarrollado por: Area de Sistemas</a>
                                                     </td>
                                                     <td align="right" width="25%">
                                                         <table border="0" cellpadding="0" cellspacing="0">
