@@ -513,6 +513,14 @@ class ResultadoFinal extends CI_Controller {
 
     }
 
+    public function downloadExcell() {
+
+        $data = array("lista" => $_POST["data"]);
+
+        //echo json_encode($data);
+        $this->load->view("excel/reporte_examenes_antigeno", $data);
+    }
+
 
     
 

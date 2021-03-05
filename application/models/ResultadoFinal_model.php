@@ -31,13 +31,13 @@ class ResultadoFinal_model extends CI_Model {
             $initial_date = "'" . $initial_date . "'";
         }
 
-        $condition_1="(DATE(fecha_registro)>=$initial_date AND DATE(fecha_registro)<=$final_date)";
+        $condition_1="(DATE(e.fecha_registro)>=$initial_date AND DATE(e.fecha_registro)<=$final_date)";
 
         // Busqueda por nombre o apellido
         if($nombre_busqueda == null || $nombre_busqueda=="null") {
             $condition_2="AND TRUE";
         } else {
-            $condition_2="AND (nombre LIKE '%$nombre_busqueda%' OR apellido_paterno LIKE '%$nombre_busqueda%' OR apellido_materno LIKE '%$nombre_busqueda%')";
+            $condition_2="AND (e.nombre LIKE '%$nombre_busqueda%' OR e.apellido_paterno LIKE '%$nombre_busqueda%' OR e.apellido_materno LIKE '%$nombre_busqueda%')";
         }
 
         // Busqueda por DNI
@@ -51,12 +51,20 @@ class ResultadoFinal_model extends CI_Model {
         // Armando el pedido e insertando las condiciones
         $query_string=(
         "SELECT e.Id AS id , e.nro_identificador, e.estado_progreso,
-            concat(e.nombre,' ',e.apellido_paterno,' ',e.apellido_materno) AS nombrex, 
+            concat(e.nombre,' ',e.apellido_paterno,' ',e.apellido_materno) AS nombrex,
+            TIMESTAMPDIFF(YEAR,e.fecha_nacimiento,CURDATE()) AS edad,
+            ts_sexo.nombre AS sexo,
             e.dni,e.nombre,e.apellido_paterno,e.apellido_materno,e.id_sexo,e.empresa,e.status, 
             DATE(e.fecha_registro) AS fecha_ ,
             e.url_unico, e.id_paquete, e.total, e.precio,e.boleta_pago,e.archivo,
-            (SELECT l.nombre FROM exam_paquetes AS l WHERE l.Id=e.id_paquete) AS nombre_paquete 
-        FROM exam_datos_generales AS e 
+            (SELECT l.nombre FROM exam_paquetes AS l WHERE l.Id=e.id_paquete) AS nombre_paquete,
+            el.igm, el.igg, el.concentracion_igm, el.concentracion_igg, el.antigeno_resultado, el.concentra_atig,
+            molecular_url
+        FROM exam_datos_generales AS e
+            INNER JOIN ts_sexo
+                ON ts_sexo.Id = e.id_sexo
+            INNER JOIN exam_laboratorio el
+                ON el.id_paciente = e.Id
         WHERE $condition_1 $condition_2 $condition_3
         ORDER BY Id DESC, nro_identificador DESC"
         );

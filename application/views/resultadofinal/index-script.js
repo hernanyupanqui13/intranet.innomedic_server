@@ -569,9 +569,22 @@ function getRowsData(fecha_inicio = null, fecha_fin = null, nombre_busqueda = nu
 DESCARGAR DATOS DE LA TABLA
 -------------------------------------------------------------------------------------------
 */
-data_for_download ="mimama";
+
 document.getElementById("dowload_button").addEventListener("click", function () {
     
-    console.log(data_for_download);
+    
+
+    let my_form = document.createElement("form");
+    my_form.action = `${window.location.origin}/ResultadoFinal/ResultadoFinal/downloadExcell/`;
+    my_form.method = "post";
+    my_form.style.visibility ="hidden";
+    my_form.innerHTML = `<input type="text" name="data" value='${JSON.stringify(data_for_download)}'>`;
+    document.querySelector("body").appendChild(my_form);
+
+
+    my_form.submit();
+
+
+    
 });
-data_for_download ="mipapa";
+

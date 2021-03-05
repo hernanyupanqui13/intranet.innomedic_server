@@ -30,7 +30,7 @@
     <br>
     
     <br>
-    <h1 style="text-align: center;">REGISTRO DE ENVIO DE BOLETAS DEL A&Ntilde;O <?php echo $this->uri->segment(5,0) ?></h1>
+    <h1 style="text-align: center;">PRUEBAS ANTIGENO<?php echo $this->uri->segment(5,0) ?></h1>
     
     
 <br><br>
@@ -49,20 +49,20 @@
         <td class="moneda" style="text-align: center;"><b>TIPO EXAMEN</b></td>
         <td class="moneda" style="text-align: center;"><b>RESULTADO DE LA PRUEBA DE ANTIGENO</b></td>
     </tr>
-    <?php $cont =0; foreach($lista as $item){ $cont+=1; ?>
+    <?php 
+    $lista = json_decode($lista);
+    foreach ($lista as $item) { ?>
         <tr style="text-align: center;">
-            <td><?php echo $item->fecha_registro; ?></td>
+            <td><?php echo $item->fecha_; ?></td>
             <td><?php echo $item->nro_identificador; ?></td>
+            <td><?php echo $item->nombrex; ?></td>
+            <td><?php echo $item->edad; ?></td>
             <td><?php echo $item->dni; ?></td>
-            <td><?php echo $item->boleta; ?></td>
-            <td><?php echo $item->ano; ?></td>
-            <td><?php echo $item->mes; ?></td>
-            <td><?php echo $item->estado_item; ?><br><?php echo $item->fecha_enviado; ?></td>
-            <td><?php if ($item->conforme==1) {?>
-                Recibido  Conforme
-            <?php } else{?>
-                
-            <?php }?></td>
+            <td><?php echo $item->sexo; ?></td>
+            <td><?php echo "INNOMEDIC INTERNATIONAL E.I.R.L"; ?></td>
+            <td><?php echo "PERFIL ANTIGENO"; ?></td>
+            <td><?php echo "VISITA"; ?></td>
+            <td><?php echo $item->antigeno_resultado;?></td>
 
         </tr>
     <?php } ?>
