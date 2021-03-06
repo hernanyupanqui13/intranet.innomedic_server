@@ -53,10 +53,12 @@ class ResultadoFinal extends CI_Controller {
         $fecha_inicio = $this->input->post('fecha_inicio');	
 		$fecha_fin= $this->input->post('fecha_fin');
 		$nombre_busqueda = $this->input->post('nombre_busqueda');	
-		$dni_busqueda= $this->input->post('dni_busqueda');
+		$dni_busqueda = $this->input->post('dni_busqueda');
+        $tipo_de_examen = $this->input->post('tipo_de_examen');
+
 
       
-        $list = $this->ResultadoFinal_model->mostrar_datos_busqueda_($fecha_inicio,$fecha_fin,$nombre_busqueda,$dni_busqueda);
+        $list = $this->ResultadoFinal_model->mostrar_datos_busqueda_($fecha_inicio,$fecha_fin,$nombre_busqueda,$dni_busqueda, $tipo_de_examen);
         $data = array();
 
         foreach ($list as $person) {

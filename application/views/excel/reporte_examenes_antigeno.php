@@ -1,6 +1,6 @@
 <?php 
     
-    $nombre = "Colaborador_".date('Y-m-d')."_".rand(10000,99999);
+    $nombre = "Antigeno_".date('Y-m-d')."_".rand(10000,99999);
     header('Pragma: public');
     header('Content-Disposition: attachment; filename='.$nombre.'.xls');//
     header('Content-type: application/force-download');

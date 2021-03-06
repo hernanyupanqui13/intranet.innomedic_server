@@ -43,9 +43,16 @@
                       </div>
                       <div class="col-md-6 col-xs-12 col-sm-12 col-lg-4 col-xl-2">
                         <div class="form-group">
-                          <a href="javascript:void(0)" class="btn btn-danger btn-rounded" onclick="limpiar_campos()" type="button"><span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Limpiar ...</a>
+                          <a href="javascript:void(0)" class="btn btn-danger btn-rounded" onclick="limpiar_campos()" type="button">Limpiar</a>
                         </div>
                       </div>
+					  <div class="col-md-4">
+						<label for="input14" class="text-dark">Paquete </label>
+						<div class="form-group mostrararea">
+							<select name="paquete" id="tipo_de_examen" class="form-control btn-rounded border border-dark " required="">                                                            
+							</select>                                                            
+						</div>
+					  </div>
                     </div>
 
                   </div>

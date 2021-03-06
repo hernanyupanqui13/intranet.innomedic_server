@@ -14,7 +14,7 @@ class ResultadoFinal_model extends CI_Model {
         return $query->result();       
     }
 
-    public function mostrar_datos_busqueda_($initial_date,$final_date,$nombre_busqueda,$dni_busqueda)
+    public function mostrar_datos_busqueda_($initial_date,$final_date,$nombre_busqueda,$dni_busqueda, $tipo_de_examen)
     {
         // Final date
         if($final_date == null || $final_date=="null") {        
@@ -46,6 +46,13 @@ class ResultadoFinal_model extends CI_Model {
         } else {
             $condition_3="AND dni LIKE '%$dni_busqueda%'";
         }
+
+        // Tipo de examenes
+        if($tipo_de_examen == null || $tipo_de_examen == "null") {
+            $condition_4 = "AND TRUE";
+        } else {
+            $condition_4 = "AND e.id_paquete = $tipo_de_examen";
+        }
         
         
         // Armando el pedido e insertando las condiciones
@@ -65,7 +72,7 @@ class ResultadoFinal_model extends CI_Model {
                 ON ts_sexo.Id = e.id_sexo
             INNER JOIN exam_laboratorio el
                 ON el.id_paciente = e.Id
-        WHERE $condition_1 $condition_2 $condition_3
+        WHERE $condition_1 $condition_2 $condition_3 $condition_4
         ORDER BY Id DESC, nro_identificador DESC"
         );
 

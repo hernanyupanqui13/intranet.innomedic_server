@@ -80,14 +80,20 @@ $(document).ready(function() {
 
         if(dni_busqueda == null || dni_busqueda =="") {
             dni_busqueda =  "null";					
-        } 
+        }
+
+        let tipo_de_examen = $("#tipo_de_examen").val();
+        console.log(tipo_de_examen);
+        if(tipo_de_examen == null || tipo_de_examen == "") {
+            tipo_de_examen = "null";
+        }
 
 
         
         $('#showcase-example-1').footable({
             "columns": footable_columns,
 
-            "rows":getRowsData(fecha_inicio, fecha_fin, nombre_busqueda, dni_busqueda),
+            "rows":getRowsData(fecha_inicio, fecha_fin, nombre_busqueda, dni_busqueda, tipo_de_examen),
             
             "on": {
                 "ready.ft.table": function(e, ft){
@@ -512,7 +518,7 @@ function fileValidatiosn(obj){
 
 
 
-function getRowsData(fecha_inicio = null, fecha_fin = null, nombre_busqueda = null, dni_busqueda = null) {
+function getRowsData(fecha_inicio = null, fecha_fin = null, nombre_busqueda = null, dni_busqueda = null, tipo_de_examen=null) {
 
     let data; 
 
@@ -524,9 +530,7 @@ function getRowsData(fecha_inicio = null, fecha_fin = null, nombre_busqueda = nu
         .then(r => {
 
             // This is a global variable to store the data when we want to download
-            console.log("assignning the global");
             data_for_download = r.list_data;
-            console.log(data_for_download);
             return r.rows;
 
         });
@@ -542,6 +546,7 @@ function getRowsData(fecha_inicio = null, fecha_fin = null, nombre_busqueda = nu
                 "fecha_fin": fecha_fin,
                 "nombre_busqueda":nombre_busqueda,
                 "dni_busqueda":dni_busqueda,
+                "tipo_de_examen":tipo_de_examen
             },
             success:  function (response) {                 		                    
                 $("#showcase-example-1 tr:last-child").remove();
@@ -562,7 +567,22 @@ function getRowsData(fecha_inicio = null, fecha_fin = null, nombre_busqueda = nu
     }
 }
 
+function tipo_paquete_() {
+    // body...
+      //mostramos tipo_pago
+    $.ajax({
+            type: "POST",
+            async:true,
+            url: `${window.location.origin}/Examenes/Examenes/cargar_paquete/`,
+            success: function(response)
+            {
+                $('.mostrararea select').html(response).fadeIn();
+            }
+    });
+  
+}
 
+tipo_paquete_()
 
 /*
 -------------------------------------------------------------------------------------------
@@ -583,6 +603,8 @@ document.getElementById("dowload_button").addEventListener("click", function () 
 
 
     my_form.submit();
+
+    my_form.remove();
 
 
     
