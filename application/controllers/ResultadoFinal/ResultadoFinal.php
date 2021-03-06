@@ -515,12 +515,20 @@ class ResultadoFinal extends CI_Controller {
 
     }
 
-    public function downloadExcell() {
+    public function downloadExcell($tipo_de_examen) {
+
+        $exam_with_template = array("580"=>"",
+            "581"=>"reporte_examenes_antigeno",
+            "582"=>"",
+            "583"=>"reporte_examenes_antigeno_cuanti"
+        );
+
+        $template = $exam_with_template[$tipo_de_examen];
 
         $data = array("lista" => $_POST["data"]);
 
         //echo json_encode($data);
-        $this->load->view("excel/reporte_examenes_antigeno", $data);
+        $this->load->view("excel/$template", $data);
     }
 
 

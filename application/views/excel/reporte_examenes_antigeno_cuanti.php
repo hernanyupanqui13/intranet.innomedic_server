@@ -1,6 +1,6 @@
 <?php 
     
-    $nombre = "Antigeno_".date('Y-m-d')."_".rand(10000,99999);
+    $nombre = "Antigeno_Cuanti_".date('Y-m-d')."_".rand(10000,99999);
     header('Pragma: public');
     header('Content-Disposition: attachment; filename='.$nombre.'.xls');//
     header('Content-type: application/force-download');
@@ -30,7 +30,7 @@
     <br>
     
     <br>
-    <h1 style="text-align: center;">PRUEBAS ANTIGENO</h1>
+    <h1 style="text-align: center;">PRUEBAS ANTIGENO CUANTITATIVO</h1>
     
     
 <br><br>
@@ -47,7 +47,9 @@
         <td class="moneda" style="text-align: center;"><b>CLIENTE</b></td>
         <td class="moneda" style="text-align: center;"><b>PERFIL</b></td>
         <td class="moneda" style="text-align: center;"><b>TIPO EXAMEN</b></td>
-        <td class="moneda" style="text-align: center;"><b>RESULTADO DE LA PRUEBA DE ANTIGENO</b></td>
+        <td class="moneda" style="text-align: center;"><b>FECHA DE LA PRUEBA</b></td>
+        <td class="moneda" style="text-align: center;"><b>RESULTADOS DE LA PRUEBA</b></td>
+        <td class="moneda" style="text-align: center;"><b>CONCENTRACION</b></td>
     </tr>
     <?php 
     $lista = json_decode($lista);
@@ -62,8 +64,9 @@
             <td><?php echo "INNOMEDIC INTERNATIONAL E.I.R.L"; ?></td>
             <td><?php echo "PERFIL ANTIGENO"; ?></td>
             <td><?php echo "VISITA"; ?></td>
+            <td><?php echo $item->fecha_de_atencion;?></td>
             <td><?php echo $item->antigeno_resultado;?></td>
-
+            <td><?php echo $item->concentra_atig;?></td>
         </tr>
     <?php } ?>
 </table>

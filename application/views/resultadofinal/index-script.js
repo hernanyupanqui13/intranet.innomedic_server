@@ -11,7 +11,8 @@ const footable_columns = [
     { "name": "enviar", "title": "Enviar al Correo", "breakpoints": "xs sm md", "classes":"centrado"}
 ];
 
-let data_for_download; 
+let data_for_download;
+let current_exam_type;
 
 
 
@@ -559,6 +560,7 @@ function getRowsData(fecha_inicio = null, fecha_fin = null, nombre_busqueda = nu
         .then( r => {
             // This is a global variable to store the data when we want to download
             data_for_download = r.list_data;
+            current_exam_type = tipo_de_examen; // Si es null deberia tenerse una plantilla general
             return r.rows;
         });
 
@@ -591,11 +593,9 @@ DESCARGAR DATOS DE LA TABLA
 */
 
 document.getElementById("dowload_button").addEventListener("click", function () {
-    
-    
 
     let my_form = document.createElement("form");
-    my_form.action = `${window.location.origin}/ResultadoFinal/ResultadoFinal/downloadExcell/`;
+    my_form.action = `${window.location.origin}/ResultadoFinal/ResultadoFinal/downloadExcell/${current_exam_type}`;
     my_form.method = "post";
     my_form.style.visibility ="hidden";
     my_form.innerHTML = `<input type="text" name="data" value='${JSON.stringify(data_for_download)}'>`;

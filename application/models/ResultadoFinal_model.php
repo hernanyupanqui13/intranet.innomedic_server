@@ -63,6 +63,7 @@ class ResultadoFinal_model extends CI_Model {
             ts_sexo.nombre AS sexo,
             e.dni,e.nombre,e.apellido_paterno,e.apellido_materno,e.id_sexo,e.empresa,e.status, 
             DATE(e.fecha_registro) AS fecha_ ,
+            DATE(e.fecha_atencion) AS fecha_de_atencion,
             e.url_unico, e.id_paquete, e.total, e.precio,e.boleta_pago,e.archivo,
             (SELECT l.nombre FROM exam_paquetes AS l WHERE l.Id=e.id_paquete) AS nombre_paquete,
             el.igm, el.igg, el.concentracion_igm, el.concentracion_igg, el.antigeno_resultado, el.concentra_atig,
