@@ -67,7 +67,7 @@ class ResultadoFinal_model extends CI_Model {
             e.url_unico, e.id_paquete, e.total, e.precio,e.boleta_pago,e.archivo,
             (SELECT l.nombre FROM exam_paquetes AS l WHERE l.Id=e.id_paquete) AS nombre_paquete,
             el.igm, el.igg, el.concentracion_igm, el.concentracion_igg, el.antigeno_resultado, el.concentra_atig,
-            molecular_url
+            molecular_url, resultado_molecular
         FROM exam_datos_generales AS e
             INNER JOIN ts_sexo
                 ON ts_sexo.Id = e.id_sexo

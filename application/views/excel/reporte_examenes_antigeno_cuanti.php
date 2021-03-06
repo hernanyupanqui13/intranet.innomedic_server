@@ -62,7 +62,7 @@
             <td><?php echo $item->dni; ?></td>
             <td><?php echo $item->sexo; ?></td>
             <td><?php echo "INNOMEDIC INTERNATIONAL E.I.R.L"; ?></td>
-            <td><?php echo "PERFIL ANTIGENO"; ?></td>
+            <td><?php echo "PERFIL ANTIGENO CUANTITATIVO"; ?></td>
             <td><?php echo "VISITA"; ?></td>
             <td><?php echo $item->fecha_de_atencion;?></td>
             <td><?php echo $item->antigeno_resultado;?></td>

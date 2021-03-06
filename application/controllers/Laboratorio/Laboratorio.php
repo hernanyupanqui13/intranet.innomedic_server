@@ -168,6 +168,7 @@ class Laboratorio extends CI_Controller {
                 'concentracion_igg' => $this->input->post("concentracion_igg"),
                 'antigeno_resultado' => $this->input->post("antigeno_resultado"),
                 'concentra_atig' => $this->input->post("concentra_atig"),
+                'resultado_molecular' => $this->input->post("resultado_molecular"),
                 'update_covid' => date('Y-m-d G:i:s')
             );
 
@@ -330,7 +331,8 @@ class Laboratorio extends CI_Controller {
             $id = $this->input->post("id_unico");
             $data = array(
                 'update_covid' => date('Y-m-d G:i:s'),
-                'molecular_url' => $_FILES["file"]["name"]
+                'molecular_url' => $_FILES["file"]["name"],
+                'resultado_molecular' => $this->input->post("resultado_molecular")
             );
 
             $this->Laboratorio_model->actualizar_prueba_rapida($id,$data);

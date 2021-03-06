@@ -519,7 +519,7 @@ class ResultadoFinal extends CI_Controller {
 
         $exam_with_template = array("580"=>"reporte_examenes_rapida_cuanti",
             "581"=>"reporte_examenes_antigeno",
-            "582"=>"",
+            "582"=>"reporte_examenes_molecular",
             "583"=>"reporte_examenes_antigeno_cuanti",
             "5" => "reporte_examenes_rapida"
         );

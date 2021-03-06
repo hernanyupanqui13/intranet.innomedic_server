@@ -1,6 +1,6 @@
 <?php 
     
-    $nombre = "Pruebas_Rapidas_".date('Y-m-d')."_".rand(10000,99999);
+    $nombre = "Molecular_".date('Y-m-d')."_".rand(10000,99999);
     header('Pragma: public');
     header('Content-Disposition: attachment; filename='.$nombre.'.xls');//
     header('Content-type: application/force-download');
@@ -30,7 +30,7 @@
     <br>
     
     <br>
-    <h1 style="text-align: center;">PRUEBAS RAPIDAS</h1>
+    <h1 style="text-align: center;">PRUEBAS MOLECULARES</h1>
     
     
 <br><br>
@@ -48,9 +48,7 @@
         <td class="moneda" style="text-align: center;"><b>PERFIL</b></td>
         <td class="moneda" style="text-align: center;"><b>TIPO EXAMEN</b></td>
         <td class="moneda" style="text-align: center;"><b>FECHA DE LA PRUEBA</b></td>
-        <td class="moneda" style="text-align: center;"><b>RESULTADOS DE LA PRIMERA PRUEBA</b></td>
-        <td class="moneda" style="text-align: center;"><b>IGG</b></td>
-        <td class="moneda" style="text-align: center;"><b>IGM</b></td>
+        <td class="moneda" style="text-align: center;"><b>RESULTADOS DE LA PRUEBA</b></td>
     </tr>
     <?php 
     $lista = json_decode($lista);
@@ -63,17 +61,10 @@
             <td><?php echo $item->dni; ?></td>
             <td><?php echo $item->sexo; ?></td>
             <td><?php echo "INNOMEDIC INTERNATIONAL E.I.R.L"; ?></td>
-            <td><?php echo "PERFIL COVID"; ?></td>
+            <td><?php echo "PERFIL MOLECULAR"; ?></td>
             <td><?php echo "VISITA"; ?></td>
             <td><?php echo $item->fecha_de_atencion;?></td>
-            <td><?php if ($item->igg == "REACTIVO" || $item->igm == "REACTIVO") {
-                echo "REACTIVO";
-            } else {
-                echo "NO REACTIVO";
-            }?>
-            </td>
-            <td><?php echo $item->igg;?></td>
-            <td><?php echo $item->igm;?></td>
+            <td><?php echo $item->resultado_molecular;?></td>
         </tr>
     <?php } ?>
 </table>

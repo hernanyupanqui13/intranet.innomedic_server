@@ -600,13 +600,10 @@ document.getElementById("dowload_button").addEventListener("click", function () 
     my_form.style.visibility ="hidden";
     my_form.innerHTML = `<input type="text" name="data" value='${JSON.stringify(data_for_download)}'>`;
     document.querySelector("body").appendChild(my_form);
-
-
+    
     my_form.submit();
 
     my_form.remove();
-
-
     
 });
 

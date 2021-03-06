@@ -31,14 +31,24 @@
                     </div>
                 </div>
             </div>
-            <div class="form-group molecular_file_container">
-                <label for="molecular_file">Resultado Molecular: </label>
-                <input type="file" name="userfile" size="20" id="test_input"/>
-            </div>        
+            <div class="row">
+                <div class="form-group col-md-6 molecular_file_container">
+                    <label for="molecular_file">Resultado Molecular (Archivo): </label>
+                    <input type="file" name="userfile" size="20" id="test_input"/>
+                </div>
+                <div class="col-md-6 " style="align-self:center;">
+                    <label for="antigeno_resultado_input">Resultado:&nbsp;</label>
+                    <select class="form-select"  id="resultado_molecular" name="resultado_molecular">
+                        <option value="" selected="" disabled="">-- Seleccione el Resultado --</option>
+                        <option value="detectado">DETECTADO</option>
+                        <option value="no detectado">NO DETECTADO</option>
+                    </select>
+                </div>       
+            </div>
             <div class="informacion-medicos">
                 <div class="informacion-medicos-item"><span>Medico:&nbsp;</span>RUIZ COTRINA JORGE MARTIN</div>
                 <div class="informacion-medicos-item"><span>Tecnologo:&nbsp;</span>ARTICA VICENTE REYNALDO</div>
-            </div>
+            </div>            
             <div class="row">
                 <div class="col-md-12">
                     <div class="text-center">
