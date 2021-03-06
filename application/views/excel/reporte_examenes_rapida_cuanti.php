@@ -1,6 +1,6 @@
 <?php 
     
-    $nombre = "Pruebas_Rapidas_".date('Y-m-d')."_".rand(10000,99999);
+    $nombre = "Pruebas_Rapidas_Cuanti".date('Y-m-d')."_".rand(10000,99999);
     header('Pragma: public');
     header('Content-Disposition: attachment; filename='.$nombre.'.xls');//
     header('Content-type: application/force-download');
@@ -30,7 +30,7 @@
     <br>
     
     <br>
-    <h1 style="text-align: center;">PRUEBAS RAPIDAS</h1>
+    <h1 style="text-align: center;">PRUEBAS RAPIDAS CUANTITATIVAS</h1>
     
     
 <br><br>
@@ -50,7 +50,10 @@
         <td class="moneda" style="text-align: center;"><b>FECHA DE LA PRUEBA</b></td>
         <td class="moneda" style="text-align: center;"><b>RESULTADOS DE LA PRIMERA PRUEBA</b></td>
         <td class="moneda" style="text-align: center;"><b>IGG</b></td>
+        <td class="moneda" style="text-align: center;"><b>CONCENTRACION IGG</b></td>
         <td class="moneda" style="text-align: center;"><b>IGM</b></td>
+        <td class="moneda" style="text-align: center;"><b>CONCENTRACION IGM</b></td>
+
     </tr>
     <?php 
     $lista = json_decode($lista);
@@ -73,7 +76,10 @@
             }?>
             </td>
             <td><?php echo $item->igg;?></td>
+            <td><?php echo $item->concentracion_igg;?></td>
             <td><?php echo $item->igm;?></td>
+            <td><?php echo $item->concentracion_igm;?></td>
+
         </tr>
     <?php } ?>
 </table>
