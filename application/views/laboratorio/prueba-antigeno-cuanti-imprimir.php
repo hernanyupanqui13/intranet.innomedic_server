@@ -150,7 +150,7 @@
                             <tr class="text-center">
                                 <th> 
                                     <div class="col-md-6 text-center">
-                                        <p><span><img class="img-fluid"  src="<?php echo base_url().'upload/';?>firma/ruiz_cotrina.png?ver=<?php echo rand(); ?>" alt=""></span><br>
+                                        <p><span><img class="img-fluid"  src="<?php echo base_url().'upload/';?>firma/204.jpg?ver=<?php echo rand(); ?>" alt=""></span><br>
                                         <small>Firma y Sello<br>
                                         RUIZ COTRINA JORGE MARTIN<br>
                                         Médico especialista<br>
@@ -160,7 +160,7 @@
                                 </th>
                                 <th> 
                                     <div class="col-md-6 text-center ">
-                                        <p><span><img class="img-fluid "  src="<?php echo base_url().'upload/';?>firma/reynaldo.png?ver=<?php echo rand(); ?>" alt=""></span><br><small>
+                                        <p><span><img class="img-fluid "  src="<?php echo base_url().'upload/';?>firma/205.jpg?ver=<?php echo rand(); ?>" alt=""></span><br><small>
                                             Firma y Sello<br>
                                             ARTICA VICENTE REYNALDO<br>
                                             Tecnólogo médico<br>
