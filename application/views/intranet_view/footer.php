@@ -182,17 +182,16 @@
                 $('#apellido_materno').val("");
                 $('#nombres_completos').val("");
                 var dni = $('#dni_evaristo').val();
-                var url = '<?php echo base_url().'assets_sistema/reniec/consulta_reniec.php/';?>';
+                var url = `https://dni.optimizeperu.com/api/persons/${dni}`;
                 $.ajax({
-                type:'POST',
+                type:'GET',
                 url:url,
-                data:'dni='+dni,
-                //timeout: 10000,
                 
                 success: function(datos_dni){
-                    var datos = eval(datos_dni);
+                    console.log(datos_dni);
+                    
                         
-                    if (datos[1]=="" || datos[1]==null ) {
+                    if (datos_dni.name == "_") {
                       Swal.fire({
                           icon: 'error',
                           title: 'Oops...',
@@ -213,10 +212,10 @@
                         
                         
                     }else{
-                        $('#dni_mostrar_dni').val(datos[1]);
-                        $('#apellido_paterno_x').val(datos[3]);
-                        $('#apellido_materno').val(datos[4]);
-                        $('#nombres_completos').val(datos[2]);
+                        $('#dni_mostrar_dni').val(datos_dni.dni);
+                        $('#apellido_paterno_x').val(datos_dni.first_name);
+                        $('#apellido_materno').val(datos_dni.last_name);
+                        $('#nombres_completos').val(datos_dni.name);
                         $('#apellido_paterno_x').removeAttr("readonly");
                         $('#apellido_materno').removeAttr("readonly");
                         $('#nombres_completos').removeAttr("readonly");

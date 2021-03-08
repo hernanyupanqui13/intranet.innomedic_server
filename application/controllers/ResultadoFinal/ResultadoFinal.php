@@ -53,10 +53,12 @@ class ResultadoFinal extends CI_Controller {
         $fecha_inicio = $this->input->post('fecha_inicio');	
 		$fecha_fin= $this->input->post('fecha_fin');
 		$nombre_busqueda = $this->input->post('nombre_busqueda');	
-		$dni_busqueda= $this->input->post('dni_busqueda');
+		$dni_busqueda = $this->input->post('dni_busqueda');
+        $tipo_de_examen = $this->input->post('tipo_de_examen');
+
 
       
-        $list = $this->ResultadoFinal_model->mostrar_datos_busqueda_($fecha_inicio,$fecha_fin,$nombre_busqueda,$dni_busqueda);
+        $list = $this->ResultadoFinal_model->mostrar_datos_busqueda_($fecha_inicio,$fecha_fin,$nombre_busqueda,$dni_busqueda, $tipo_de_examen);
         $data = array();
 
         foreach ($list as $person) {
@@ -95,7 +97,7 @@ class ResultadoFinal extends CI_Controller {
             $data[] = $row;
         }
 
-        $output = $data;
+        $output = array("rows"=>$data, "list_data"=>$list);
 
      
         // Devolviendo los datos en JSON
@@ -508,6 +510,22 @@ class ResultadoFinal extends CI_Controller {
         $final_progress_state = 1 + $current_lab_state + $current_result_state;
         $this->ResultadoFinal_model->actualizarEstadoProgreso($final_progress_state, $id);
 
+    }
+
+    public function downloadExcell($tipo_de_examen) {
+
+        $exam_with_template = array("580"=>"reporte_examenes_rapida_cuanti",
+            "581"=>"reporte_examenes_antigeno",
+            "582"=>"reporte_examenes_molecular",
+            "583"=>"reporte_examenes_antigeno_cuanti",
+            "5" => "reporte_examenes_rapida"
+        );
+
+        $template = $exam_with_template[$tipo_de_examen];
+
+        $data = array("lista" => $_POST["data"]);
+
+        $this->load->view("excel/$template", $data);
     }
 
 
