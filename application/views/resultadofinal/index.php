@@ -103,7 +103,6 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
 <script src=<?= base_url().'application/JavaScript/imprimir.js'?>></script>
 <link rel="stylesheet" type="text/css" href="<?= base_url().'assets/vendor/progress-bar/loading-bar.css'?>"/>
-<script src=<?= base_url().'application/JavaScript/resultado_final-index.js'?>></script>
 <script src=<?= base_url().'application/views/resultadofinal/index-script.js'?>></script>
 
 
