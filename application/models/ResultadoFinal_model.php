@@ -48,7 +48,7 @@ class ResultadoFinal_model extends CI_Model {
         }
 
         // Tipo de examenes
-        if($tipo_de_examen == null || $tipo_de_examen == "null") {
+        if($tipo_de_examen == null || $tipo_de_examen == "0") {
             $condition_4 = "AND TRUE";
         } else {
             $condition_4 = "AND e.id_paquete = $tipo_de_examen";
