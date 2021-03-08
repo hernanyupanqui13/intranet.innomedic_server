@@ -306,7 +306,7 @@ class Boleta extends CI_Controller {
                                                                                 <table border="0" cellpadding="0" cellspacing="0" width="100%">
                                                                                     <tr>
                                                                                         <td>
-                                                                                            <img src="http://intranet.metjetsac.com/upload/mail/left.gif" alt="" width="100%" height="140" style="display: block;" />
+                                                                                            <img src="http://intranet.innomedic.pe/upload/mail/left.gif" alt="" width="100%" height="140" style="display: block;" />
                                                                                         </td>
                                                                                     </tr>
                                                                                     <tr>
@@ -323,7 +323,7 @@ class Boleta extends CI_Controller {
                                                                                 <table border="0" cellpadding="0" cellspacing="0" width="100%">
                                                                                     <tr>
                                                                                         <td>
-                                                                                            <img src="http://intranet.metjetsac.com/upload/mail/right.gif" alt="" width="100%" height="140" style="display: block;" />
+                                                                                            <img src="http://intranet.innomedic.pe/upload/mail/right.gif" alt="" width="100%" height="140" style="display: block;" />
                                                                                         </td>
                                                                                     </tr>
                                                                                     <tr>
@@ -355,13 +355,13 @@ class Boleta extends CI_Controller {
                                                                         <tr>
                                                                             <td style="font-family: Arial, sans-serif; font-size: 12px; font-weight: bold;">
                                                                                 <a href="https://twitter.com/INNOMEDIC" style="color: #ffffff;">
-                                                                                    <img src="http://intranet.metjetsac.com/upload/mail/tw.gif" alt="Twitter" width="38" height="38" style="display: block;" border="0" />
+                                                                                    <img src="http://intranet.innomedic.pe/upload/mail/tw.gif" alt="Twitter" width="38" height="38" style="display: block;" border="0" />
                                                                                 </a>
                                                                             </td>
                                                                             <td style="font-size: 0; line-height: 0;" width="20">&nbsp;</td>
                                                                             <td style="font-family: Arial, sans-serif; font-size: 12px; font-weight: bold;">
                                                                                 <a href="https://www.facebook.com/InnomedicInternational" style="color: #ffffff;">
-                                                                                    <img src="http://intranet.metjetsac.com/upload/mail/fb.gif" alt="Facebook" width="38" height="38" style="display: block;" border="0" />
+                                                                                    <img src="http://intranet.innomedic.pe/upload/mail/fb.gif" alt="Facebook" width="38" height="38" style="display: block;" border="0" />
                                                                                 </a>
                                                                             </td>
                                                                             
