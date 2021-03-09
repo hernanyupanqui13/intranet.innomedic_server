@@ -4,8 +4,6 @@
   <div class="col-md-12">
     <div class="card">
       <div class="card-body">
-
-
         <div class="card-header bg-dark">
           <h4 class="m-b-0 card-title text-white">Exámenes Clínicos</h4>
         </div><br>
@@ -28,13 +26,11 @@
               <div class="col-lg-12">
                 <div class="card ">
                   <div class="card-body">
-                    <form class="evaristoescuderohuillcamascco" id="registrar_datos_generales" autocomplete="off">
-                      
+                    <form class="evaristoescuderohuillcamascco" id="registrar_datos_generales" autocomplete="off">                      
                       <!--<div class="form-group btn  custom-control custom-checkbox pt-2" id="ocultar_iddddddd">
                         <input type="checkbox" name="cbmostrar"  class="fantasmass custom-control-input mr-sm-2" id="checkbox2" >
                         <label class="custom-control-label" for="checkbox2"><span class="btn-dark btn btn-rounded"><i class="fas fa-plus-circle"></i>&nbsp;Programar otra fecha</span></label>
                       </div>-->
-
                       <div class="btn-group" data-toggle="buttons" id="ocultar_iddddddd">
                         <label class="btn btn-dark btn-rounded">
                           <div class="custom-control custom-checkbox mr-sm-2">
@@ -50,24 +46,13 @@
                           <div class="form-group  m-b-40">
                             <input type="text" class="form-control btn-rounded border border-dark " id="nro_edentificador_insert" name="nro_identificador_insert" value="" readonly="" style="background: #ffffff; "><span class="bar"></span>                                                        
                           </div>
-                        </div>
+                        </div>                        
                         <div class="col-md-12 col-sm-12 col-xs-12 col-lg-8">
                           <label for="input14" class="text-dark">Fecha </label>
                           <div class="form-group m-b-40">
                             <input type="text" class="form-control btn-rounded border border-dark" id="min-date" value="" placeholder="<?php echo date('Y-m-d H:i.s') ?>" name="fecha_atencionx" ><span class="bar"></span>
                           </div>
                         </div>
-                        <!--<div class="col-md-12 col-sm-12 col-xs-12 col-lg-4">
-                          <label  class="text-dark">Hora</label>
-                            <div class="form-group   m-b-40 input-group clockpicker " data-placement="left" data-align="top" data-autoclose="true">
-                              <input type="text" class="form-control btn-rounded border border-dark" value="" name="horax" id="hora"><span class="bar"></span>
-
-                              <div class="input-group-append">
-                                <span class="input-group-text"><i class=" fas fa-clock"></i></span>
-                              </div>
-                                
-                            </div>
-                        </div>-->
                       </div>
 
                       <div class="row" id="agregamos_fecha_hora" style="display: none;">
@@ -86,7 +71,6 @@
                         </div>
                       </div>
                       
-
                       <div class="btn-group" data-toggle="buttons">
                         <label class="btn btn-dark btn-rounded">
                           <div class="custom-control custom-checkbox mr-sm-2">
@@ -98,7 +82,9 @@
 
                       <div class="row" id="agregamos_empresa_si_o_no" style="display: none;">
                         <div class="col-md-8" >                                            
-                          <a href="javascript:void(0)" class="btn btn-dark btn-sm btn-rounded" data-toggle="modal" data-target=".bd-example-modal-lgs"><i class="fas fa-plus-circle"></i>&nbsp; Agregar Empresa</a>
+                          <a href="javascript:void(0)" class="btn btn-dark btn-sm btn-rounded" data-toggle="modal" data-target=".bd-example-modal-lgs">
+                            <i class="fas fa-plus-circle"></i>&nbsp; Agregar Empresa
+                          </a>
                           <label for="input14" class="text-dark">Empresa </label>
                           <div class="form-group ">
                             <input type="text" class="form-control btn-rounded border border-dark" id="empresa_xxxxxxxxxxx" value="" name="empresa" placeholder="Ingrese empresa">
@@ -116,192 +102,189 @@
                         </div>                                                
                       </div> 
 
-                        <hr>
-                        <h4 class="m-b-25 font-weight-bold ">Datos del Paciente</h4>
-                        <div class="row">
-                          <div class="col-md-2">
-                            <div class="dni-select-container">
-                              <select name="tipo_documento" id="tipo_documento" class="form-control btn-rounded border border-dark " required>                                                        
-                                <option value="dni">DNI</option>
-                                <option value="pasaporte">Pasaporte</option>
-                                <option value="carnet_extranjeria">Carnet de Extranjeria</option>
-                              </select> 
-                            </div>
-                            <div class="form-group">
-                              <input type="hidden" id="dni_mostrar_dni" value="" name="dni">
-                              <input type="text" class="form-control btn-rounded border border-dark" id="dni_evaristo" value="" name="update_dni" placeholder="Ingrese el documento" pattern="[0-9]{8}" maxlength="8">
-                              <span class="bar"></span>
-                              <button style="display: none;" id="botoncito_xxx" class="botoncito btn btn-outline-success">Buscar</button>                                                        
-                              <span class="help-block"><small id="dni_help_message">Ingrese en Nº de Documento y presione "Enter"</small></span>
-                            </div>
+                      <hr>
+                      <h4 class="m-b-25 font-weight-bold ">Datos del Paciente</h4>
+                      <div class="row">
+                        <div class="col-md-2">
+                          <div class="dni-select-container">
+                            <select name="tipo_documento" id="tipo_documento" class="form-control btn-rounded border border-dark " required>                                                        
+                              <option value="dni">DNI</option>
+                              <option value="pasaporte">Pasaporte</option>
+                              <option value="carnet_extranjeria">Carnet de Extranjeria</option>
+                            </select> 
                           </div>
-                          <div class="col-md-2">
-                            <div class="form-group">
-                              <label for="input14" class="text-dark">Nombres </label>
-                              <input type="text" class="form-control btn-rounded border border-dark " id="nombres_completos" value="" name="nombres_completos" placeholder="Ingrese nombres" required="" >
-                              <span class="bar"></span>
-                            </div>
-                          </div>
-                          <div class="col-md-3">
-                            <div class="form-group">
-                              <label for="input14" class="text-dark">Apellido Paterno </label>
-                                <input type="text" class="form-control btn-rounded border border-dark" id="apellido_paterno_x" value="" name="apellido_paterno" placeholder="Ingrese apellido paterno" required=""><span class="bar"></span>                                                      
-                              </div>
-                            </div>
-                            <div class="col-md-3">
-                              <div class="form-group">
-                                <label for="input14" class="text-dark">Apellido Materno </label>
-                                <input type="text" class="form-control btn-rounded border border-dark" id="apellido_materno" value="" name="apellido_materno" placeholder="Ingrese apellido materno" required=""><span class="bar"></span>                                                        
-                              </div>
-                            </div>
-                            <div class="col-md-2">
-                              <div class="form-group mostrarsexo">
-                                <label for="input14" class="text-dark">Sexo </label>
-                                <select name="sexo" id="sexo" class="form-control btn-rounded border border-dark " required>                                                        
-                                </select> 
-                              </div>
-                            </div>
-                            <div class="col-md-3">
-                              <div class="form-group"> 
-                              <label for="input14" class="text-dark">Fecha Nacimiento </label>
-                                <input type="date" class="form-control btn-rounded border border-dark" id="fecha_nacimiento" value="" name="fecha_nacimiento" placeholder="Ingrese Fecha de Nacimiento" required=""><span class="bar"></span>                                                        
-                              </div>
-                            </div>
-                            <div class="col-md-6">
-                              <div class="form-group">
-                              <label for="input14" class="text-dark">Correo Electronico </label>
-                                <input type="email" class="form-control btn-rounded border border-dark" id="correo_electronico" value="" name="correo_electronico" placeholder="Ingrese Correo Eléctronico" required=""><span class="bar"></span>                                                        
-                              </div>
-                            </div>
-
-                            <div class="col-md-3">
-                              <div class="form-group">
-                              <label for="input14" class="text-dark">Telefono/celular </label>
-                                <input type="text" class="form-control btn-rounded border border-dark" id="telefono_celular" value="" name="telefono_celular" placeholder="Ingrese Telefono celular" required=""><span class="bar"></span>
-                              </div>
-                            </div>                                                               
-                          </div>
-                          
-                          <hr>
-
-                          <h4 class="font-weight-bold">Información General</h4>
-                          <div class="row" id="ocultanos_parta_actualizar">
-                            <div class="btn-group mt-3" data-toggle="buttons" role="group">
-                              <label class="btn btn-outline btn-info">
-                                <div class="custom-control custom-radio" id="customRadio1_xxxx">
-                                  <input type="radio"  name="paquete" value="1" class="custom-control-input">
-                                  <label class="custom-control-label" for="customRadio1_xxxx"> <i class="ti-check text-active" aria-hidden="true"></i> Paquete en General</label>
-                                </div>
-                              </label>
-                              <label class="btn btn-outline btn-info">
-                                <div class="custom-control custom-radio" id="genewral_paquetes_idd">
-                                  <input type="radio" id="customRadio2" name="paquete" value="2" class="custom-control-input">
-                                  <label class="custom-control-label" for="customRadio2"> <i class="ti-check text-active" aria-hidden="true"></i> Exámenes en general</label>
-                                </div>
-                              </label>
-                            </div>
-                          </div>
-
-                          <div class="row">                                                              
-                            <div class="col-md-4" style="display: none;" id="mostrar_paquete">
-                              <div class="col-md-12">
-                                <a href="javascript:void(0)" class="btn btn-dark btn-sm btn-rounded" data-toggle="modal" data-target=".bd-example-modal-lg_paquete_general"><i class="fas fa-plus-circle"></i>&nbsp; Agregar Paquete</a>
-                                <label for="input14" class="text-dark">Paquete </label>
-                                <div class="form-group mostrararea">
-                                  <select name="paquete" id="agregar_detalle__por_paquete" class="form-control btn-rounded border border-dark " required="">                                                            
-                                  </select>                                                            
-                                </div>
-                              </div>
-                            </div>
-
-                            <div class="col-md-4">
-                              <a href="javascript:void(0)" class="btn btn-dark btn-sm btn-rounded" data-toggle="modal" data-target=".bd-example-modal-lg_xxx"><i class="fas fa-plus-circle"></i>&nbsp; Agregar Tipo Pago</a>
-                              <label for="input14" class="text-dark">Tipo de Pago </label>
-                              <div class="form-group tipo_pago_xx m-b-40">
-                                <select name="tipo_pagoxx" id="tipo_pago" class="form-control  btn-rounded border border-dark" required="">                                                      
-                                </select>
-                              </div>
-                            </div>
-
-                            <div class="col-md-4">
-                              <!--<a href="javascript:void(0)" class="btn btn-dark btn-sm btn-rounded"><i class="fas fa-plus-circle"></i>&nbsp; Agregar Tipo Comprobante</a>-->
-                              <label for="input14" class="text-dark">Tipo de Comprobante </label>
-                              <div class="form-group tipocomprobante_id m-b-40">
-                                <select name="tipocomprobante" id="tipocomprobante" class="form-control  btn-rounded border border-dark" required="">                                
-                                </select>
-                              </div>
-                            </div>
-
-
-                            <div class="col-md-12">                                                
-                              <div class="col-md-12">
-                                <label for="input14" class="text-dark">Observación </label>
-                                <div class="form-group ">
-                                  <textarea name="observacion" id="observacion" cols="2" rows="3" class="form-control border border-dark " placeholder="Ingrese observación"></textarea>                                                            
-                                </div>
-                              </div>                                                 
-                            </div>
-                            
-                          </div>
-
-
-                        <div class="row">
-                          <div class="btn-group" data-toggle="buttons">
-                              <label class="btn btn-warning btn-rounded">
-                                  <div class="custom-control custom-checkbox mr-sm-2">
-                                      <input type="checkbox" class="custom-control-input fantasmasssss" id="checkbox0">
-                                      <label class="custom-control-label" for="checkbox0">Adjuntar Boleta de Pago</label>
-                                  </div>
-                              </label>
-                              
-                          </div>
-                        </div> 
-                
-                        <div class="row" style="display: none;" id="dvOcultar_iddd">
-                          <div class="col-lg-12 col-md-12">
-                              <input type="file" id="identity_picture" name="imagen" class="dropify"  accept="image/gif, image/jpeg, image/png, image/jpg, application/pdf" data-default-file="<?php echo base_url().'upload/';?>boleta_cliente/boleta_no_borrarw.jpg" onchange="fileValidatiosn(this);"/>
-                              <!-- -->
+                          <div class="form-group">
+                            <input type="hidden" id="dni_mostrar_dni" value="" name="dni">
+                            <input type="text" class="form-control btn-rounded border border-dark" id="dni_evaristo" value="" name="update_dni" placeholder="Ingrese el documento" pattern="[0-9]{8}" maxlength="8">
+                            <span class="bar"></span>
+                            <button style="display: none;" id="botoncito_xxx" class="botoncito btn btn-outline-success">Buscar</button>                                                        
+                            <span class="help-block"><small id="dni_help_message">Ingrese en Nº de Documento y presione "Enter"</small></span>
                           </div>
                         </div>
-                        <hr>
-                        <div class="row" style="display: none;" id="mostrar_datos_paquetes">
-                          <div class="table-responsive" id="mostramos_datos_pequenois">
-                            
+                        <div class="col-md-2">
+                          <div class="form-group">
+                            <label for="input14" class="text-dark">Nombres </label>
+                            <input type="text" class="form-control btn-rounded border border-dark " id="nombres_completos" value="" name="nombres_completos" placeholder="Ingrese nombres" required="" >
+                            <span class="bar"></span>
+                          </div>
                         </div>
-                        <div class="col-md-8 alo"></div>
-                          <div class="col-md-4">
-                              <div class="table-responsive" id="mostramos_datos_paquetes_precios">
-                                  
-                              </div>
+                        <div class="col-md-3">
+                          <div class="form-group">
+                            <label for="input14" class="text-dark">Apellido Paterno </label>
+                            <input type="text" class="form-control btn-rounded border border-dark" id="apellido_paterno_x" value="" name="apellido_paterno" placeholder="Ingrese apellido paterno" required=""><span class="bar"></span>                                                      
+                          </div>
+                        </div>
+                        <div class="col-md-3">
+                          <div class="form-group">
+                            <label for="input14" class="text-dark">Apellido Materno </label>
+                            <input type="text" class="form-control btn-rounded border border-dark" id="apellido_materno" value="" name="apellido_materno" placeholder="Ingrese apellido materno" required=""><span class="bar"></span>                                                        
+                          </div>
+                        </div>
+                        <div class="col-md-2">
+                          <div class="form-group mostrarsexo">
+                            <label for="input14" class="text-dark">Sexo </label>
+                            <select name="sexo" id="sexo" class="form-control btn-rounded border border-dark " required>                                                        
+                            </select> 
+                          </div>
+                        </div>
+                        <div class="col-md-3">
+                          <div class="form-group"> 
+                            <label for="input14" class="text-dark">Fecha Nacimiento </label>
+                            <input type="date" class="form-control btn-rounded border border-dark" id="fecha_nacimiento" value="" name="fecha_nacimiento" placeholder="Ingrese Fecha de Nacimiento" required=""><span class="bar"></span>                                                        
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label for="input14" class="text-dark">Correo Electronico </label>
+                            <input type="email" class="form-control btn-rounded border border-dark" id="correo_electronico" value="" name="correo_electronico" placeholder="Ingrese Correo Eléctronico" required=""><span class="bar"></span>                                                        
+                          </div>
+                        </div>
+                        <div class="col-md-3">
+                          <div class="form-group">
+                            <label for="input14" class="text-dark">Telefono/celular </label>
+                            <input type="text" class="form-control btn-rounded border border-dark" id="telefono_celular" value="" name="telefono_celular" placeholder="Ingrese Telefono celular" required=""><span class="bar"></span>
+                          </div>
+                        </div>                                                               
+                      </div>
+                        
+                      <hr>
+
+                      <h4 class="font-weight-bold">Información General</h4>
+                      <div class="row" id="ocultanos_parta_actualizar">
+                        <div class="btn-group mt-3" data-toggle="buttons" role="group">
+                          <label class="btn btn-outline btn-info">
+                            <div class="custom-control custom-radio" id="customRadio1_xxxx">
+                              <input type="radio"  name="paquete" value="1" class="custom-control-input">
+                              <label class="custom-control-label" for="customRadio1_xxxx"> <i class="ti-check text-active" aria-hidden="true"></i> Paquete en General</label>
+                            </div>
+                          </label>
+                          <label class="btn btn-outline btn-info">
+                            <div class="custom-control custom-radio" id="genewral_paquetes_idd">
+                              <input type="radio" id="customRadio2" name="paquete" value="2" class="custom-control-input">
+                              <label class="custom-control-label" for="customRadio2"> <i class="ti-check text-active" aria-hidden="true"></i> Exámenes en general</label>
+                            </div>
+                          </label>
                         </div>
                       </div>
-                      <!--desde aqui son los paquetes en general-->
-                      <hr>
-                        <div class="row" style="display: none;" id="mostramos_los_campos_agregar_uno_por_no">
-                          <div class="col-md-8">
-                            <a href="javascript:void(0)" class="btn btn-dark btn-sm btn-rounded" data-toggle="modal" data-target=".bd-example-modal-lg_tipoexamen_id"><i class="fas fa-plus-circle"></i>&nbsp; Agregar Examén</a>
-                              <label for="">Asignar Tipo Exámen</label>
-                            <div class="form-group">
-                              <input type="text" id="examen_idddd" class="form-control btn-rounded border border-dark " placeholder="Ingrese Exámen........." >
-                              <input type="hidden" value="" name="examen" id="examen_evaristo">
-                              <input type="hidden" value="" name="id_examen" id="examen_evaristo_id">
+
+                      <div class="row">                                                              
+                        <div class="col-md-4" style="display: none;" id="mostrar_paquete">
+                          <div class="col-md-12">
+                            <a href="javascript:void(0)" class="btn btn-dark btn-sm btn-rounded" data-toggle="modal" data-target=".bd-example-modal-lg_paquete_general">
+                              <i class="fas fa-plus-circle"></i>&nbsp; Agregar Paquete
+                            </a>
+                            <label for="input14" class="text-dark">Paquete </label>
+                            <div class="form-group mostrararea">
+                              <select name="paquete" id="agregar_detalle__por_paquete" class="form-control btn-rounded border border-dark " required=""></select>                                                            
                             </div>
                           </div>
-                          <div class="col-md-4 text-center mt-4">
-                            <div class="form-group">
-                              <a href="javascript:void(0)" id="agregar_detalle_value" class="btn-rounded btn btn-warning btn-lg btn-block"><i class=" fas fa-plus-circle"></i>&nbsp;Agregar Examen</a>
+                        </div>
+
+                        <div class="col-md-4">
+                          <a href="javascript:void(0)" class="btn btn-dark btn-sm btn-rounded" data-toggle="modal" data-target=".bd-example-modal-lg_xxx">
+                            <i class="fas fa-plus-circle"></i>&nbsp; Agregar Tipo Pago
+                          </a>
+                          <label for="input14" class="text-dark">Tipo de Pago </label>
+                          <div class="form-group tipo_pago_xx m-b-40">
+                            <select name="tipo_pagoxx" id="tipo_pago" class="form-control  btn-rounded border border-dark" required=""></select>
+                          </div>
+                        </div>
+
+                        <div class="col-md-4">
+                          <!--<a href="javascript:void(0)" class="btn btn-dark btn-sm btn-rounded"><i class="fas fa-plus-circle"></i>&nbsp; Agregar Tipo Comprobante</a>-->
+                          <label for="input14" class="text-dark">Tipo de Comprobante </label>
+                          <div class="form-group tipocomprobante_id m-b-40">
+                            <select name="tipocomprobante" id="tipocomprobante" class="form-control  btn-rounded border border-dark" required=""></select>
+                          </div>
+                        </div>
+
+
+                        <div class="col-md-12">                                                
+                          <div class="col-md-12">
+                            <label for="input14" class="text-dark">Observación </label>
+                            <div class="form-group ">
+                              <textarea name="observacion" id="observacion" cols="2" rows="3" class="form-control border border-dark " placeholder="Ingrese observación"></textarea>                                                            
                             </div>
-                          </div> 
+                          </div>                                                 
+                        </div>                            
+                      </div>
+
+
+                      <div class="row">
+                        <div class="btn-group" data-toggle="buttons">
+                          <label class="btn btn-warning btn-rounded">
+                            <div class="custom-control custom-checkbox mr-sm-2">
+                              <input type="checkbox" class="custom-control-input fantasmasssss" id="checkbox0">
+                              <label class="custom-control-label" for="checkbox0">Adjuntar Boleta de Pago</label>
+                            </div>
+                          </label>                              
                         </div>
+                      </div> 
+            
+                      <div class="row" style="display: none;" id="dvOcultar_iddd">
+                        <div class="col-lg-12 col-md-12">
+                          <input type="file" id="identity_picture" name="imagen" class="dropify"  accept="image/gif, image/jpeg, image/png, image/jpg, application/pdf" data-default-file="<?php echo base_url().'upload/';?>boleta_cliente/boleta_no_borrarw.jpg" onchange="fileValidatiosn(this);"/>
+                        </div>
+                      </div>
+                    
+                      <hr>
+
+                      <div class="row" style="display: none;" id="mostrar_datos_paquetes">
+                        <div class="table-responsive" id="mostramos_datos_pequenois">                            
+                      </div>
+
+                      <div class="col-md-8 alo"></div>
+                        <div class="col-md-4">
+                          <div class="table-responsive" id="mostramos_datos_paquetes_precios"></div>
+                        </div>
+                      </div>
+                    
+                      <!--desde aqui son los paquetes en general-->
+                      <hr>
+
+                      <div class="row" style="display: none;" id="mostramos_los_campos_agregar_uno_por_no">
+                        <div class="col-md-8">
+                          <a href="javascript:void(0)" class="btn btn-dark btn-sm btn-rounded" data-toggle="modal" data-target=".bd-example-modal-lg_tipoexamen_id">
+                            <i class="fas fa-plus-circle"></i>&nbsp; Agregar Examen
+                          </a>
+                          <label for="">Asignar Tipo Exámen</label>
+                          <div class="form-group">
+                            <input type="text" id="examen_idddd" class="form-control btn-rounded border border-dark " placeholder="Ingrese Exámen........." >
+                            <input type="hidden" value="" name="examen" id="examen_evaristo">
+                            <input type="hidden" value="" name="id_examen" id="examen_evaristo_id">
+                          </div>
+                        </div>
+                        <div class="col-md-4 text-center mt-4">
+                          <div class="form-group">
+                            <a href="javascript:void(0)" id="agregar_detalle_value" class="btn-rounded btn btn-warning btn-lg btn-block"><i class=" fas fa-plus-circle"></i>&nbsp;Agregar Examen</a>
+                          </div>
+                        </div> 
+                      </div>
                       <div class="row" style="display: none;" id="general_poaquetes_id">
-                          <div class="table-responsive" id="mostramos_datos_desde_ajax">
-                            
-                        </div>
+                        <div class="table-responsive" id="mostramos_datos_desde_ajax"></div>
                         <div class="col-md-8"></div>
-                            <div class="col-md-4" >
-                              <div class="table-responsive" id="mostramos_datos_del_igv_total_subtotal">
-                                  
-                              </div>
+                        <div class="col-md-4" >
+                          <div class="table-responsive" id="mostramos_datos_del_igv_total_subtotal"></div>
                         </div>
                       </div>
                       <!--hasta aqui-->
@@ -316,7 +299,6 @@
                           <hr>
                         </div>
                       </div>
-
                     </form>
                   </div>
                 </div>
@@ -324,8 +306,6 @@
             </div>
           </div>                    
         </div>
-
-
       </div>
     </div>
   </div>
@@ -339,7 +319,7 @@
         <div class="row">
           <div class="col-md-2">
             <div class="form-group">
-              <button class="btn btn-success btn-rounded" onclick="reload_table()" type="button"><span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>&nbsp;Actualizar...</button>
+              <button class="btn btn-success btn-rounded" onclick="reload_table()" type="button">Actualizar</button>
             </div>
           </div>            
         </div>
@@ -372,7 +352,7 @@
               </div>
               <div class="col-md-6 col-xs-12 col-sm-12 col-lg-4 col-xl-2">
                 <div class="form-group">
-                  <a href="javascript:void(0)" class="btn btn-danger btn-rounded" onclick="limpiar_campos()" type="button"><span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Limpiar ...</a>
+                  <a href="javascript:void(0)" class="btn btn-danger btn-rounded" onclick="limpiar_campos()" type="button">Limpiar</a>
                 </div>
               </div>
             </div>
@@ -461,7 +441,6 @@
             <input type="hidden" name="direccion" id="direccionx">
             <input type="hidden" name="telefono" id="txt_telefono">
           </div>
-          </div>
           <div class="row text-center" id="ocultamos_id" style="display: none;">
             <div class="col-md-12">
               <div class="form-actions">
@@ -475,6 +454,7 @@
       </div>
     </div>
   </div>
+</div>
 
 <!--agregamos modal para tipo de pago-->
 <div id="compromisos" class="modal fade bd-example-modal-lg_xxx" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" data-backdrop="static">
@@ -589,202 +569,141 @@
 <!--agregamos asociamos los paquetes en general por id-->
 <div id="compromisos_xx_xx" class="modal fade bd-example-modal-lg_asociar_paquetes" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" data-backdrop="static">
   <div class="modal-dialog modal-xl">
-    <div class="modal-content">
-      
-    <div class="modal-body">
-      <div class="row">
-        <div class="col-lg-12">
+    <div class="modal-content">      
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-lg-12">
             <div class="card">
-                <div class="card-body">
-                    <h4 class="card-title card-header bg-dark text-white text-center title_paquete_asociado">Nuevo Paquete Asociado</h4>
-                      <form action="#" class="evaristo_eldulce" id="registrar_tipo_paquete_asociado" autocomplete="off">
-                      <div class="row pt-4">
-                        <div class="col-md-6 col-lg-6 col-sm-12">
-                          <div class="form-group">
-                            <input type="text" name="asociar_nombre" id="asociar_nombre" class="form-control  btn-rounded " placeholder="Ingrese nueva descripción"  required="">
-                            <!--input codigo actualizar-->
-                            <input type="hidden" id="asociar_codigo" name="asociar_codigo" value="">
-                              <input style="display: none;" type="text" name="nro_valido_innomedic" id="nro_valido_innomedic" class="form-control  btn-rounded " placeholder="Ingrese nueva descripción"  required="">
-                          </div>
-                        </div>
-                        <div class="col-md-6 col-lg-6 col-sm-12">
-                          <div class="form-group categoria_tipo_examen_id">
-                            <select name="categoria_tipo_asociar" id="categoria_tipo_asociar" class="form-control btn-rounded">
-                              
-                            </select>
-                            
-                          </div>
-                        </div>
-                        
+              <div class="card-body">
+                <h4 class="card-title card-header bg-dark text-white text-center title_paquete_asociado">Nuevo Paquete Asociado</h4>
+                <form action="#" class="evaristo_eldulce" id="registrar_tipo_paquete_asociado" autocomplete="off">
+                  <div class="row pt-4">
+                    <div class="col-md-6 col-lg-6 col-sm-12">
+                      <div class="form-group">
+                        <input type="text" name="asociar_nombre" id="asociar_nombre" class="form-control  btn-rounded " placeholder="Ingrese nueva descripción"  required="">
+                        <!--input codigo actualizar-->
+                        <input type="hidden" id="asociar_codigo" name="asociar_codigo" value="">
+                        <input style="display: none;" type="text" name="nro_valido_innomedic" id="nro_valido_innomedic" class="form-control  btn-rounded " placeholder="Ingrese nueva descripción"  required="">
                       </div>
-                      <div class="row">
-                        <div class="col-md-12">
-                          <div class="text-center">
-                            <input type="hidden" name="id_registrar_id_paquete" id="id_registrar_id_paquete" value="">
-                            <input type="hidden" id="id_registrar_id_paquete_asociado" name="id_registrar_id_paquete_asociado" value="">
-                            <a href="javascript:void(0)" onclick="return cancelar_fijo()" class="btn btn-danger btn-rounded btn-lg"><i class="fas fa-times-circle"></i>&nbsp;Cancelar</a>
-                            <button type="submit" class="btn btn-info btn-rounded btn-lg" id="cambio_nomre_paquete_asoaciado"><i class="fas fa-check-circle"></i>&nbsp;Nuevo Registro</button>
-                          </div>
-                        </div>
-                      </div>
-                    </form>
-                    <div class="table-responsive">
-                        <table id="table_paquete_general_asociar" class="table color-table success-table  table-bordered table-striped dataTable no-footer display nowrap" role="grid" aria-describedby="myTable_info">
-                            <thead>
-                                <tr>
-                                    <th>Codigo</th>
-                                    <th>Estado</th>
-                                    <th>Descripción</th>
-                                    <th>Tipo Paquete</th>
-                                    <th>Opciones</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                
-                            </tbody>
-                        </table>
                     </div>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-
-
+                    <div class="col-md-6 col-lg-6 col-sm-12">
+                      <div class="form-group categoria_tipo_examen_id">
+                        <select name="categoria_tipo_asociar" id="categoria_tipo_asociar" class="form-control btn-rounded"></select>
+                      </div>
+                    </div>                          
+                  </div>
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="text-center">
+                        <input type="hidden" name="id_registrar_id_paquete" id="id_registrar_id_paquete" value="">
+                        <input type="hidden" id="id_registrar_id_paquete_asociado" name="id_registrar_id_paquete_asociado" value="">
+                        <a href="javascript:void(0)" onclick="return cancelar_fijo()" class="btn btn-danger btn-rounded btn-lg"><i class="fas fa-times-circle"></i>&nbsp;Cancelar</a>
+                        <button type="submit" class="btn btn-info btn-rounded btn-lg" id="cambio_nomre_paquete_asoaciado"><i class="fas fa-check-circle"></i>&nbsp;Nuevo Registro</button>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+                <div class="table-responsive">
+                  <table id="table_paquete_general_asociar" class="table color-table success-table  table-bordered table-striped dataTable no-footer display nowrap" role="grid" aria-describedby="myTable_info">
+                    <thead>
+                      <tr>
+                        <th>Codigo</th>
+                        <th>Estado</th>
+                        <th>Descripción</th>
+                        <th>Tipo Paquete</th>
+                        <th>Opciones</th>
+                      </tr>
+                    </thead>
+                    <tbody>                                  
+                    </tbody>
+                  </table>
                 </div>
+                <br>
+                <br>
+                <br>
+                <br>
+              </div>
             </div>
+          </div>
         </div>
       </div>
-    </div>
     </div>
   </div>
 </div>
 
 
 <!--aqui agreamos la ultima parte de  de tipo examen por -->
-  <!--agregamos asociamos los paquetes en general por id-->
+<!--agregamos asociamos los paquetes en general por id-->
 <div id="compromisos_xx_xx_xx" class="modal fade bd-example-modal-lg_tipoexamen_id" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" data-backdrop="static">
   <div class="modal-dialog modal-xl">
-    <div class="modal-content">
-      
-    <div class="modal-body">
-      <div class="row">
-        <div class="col-lg-12">
+    <div class="modal-content">      
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-lg-12">
             <div class="card">
-                <div class="card-body">
-                    <h4 class="card-title card-header bg-dark text-white text-center title_paquete_tipoexamen">Nuevo Tipo Exámen</h4>
-                      <form action="#" class="evaristo_eldulce_escudero" id="registrar_tipo_exmaen" autocomplete="off">
-                      <div class="row pt-4">
-                        <div class="col-md-7 col-lg-7 col-sm-12">
-                          <div class="form-group">
-                            <input type="text" name="nombre_examen_tipo" id="nombre_examen_tipo" class="form-control btn-rounded " placeholder="Ingrese un nuevo Exámen"  required="">
-                          </div>
-                        </div>
-                        <div class="col-md-5 col-lg-15 col-sm-12">
-                          <div class="form-group">
-                            <input type="text" name="precio_tipo_examen" id="precio_tipo_examen" class="form-control  btn-rounded " placeholder="Ingrese precio S/.000.00"  required="">
-                              <input style="display: none;" type="text" name="nro_valido_innomedic_codigo" id="nro_valido_innomedic_codigo" class="form-control  btn-rounded " placeholder=""  required="">
-                          </div>
-                        </div>
-                        <div class="col-md-5 col-lg-15 col-sm-12">
-                          <div class="form-group categoria_tipo_examen_id">
-                            <select name="categoria_tipo_examen" id="categoria_tipo_examen" class="form-control btn-rounded">
-                              
-                            </select>
-                            
-                          </div>
-                        </div>
-                        
-                        
-                        
+              <div class="card-body">
+                <h4 class="card-title card-header bg-dark text-white text-center title_paquete_tipoexamen">Nuevo Tipo Exámen</h4>
+                <form action="#" class="evaristo_eldulce_escudero" id="registrar_tipo_exmaen" autocomplete="off">
+                  <div class="row pt-4">
+                    <div class="col-md-7 col-lg-7 col-sm-12">
+                      <div class="form-group">
+                        <input type="text" name="nombre_examen_tipo" id="nombre_examen_tipo" class="form-control btn-rounded " placeholder="Ingrese un nuevo Exámen"  required="">
                       </div>
-                      <div class="row">
-                        <div class="col-md-12">
-                          <div class="text-center">
-                            <input type="hidden" name="id_registrar_id_tipopexamen" id="id_registrar_id_tipopexamen" value="">
-                            <a href="javascript:void(0)" onclick="return cancelar_fijo_id_tipoexamen()" class="btn btn-danger btn-rounded btn-lg"><i class="fas fa-times-circle"></i>&nbsp;Cancelar</a>
-                            <button type="submit" class="btn btn-info btn-rounded btn-lg" id="cambio_nomre_paquete_asoaciado_escudero"><i class="fas fa-check-circle"></i>&nbsp;Nuevo Registro</button>
-                          </div>
-                        </div>
-                      </div>
-                    </form>
-                    <div class="table-responsive">
-                        <table id="table_paquete_general_examen" class="table color-table success-table  table-bordered table-striped dataTable no-footer display nowrap" role="grid" aria-describedby="myTable_info">
-                            <thead>
-                                <tr>
-                                    <th>#</th>
-                                    <th>Estado</th>
-                                    <th>Codigo</th>
-                                    <th>Precio</th>
-                                    <th>Nombre</th>
-                                    <th>Opciones</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                
-                            </tbody>
-                        </table>
                     </div>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-
-
+                    <div class="col-md-5 col-lg-15 col-sm-12">
+                      <div class="form-group">
+                        <input type="text" name="precio_tipo_examen" id="precio_tipo_examen" class="form-control  btn-rounded " placeholder="Ingrese precio S/.000.00"  required="">
+                          <input style="display: none;" type="text" name="nro_valido_innomedic_codigo" id="nro_valido_innomedic_codigo" class="form-control  btn-rounded " placeholder=""  required="">
+                      </div>
+                    </div>
+                    <div class="col-md-5 col-lg-15 col-sm-12">
+                      <div class="form-group categoria_tipo_examen_id">
+                        <select name="categoria_tipo_examen" id="categoria_tipo_examen" class="form-control btn-rounded"></select>                              
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="text-center">
+                        <input type="hidden" name="id_registrar_id_tipopexamen" id="id_registrar_id_tipopexamen" value="">
+                        <a href="javascript:void(0)" onclick="return cancelar_fijo_id_tipoexamen()" class="btn btn-danger btn-rounded btn-lg"><i class="fas fa-times-circle"></i>&nbsp;Cancelar</a>
+                        <button type="submit" class="btn btn-info btn-rounded btn-lg" id="cambio_nomre_paquete_asoaciado_escudero"><i class="fas fa-check-circle"></i>&nbsp;Nuevo Registro</button>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+                <div class="table-responsive">
+                  <table id="table_paquete_general_examen" class="table color-table success-table  table-bordered table-striped dataTable no-footer display nowrap" role="grid" aria-describedby="myTable_info">
+                    <thead>
+                      <tr>
+                        <th>#</th>
+                        <th>Estado</th>
+                        <th>Codigo</th>
+                        <th>Precio</th>
+                        <th>Nombre</th>
+                        <th>Opciones</th>
+                      </tr>
+                    </thead>
+                    <tbody>  
+                    </tbody>
+                  </table>
                 </div>
+                <br>
+                <br>
+                <br>
+                <br>
+
+
+              </div>
             </div>
+          </div>
         </div>
       </div>
-    </div>
     </div>
   </div>
 </div>
 
-<style>
-  .dt-body-right{
-    width: 100%;
-  }
-  
-</style>
 
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="<?php echo base_url().'application/JavaScript/examenes-main-script.js'?>"></script>
-<script src="<?php echo base_url().'application/views/examenes/examenes-index-script.js'?>"></script>
-
-
-
-
-
-<!-- Scripts related to the forms -->
-<script src="<?php echo base_url().'application/JavaScript/examen-forms.js'?>"></script>
-
-<?php //Se define el timezone que sea necesario
-function fechaES($fecha){
-$mes = array(
-'January' => 'Enero',
-'February' => 'Febrero',
-'March' => 'Marzo',
-'April' => 'Abril',
-'May' => 'Mayo',
-'June' => 'Junio',
-'July' => 'Julio',
-'August' => 'Agosto',
-'September' => 'Septiembre',
-'October' => 'Octubre',
-'November' => 'Noviembre',
-'December' => 'Diciembre'
-);
-
-return strtr($fecha, $mes);
-}
-
-
-
-ini_set('date.timezone', 'America/LIma'); 
-
-//Dia-Mes-Año Hora:Minutos:Segundos
-$fecha = date('d-m-Y H:i:s'); 
-?>
 <div class="modal fade bd-example-modal-xl_view" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" data-backdrop="static" style="max-height: 100%;
 overflow: scroll; ">
   <div class="modal-dialog modal-xl">
@@ -986,10 +905,12 @@ overflow: scroll; ">
 </div>
 
 
+<style>
+  .dt-body-right{
+    width: 100%;
+  }
+  
+</style>
 
-
-
-
-
-
-              
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="<?php echo base_url().'application/views/examenes/examenes-index-script.js'?>"></script>
