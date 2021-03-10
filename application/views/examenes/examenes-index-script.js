@@ -1268,7 +1268,7 @@ $(document).ready(function() {
         return false;
       }
       $.ajax({
-          url: `${window.location.origin}Inventario/Proveedores/Nuevo_registro/`,
+          url: `${window.location.origin}/Inventario/Proveedores/Nuevo_registro/`,
           type: 'POST',
           data:$("form").serialize(),
           statusCode: {
@@ -1993,7 +1993,7 @@ if (nombre_tipo_pago=="" || nombre_tipo_pago==0) {
 }
 
 $.ajax({
-  url: `${window.location.origin}Examenes/Examenes/registrar_tipo_pago_ajax/`,
+  url: `${window.location.origin}/Examenes/Examenes/registrar_tipo_pago_ajax/`,
   type: 'POST',
   // dataType: 'default: Intelligent Guess (Other values: xml, json, script, or html)',
   data: $("#registrar_nuevo_tipo_pago").serialize(),
@@ -2057,7 +2057,7 @@ $(document).on('submit', '#actualizar_registro_por_id_tipo_pago', function(event
 event.preventDefault();
 /* Act on the event */
 $.ajax({
-  url: `${window.location.origin}Examenes/Examenes/actualizar_tipo_pago_idd/`,
+  url: `${window.location.origin}/Examenes/Examenes/actualizar_tipo_pago_idd/`,
   type: 'POST',
   // dataType: 'default: Intelligent Guess (Other values: xml, json, script, or html)',
   data: $("#actualizar_registro_por_id_tipo_pago").serialize(),
@@ -2241,7 +2241,7 @@ if (nuevo_precio=="" || nuevo_precio==0) {
 }
 
 $.ajax({
-  url: `${window.location.origin}Examenes/Examenes/registrar_paquete_ajax/`,
+  url: `${window.location.origin}/Examenes/Examenes/registrar_paquete_ajax/`,
   type: 'POST',
   // dataType: 'default: Intelligent Guess (Other values: xml, json, script, or html)',
   data: $("#registrar_nuevo_paquete").serialize(),
@@ -2305,7 +2305,7 @@ $(document).on('submit', '#actualizar_registro_por_id_paquete', function(event) 
 event.preventDefault();
 /* Act on the event */
 $.ajax({
-  url: `${window.location.origin}Examenes/Examenes/actualizar_paquete_idd/`,
+  url: `${window.location.origin}/Examenes/Examenes/actualizar_paquete_idd/`,
   type: 'POST',
   // dataType: 'default: Intelligent Guess (Other values: xml, json, script, or html)',
   data: $("#actualizar_registro_por_id_paquete").serialize(),
@@ -2578,7 +2578,7 @@ if (categoria_tipo_asociar=="" || categoria_tipo_asociar==0) {
 }
 
 $.ajax({
-  url: `${window.location.origin}Examenes/Examenes/registrar_tipo_paquete_asociado/`,
+  url: `${window.location.origin}/Examenes/Examenes/registrar_tipo_paquete_asociado/`,
   type: 'POST',
   // dataType: 'default: Intelligent Guess (Other values: xml, json, script, or html)',
   data: $("#registrar_tipo_paquete_asociado").serialize(),
@@ -2645,7 +2645,7 @@ $(document).on('submit', '#actualizar_registro_por_id_paquete_asociado', functio
 event.preventDefault();
 /* Act on the event */
 $.ajax({
-  url: `${window.location.origin}Examenes/Examenes/actualizar_paquete_idd_asociado/`,
+  url: `${window.location.origin}/Examenes/Examenes/actualizar_paquete_idd_asociado/`,
   type: 'POST',
   // dataType: 'default: Intelligent Guess (Other values: xml, json, script, or html)',
   data: $("#actualizar_registro_por_id_paquete_asociado").serialize(),
@@ -2850,7 +2850,7 @@ if (categoria_tipo_examen=="" || categoria_tipo_examen==0) {
 }
 
 $.ajax({
-  url: `${window.location.origin}Examenes/Examenes/registrar_tipo_examen_por_ajax/`,
+  url: `${window.location.origin}/Examenes/Examenes/registrar_tipo_examen_por_ajax/`,
   type: 'POST',
   // dataType: 'default: Intelligent Guess (Other values: xml, json, script, or html)',
   data: $("#registrar_tipo_exmaen").serialize(),
@@ -2917,7 +2917,7 @@ $(document).on('submit', '#actualizar_registro_por_id_paquete_tipoexmaen', funct
 event.preventDefault();
 /* Act on the event */
 $.ajax({
-  url: `${window.location.origin}Examenes/Examenes/actualizar_paquete_idd_tipoexamen/`,
+  url: `${window.location.origin}/Examenes/Examenes/actualizar_paquete_idd_tipoexamen/`,
   type: 'POST',
   // dataType: 'default: Intelligent Guess (Other values: xml, json, script, or html)',
   data: $("#actualizar_registro_por_id_paquete_tipoexmaen").serialize(),
@@ -3098,7 +3098,7 @@ $(document).ready(function() {
     /* Act on the event */
     var user_id = $(this).attr("id");
     $.ajax({
-      url: `${window.location.origin}Examenes/Examenes/mostrar_datos_a_imprimir/`,
+      url: `${window.location.origin}/Examenes/Examenes/mostrar_datos_a_imprimir/`,
       type: 'POST',
       dataType: "JSON",
       data: {user_id:user_id},
@@ -3214,7 +3214,7 @@ $(document).ready(function() {
     /* Act on the event */
     var user_id = $(this).attr("id");
     $.ajax({
-      url: `${window.location.origin}Examenes/Examenes/mostrar_datos_a_imprimir_detalles/`,
+      url: `${window.location.origin}/Examenes/Examenes/mostrar_datos_a_imprimir_detalles/`,
       type: 'POST',
       // dataType: "JSON",
       data: {user_id:user_id},
@@ -3256,7 +3256,7 @@ $(document).ready(function() {
     /* Act on the event */
     var user_id = $(this).attr("id");
     $.ajax({
-      url: `${window.location.origin}Examenes/Examenes/mostrar_datos_a_imprimir_detalles_laboratorio/`,
+      url: `${window.location.origin}/Examenes/Examenes/mostrar_datos_a_imprimir_detalles_laboratorio/`,
       type: 'POST',
       // dataType: "JSON",
       data: {user_id:user_id},
