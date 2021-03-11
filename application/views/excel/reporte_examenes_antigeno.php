@@ -59,8 +59,11 @@
             <td><?php echo $item->edad; ?></td>
             <td><?php echo $item->dni; ?></td>
             <td><?php echo $item->sexo; ?></td>
-            <td><?php echo "INNOMEDIC INTERNATIONAL E.I.R.L"; ?></td>
-            <td><?php echo "PERFIL ANTIGENO"; ?></td>
+            <td><?php if ($item->empresa == "") {
+                echo "INNOMEDIC INTERNATIONAL E.I.R.L"; 
+            } else {
+                echo $item->empresa;
+            }?></td>            <td><?php echo "PERFIL ANTIGENO"; ?></td>
             <td><?php echo "VISITA"; ?></td>
             <td><?php echo $item->antigeno_resultado;?></td>
 
