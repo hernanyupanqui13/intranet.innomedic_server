@@ -131,15 +131,12 @@
 
   
 
-function reload_table()
-{
-    //table.ajax.reload(null,false); //reload datatable ajax 
-      mis_datos.ajax.reload(null,false); 
-      //$('#myTable').DataTable().ajax.reload();
-      
-  
+function reload_table() {    
+  mis_datos.ajax.reload(null,false);   
 }
-  //tipo pago
+
+
+//tipo pago
 $(document).ready(function() {
   
 

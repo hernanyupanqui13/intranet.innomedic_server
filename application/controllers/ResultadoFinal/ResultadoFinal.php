@@ -275,7 +275,7 @@ class ResultadoFinal extends CI_Controller {
 		$mail = new PHPMailer();
 
         // Esta configuracion solo funciona en godaddy, no en el servidor local
-        $mail->isSMTP();
+        /*$mail->isSMTP();
 		$mail->Host     = 'localhost';
 		$mail->SMTPSecure = false;
 		$mail->SMTPDebug  = 3;
@@ -287,11 +287,16 @@ class ResultadoFinal extends CI_Controller {
 		$mail->Port     = 25;
 		$mail->CharSet = 'UTF-8';        
 		$mail->AllowEmpty = true;
+        
+
+        $mail->setFrom('pagina_web@innomedic.pe', 'Innomedic.pe | Resultados de la Clinica Innomedic International E.I.R.L');
+
+        */
 
 
 
         // Configuracion para el servidor local
-        /*
+        
         $mail->isSMTP();
         $mail->Host = 'smtp.gmail.com';
         $mail->SMTPSecure = "ssl";
@@ -300,10 +305,10 @@ class ResultadoFinal extends CI_Controller {
         $mail->Username = 'sistemas.innomedic@gmail.com';
         $mail->Password = 's1st3m4s2411';
         $mail->Port = 465; 
-        $mail->CharSet = 'UTF-8';*/
+        $mail->CharSet = 'UTF-8';
 
         // De: 
-        $mail->setFrom('pagina_web@innomedic.pe', 'Innomedic.pe | Resultados de la Clinica Innomedic International E.I.R.L');
+        $mail->setFrom('sistemas.innomedic@gmail.com', 'Innomedic.pe | Resultados de la Clinica Innomedic International E.I.R.L');
 
         // Archivo a adjuntar en el correo. El archivo ya fue subido
         $archivo1 = 'upload/Resultado_analisis/'.$archivo1_xx;

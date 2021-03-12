@@ -426,12 +426,8 @@
         <span>
           <br>
           <b>Nombre:</b> <span id="usuarioxx"></span>
-          <br>
-          <b>Ruc:</b> <span id="rucxxx"></span>
-          <br>
-          <b>Telefono:</b> <span id="txt_telefonoxx"></span>
-          <br>
-          <b>Direccion:</b> <span id="direccionxxx"></span>
+          <br>  
+          <b>Ruc:</b> <span id="rucxxx"></span> 
           <hr>
         </span>
         <form action="" class="form-horizontal form-material " id="registrar_nuevo_proveedor_sunat" enctype="multipart/form-data">
