@@ -1,376 +1,329 @@
-  console.log("start without problems");
+console.log("start without problems");
+
+
+
+//agregamos registros de la fecha
+var save_method; //for save method string
+var table;
+
+
+
+function cancelar_fijo() {
+  $(".title_paquete_asociado").text('Nuevo Paquete Asociado');
+  $(".evaristo_eldulce").attr('id', 'registrar_tipo_paquete_asociado');
+  $("#asociar_nombre").val("");
+  $("#asociar_codigo").val("");
   
-  
- 
-  //agregamos registros de la fecha
-  var save_method; //for save method string
-  var table;
-
-
-
-  function cancelar_fijo() {
-    $(".title_paquete_asociado").text('Nuevo Paquete Asociado');
-    $(".evaristo_eldulce").attr('id', 'registrar_tipo_paquete_asociado');
-    $("#asociar_nombre").val("");
-    $("#asociar_codigo").val("");
-    
-    $("#id_registrar_id_paquete_asociado").val("");
-    $('#categoria_tipo_asociar').prop('selectedIndex',0);
-    $("#cambio_nomre_paquete_asoaciado").html("<i class='fas fa-check-circle'></i>&nbsp;Nuevo Registro");
-    $('#compromisos_xx_xx').modal('hide');
-  }
+  $("#id_registrar_id_paquete_asociado").val("");
+  $('#categoria_tipo_asociar').prop('selectedIndex',0);
+  $("#cambio_nomre_paquete_asoaciado").html("<i class='fas fa-check-circle'></i>&nbsp;Nuevo Registro");
+  $('#nuevo_paquete_modal_xx').modal('hide');
+}
 
 
   
-  function cancelar_fijo_id_tipoexamen() {
-    
-    $(".title_paquete_tipoexamen").text('Nuevo Tipo Exámen');
-    $(".evaristo_eldulce_escudero").attr('id', 'registrar_tipo_paquete_asociado');
-    $("#nombre_examen_tipo").val("");
-    $("#precio_tipo_examen").val("");
-    $('#categoria_tipo_examen').prop('selectedIndex',0);
-    $("#id_registrar_id_tipopexamen").val("");
-    $("#cambio_nomre_paquete_asoaciado_escudero").html("<i class='fas fa-check-circle'></i>&nbsp;Nuevo Registro");
-    $('#compromisos_xx_xx_xx').modal('hide');
-
-      
-  }
+function cancelar_fijo_id_tipoexamen() {
+  
+  $(".title_paquete_tipoexamen").text('Nuevo Tipo Exámen');
+  $(".evaristo_eldulce_escudero").attr('id', 'registrar_tipo_paquete_asociado');
+  $("#nombre_examen_tipo").val("");
+  $("#precio_tipo_examen").val("");
+  $('#categoria_tipo_examen').prop('selectedIndex',0);
+  $("#id_registrar_id_tipopexamen").val("");
+  $("#cambio_nomre_paquete_asoaciado_escudero").html("<i class='fas fa-check-circle'></i>&nbsp;Nuevo Registro");
+  $('#nuevo_examen_modal').modal('hide');
 
     
+}
 
-  function reload_table_tipo_pago()
-  {
-      //reload datatable ajax 
-        $('#table_tipo_pago').DataTable().ajax.reload();
-  }
+    
 
-  //actualimoz datos de paquete
-  function reload_table_paquete()
-  {
-      $('#table_paquete_general').DataTable().ajax.reload(); //reload datatable ajax 
-  }
-  function reload_table_paquete_asociado() {
-    // body...
-    $('#table_paquete_general_asociar').DataTable().ajax.reload(); //reload datatable ajax 
-  }
-  function table_paquete_general_examen_reload() {
-    // body...
-      $('#table_paquete_general_examen').DataTable().ajax.reload(); //reload datatable ajax 
-  }
+function reload_table_tipo_pago() {
+  // Reload datatable ajax 
+  $('#table_tipo_pago').DataTable().ajax.reload();
+}
 
-  $(document).ready(function() {
+// Actualimos datos de paquete
+function reload_table_paquete() {
+  $('#tabla_paquetes').DataTable().ajax.reload();
+}
 
+function reload_table_paquete_asociado() {
+  $('#table_paquete_general_asociar').DataTable().ajax.reload();
+}
 
-    //datatables
-    mis_datos = $('#myTable').DataTable({ 
-
-        "processing": true, //Feature control the processing indicator.
-        "serverSide": true, //Feature control DataTables' server-side processing mode.
-        "order": [], //Initial no order.
-
-        // Load data for the table's content from an Ajax source
-        "ajax": {
-            "url": window.location.href + "ajax_list/",
-            "type": "POST"
-        },
-
-        //Set column definition initialisation properties.
-        "columnDefs": [
-            { 
-                "targets": [ -1 ], //last column
-                "orderable": false, //set not orderable
-            },
-            { 
-                "targets": [ -2 ], //2 last column (photo)
-                "orderable": false, //set not orderable
-            },
-        ],
-        "lengthMenu": [[5,10, 25, 50], [5,10, 25, 50]],
+function table_paquete_general_examen_reload() {
+  $('#tabla_examenes').DataTable().ajax.reload();
+}
 
 
-        "destroy": true,
-        "info":true,
-        "sInfo":true,
-        // "order": [[1, "desc"]],
-        "language":{
-        "lengthMenu": "Mostrar _MENU_ Registros por página",
-        //"info": "Mostrando pagina _PAGE_ de _PAGES_",
-        "sInfo":"Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
-        "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
-        /*"oLanguage": {
-              "sInfo": "Mostrando START a END de TOTAL registros",
-              "sZeroRecords": "No se encontraron registros coincidentes" 
-          },*/
-        "infoEmpty": "No hay registros disponibles",
-        // "infoFiltered": "(filtrada de _MAX_ registros)",
-        "loadingRecords": "Cargando...",
-        "processing":     "Procesando...",
-        "search": "Busqueda rapida:",
-        "zeroRecords":    "No se encontraron registros coincidentes",
-        "paginate": {
-          "next":       "Siguiente",
-          "previous":   "Anterior"
-        },         
+// Examenes Clinicos - Tabla Principal
+$(document).ready(function() {
+
+  // Datatables
+  examenes_clinicos_main_tbl = $('#myTable').DataTable({ 
+
+    "processing": true, //Feature control the processing indicator.
+    "serverSide": true, //Feature control DataTables' server-side processing mode.
+    "order": [], //Initial no order.
+
+    // Load data for the table's content from an Ajax source
+    "ajax": {
+      "url": `${window.location.origin}/Examenes/Examenes/ajax_list/`,
+      "type": "POST"
+    },
+
+    //Set column definition initialisation properties.
+    "columnDefs": [
+      { 
+        "targets": [ -1 ], //last column
+        "orderable": false, //set not orderable
       },
+      { 
+        "targets": [ -2 ], //2 last column (photo)
+        "orderable": false, //set not orderable
+      },
+    ],
+    "lengthMenu": [[5,10, 25, 50], [5,10, 25, 50]],
 
 
+    "destroy": true,
+    "info":true,
+    "sInfo":true,
+    // "order": [[1, "desc"]],
+    "language":{
+      "lengthMenu": "Mostrar _MENU_ Registros por página",
+      //"info": "Mostrando pagina _PAGE_ de _PAGES_",
+      "sInfo":"Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+      "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
+      /*"oLanguage": {
+            "sInfo": "Mostrando START a END de TOTAL registros",
+            "sZeroRecords": "No se encontraron registros coincidentes" 
+        },*/
+      "infoEmpty": "No hay registros disponibles",
+      "loadingRecords": "Cargando...",
+      "processing":     "Procesando...",
+      "search": "Busqueda rapida:",
+      "zeroRecords":    "No se encontraron registros coincidentes",
+      "paginate": {
+        "next":       "Siguiente",
+        "previous":   "Anterior"
+      },         
+    },
 
-
-
-
-
-    });
-      
-      
-
-
-
-
+  });          
 
 });
 
   
 
 function reload_table() {    
-  mis_datos.ajax.reload(null,false);   
+  examenes_clinicos_main_tbl.ajax.reload(null,false);   
 }
 
 
-//tipo pago
-$(document).ready(function() {
-  
+// Agregar tipo de pago - Tabla
+$(document).ready(function() {  
+  table = $('#table_tipo_pago').DataTable({ 
 
-  //datatables
-  //$('#compromisos > .modal-body').css({width:'auto',height:'auto', 'max-height':'100%'});
-  
-  
-    table = $('#table_tipo_pago').DataTable({ 
-
-        "responsive": {
-            "details": {
-                "display": $.fn.dataTable.Responsive.display.modal(),
-            }
-        },
-        
-        "processing": true, //Feature control the processing indicator.
-        "serverSide": true, //Feature control DataTables' server-side processing mode.
-        "order": [], //Initial no order.
+    "responsive": {
+      "details": {
+        "display": $.fn.dataTable.Responsive.display.modal(),
+      }
+    },
+    
+    "processing": true, //Feature control the processing indicator.
+    "serverSide": true, //Feature control DataTables' server-side processing mode.
+    "order": [], //Initial no order.
 
 
-        // Load data for the table's content from an Ajax source
-        "ajax": {
-            "url": window.location.href + "tipo_pago/",
-            "type": "POST"
-        },
+    // Load data for the table's content from an Ajax source
+    "ajax": {
+      "url": `${window.location.origin}/Examenes/Examenes/tipo_pago/`,
+      "type": "POST"
+    },
 
-        //Set column definition initialisation properties.
-        "columnDefs": [
-            { 
-                "targets": [ -1 ], //last column
-                "orderable": false, //set not orderable
-                "className": 'dt-body-right',
-            },
-            { 
-                "targets": [ -2 ], //2 last column (photo)
-                "orderable": false, //set not orderable
-                "className": 'dt-body-right',
-            },
-        ],
-
-
-          "lengthMenu": [[3,5,10, 25, 50, -1], [3,5,10, 25, 50, "All"]],
-        "destroy": true,
-        "info":true,
-        "sInfo":true,
-        // "order": [[1, "desc"]],
-        "language":{
-        "lengthMenu": "Mostrar _MENU_ Registros por página",
-        //"info": "Mostrando pagina _PAGE_ de _PAGES_",
-        "sInfo":"Registros del _START_ al _END_ total de _TOTAL_ registros",
-        "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
-        /*"oLanguage": {
-              "sInfo": "Mostrando START a END de TOTAL registros",
-              "sZeroRecords": "No se encontraron registros coincidentes" 
-          },*/
-        "infoEmpty": "No hay registros disponibles",
-        // "infoFiltered": "(filtrada de _MAX_ registros)",
-        "loadingRecords": "Cargando...",
-        "processing":     "Procesando...",
-        "search": "Busqueda tipo pago:",
-        "zeroRecords":    "No se encontraron registros coincidentes",
-        "paginate": {
-          "next":       "Siguiente",
-          "previous":   "Anterior"
-        },         
+    //Set column definition initialisation properties.
+    "columnDefs": [
+      { 
+        "targets": [ -1 ], //last column
+        "orderable": false, //set not orderable
+        "className": 'dt-body-right',
       },
+      { 
+        "targets": [ -2 ], //2 last column (photo)
+        "orderable": false, //set not orderable
+        "className": 'dt-body-right',
+      },
+    ],
 
 
-    });
-  
+    "lengthMenu": [[3,5,10, 25, 50, -1], [3,5,10, 25, 50, "All"]],
+    "destroy": true,
+    "info":true,
+    "sInfo":true,
+    // "order": [[1, "desc"]],
+    "language":{
+      "lengthMenu": "Mostrar _MENU_ Registros por página",
+      //"info": "Mostrando pagina _PAGE_ de _PAGES_",
+      "sInfo":"Registros del _START_ al _END_ total de _TOTAL_ registros",
+      "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
+      /*"oLanguage": {
+            "sInfo": "Mostrando START a END de TOTAL registros",
+            "sZeroRecords": "No se encontraron registros coincidentes" 
+        },*/
+      "infoEmpty": "No hay registros disponibles",
+      // "infoFiltered": "(filtrada de _MAX_ registros)",
+      "loadingRecords": "Cargando...",
+      "processing":     "Procesando...",
+      "search": "Busqueda tipo pago:",
+      "zeroRecords":    "No se encontraron registros coincidentes",
+      "paginate": {
+        "next":       "Siguiente",
+        "previous":   "Anterior"
+      },         
+    },
+  });  
 });
 
 
-
-//end tipo pago-------------
-
-
-
-//tipo exmaen agregar
-
-
-  $(document).ready(function() {
-  
-
-  //datatables
-  //$('#compromisos > .modal-body').css({width:'auto',height:'auto', 'max-height':'100%'});
-  
-  
-    $('#table_paquete_general_examen').DataTable({ 
-
-        "responsive": {
-            "details": {
-                "display": $.fn.dataTable.Responsive.display.modal(),
-            }
-        },
-        
-        "processing": true, //Feature control the processing indicator.
-        "serverSide": true, //Feature control DataTables' server-side processing mode.
-        "order": [], //Initial no order.
-
-
-        // Load data for the table's content from an Ajax source
-        "ajax": {
-            "url": window.location.href + "tipo_examen_general/",
-            "type": "POST"
-        },
-
-        //Set column definition initialisation properties.
-        "columnDefs": [
-            { 
-                "targets": [ -1 ], //last column
-                "orderable": false, //set not orderable
-                "className": 'dt-body-right',
-            },
-            { 
-                "targets": [ -2 ], //2 last column (photo)
-                "orderable": false, //set not orderable
-                "className": 'dt-body-right',
-            },
-        ],
-
-
-          "lengthMenu": [[3,5,10, 25, 50, -1], [3,5,10, 25, 50, "All"]],
-        "destroy": true,
-        "info":true,
-        "sInfo":true,
-        // "order": [[1, "desc"]],
-        "language":{
-        "lengthMenu": "Mostrar _MENU_ Registros por página",
-        //"info": "Mostrando pagina _PAGE_ de _PAGES_",
-        "sInfo":"Registros del _START_ al _END_ total de _TOTAL_ registros",
-        "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
-        /*"oLanguage": {
-              "sInfo": "Mostrando START a END de TOTAL registros",
-              "sZeroRecords": "No se encontraron registros coincidentes" 
-          },*/
-        "infoEmpty": "No hay registros disponibles",
-        // "infoFiltered": "(filtrada de _MAX_ registros)",
-        "loadingRecords": "Cargando...",
-        "processing":     "Procesando...",
-        "search": "Busqueda tipo Exámen:",
-        "zeroRecords":    "No se encontraron registros coincidentes",
-        "paginate": {
-          "next":       "Siguiente",
-          "previous":   "Anterior"
-        },         
-      },
-
-
-    });
-  
-});
-
-//end examen agregar
-
-
-  //agrrgar paquete
+// Agregar Examenes - Tabla
 $(document).ready(function() {
 
-  
-    $('#table_paquete_general').DataTable({ 
+  $('#tabla_examenes').DataTable({ 
 
-        "responsive": {
-            "details": {
-                "display": $.fn.dataTable.Responsive.display.modal(),
-            }
-        },
-        
-        "processing": true, //Feature control the processing indicator.
-        "serverSide": true, //Feature control DataTables' server-side processing mode.
-        "order": [], //Initial no order.
-
-
-        // Load data for the table's content from an Ajax source
-        "ajax": {
-            "url": window.location.href + "table_paquete_general/",
-            "type": "POST"
-        },
-
-        //Set column definition initialisation properties.
-        "columnDefs": [
-            { 
-                "targets": [ -1 ], //last column
-                "orderable": false, //set not orderable
-                "className": 'dt-body-right',
-            },
-            { 
-                "targets": [ -2 ], //2 last column (photo)
-                "orderable": false, //set not orderable
-                "className": 'dt-body-right',
-            },
-        ],
+    "responsive": {
+      "details": {
+        "display": $.fn.dataTable.Responsive.display.modal(),
+      }
+    },
+      
+    "processing": true, //Feature control the processing indicator.
+    "serverSide": true, //Feature control DataTables' server-side processing mode.
+    "order": [], //Initial no order.
 
 
-          "lengthMenu": [[3,5,10, 25, 50, -1], [3,5,10, 25, 50, "All"]],
-        "destroy": true,
-        "info":true,
-        "sInfo":true,
-        // "order": [[1, "desc"]],
-        "language":{
-        "lengthMenu": "Mostrar _MENU_ Registros por página",
-        //"info": "Mostrando pagina _PAGE_ de _PAGES_",
-        "sInfo":"Registros del _START_ al _END_ total de _TOTAL_ registros",
-        "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
-        /*"oLanguage": {
-              "sInfo": "Mostrando START a END de TOTAL registros",
-              "sZeroRecords": "No se encontraron registros coincidentes" 
-          },*/
-        "infoEmpty": "No hay registros disponibles",
-        // "infoFiltered": "(filtrada de _MAX_ registros)",
-        "loadingRecords": "Cargando...",
-        "processing":     "Procesando...",
-        "search": "Busqueda paquete:",
-        "zeroRecords":    "No se encontraron registros coincidentes",
-        "paginate": {
-          "next":       "Siguiente",
-          "previous":   "Anterior"
-        },         
+    // Load data for the table's content from an Ajax source
+    "ajax": {
+      "url": `${window.location.origin}/Examenes/Examenes/tipo_examen_general/`,
+      "type": "POST"
+    },
+
+      //Set column definition initialisation properties.
+    "columnDefs": [
+      { 
+        "targets": [ -1 ], //last column
+        "orderable": false, //set not orderable
+        "className": 'dt-body-right',
       },
+      { 
+        "targets": [ -2 ], //2 last column (photo)
+        "orderable": false, //set not orderable
+        "className": 'dt-body-right',
+      },
+    ],
 
 
-    });
-  
+    "lengthMenu": [[3,5,10, 25, 50, -1], [3,5,10, 25, 50, "All"]],
+    "destroy": true,
+    "info":true,
+    "sInfo":true,
+    // "order": [[1, "desc"]],
+    "language":{
+      "lengthMenu": "Mostrar _MENU_ Registros por página",
+      //"info": "Mostrando pagina _PAGE_ de _PAGES_",
+      "sInfo":"Registros del _START_ al _END_ total de _TOTAL_ registros",
+      "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
+      /*"oLanguage": {
+            "sInfo": "Mostrando START a END de TOTAL registros",
+            "sZeroRecords": "No se encontraron registros coincidentes" 
+        },*/
+      "infoEmpty": "No hay registros disponibles",
+      // "infoFiltered": "(filtrada de _MAX_ registros)",
+      "loadingRecords": "Cargando...",
+      "processing":     "Procesando...",
+      "search": "Busqueda tipo Exámen:",
+      "zeroRecords":    "No se encontraron registros coincidentes",
+      "paginate": {
+        "next":       "Siguiente",
+        "previous":   "Anterior"
+      },         
+    },
+
+  });
+
 });
 
-//end paquete general-------------
 
-
+// Agregar Paquete - Tabla
 $(document).ready(function() {
+  
+  $('#tabla_paquetes').DataTable({
 
-  console.log("just CHECling");
+    "responsive": {
+      "details": {
+        "display": $.fn.dataTable.Responsive.display.modal(),
+      }
+    },
+    
+    "processing": true, //Feature control the processing indicator.
+    "serverSide": true, //Feature control DataTables' server-side processing mode.
+    "order": [], //Initial no order.
+
+
+    // Load data for the table's content from an Ajax source
+    "ajax": {
+      "url": `${window.location.origin}/Examenes/Examenes/table_paquete_general/`,
+      "type": "POST"
+    },
+
+    //Set column definition initialisation properties.
+    "columnDefs": [
+      { 
+        "targets": [ -1 ], //last column
+        "orderable": false, //set not orderable
+        "className": 'dt-body-right',
+      },
+      { 
+        "targets": [ -2 ], //2 last column (photo)
+        "orderable": false, //set not orderable
+        "className": 'dt-body-right',
+      },
+    ],
+
+
+    "lengthMenu": [[3,5,10, 25, 50, -1], [3,5,10, 25, 50, "All"]],
+    "destroy": true,
+    "info":true,
+    "sInfo":true,
+    // "order": [[1, "desc"]],
+    "language":{
+      "lengthMenu": "Mostrar _MENU_ Registros por página",
+      //"info": "Mostrando pagina _PAGE_ de _PAGES_",
+      "sInfo":"Registros del _START_ al _END_ total de _TOTAL_ registros",
+      "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
+      /*"oLanguage": {
+            "sInfo": "Mostrando START a END de TOTAL registros",
+            "sZeroRecords": "No se encontraron registros coincidentes" 
+        },*/
+      "infoEmpty": "No hay registros disponibles",
+      // "infoFiltered": "(filtrada de _MAX_ registros)",
+      "loadingRecords": "Cargando...",
+      "processing":     "Procesando...",
+      "search": "Busqueda paquete:",
+      "zeroRecords":    "No se encontraron registros coincidentes",
+      "paginate": {
+        "next":       "Siguiente",
+        "previous":   "Anterior"
+      }         
+    }
+  });  
+});
+
+// Usando el boton de busqueda y mostrando al informacion en la tabla
+$(document).ready(function() {
 
   $("#buscar_registro_por_ajax").click(function(event) {
-    console.log("just CHECling2222");
 
     event.preventDefault();
     
@@ -404,7 +357,7 @@ $(document).ready(function() {
       dni_busqueda =  "null";					
     } 
 
-    $('#myTable').DataTable({ 
+    $('#myTable').DataTable({
   
       "processing": true, //Feature control the processing indicator.
       "serverSide": true, //Feature control DataTables' server-side processing mode.
@@ -472,10 +425,10 @@ $(document).ready(function() {
   $("#mostramos_datos_desde_ajax").show(800);
   $("#ocultanos_parta_actualizar").show(800);
   $('#actualizar_registro_por_id_datos_generales')[0].reset();
-  /* Act on the event */
+
   $('#sexo').prop('selectedIndex',0);
   $('#tipo_pago').prop('selectedIndex',0);
-  // $("#agregar_detalle__por_paquete").selectmenu('refresh', true);
+
   $('#agregar_detalle__por_paquete').prop('selectedIndex',0);
   $("#cambio_nombre_boton").html("<i class='fas fa-check-circle'></i>&nbsp;Nuevo Registro");
   $(".evaristoescuderohuillcamascco").attr('Id', 'registrar_datos_generales');
@@ -494,106 +447,91 @@ function limpiar_campos() {
   $("#fecha_fin").val("");
   $("#nombre_busqueda").val("");
   $("#dni_busqueda").val("");
+
 }
 
 
 $(document).ready(function() {
 
-    // body...
-  /*   $.ajax({
-          type: "POST",
-          async:true,
-          url: "<?php echo base_url().'Examenes/Examenes/cargar_paquete/' ?>",
-          success: function(response)
-          {
-              $('.mostrararea select').html(response).fadeIn();
-          }
-  });*/
-
-  //mostramos los datos de sexo
-  $.ajax({
-          type: "POST",
-          async:true,
-          url: window.location.href + "cargar_sexo/",
-          success: function(response)
-          {
-              $('.mostrarsexo select').html(response).fadeIn();
-          }
+  // Para que se ejecute finalizada la renderizacion
+  setTimeout(function(){
+    cargar_sexo();
+    tipo_pago_();
+    tipocomprobante_id();
+    tipo_paquete_();
+    categoria_tipo_exame_cargador();
   });
 
-  
-
-  
-
 });
-function tipo_pago_() {
-  // body...
-    //mostramos tipo_pago
+
+function cargar_sexo() {
+  // Cargando las opciones de sexo (genero)
   $.ajax({
-          type: "POST",
-          async:true,
-          url: window.location.href + "cargar_tipo_pago/",
-          success: function(response)
-          {
-              $('.tipo_pago_xx select').html(response).fadeIn();
-          }
+    type: "POST",
+    async:true,
+    url: `${window.location.origin}/Examenes/Examenes/cargar_sexo/`,
+    success: function(response) {
+      $('.mostrarsexo select').html(response).fadeIn();
+    }
+  });
+}
+
+
+function tipo_pago_() {
+
+  $.ajax({
+    type: "POST",
+    async:true,
+    url: window.location.href + "cargar_tipo_pago/",
+    success: function(response) {
+      $('.tipo_pago_xx select').html(response).fadeIn();
+    }
   });
 
 }
 function tipocomprobante_id() {
-// body...
+
   $.ajax({
-          type: "POST",
-          async:true,
-          url: window.location.href + "tipocomprobante/",
-          success: function(response)
-          {
-              $('.tipocomprobante_id select').html(response).fadeIn();
-          }
+    type: "POST",
+    async:true,
+    url: window.location.href + "tipocomprobante/",
+    success: function(response) {
+      $('.tipocomprobante_id select').html(response).fadeIn();
+    }
   });
 }
 
 function tipo_paquete_() {
-  // body...
-    //mostramos tipo_pago
+
   $.ajax({
-          type: "POST",
-          async:true,
-          url: `${window.location.origin}/Examenes/Examenes/cargar_paquete/`,
-          success: function(response)
-          {
-              $('.mostrararea select').html(response).fadeIn();
-          }
+    type: "POST",
+    async:true,
+    url: `${window.location.origin}/Examenes/Examenes/cargar_paquete/`,
+    success: function(response) {
+      $('.mostrararea select').html(response).fadeIn();
+    }
   });
 
 }
+
+
 function categoria_tipo_exame_cargador() {
-  // body...
-    //mostramos tipo_pago
+
   $.ajax({
-          type: "POST",
-          async:true,
-          url: window.location.href + "cargar_paquete_tipo_examen/",
-          success: function(response)
-          {
-              $('.categoria_tipo_examen_id select').html(response).fadeIn();
-          }
+    type: "POST",
+    async:true,
+    url: window.location.href + "cargar_paquete_tipo_examen/",
+    success: function(response) {
+      $('.categoria_tipo_examen_id select').html(response).fadeIn();
+    }
   });
 
 }
 
 
 
-setTimeout(function(){
-  tipo_pago_();
-  tipo_paquete_();
-  tipocomprobante_id();
-  categoria_tipo_exame_cargador();
-});
 
 $(document).ready(function() {
-
-  //actualiozmos
 
     $(document).on('submit', '#actualizar_registro_por_id_datos_generales', function(event) {
       event.preventDefault();
@@ -1884,7 +1822,7 @@ $.ajax({
 
         $("#dvOcultar").hide(800);
         $("#ocultar_iddddddd").hide(800);
-        $(".evaristoescuderohuillcamascco").attr('Id', 'actualizar_registro_por_id_datos_generales');
+        $(".evaristoescuderohuillcamascco").attr('Id', 'actualizar_registro_por_id_datos_generales'); // PENDIENTEEEEEEE
         $("#fecha_atencion_id").val(data.Id);
         $("#mdatex").val(data.fecha_atencion);
         $("#hora_atemncion_update").val(data.hora);
@@ -3351,14 +3289,11 @@ dni_input.addEventListener("keyup", function() {
 
 
 
-
-
-
-
-
-
-
+$(document).ready(() => {
+  $("#nuevo_examen_modal").modal('show');
+})
 
 
 console.log("end without problems");
+
 

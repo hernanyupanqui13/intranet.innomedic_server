@@ -264,7 +264,7 @@
 
                       <div class="row" style="display: none;" id="mostramos_los_campos_agregar_uno_por_no">
                         <div class="col-md-8">
-                          <a href="javascript:void(0)" class="btn btn-dark btn-sm btn-rounded" data-toggle="modal" data-target=".bd-example-modal-lg_tipoexamen_id">
+                          <a href="javascript:void(0)" class="btn btn-dark btn-sm btn-rounded" data-toggle="modal" data-target=".nuevo_examen_md">
                             <i class="fas fa-plus-circle"></i>&nbsp; Agregar Examen
                           </a>
                           <label for="">Asignar Tipo Exámen</label>
@@ -505,7 +505,7 @@
 
 
 <!-- Agregamos Paquete en General-->
-<div id="compromisos_xx" class="modal fade bd-example-modal-lg_paquete_general" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" data-backdrop="static">
+<div id="nuevo_paquete_modal" class="modal fade bd-example-modal-lg_paquete_general" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" data-backdrop="static">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">      
       <div class="modal-body">
@@ -538,7 +538,7 @@
                   </div>
                 </form>
                 <div class="table-responsive">
-                  <table id="table_paquete_general" class="table color-table success-table  table-bordered table-striped dataTable no-footer display nowrap" role="grid" aria-describedby="myTable_info">
+                  <table id="tabla_paquetes" class="table color-table success-table  table-bordered table-striped dataTable no-footer display nowrap" role="grid" aria-describedby="myTable_info">
                     <thead>
                       <tr>
                         <th>Codigo</th>
@@ -563,7 +563,7 @@
 
 
 <!--agregamos asociamos los paquetes en general por id-->
-<div id="compromisos_xx_xx" class="modal fade bd-example-modal-lg_asociar_paquetes" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" data-backdrop="static">
+<div id="nuevo_paquete_modal_xx" class="modal fade bd-example-modal-lg_asociar_paquetes" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" data-backdrop="static">
   <div class="modal-dialog modal-xl">
     <div class="modal-content">      
       <div class="modal-body">
@@ -628,9 +628,9 @@
 </div>
 
 
-<!--aqui agreamos la ultima parte de  de tipo examen por -->
+<!--aqui agreamos la ultima parte de tipo examen por -->
 <!--agregamos asociamos los paquetes en general por id-->
-<div id="compromisos_xx_xx_xx" class="modal fade bd-example-modal-lg_tipoexamen_id" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" data-backdrop="static">
+<div id="nuevo_examen_modal" class="modal fade nuevo_examen_md" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" data-backdrop="static">
   <div class="modal-dialog modal-xl">
     <div class="modal-content">      
       <div class="modal-body">
@@ -669,7 +669,7 @@
                   </div>
                 </form>
                 <div class="table-responsive">
-                  <table id="table_paquete_general_examen" class="table color-table success-table  table-bordered table-striped dataTable no-footer display nowrap" role="grid" aria-describedby="myTable_info">
+                  <table id="tabla_examenes" class="table color-table success-table  table-bordered table-striped dataTable no-footer display nowrap" role="grid" aria-describedby="myTable_info">
                     <thead>
                       <tr>
                         <th>#</th>
