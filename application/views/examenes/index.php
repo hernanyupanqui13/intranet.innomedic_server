@@ -26,12 +26,8 @@
               <div class="col-lg-12">
                 <div class="card ">
                   <div class="card-body">
-                    <form class="evaristoescuderohuillcamascco" id="registrar_datos_generales" autocomplete="off">                      
-                      <!--<div class="form-group btn  custom-control custom-checkbox pt-2" id="ocultar_iddddddd">
-                        <input type="checkbox" name="cbmostrar"  class="fantasmass custom-control-input mr-sm-2" id="checkbox2" >
-                        <label class="custom-control-label" for="checkbox2"><span class="btn-dark btn btn-rounded"><i class="fas fa-plus-circle"></i>&nbsp;Programar otra fecha</span></label>
-                      </div>-->
-                      <div class="btn-group" data-toggle="buttons" id="ocultar_iddddddd">
+                    <form class="evaristoescuderohuillcamascco" id="registrar_datos_generales" autocomplete="off">                                           
+                      <div class="btn-group" data-toggle="buttons" id="prg_otra_fecha_btn">
                         <label class="btn btn-dark btn-rounded">
                           <div class="custom-control custom-checkbox mr-sm-2">
                             <input type="checkbox" class="custom-control-input fantasmass" id="checkbox1" >
@@ -269,14 +265,14 @@
                           </a>
                           <label for="">Asignar Tipo Exámen</label>
                           <div class="form-group">
-                            <input type="text" id="examen_idddd" class="form-control btn-rounded border border-dark " placeholder="Ingrese Exámen........." >
-                            <input type="hidden" value="" name="examen" id="examen_evaristo">
-                            <input type="hidden" value="" name="id_examen" id="examen_evaristo_id">
+                            <input type="text" id="examen_entered_by_usr" class="form-control btn-rounded border border-dark " placeholder="Ingrese Exámen........." >
+                            <input type="hidden" value="" name="examen" id="nombre_examen">
+                            <input type="hidden" value="" name="id_examen" id="id_examen">
                           </div>
                         </div>
                         <div class="col-md-4 text-center mt-4">
                           <div class="form-group">
-                            <a href="javascript:void(0)" id="agregar_detalle_value" class="btn-rounded btn btn-warning btn-lg btn-block"><i class=" fas fa-plus-circle"></i>&nbsp;Agregar Examen</a>
+                            <a href="javascript:void(0)" id="agregar_examen_btn" class="btn-rounded btn btn-warning btn-lg btn-block"><i class=" fas fa-plus-circle"></i>&nbsp;Agregar Examen</a>
                           </div>
                         </div> 
                       </div>

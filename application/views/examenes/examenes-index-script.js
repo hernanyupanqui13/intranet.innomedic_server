@@ -416,25 +416,24 @@ $(document).ready(function() {
 });
 
 
+// Agregar un nuevo examen despues de dar click en editar un examen
 $(document).ready(function() {
-  $(document).on('click', '#registrar_datos_xxxxxxxxx', function(event) {
-  event.preventDefault();
-  $("#ocultar_iddddddd").show(800);
-  $("#agregamos_fecha_hora").hide();
-  $("#mostramos_datos_del_igv_total_subtotal").show(800);
-  $("#mostramos_datos_desde_ajax").show(800);
-  $("#ocultanos_parta_actualizar").show(800);
-  $('#actualizar_registro_por_id_datos_generales')[0].reset();
+  $(document).on('click', '#nuevo_examen_btn', function(event) {
+    event.preventDefault();
+    $("#prg_otra_fecha_btn").show(800);
+    $("#agregamos_fecha_hora").hide();
+    $("#mostramos_datos_del_igv_total_subtotal").show(800);
+    $("#mostramos_datos_desde_ajax").show(800);
+    $("#ocultanos_parta_actualizar").show(800);
+    $('#actualizar_registro_por_id_datos_generales')[0].reset();
 
-  $('#sexo').prop('selectedIndex',0);
-  $('#tipo_pago').prop('selectedIndex',0);
+    $('#sexo').prop('selectedIndex',0);
+    $('#tipo_pago').prop('selectedIndex',0);
 
-  $('#agregar_detalle__por_paquete').prop('selectedIndex',0);
-  $("#cambio_nombre_boton").html("<i class='fas fa-check-circle'></i>&nbsp;Nuevo Registro");
-  $(".evaristoescuderohuillcamascco").attr('Id', 'registrar_datos_generales');
-
-
-});
+    $('#agregar_detalle__por_paquete').prop('selectedIndex',0);
+    $("#cambio_nombre_boton").html("<i class='fas fa-check-circle'></i>&nbsp;Nuevo Registro");
+    $(".evaristoescuderohuillcamascco").attr('Id', 'registrar_datos_generales');
+  });
 
 });
 
@@ -450,7 +449,7 @@ function limpiar_campos() {
 
 }
 
-
+// Cargando las opciones de los select y demas inputs de los formularios
 $(document).ready(function() {
 
   // Para que se ejecute finalizada la renderizacion
@@ -464,8 +463,9 @@ $(document).ready(function() {
 
 });
 
+
+// Cargando las opciones de sexo (genero)
 function cargar_sexo() {
-  // Cargando las opciones de sexo (genero)
   $.ajax({
     type: "POST",
     async:true,
@@ -482,7 +482,7 @@ function tipo_pago_() {
   $.ajax({
     type: "POST",
     async:true,
-    url: window.location.href + "cargar_tipo_pago/",
+    url: `${window.location.origin}/Examenes/Examenes/cargar_tipo_pago/`,
     success: function(response) {
       $('.tipo_pago_xx select').html(response).fadeIn();
     }
@@ -494,7 +494,7 @@ function tipocomprobante_id() {
   $.ajax({
     type: "POST",
     async:true,
-    url: window.location.href + "tipocomprobante/",
+    url: `${window.location.origin}/Examenes/Examenes/tipocomprobante/`,
     success: function(response) {
       $('.tipocomprobante_id select').html(response).fadeIn();
     }
@@ -520,7 +520,7 @@ function categoria_tipo_exame_cargador() {
   $.ajax({
     type: "POST",
     async:true,
-    url: window.location.href + "cargar_paquete_tipo_examen/",
+    url: `${window.location.origin}/Examenes/Examenes/cargar_paquete/`,
     success: function(response) {
       $('.categoria_tipo_examen_id select').html(response).fadeIn();
     }
@@ -533,153 +533,120 @@ function categoria_tipo_exame_cargador() {
 
 $(document).ready(function() {
 
-    $(document).on('submit', '#actualizar_registro_por_id_datos_generales', function(event) {
-      event.preventDefault();
-
-      $.ajax({
-          url: window.location.href + "actualizar_registro_via_ajax_update/",
-        type: 'POST',
-        //data: $("#actualizar_registro_por_id_datos_generales").serialize(),
-        data:new FormData(this),  
-        contentType:false,  
-        processData:false, 
-        statusCode:{
-            400: function(xhr){
-
-              var json = JSON.parse(xhr.responseText);
-              if (json.error) {
-                Swal.fire({
-                    title: 'Lo siento mucho',
-                    text: ""+json.error+"",
-                    icon: 'warning',
-                    showCancelButton: false,
-                    confirmButtonColor: '#3085d6',
-                    cancelButtonColor: '#d33',
-                    confirmButtonText: 'OK'
-                  }).then((result) => {
-                    if (result.value) {
-                      
-                    }
-                  })
-
-              }
-              
-            }
-          }
-      })
-      .done(function(data) {
-        console.log("success");
-        var json = JSON.parse(data);
-        Swal.fire({
-              title: 'Muy bien..!!',
-              text: ""+json.mensaje+"",
-              icon: 'success',
-              showCancelButton: false,
-              confirmButtonColor: '#3085d6',
-              cancelButtonColor: '#d33',
-              confirmButtonText: 'ok...'
-            }).then((result) => {
-              if (result.value) {
-                reload_table();
-                
-              }
-            })
-    
-      })
-      .fail(function(jqXHR, textStatus, errorThrown) {
-        console.log("error");
-        Swal.fire(
-            'Oposs..',
-            'Error el sistema, comunicate con el administrador...',
-            'error'
-          )
-      })
-      .always(function() {
-        console.log("complete");
-      });
-      
-
-      });
 
 
-  //aqui termoina
-  $(document).on('click', '#agregar_detalle_value', function(event) {
+  // Cuando se envia el formulario para actualizar un examen ya ingresado
+  $(document).on('submit', '#actualizar_registro_por_id_datos_generales', function(event) {
     event.preventDefault();
-    /* Act on the event */
-      var id_codigo = $("#examen_evaristo_id").val();
-      var examen_idddd = $("#examen_idddd").val();
-      if (examen_idddd == null || examen_idddd.length == 0 || /^\s+$/.test(examen_idddd) ) {
+
+    $.ajax({
+      url: `${window.location.origin}/Examenes/Examenes/actualizar_registro_via_ajax_update/`,
+      type: 'POST',
+      data:new FormData(this),  
+      contentType:false,  
+      processData:false        
+    })
+    .done(function(data) {
+      console.log("success");
+      let json = JSON.parse(data);
+      Swal.fire({
+        title: 'Muy bien..!!',
+        text: ""+json.mensaje+"",
+        icon: 'success',
+        showCancelButton: false,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'ok...'
+      }).then((result) => {
+        if (result.value) {
+          reload_table();
+          
+        }
+      })    
+    })
+    .fail(function(jqXHR, textStatus, errorThrown) {
+      console.log("error");
       Swal.fire(
-          'Oposs!',
-          'Primero Ingrese el tipo Exámen',
-          'error'
-        )
+        'Oposs..',
+        'Error el sistema, comunicate con el administrador...',
+        'error'
+      )
+    })
+    .always(function() {
+      console.log("complete");
+    });      
+  });
+
+
+  // Para agregar un nuevo examen a la orden clinica o al pedido
+  $(document).on('click', '#agregar_examen_btn', function(event) {
+    event.preventDefault();
+    let id_codigo = $("#id_examen").val();
+    let examen_entered_by_usr = $("#examen_entered_by_usr").val();
+    if (examen_entered_by_usr == null || examen_entered_by_usr.length == 0 || /^\s+$/.test(examen_entered_by_usr) ) {
+      Swal.fire(
+        'Oposs!',
+        'Primero Ingrese el tipo Exámen',
+        'error'
+      );
       return false;
-      }
+    }
 
-      
-
-
-      
-      $.ajax({
-          url: window.location.href + "agregar_detalle_tipo_examen/",
-        type: 'POST',
-        dataType: 'json',
-        data: {id_codigo:id_codigo},
-      })
-      .done(function(data) {
+    
+    // Obtiendo datos del tipo de examen para agregarlos en el resumen del pedido/orden clinica
+    $.ajax({
+      url: `${window.location.origin}/Examenes/Examenes/agregar_detalle_tipo_examen/`,
+      type: 'POST',
+      dataType: 'json',
+      data: {id_codigo:id_codigo},
+    })
+    .done(function(data) {
       var rowid = Math.random();
       var $sr = ($(".jdr1").length + 1);
 
       $("#evaristoescuderohuillcamascco tbody tr").each(function() {
-          subtotal = $(this).find("td:eq(1)").text();
-          if (subtotal == data.nombre) {
-            Swal.fire({
-                title: 'Verficar',
-                text: "Ya esta en la lista de detalle",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Yes, delete it!'
-              }).then((result) => {
-                if (result.isConfirmed) {
-                  Swal.fire(
-                    'Deleted!',
-                    'Your file has been deleted.',
-                    'success'
-                  )
+        subtotal = $(this).find("td:eq(1)").text();
+        
+        if (subtotal == data.nombre) {
+          Swal.fire({
+            title: 'Verficar',
+            text: "Ya esta en la lista de detalle",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Okey!'
+          });
 
-                  return false;
-                }
-              })
-              $(this).closest("tr").remove();
-          }
-
-                                  
+          $(this).closest("tr").remove();
+        }                                  
       });
-  
-        var $html =`<tr class="jdr1" id="` + rowid + `">
-                      <td class="text-center"><input type="hidden" name="codigo[]" value="`+data.codigo+`" />` + data.codigo + `</span><input type="hidden" name="count[]" value="`+rowid+`"></td>'</td>
-                      <td class="text-center validamos_campos"><input type="hidden" name="nombre_detalle[]" value="`+data.nombre+`" />`+data.nombre+`</td>
-                      <td class="text-center"><input type="hidden" name="precio_detalle[]" value="`+data.precio+`" /><p>`+data.precio+`</p></td>
-                      <td class="text-right"><button type='button' class='btn btn-remove-producto btn-danger '><i class='fas fa-times-circle'></i></button></td>
-                      <input type='hidden' name='codigo[]' value='`+data.codigo+`'/>
-                      <input type="hidden" name="categoria_detalle[]" value="`+data.id_categoria+`" />
-                  </tr>`;
-        $("#evaristoescuderohuillcamascco tbody").append($html); 
-        $("#examen_idddd").val("");
-        sumar();
+
+      var $html = `
+        <tr class="jdr1" id="${rowid}">
+          <td class="text-center"><input type="hidden" name="codigo[]" value="${data.codigo}"/>${data.codigo}</span><input type="hidden" name="count[]" value="${rowid}"></td>'</td>
+          <td class="text-center validamos_campos"><input type="hidden" name="nombre_detalle[]" value="${data.nombre}" />${data.nombre}</td>
+          <td class="text-center"><input type="hidden" name="precio_detalle[]" value="${data.precio}" /><p>${data.precio}</p></td>
+          <td class="text-right"><button type='button' class='btn btn-remove-producto btn-danger '><i class='fas fa-times-circle'></i></button></td>
+          <input type='hidden' name='codigo[]' value='${data.codigo}'/>
+          <input type="hidden" name="categoria_detalle[]" value="${data.id_categoria}" />
+        </tr>
+      `;
 
 
-      })
-      .fail(function() {
-        console.log("error");
-      })
-      .always(function() {
-        console.log("complete");
+      $("#evaristoescuderohuillcamascco tbody").append($html); 
+      $("#examen_entered_by_usr").val("");
+      sumar();
 
-      });
+
+    })
+    .fail(function() {
+      console.log("error");
+    })
+    .always(function() {
+      console.log("complete");
+
+    });
       
     
   });
@@ -1798,11 +1765,9 @@ img.src = URL.createObjectURL(uploadFile);
 
 function edit_person(id)
 {
-//$('#registrar_historial_xx')[0].reset(); // reset form on modals
 $('#registrar_datos_generales').trigger("reset");
 
 
-//Ajax Load data from ajax
 $.ajax({
     url : `${window.location.origin}/Examenes/Examenes/Obtener_registros/${id}`,
     type: "GET",
@@ -1821,7 +1786,7 @@ $.ajax({
         }
 
         $("#dvOcultar").hide(800);
-        $("#ocultar_iddddddd").hide(800);
+        $("#prg_otra_fecha_btn").hide(800);
         $(".evaristoescuderohuillcamascco").attr('Id', 'actualizar_registro_por_id_datos_generales'); // PENDIENTEEEEEEE
         $("#fecha_atencion_id").val(data.Id);
         $("#mdatex").val(data.fecha_atencion);
@@ -1847,7 +1812,6 @@ $.ajax({
         // $("#tipo_pago  option[value="+ data.id_pago +"]").attr('selected', 'selected');
         //agregamos agregaer_detalle_por paquete
 
-        //tiupo comromprante
 
         var selkecttipocomprobnate = $("select#tipocomprobante");
         selkecttipocomprobnate.val(data.tipocomprobante).attr("selected", "selected");
@@ -1883,7 +1847,7 @@ $.ajax({
         
 
         $("#cambio_nombre_boton").html("<i class='fas fa-check-circle'></i>&nbsp;Actualizar Registro");
-        $("#agregar_nav_link").html(`<li class="nav-item"> <a  class="nav-link" id="registrar_datos_xxxxxxxxx"><span class="hidden-sm-up"></span> <span class="hidden-xs-down font-weight-bold btn-dark btn btn-rounded" ><i class="fas fa-plus-circle"></i>&nbsp;Agregar Nuevo</span></a> </li>`);
+        $("#agregar_nav_link").html(`<li class="nav-item"> <a  class="nav-link" id="nuevo_examen_btn"><span class="hidden-sm-up"></span> <span class="hidden-xs-down font-weight-bold btn-dark btn btn-rounded" ><i class="fas fa-plus-circle"></i>&nbsp;Agregar Nuevo</span></a> </li>`);
 
         //MOSTRAMOS LOS DETALLES DE LOS CAMPOS onchange="return limpiar_campos_de_todos()"
 
@@ -3290,7 +3254,7 @@ dni_input.addEventListener("keyup", function() {
 
 
 $(document).ready(() => {
-  $("#nuevo_examen_modal").modal('show');
+  $("#prg_otra_fecha_btn").show(800);
 })
 
 
