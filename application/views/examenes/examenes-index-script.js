@@ -654,11 +654,9 @@ $(document).ready(function() {
   //remover el pedido
     $(document).on("click",".btn-remove-producto", function(){
       $(this).closest("tr").remove();
-        sumar();
-      
-  });
+      sumar();      
+    });
 
-  console.log("cargar lista paquete");
 
   $(document).on('change', '#agregar_detalle__por_paquete', function(event) {
     event.preventDefault();
@@ -666,32 +664,30 @@ $(document).ready(function() {
 
     var id_codigo_xx = $("#agregar_detalle__por_paquete").val();
     $.ajax({
-        url: window.location.href + "cargar_lista_paquete/",
+      url: window.location.href + "cargar_lista_paquete/",
       type: 'POST',
-      // method:"POST",
-      // dataType: 'json',
       data: {id_codigo_xx:id_codigo_xx},
     })
     .done(function(data) {
-        var resultado = JSON.parse(data);
-        var contenido = '';               
-        $.each(resultado, function(index, value) {
-          var rowid = Math.random();
-          var $sr = ($(".jdr1").length + 1);
-          contenido += `
-                      <tr class="jdr1" id="` + rowid + `">  
-                          <td class="text-center">
-                            <input type="hidden" name="codigo[]" value="`+value.codigo+`" /><span>` + value.codigo + `</span>
-                            <input type="hidden" name="count[]" value="`+rowid+`">
-                          </td>
-                          <td class="text-center"><input type="hidden" name="nombre_detalle[]" value="`+value.nombre+`" />`+value.nombre+`</td>
-                          <input type="hidden" name="categoria_detalle[]" value="`+value.id_categoria+`" />
-                      </tr>`;
-          /**/                           
-          });
+      var resultado = JSON.parse(data);
+      var contenido = '';               
+      $.each(resultado, function(index, value) {
+        var rowid = Math.random();
+        var $sr = ($(".jdr1").length + 1);
+        contenido += `
+          <tr class="jdr1" id="${rowid}">  
+              <td class="text-center">
+                <input type="hidden" name="codigo[]" value="${value.codigo}"/><span>${value.codigo}</span>
+                <input type="hidden" name="count[]" value="${rowid}">
+              </td>
+              <td class="text-center"><input type="hidden" name="nombre_detalle[]" value="${value.nombre}"/>${value.nombre}</td>
+              <input type="hidden" name="categoria_detalle[]" value="${value.id_categoria}"/>
+          </tr>
+        `;
+      });
       $("#evaristoescuderohuillcamascco_iddd tbody").html(contenido); 
       $(".olo").html(contenido);
-      })
+    })
     .fail(function() {
       console.log("error");
     })
@@ -859,67 +855,57 @@ $(document).ready(function() {
 }
 
 $(document).ready(function() {
+
+  // Para registrar una orden clinica/pedido despues que se ha dado a registrar
   $(document).on('submit', '#registrar_datos_generales', function(event) {
     event.preventDefault();
-    /* Act on the event */
 
 
-      var sexo = $("sexo").val();
-      var agregar_detalle__por_paquete = $("agregar_detalle__por_paquete").val();
-      var tipo_pago = $("tipo_pago").val();
+    var sexo = $("sexo").val();
+    var agregar_detalle__por_paquete = $("agregar_detalle__por_paquete").val();
+    var tipo_pago = $("tipo_pago").val();
 
-      sexo = document.getElementById("sexo").selectedIndex;
-      if( sexo == null || sexo == 0 ) {
-          Swal.fire({
-            title: 'Sexo',
-            text: "Sleccione Sexo",
-            icon: 'error',
-            showCancelButton: false,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'ok'
-          }).then((result) => {
-            if (result.value) {
-              
-            }
-          })
-        return false;
-      }
-      
-      tipo_pago = document.getElementById("tipo_pago").selectedIndex;
-      if( tipo_pago == null || tipo_pago == 0 ) {
-          Swal.fire({
-            title: 'Tipo Pago',
-            text: "Seleccione Tipo Pago",
-            icon: 'error',
-            showCancelButton: false,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'ok'
-          }).then((result) => {
-            if (result.value) {
-              
-            }
-          })
-        return false;
-      }
-      tipocomprobante = document.getElementById("tipocomprobante").selectedIndex;
-      if( tipocomprobante == null || tipocomprobante == 0 ) {
-          Swal.fire({
-            title: 'Paquete',
-            text: "Seleccione Tipo Comprobante",
-            icon: 'error',
-            showCancelButton: false,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'ok'
-          }).then((result) => {
-            if (result.value) {
-              
-            }
-          }) 
-        return false;
-      }
+    sexo = document.getElementById("sexo").selectedIndex;
+    if( sexo == null || sexo == 0 ) {
+      Swal.fire({
+        title: 'Sexo',
+        text: "Sleccione Sexo",
+        icon: 'error',
+        showCancelButton: false,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'ok'
+      });
+      return false;
+    }
+    
+    tipo_pago = document.getElementById("tipo_pago").selectedIndex;
+    if( tipo_pago == null || tipo_pago == 0 ) {
+      Swal.fire({
+        title: 'Tipo Pago',
+        text: "Seleccione Tipo Pago",
+        icon: 'error',
+        showCancelButton: false,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'ok'
+      });
+      return false;
+    }
+
+    tipocomprobante = document.getElementById("tipocomprobante").selectedIndex;
+    if( tipocomprobante == null || tipocomprobante == 0 ) {
+      Swal.fire({
+        title: 'Paquete',
+        text: "Seleccione Tipo Comprobante",
+        icon: 'error',
+        showCancelButton: false,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'ok'
+      });
+      return false;
+    }
 
     $.ajax({
       url: `${window.location.origin}/Examenes/Examenes/registrar_datos/`,
@@ -928,35 +914,26 @@ $(document).ready(function() {
       contentType:false,  
       processData:false,  
       statusCode: {
-            400: function(xhr) {
-                var json = JSON.parse(xhr.responseText);
-                if (json.error) {
-                    Swal.fire({
-                        title: 'Lo siento mucho',
-                        text: "" + json.error + "",
-                        icon: 'error',
-                        showCancelButton: false,
-                        confirmButtonColor: '#3085d6',
-                        cancelButtonColor: '#d33',
-                        confirmButtonText: 'OK'
-                    }).then((result) => {
-                        if (result.value) {
-
-                        }
-                    })
-
-
-                }
-
-            }
+        400: function(xhr) {
+          var json = JSON.parse(xhr.responseText);
+          if (json.error) {
+            Swal.fire({
+              title: 'Lo siento mucho',
+              text: "" + json.error + "",
+              icon: 'error',
+              showCancelButton: false,
+              confirmButtonColor: '#3085d6',
+              cancelButtonColor: '#d33',
+              confirmButtonText: 'OK'
+            });
+          }
         }
-
+      }
     })
     .done(function() {
       console.log("success");
-        let timerInterval
+      let timerInterval
       Swal.fire({
-        // icon : 'warning',
         title: 'Registrando...',
         html: 'Nuevo registro <b> </b> en proceso espere.',
         timer: 3000,
@@ -987,15 +964,15 @@ $(document).ready(function() {
             toast.addEventListener('mouseenter', Swal.stopTimer)
             toast.addEventListener('mouseleave', Swal.resumeTimer)
           }
-        })
+        });
 
         Toast.fire({
           icon: 'success',
           title: 'Nuevo Registro agregado'
-        })
-          reload_table();
-          //table.ajax.reload(null,false); 
-          // table.ajax.reload();
+        });
+
+        reload_table();
+
         $('#registrar_datos_generales')[0].reset();  
         $('#collapseExample').collapse('hide').delay(1000);
         $("#general_poaquetes_id").hide(800);
@@ -1005,382 +982,369 @@ $(document).ready(function() {
         $('#dvOcultar_iddd').hide();
         $("#agregar_nav_link").html("");
 
-      })
+      });
 
     
-
-      //alert("se registro de manera correcta");
     })
     .fail(function(jqXHR, textStatus, errorThrown) {
-          console.log("error");
-          if (jqXHR.status === 0) {
-              const Toast = Swal.mixin({
-                  toast: true,
-                  position: 'top-end',
-                  showConfirmButton: false,
-                  timer: 3000,
-                  timerProgressBar: true,
-                  onOpen: (toast) => {
-                      toast.addEventListener('mouseenter', Swal.stopTimer)
-                      toast.addEventListener('mouseleave', Swal.resumeTimer)
-                  }
-              })
-
-              Toast.fire({
-                  icon: 'error',
-                  title: 'No tienes Conexion a Internet: Verifique la red.'
-              })
-
-          } else if (jqXHR.status == 404) {
-              const Toast = Swal.mixin({
-                  toast: true,
-                  position: 'top-end',
-                  showConfirmButton: false,
-                  timer: 3000,
-                  timerProgressBar: true,
-                  onOpen: (toast) => {
-                      toast.addEventListener('mouseenter', Swal.stopTimer)
-                      toast.addEventListener('mouseleave', Swal.resumeTimer)
-                  }
-              })
-
-              Toast.fire({
-                  icon: 'error',
-                  title: 'Página solicitada no encontrada [404].'
-              })
-
-          } else if (jqXHR.status == 500) {
-              const Toast = Swal.mixin({
-                  toast: true,
-                  position: 'top-end',
-                  showConfirmButton: false,
-                  timer: 3000,
-                  timerProgressBar: true,
-                  onOpen: (toast) => {
-                      toast.addEventListener('mouseenter', Swal.stopTimer)
-                      toast.addEventListener('mouseleave', Swal.resumeTimer)
-                  }
-              })
-
-              Toast.fire({
-                  icon: 'error',
-                  title: 'Error interno del servidor [500].'
-              })
-
-
-          } else if (textStatus === 'parsererror') {
-
-              const Toast = Swal.mixin({
-                  toast: true,
-                  position: 'top-end',
-                  showConfirmButton: false,
-                  timer: 3000,
-                  timerProgressBar: true,
-                  onOpen: (toast) => {
-                      toast.addEventListener('mouseenter', Swal.stopTimer)
-                      toast.addEventListener('mouseleave', Swal.resumeTimer)
-                  }
-              })
-
-              Toast.fire({
-                  icon: 'error',
-                  title: 'El análisis JSON solicitado ha fallado'
-              })
-
-          } else if (textStatus === 'timeout') {
-
-              const Toast = Swal.mixin({
-                  toast: true,
-                  position: 'top-end',
-                  showConfirmButton: false,
-                  timer: 3000,
-                  timerProgressBar: true,
-                  onOpen: (toast) => {
-                      toast.addEventListener('mouseenter', Swal.stopTimer)
-                      toast.addEventListener('mouseleave', Swal.resumeTimer)
-                  }
-              })
-
-              Toast.fire({
-                  icon: 'error',
-                  title: 'Error de tiempo de espera.'
-              })
-
-          } else if (textStatus === 'abort') {
-
-              const Toast = Swal.mixin({
-                  toast: true,
-                  position: 'top-end',
-                  showConfirmButton: false,
-                  timer: 3000,
-                  timerProgressBar: true,
-                  onOpen: (toast) => {
-                      toast.addEventListener('mouseenter', Swal.stopTimer)
-                      toast.addEventListener('mouseleave', Swal.resumeTimer)
-                  }
-              })
-
-              Toast.fire({
-                  icon: 'error',
-                  title: 'Solicitud de Ajax abortada'
-              })
-
-          } else {
-
-              const Toast = Swal.mixin({
-                  toast: true,
-                  position: 'top-end',
-                  showConfirmButton: false,
-                  timer: 3000,
-                  timerProgressBar: true,
-                  onOpen: (toast) => {
-                      toast.addEventListener('mouseenter', Swal.stopTimer)
-                      toast.addEventListener('mouseleave', Swal.resumeTimer)
-                  }
-              })
-
-              Toast.fire({
-                  icon: 'error',
-                  title: 'Solicitud de Ajax abortada ' + jqXHR.responseText + ''
-              })
-
-
+      console.log("error");
+      if (jqXHR.status === 0) {
+        const Toast = Swal.mixin({
+          toast: true,
+          position: 'top-end',
+          showConfirmButton: false,
+          timer: 3000,
+          timerProgressBar: true,
+          onOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer)
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
           }
-      })
+        });
+
+
+        Toast.fire({
+          icon: 'error',
+          title: 'No tienes Conexion a Internet: Verifique la red.'
+        });
+
+      } else if (jqXHR.status == 404) {
+        const Toast = Swal.mixin({
+          toast: true,
+          position: 'top-end',
+          showConfirmButton: false,
+          timer: 3000,
+          timerProgressBar: true,
+          onOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer)
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
+          }
+        });
+
+        Toast.fire({
+          icon: 'error',
+          title: 'Página solicitada no encontrada [404].'
+        });
+      } else if (jqXHR.status == 500) {
+        const Toast = Swal.mixin({
+          toast: true,
+          position: 'top-end',
+          showConfirmButton: false,
+          timer: 3000,
+          timerProgressBar: true,
+          onOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer)
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
+          }
+        });
+
+        Toast.fire({
+          icon: 'error',
+          title: 'Error interno del servidor [500].'
+        })
+      } else if (textStatus === 'parsererror') {
+
+        const Toast = Swal.mixin({
+          toast: true,
+          position: 'top-end',
+          showConfirmButton: false,
+          timer: 3000,
+          timerProgressBar: true,
+          onOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer)
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
+          }
+        });
+
+        Toast.fire({
+          icon: 'error',
+          title: 'El análisis JSON solicitado ha fallado'
+        })
+
+      } else if (textStatus === 'timeout') {
+
+        const Toast = Swal.mixin({
+          toast: true,
+          position: 'top-end',
+          showConfirmButton: false,
+          timer: 3000,
+          timerProgressBar: true,
+          onOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer)
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
+          }
+        });
+
+        Toast.fire({
+          icon: 'error',
+          title: 'Error de tiempo de espera.'
+        });
+
+      } else if (textStatus === 'abort') {
+
+        const Toast = Swal.mixin({
+          toast: true,
+          position: 'top-end',
+          showConfirmButton: false,
+          timer: 3000,
+          timerProgressBar: true,
+          onOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer)
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
+          }
+        });
+
+        Toast.fire({
+          icon: 'error',
+          title: 'Solicitud de Ajax abortada'
+        });
+
+      } else {
+
+        const Toast = Swal.mixin({
+          toast: true,
+          position: 'top-end',
+          showConfirmButton: false,
+          timer: 3000,
+          timerProgressBar: true,
+          onOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer)
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
+          }
+        });
+
+        Toast.fire({
+          icon: 'error',
+          title: 'Solicitud de Ajax abortada ' + jqXHR.responseText + ''
+        });
+      }
+    })
     .always(function() {
       console.log("complete");
+    });
+    
+    
+  });
+
+
+  // Para registrar a una nueva empresa en el sistema desde un modal en Examenes
+  $(document).on('submit', '#registrar_nuevo_proveedor_sunat', function(event) {
+    event.preventDefault();
+
+    var nruc = $("#usuario").val();
+    if (nruc =="") {
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Ingrese Ruc y precione "Enter"!',
+        footer: '<a href>Si es un error comunicase con Área de Sistemas?</a>'
+      })
+      return false;
+    }
+
+    $.ajax({
+      url: `${window.location.origin}/Inventario/Proveedores/Nuevo_registro/`,
+      type: 'POST',
+      data:$("form").serialize(),
+      statusCode: {
+        400: function(xhr) {
+          var json = JSON.parse(xhr.responseText);
+          if (json.error) {
+            Swal.fire({
+              title: 'Lo siento mucho',
+              text: "" + json.error + "",
+              icon: 'error',
+              footer: '<a href>Si es un error comunicase con Área de Sistemas?</a>',
+              showCancelButton: false,
+              confirmButtonColor: '#3085d6',
+              cancelButtonColor: '#d33',
+              confirmButtonText: 'OK'
+            }).then((result) => {
+              if (result.value) {
+                $('#registrar_nuevo_proveedor_sunat')[0].reset();  
+                $("#usuario").val("");
+                $("#rucx").val("");
+                $("#direccionx").val("");
+                $("#txt_telefono").val("");
+                $("#usuarioxx").text("");
+                $("#rucxxx").text("");
+                $("#txt_telefonoxx").text("");
+                $("#direccionxxx").text("");
+                $("#nruc").val("");
+                $('.bd-example-modal-lgs').modal('hide')
+              }
+            });
+          }
+        }
+      } 
+    })
+    .done(function() {
+      console.log("success");
+      Swal.fire({
+        title: 'Muy bien',
+        text: "Se registro de manera exitosa",
+        icon: 'success',
+        showCancelButton: false,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Muy bien!'
+      }).then((result) => {
+        if (result.value) {
+          $('#registrar_nuevo_proveedor_sunat')[0].reset();  
+          $('.bd-example-modal-lgs').modal('hide')
+          $("#usuario").val("");
+          $("#rucx").val("");
+          $("#direccionx").val("");
+          $("#txt_telefono").val("");
+          $("#usuarioxx").text("");
+          $("#rucxxx").text("");
+          $("#txt_telefonoxx").text("");
+          $("#direccionxxx").text("");
+          $("#nruc").val("");                                
+        }
+      });
+    })
+    .fail(function(jqXHR, textStatus, errorThrown) {
+        console.log("error");
+        if (jqXHR.status === 0) {
+          const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            onOpen: (toast) => {
+              toast.addEventListener('mouseenter', Swal.stopTimer)
+              toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+          });
+
+          Toast.fire({
+            icon: 'error',
+            title: 'No tienes Conexion a Internet: Verifique la red.'
+          });
+
+        } else if (jqXHR.status == 404) {
+          const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            onOpen: (toast) => {
+              toast.addEventListener('mouseenter', Swal.stopTimer)
+              toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+          });
+
+          Toast.fire({
+            icon: 'error',
+            title: 'Página solicitada no encontrada [404].'
+          })
+        } else if (jqXHR.status == 500) {
+
+          const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            onOpen: (toast) => {
+              toast.addEventListener('mouseenter', Swal.stopTimer)
+              toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+          });
+
+          Toast.fire({
+            icon: 'error',
+            title: 'Error interno del servidor [500].'
+          })
+        } else if (textStatus === 'parsererror') {
+
+          const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            onOpen: (toast) => {
+              toast.addEventListener('mouseenter', Swal.stopTimer)
+              toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+          });
+
+          Toast.fire({
+            icon: 'error',
+            title: 'El análisis JSON solicitado ha fallado'
+          });
+
+        } else if (textStatus === 'timeout') {
+
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+                onOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
+
+            Toast.fire({
+                icon: 'error',
+                title: 'Error de tiempo de espera.'
+            })
+
+        } else if (textStatus === 'abort') {
+
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+                onOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
+
+            Toast.fire({
+                icon: 'error',
+                title: 'Solicitud de Ajax abortada'
+            })
+
+        } else {
+
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+                onOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
+
+            Toast.fire({
+                icon: 'error',
+                title: 'Solicitud de Ajax abortada ' + jqXHR.responseText + ''
+            })
+
+
+        }
+    })
+    .always(function() {
+        console.log("complete");
     });
     
   });
 
 
-  
-  $(document).on('submit', '#registrar_nuevo_proveedor_sunat', function(event) {
-      event.preventDefault();
-      /* Act on the event */
-
-      var nruc = $("#usuario").val();
-      if (nruc =="") {
-        Swal.fire({
-            icon: 'error',
-            title: 'Oops...',
-            text: 'Ingrese Ruc y precione "Enter"!',
-            footer: '<a href>Si es un error comunicase con Área de Sistemas?</a>'
-          })
-        return false;
-      }
-      $.ajax({
-          url: `${window.location.origin}/Inventario/Proveedores/Nuevo_registro/`,
-          type: 'POST',
-          data:$("form").serialize(),
-          statusCode: {
-            400: function(xhr) {
-                var json = JSON.parse(xhr.responseText);
-                if (json.error) {
-                    Swal.fire({
-                        title: 'Lo siento mucho',
-                        text: "" + json.error + "",
-                        icon: 'error',
-                        footer: '<a href>Si es un error comunicase con Área de Sistemas?</a>',
-                        showCancelButton: false,
-                        confirmButtonColor: '#3085d6',
-                        cancelButtonColor: '#d33',
-                        confirmButtonText: 'OK'
-                    }).then((result) => {
-                        if (result.value) {
-                          $('#registrar_nuevo_proveedor_sunat')[0].reset();  
-                          $("#usuario").val("");
-                          $("#rucx").val("");
-                          $("#direccionx").val("");
-                          $("#txt_telefono").val("");
-                          $("#usuarioxx").text("");
-                          $("#rucxxx").text("");
-                          $("#txt_telefonoxx").text("");
-                          $("#direccionxxx").text("");
-                              $("#nruc").val("");
-                            $('.bd-example-modal-lgs').modal('hide')
-                        }
-                    })
-
-
-                }
-
-            }
-        } 
-      })
-      .done(function() {
-          console.log("success");
-            Swal.fire({
-                title: 'Muy bien',
-                text: "Se registro de manera exitosa",
-                icon: 'success',
-                showCancelButton: false,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Muy bien!'
-              }).then((result) => { 
-                if (result.value) {
-                  $('#registrar_nuevo_proveedor_sunat')[0].reset();  
-                  $('.bd-example-modal-lgs').modal('hide')
-                  $("#usuario").val("");
-                  $("#rucx").val("");
-                  $("#direccionx").val("");
-                  $("#txt_telefono").val("");
-                  $("#usuarioxx").text("");
-                  $("#rucxxx").text("");
-                  $("#txt_telefonoxx").text("");
-                  $("#direccionxxx").text("");
-                  $("#nruc").val("");
-                
-                  
-                }
-              })
-      })
-      .fail(function(jqXHR, textStatus, errorThrown) {
-          console.log("error");
-          if (jqXHR.status === 0) {
-              const Toast = Swal.mixin({
-                  toast: true,
-                  position: 'top-end',
-                  showConfirmButton: false,
-                  timer: 3000,
-                  timerProgressBar: true,
-                  onOpen: (toast) => {
-                      toast.addEventListener('mouseenter', Swal.stopTimer)
-                      toast.addEventListener('mouseleave', Swal.resumeTimer)
-                  }
-              })
-
-              Toast.fire({
-                  icon: 'error',
-                  title: 'No tienes Conexion a Internet: Verifique la red.'
-              })
-
-          } else if (jqXHR.status == 404) {
-              const Toast = Swal.mixin({
-                  toast: true,
-                  position: 'top-end',
-                  showConfirmButton: false,
-                  timer: 3000,
-                  timerProgressBar: true,
-                  onOpen: (toast) => {
-                      toast.addEventListener('mouseenter', Swal.stopTimer)
-                      toast.addEventListener('mouseleave', Swal.resumeTimer)
-                  }
-              })
-
-              Toast.fire({
-                  icon: 'error',
-                  title: 'Página solicitada no encontrada [404].'
-              })
-
-          } else if (jqXHR.status == 500) {
-              const Toast = Swal.mixin({
-                  toast: true,
-                  position: 'top-end',
-                  showConfirmButton: false,
-                  timer: 3000,
-                  timerProgressBar: true,
-                  onOpen: (toast) => {
-                      toast.addEventListener('mouseenter', Swal.stopTimer)
-                      toast.addEventListener('mouseleave', Swal.resumeTimer)
-                  }
-              })
-
-              Toast.fire({
-                  icon: 'error',
-                  title: 'Error interno del servidor [500].'
-              })
-
-
-          } else if (textStatus === 'parsererror') {
-
-              const Toast = Swal.mixin({
-                  toast: true,
-                  position: 'top-end',
-                  showConfirmButton: false,
-                  timer: 3000,
-                  timerProgressBar: true,
-                  onOpen: (toast) => {
-                      toast.addEventListener('mouseenter', Swal.stopTimer)
-                      toast.addEventListener('mouseleave', Swal.resumeTimer)
-                  }
-              })
-
-              Toast.fire({
-                  icon: 'error',
-                  title: 'El análisis JSON solicitado ha fallado'
-              })
-
-          } else if (textStatus === 'timeout') {
-
-              const Toast = Swal.mixin({
-                  toast: true,
-                  position: 'top-end',
-                  showConfirmButton: false,
-                  timer: 3000,
-                  timerProgressBar: true,
-                  onOpen: (toast) => {
-                      toast.addEventListener('mouseenter', Swal.stopTimer)
-                      toast.addEventListener('mouseleave', Swal.resumeTimer)
-                  }
-              })
-
-              Toast.fire({
-                  icon: 'error',
-                  title: 'Error de tiempo de espera.'
-              })
-
-          } else if (textStatus === 'abort') {
-
-              const Toast = Swal.mixin({
-                  toast: true,
-                  position: 'top-end',
-                  showConfirmButton: false,
-                  timer: 3000,
-                  timerProgressBar: true,
-                  onOpen: (toast) => {
-                      toast.addEventListener('mouseenter', Swal.stopTimer)
-                      toast.addEventListener('mouseleave', Swal.resumeTimer)
-                  }
-              })
-
-              Toast.fire({
-                  icon: 'error',
-                  title: 'Solicitud de Ajax abortada'
-              })
-
-          } else {
-
-              const Toast = Swal.mixin({
-                  toast: true,
-                  position: 'top-end',
-                  showConfirmButton: false,
-                  timer: 3000,
-                  timerProgressBar: true,
-                  onOpen: (toast) => {
-                      toast.addEventListener('mouseenter', Swal.stopTimer)
-                      toast.addEventListener('mouseleave', Swal.resumeTimer)
-                  }
-              })
-
-              Toast.fire({
-                  icon: 'error',
-                  title: 'Solicitud de Ajax abortada ' + jqXHR.responseText + ''
-              })
-
-
-          }
-      })
-      .always(function() {
-          console.log("complete");
-      });
-      
-  });
-
-
   $("#mostramos_datos_rdes").click(function(event) {
-    /* Act on the event */
     event.preventDefault();
 
     $("#collapseExampdle").append(``);
