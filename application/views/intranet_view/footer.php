@@ -161,9 +161,9 @@
                   datos_dni = JSON.parse(datos_dni);
                   var datos = eval(datos_dni);
                   $('#dni_mostrar_dni').val(datos_dni.dni);
-                  $('#apellido_paterno_x').val(datos_dni.first_name);
-                  $('#apellido_materno').val(datos_dni.last_name);
-                  $('#nombres_completos').val(datos_dni.name);                       
+                  $('#apellido_paterno_x').val(datos_dni.apellidoPaterno);
+                  $('#apellido_materno').val(datos_dni.apellidoMaterno);
+                  $('#nombres_completos').val(datos_dni.nombres);                       
                 }
             });
             return false;
