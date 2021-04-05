@@ -94,14 +94,19 @@
 				if( $this->curl->getHttpStatus()==200 && $response!="" )
 				{
 					//RazonSocial
-					$patron='/<input type="hidden" name="desRuc" value="(.*)">/';
+					$patron = '/<td  class="bg" colspan=3>(.*)<\/td>/';
+
 					$output = preg_match_all($patron, $response, $matches, PREG_SET_ORDER);
 					if(isset($matches[0]))
 					{
 						$RS = utf8_encode(str_replace('"','', ($matches[0][1])));
+						// Esto nos da:     NumeroRuc - NombreRazonSocial
+						$RS = trim($RS); 
+						// Esto extrae solo lo que necesitamos del formato anterior
+						$RS = trim(preg_split("/-/",$RS)[1]); 		
 						$rtn = array(
 							"ruc"=>$ruc,
-							"razon_social"=>trim($RS)
+							"razon_social"=>$RS
 						);
 					}
 

@@ -653,7 +653,7 @@ class Examenes extends CI_Controller
 
  
 	
-
+	// Para el dataTable
 	public function tipo_pago()
 	{
 		if ($this->session->userdata("session_id")=="") {
@@ -683,11 +683,11 @@ class Examenes extends CI_Controller
 		}
 
 		$output = array(
-						"draw" => $_POST['draw'],
-						"recordsTotal" => $this->Examenes_model->count_all_tipo_pago(),
-						"recordsFiltered" => $this->Examenes_model->count_filtered_tipo_pago(),
-						"data" => $data,
-				);
+			"draw" => $_POST['draw'],
+			"recordsTotal" => $this->Examenes_model->count_all_tipo_pago(),
+			"recordsFiltered" => $this->Examenes_model->count_filtered_tipo_pago(),
+			"data" => $data,
+		);
 		//output to json format
 		echo json_encode($output);
 	}

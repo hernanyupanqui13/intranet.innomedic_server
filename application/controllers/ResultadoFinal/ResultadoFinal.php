@@ -274,20 +274,41 @@ class ResultadoFinal extends CI_Controller {
       
 		$mail = new PHPMailer();
 
+        // Esta configuracion solo funciona en godaddy, no en el servidor local
+        /*$mail->isSMTP();
+		$mail->Host     = 'localhost';
+		$mail->SMTPSecure = false;
+		$mail->SMTPDebug  = 3;
+		$mail->Username = 'pagina_web@innomedic.pe';
+		$mail->Password = '';
+		$mail->SMTPAuth = false;
+		$mail->SMTPAutoTLS = false; 
+		$mail->SMTPSecure = '';   
+		$mail->Port     = 25;
+		$mail->CharSet = 'UTF-8';        
+		$mail->AllowEmpty = true;
+        
 
-        // Creando la configuracion del correo
+        $mail->setFrom('pagina_web@innomedic.pe', 'Innomedic.pe | Resultados de la Clinica Innomedic International E.I.R.L');
+
+        */
+
+
+
+        // Configuracion para el servidor local
+        
         $mail->isSMTP();
-        $mail->Host = 'smtpout.secureserver.net';
-        $mail->SMTPSecure  = 'tls';
+        $mail->Host = 'smtp.gmail.com';
+        $mail->SMTPSecure = "ssl";
         $mail->SMTPAuth = true;
         $mail->SMTPDebug  = 3;
-        $mail->Username = 'reenviadorweb@innomedic.pe';
-        $mail->Password = 's0p0rt32411';
-        $mail->Port = 80; 
-        $mail->CharSet = 'UTF-8'; 
+        $mail->Username = 'sistemas.innomedic@gmail.com';
+        $mail->Password = 's1st3m4s2411';
+        $mail->Port = 465; 
+        $mail->CharSet = 'UTF-8';
 
         // De: 
-        $mail->setFrom('reenviadorweb@innomedic.pe', 'Innomedic.pe | Resultados de la Clinica Innomedic International E.I.R.L');
+        $mail->setFrom('sistemas.innomedic@gmail.com', 'Innomedic.pe | Resultados de la Clinica Innomedic International E.I.R.L');
 
         // Archivo a adjuntar en el correo. El archivo ya fue subido
         $archivo1 = 'upload/Resultado_analisis/'.$archivo1_xx;
@@ -326,7 +347,7 @@ class ResultadoFinal extends CI_Controller {
 			                <td class="mobile-spacer" width="30" style="width: 30px">&nbsp;</td>
 			              </tr></tbody></table></td>
 			            </tr><tr><td valign="top"><table class="full-width" align="center" width="600" border="0" cellpadding="0" cellspacing="0" bgcolor="#313A3E" style="background-color: #313A3E; width: 600px"><tbody><tr><td width="22" style="width: 22px">&nbsp;</td>
-			          			<td align="center" style="color: #ffffff; font-family: adobe-clean, Arial, Helvetica, sans-serif; font-size: 11px; line-height: 14px; padding-top: 30px; text-align: center"><strong><a href="http://intranet.innomedic.pe/" style="color: #ffffff; font-weight: bold; text-decoration: none" target="_blank" rel="noreferrer">Administrar tu cuenta</a> | <a href="http://innomedic.metjetsac.com/soporte/" style="color: #ffffff; font-weight: bold; text-decoration: none" target="_blank" rel="noreferrer">Asistencia al colaborador</a> | <a href="http://innomedic.pe/" style="color: #ffffff; font-weight: bold; text-decoration: none" target="_blank" rel="noreferrer">Foros</a> </strong></td>
+			          			<td align="center" style="color: #ffffff; font-family: adobe-clean, Arial, Helvetica, sans-serif; font-size: 11px; line-height: 14px; padding-top: 30px; text-align: center"><strong><a href="http://intranet.innomedic.pe/" style="color: #ffffff; font-weight: bold; text-decoration: none" target="_blank" rel="noreferrer">Administrar tu cuenta</a> | <a href="http://innomedic.pe" style="color: #ffffff; font-weight: bold; text-decoration: none" target="_blank" rel="noreferrer">Asistencia al colaborador</a> | <a href="http://innomedic.pe/" style="color: #ffffff; font-weight: bold; text-decoration: none" target="_blank" rel="noreferrer">Foros</a> </strong></td>
 			          			<td width="22" style="width: 22px">&nbsp;</td>
 			        		</tr>
 			        		<tr>
@@ -335,7 +356,7 @@ class ResultadoFinal extends CI_Controller {
 			          				Intranet Innomedic | desarrollado especialmente para los clientes de Innomedic International E.I.R.L &copy; todo los derechos reservados.<br><br> 
 			          				
 			          				&reg; Av. Javier Prado Este 2638, San Borja, Lima, Perú<br/>
-			                        <a target="_blank" href="http://innomedic.metjetsac.com/soporte/" style="color: #ffffff;"><font color="#ffffff">Mas informacion</font></a> Área de Sistemas T.I
+			                        <a target="_blank" href="http://innomedic.pe" style="color: #ffffff;"><font color="#ffffff">Mas informacion</font></a> Área de Sistemas T.I
 			                        <br /><br />
 			                        <a color="#ffffff" style="color: #ffffff;">Desarrollado por: Area de Sistemas</a>
 			          			</td>

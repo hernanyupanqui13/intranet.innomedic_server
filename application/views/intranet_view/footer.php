@@ -897,7 +897,7 @@
 
 
        //registro de exmaen
-        $( "#examen_idddd" ).autocomplete({
+        $( "#examen_entered_by_usr" ).autocomplete({
           source: function( request, response ) {
             // Fetch data
             $.ajax({
@@ -914,9 +914,9 @@
           },
           select: function (event, ui) { 
             // Set selection
-            $('#examen_idddd').val(ui.item.label); // display the selected text
-            $('#examen_evaristo').val(ui.item.value); // save selected id to input
-           $('#examen_evaristo_id').val(ui.item.id); // save selected id to input
+            $('#examen_entered_by_usr').val(ui.item.label); // display the selected text
+            $('#nombre_examen').val(ui.item.value); // save selected id to input
+           $('#id_examen').val(ui.item.id); // save selected id to input
             return false;
           }
         });

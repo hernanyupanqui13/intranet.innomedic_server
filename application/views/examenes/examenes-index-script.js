@@ -1,6 +1,841 @@
-  console.log("start without problems");
+console.log("start without problems");
+
+
+
+//agregamos registros de la fecha
+var save_method; //for save method string
+var table;
+
+
+
+function cancelar_fijo() {
+  $(".title_paquete_asociado").text('Nuevo Paquete Asociado');
+  $(".evaristo_eldulce").attr('id', 'registrar_tipo_paquete_asociado');
+  $("#asociar_nombre").val("");
+  $("#asociar_codigo").val("");
   
+  $("#id_registrar_id_paquete_asociado").val("");
+  $('#categoria_tipo_asociar').prop('selectedIndex',0);
+  $("#cambio_nomre_paquete_asoaciado").html("<i class='fas fa-check-circle'></i>&nbsp;Nuevo Registro");
+  $('#nuevo_paquete_modal_xx').modal('hide');
+}
+
+
   
+function cancelar_fijo_id_tipoexamen() {
+  
+  $(".title_paquete_tipoexamen").text('Nuevo Tipo Exámen');
+  $(".evaristo_eldulce_escudero").attr('id', 'registrar_tipo_paquete_asociado');
+  $("#nombre_examen_tipo").val("");
+  $("#precio_tipo_examen").val("");
+  $('#categoria_tipo_examen').prop('selectedIndex',0);
+  $("#id_registrar_id_tipopexamen").val("");
+  $("#cambio_nomre_paquete_asoaciado_escudero").html("<i class='fas fa-check-circle'></i>&nbsp;Nuevo Registro");
+  $('#nuevo_examen_modal').modal('hide');
+
+    
+}
+
+    
+
+function reload_table_tipo_pago() {
+  // Reload datatable ajax 
+  $('#table_tipo_pago').DataTable().ajax.reload();
+}
+
+// Actualimos datos de paquete
+function reload_table_paquete() {
+  $('#tabla_paquetes').DataTable().ajax.reload();
+}
+
+function reload_table_paquete_asociado() {
+  $('#table_paquete_general_asociar').DataTable().ajax.reload();
+}
+
+function table_paquete_general_examen_reload() {
+  $('#tabla_examenes').DataTable().ajax.reload();
+}
+
+
+// Examenes Clinicos - Tabla Principal
+$(document).ready(function() {
+
+  // Datatables
+  examenes_clinicos_main_tbl = $('#myTable').DataTable({ 
+
+    "processing": true, //Feature control the processing indicator.
+    "serverSide": true, //Feature control DataTables' server-side processing mode.
+    "order": [], //Initial no order.
+
+    // Load data for the table's content from an Ajax source
+    "ajax": {
+      "url": `${window.location.origin}/Examenes/Examenes/ajax_list/`,
+      "type": "POST"
+    },
+
+    //Set column definition initialisation properties.
+    "columnDefs": [
+      { 
+        "targets": [ -1 ], //last column
+        "orderable": false, //set not orderable
+      },
+      { 
+        "targets": [ -2 ], //2 last column (photo)
+        "orderable": false, //set not orderable
+      },
+    ],
+    "lengthMenu": [[5,10, 25, 50], [5,10, 25, 50]],
+
+
+    "destroy": true,
+    "info":true,
+    "sInfo":true,
+    // "order": [[1, "desc"]],
+    "language":{
+      "lengthMenu": "Mostrar _MENU_ Registros por página",
+      //"info": "Mostrando pagina _PAGE_ de _PAGES_",
+      "sInfo":"Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+      "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
+      /*"oLanguage": {
+            "sInfo": "Mostrando START a END de TOTAL registros",
+            "sZeroRecords": "No se encontraron registros coincidentes" 
+        },*/
+      "infoEmpty": "No hay registros disponibles",
+      "loadingRecords": "Cargando...",
+      "processing":     "Procesando...",
+      "search": "Busqueda rapida:",
+      "zeroRecords":    "No se encontraron registros coincidentes",
+      "paginate": {
+        "next":       "Siguiente",
+        "previous":   "Anterior"
+      },         
+    },
+
+  });          
+
+});
+
+  
+
+function reload_table() {    
+  examenes_clinicos_main_tbl.ajax.reload(null,false);   
+}
+
+
+// Agregar tipo de pago - Tabla
+$(document).ready(function() {  
+  table = $('#table_tipo_pago').DataTable({ 
+
+    "responsive": {
+      "details": {
+        "display": $.fn.dataTable.Responsive.display.modal(),
+      }
+    },
+    
+    "processing": true, //Feature control the processing indicator.
+    "serverSide": true, //Feature control DataTables' server-side processing mode.
+    "order": [], //Initial no order.
+
+
+    // Load data for the table's content from an Ajax source
+    "ajax": {
+      "url": `${window.location.origin}/Examenes/Examenes/tipo_pago/`,
+      "type": "POST"
+    },
+
+    //Set column definition initialisation properties.
+    "columnDefs": [
+      { 
+        "targets": [ -1 ], //last column
+        "orderable": false, //set not orderable
+        "className": 'dt-body-right',
+      },
+      { 
+        "targets": [ -2 ], //2 last column (photo)
+        "orderable": false, //set not orderable
+        "className": 'dt-body-right',
+      },
+    ],
+
+
+    "lengthMenu": [[3,5,10, 25, 50, -1], [3,5,10, 25, 50, "All"]],
+    "destroy": true,
+    "info":true,
+    "sInfo":true,
+    // "order": [[1, "desc"]],
+    "language":{
+      "lengthMenu": "Mostrar _MENU_ Registros por página",
+      //"info": "Mostrando pagina _PAGE_ de _PAGES_",
+      "sInfo":"Registros del _START_ al _END_ total de _TOTAL_ registros",
+      "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
+      /*"oLanguage": {
+            "sInfo": "Mostrando START a END de TOTAL registros",
+            "sZeroRecords": "No se encontraron registros coincidentes" 
+        },*/
+      "infoEmpty": "No hay registros disponibles",
+      // "infoFiltered": "(filtrada de _MAX_ registros)",
+      "loadingRecords": "Cargando...",
+      "processing":     "Procesando...",
+      "search": "Busqueda tipo pago:",
+      "zeroRecords":    "No se encontraron registros coincidentes",
+      "paginate": {
+        "next":       "Siguiente",
+        "previous":   "Anterior"
+      },         
+    },
+  });  
+});
+
+
+// Agregar Examenes - Tabla
+$(document).ready(function() {
+
+  $('#tabla_examenes').DataTable({ 
+
+    "responsive": {
+      "details": {
+        "display": $.fn.dataTable.Responsive.display.modal(),
+      }
+    },
+      
+    "processing": true, //Feature control the processing indicator.
+    "serverSide": true, //Feature control DataTables' server-side processing mode.
+    "order": [], //Initial no order.
+
+
+    // Load data for the table's content from an Ajax source
+    "ajax": {
+      "url": `${window.location.origin}/Examenes/Examenes/tipo_examen_general/`,
+      "type": "POST"
+    },
+
+      //Set column definition initialisation properties.
+    "columnDefs": [
+      { 
+        "targets": [ -1 ], //last column
+        "orderable": false, //set not orderable
+        "className": 'dt-body-right',
+      },
+      { 
+        "targets": [ -2 ], //2 last column (photo)
+        "orderable": false, //set not orderable
+        "className": 'dt-body-right',
+      },
+    ],
+
+
+    "lengthMenu": [[3,5,10, 25, 50, -1], [3,5,10, 25, 50, "All"]],
+    "destroy": true,
+    "info":true,
+    "sInfo":true,
+    // "order": [[1, "desc"]],
+    "language":{
+      "lengthMenu": "Mostrar _MENU_ Registros por página",
+      //"info": "Mostrando pagina _PAGE_ de _PAGES_",
+      "sInfo":"Registros del _START_ al _END_ total de _TOTAL_ registros",
+      "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
+      /*"oLanguage": {
+            "sInfo": "Mostrando START a END de TOTAL registros",
+            "sZeroRecords": "No se encontraron registros coincidentes" 
+        },*/
+      "infoEmpty": "No hay registros disponibles",
+      // "infoFiltered": "(filtrada de _MAX_ registros)",
+      "loadingRecords": "Cargando...",
+      "processing":     "Procesando...",
+      "search": "Busqueda tipo Exámen:",
+      "zeroRecords":    "No se encontraron registros coincidentes",
+      "paginate": {
+        "next":       "Siguiente",
+        "previous":   "Anterior"
+      },         
+    },
+
+  });
+
+});
+
+
+// Agregar Paquete - Tabla
+$(document).ready(function() {
+  
+  $('#tabla_paquetes').DataTable({
+
+    "responsive": {
+      "details": {
+        "display": $.fn.dataTable.Responsive.display.modal(),
+      }
+    },
+    
+    "processing": true, //Feature control the processing indicator.
+    "serverSide": true, //Feature control DataTables' server-side processing mode.
+    "order": [], //Initial no order.
+
+
+    // Load data for the table's content from an Ajax source
+    "ajax": {
+      "url": `${window.location.origin}/Examenes/Examenes/table_paquete_general/`,
+      "type": "POST"
+    },
+
+    //Set column definition initialisation properties.
+    "columnDefs": [
+      { 
+        "targets": [ -1 ], //last column
+        "orderable": false, //set not orderable
+        "className": 'dt-body-right',
+      },
+      { 
+        "targets": [ -2 ], //2 last column (photo)
+        "orderable": false, //set not orderable
+        "className": 'dt-body-right',
+      },
+    ],
+
+
+    "lengthMenu": [[3,5,10, 25, 50, -1], [3,5,10, 25, 50, "All"]],
+    "destroy": true,
+    "info":true,
+    "sInfo":true,
+    // "order": [[1, "desc"]],
+    "language":{
+      "lengthMenu": "Mostrar _MENU_ Registros por página",
+      //"info": "Mostrando pagina _PAGE_ de _PAGES_",
+      "sInfo":"Registros del _START_ al _END_ total de _TOTAL_ registros",
+      "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
+      /*"oLanguage": {
+            "sInfo": "Mostrando START a END de TOTAL registros",
+            "sZeroRecords": "No se encontraron registros coincidentes" 
+        },*/
+      "infoEmpty": "No hay registros disponibles",
+      // "infoFiltered": "(filtrada de _MAX_ registros)",
+      "loadingRecords": "Cargando...",
+      "processing":     "Procesando...",
+      "search": "Busqueda paquete:",
+      "zeroRecords":    "No se encontraron registros coincidentes",
+      "paginate": {
+        "next":       "Siguiente",
+        "previous":   "Anterior"
+      }         
+    }
+  });  
+});
+
+// Usando el boton de busqueda y mostrando al informacion en la tabla
+$(document).ready(function() {
+
+  $("#buscar_registro_por_ajax").click(function(event) {
+
+    event.preventDefault();
+    
+    let fecha_inicio = $("#fecha_inicio").val();
+
+    if(fecha_inicio!="") {
+      fecha_inicio = fecha_inicio.split("/");
+      fecha_inicio = fecha_inicio[2] + "-" + fecha_inicio[0] + "-" + fecha_inicio[1];
+    } else {
+      fecha_inicio="null";
+    }
+    
+    
+    // Obteniendo la fecha y dando formato para que sea complatible con MySql
+    let fecha_fin = $("#fecha_fin").val();
+    if(fecha_fin!="") {
+      fecha_fin = fecha_fin.split("/");
+      fecha_fin = fecha_fin[2] + "-" + fecha_fin[0] + "-" + fecha_fin[1];    
+    } else {
+      fecha_fin = "null";
+    }
+    
+    let nombre_busqueda = $("#nombre_busqueda").val();
+    let dni_busqueda = $("#dni_busqueda").val();
+
+    if(nombre_busqueda == null || nombre_busqueda =="") {
+      nombre_busqueda = "null";		
+    } 
+
+    if(dni_busqueda == null || dni_busqueda =="") {
+      dni_busqueda =  "null";					
+    } 
+
+    $('#myTable').DataTable({
+  
+      "processing": true, //Feature control the processing indicator.
+      "serverSide": true, //Feature control DataTables' server-side processing mode.
+      "order": [], //Initial no order.
+
+      // Load data for the table's content from an Ajax source
+      "ajax": {
+        "url": `${window.location.origin}/Examenes/Examenes/mostrar_datos_busqueda_avanzada/`,
+        "type": "POST",
+        "data": {
+          "fecha_inicio" : fecha_inicio,
+          "fecha_fin": fecha_fin,
+          "nombre_busqueda": nombre_busqueda,
+          "dni_busqueda": dni_busqueda,
+        } 
+      },
+
+      //Set column definition initialisation properties.
+      "columnDefs": [
+        { 
+          "targets": [ -1 ], //last column
+          "orderable": false, //set not orderable
+        },
+        { 
+          "targets": [ -2 ], //2 last column (photo)
+          "orderable": false, //set not orderable
+        },
+      ],
+    
+      "lengthMenu": [[5,10, 25, 50], [5,10, 25, 50]],
+
+
+      "destroy": true,
+      "info":true,
+      "sInfo":true,
+      "language":{
+        "lengthMenu": "Mostrar _MENU_ Registros por página",
+        "sInfo":"Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+        "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
+        "infoEmpty": "No hay registros disponibles",
+        "loadingRecords": "Cargando...",
+        "processing":     "Procesando...",
+        "search": "Busqueda rapida:",
+        "zeroRecords":    "No se encontraron registros coincidentes",
+        "paginate": {
+          "next":       "Siguiente",
+          "previous":   "Anterior"
+        },         
+      },
+
+    });
+
+    reload_table();
+
+  });
+});
+
+
+// Agregar un nuevo examen despues de dar click en editar un examen
+$(document).ready(function() {
+  $(document).on('click', '#nuevo_examen_btn', function(event) {
+    event.preventDefault();
+    $("#prg_otra_fecha_btn").show(800);
+    $("#agregamos_fecha_hora").hide();
+    $("#mostramos_datos_del_igv_total_subtotal").show(800);
+    $("#mostramos_datos_desde_ajax").show(800);
+    $("#ocultanos_parta_actualizar").show(800);
+    $('#actualizar_registro_por_id_datos_generales')[0].reset();
+
+    $('#sexo').prop('selectedIndex',0);
+    $('#tipo_pago').prop('selectedIndex',0);
+
+    $('#agregar_detalle__por_paquete').prop('selectedIndex',0);
+    $("#cambio_nombre_boton").html("<i class='fas fa-check-circle'></i>&nbsp;Nuevo Registro");
+    $(".evaristoescuderohuillcamascco").attr('Id', 'registrar_datos_generales');
+  });
+
+});
+
+
+
+
+function limpiar_campos() {
+
+  $("#fecha_inicio").val("");
+  $("#fecha_fin").val("");
+  $("#nombre_busqueda").val("");
+  $("#dni_busqueda").val("");
+
+}
+
+// Cargando las opciones de los select y demas inputs de los formularios
+$(document).ready(function() {
+
+  // Para que se ejecute finalizada la renderizacion
+  setTimeout(function(){
+    cargar_sexo();
+    tipo_pago_();
+    tipocomprobante_id();
+    tipo_paquete_();
+    categoria_tipo_exame_cargador();
+  });
+
+});
+
+
+// Cargando las opciones de sexo (genero)
+function cargar_sexo() {
+  $.ajax({
+    type: "POST",
+    async:true,
+    url: `${window.location.origin}/Examenes/Examenes/cargar_sexo/`,
+    success: function(response) {
+      $('.mostrarsexo select').html(response).fadeIn();
+    }
+  });
+}
+
+
+function tipo_pago_() {
+
+  $.ajax({
+    type: "POST",
+    async:true,
+    url: `${window.location.origin}/Examenes/Examenes/cargar_tipo_pago/`,
+    success: function(response) {
+      $('.tipo_pago_xx select').html(response).fadeIn();
+    }
+  });
+
+}
+function tipocomprobante_id() {
+
+  $.ajax({
+    type: "POST",
+    async:true,
+    url: `${window.location.origin}/Examenes/Examenes/tipocomprobante/`,
+    success: function(response) {
+      $('.tipocomprobante_id select').html(response).fadeIn();
+    }
+  });
+}
+
+function tipo_paquete_() {
+
+  $.ajax({
+    type: "POST",
+    async:true,
+    url: `${window.location.origin}/Examenes/Examenes/cargar_paquete/`,
+    success: function(response) {
+      $('.mostrararea select').html(response).fadeIn();
+    }
+  });
+
+}
+
+
+function categoria_tipo_exame_cargador() {
+
+  $.ajax({
+    type: "POST",
+    async:true,
+    url: `${window.location.origin}/Examenes/Examenes/cargar_paquete/`,
+    success: function(response) {
+      $('.categoria_tipo_examen_id select').html(response).fadeIn();
+    }
+  });
+
+}
+
+
+
+
+$(document).ready(function() {
+
+
+
+  // Cuando se envia el formulario para actualizar un examen ya ingresado
+  $(document).on('submit', '#actualizar_registro_por_id_datos_generales', function(event) {
+    event.preventDefault();
+
+    $.ajax({
+      url: `${window.location.origin}/Examenes/Examenes/actualizar_registro_via_ajax_update/`,
+      type: 'POST',
+      data:new FormData(this),  
+      contentType:false,  
+      processData:false        
+    })
+    .done(function(data) {
+      console.log("success");
+      let json = JSON.parse(data);
+      Swal.fire({
+        title: 'Muy bien..!!',
+        text: ""+json.mensaje+"",
+        icon: 'success',
+        showCancelButton: false,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'ok...'
+      }).then((result) => {
+        if (result.value) {
+          reload_table();
+          
+        }
+      })    
+    })
+    .fail(function(jqXHR, textStatus, errorThrown) {
+      console.log("error");
+      Swal.fire(
+        'Oposs..',
+        'Error el sistema, comunicate con el administrador...',
+        'error'
+      )
+    })
+    .always(function() {
+      console.log("complete");
+    });      
+  });
+
+
+  // Para agregar un nuevo examen a la orden clinica o al pedido
+  $(document).on('click', '#agregar_examen_btn', function(event) {
+    event.preventDefault();
+    let id_codigo = $("#id_examen").val();
+    let examen_entered_by_usr = $("#examen_entered_by_usr").val();
+    if (examen_entered_by_usr == null || examen_entered_by_usr.length == 0 || /^\s+$/.test(examen_entered_by_usr) ) {
+      Swal.fire(
+        'Oposs!',
+        'Primero Ingrese el tipo Exámen',
+        'error'
+      );
+      return false;
+    }
+
+    
+    // Obtiendo datos del tipo de examen para agregarlos en el resumen del pedido/orden clinica
+    $.ajax({
+      url: `${window.location.origin}/Examenes/Examenes/agregar_detalle_tipo_examen/`,
+      type: 'POST',
+      dataType: 'json',
+      data: {id_codigo:id_codigo},
+    })
+    .done(function(data) {
+      var rowid = Math.random();
+      var $sr = ($(".jdr1").length + 1);
+
+      $("#evaristoescuderohuillcamascco tbody tr").each(function() {
+        subtotal = $(this).find("td:eq(1)").text();
+        
+        if (subtotal == data.nombre) {
+          Swal.fire({
+            title: 'Verficar',
+            text: "Ya esta en la lista de detalle",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Okey!'
+          });
+
+          $(this).closest("tr").remove();
+        }                                  
+      });
+
+      var $html = `
+        <tr class="jdr1" id="${rowid}">
+          <td class="text-center"><input type="hidden" name="codigo[]" value="${data.codigo}"/>${data.codigo}</span><input type="hidden" name="count[]" value="${rowid}"></td>'</td>
+          <td class="text-center validamos_campos"><input type="hidden" name="nombre_detalle[]" value="${data.nombre}" />${data.nombre}</td>
+          <td class="text-center"><input type="hidden" name="precio_detalle[]" value="${data.precio}" /><p>${data.precio}</p></td>
+          <td class="text-right"><button type='button' class='btn btn-remove-producto btn-danger '><i class='fas fa-times-circle'></i></button></td>
+          <input type='hidden' name='codigo[]' value='${data.codigo}'/>
+          <input type="hidden" name="categoria_detalle[]" value="${data.id_categoria}" />
+        </tr>
+      `;
+
+
+      $("#evaristoescuderohuillcamascco tbody").append($html); 
+      $("#examen_entered_by_usr").val("");
+      sumar();
+
+
+    })
+    .fail(function() {
+      console.log("error");
+    })
+    .always(function() {
+      console.log("complete");
+
+    });
+      
+    
+  });
+
+  //remover el pedido
+    $(document).on("click",".btn-remove-producto", function(){
+      $(this).closest("tr").remove();
+      sumar();      
+    });
+
+
+  $(document).on('change', '#agregar_detalle__por_paquete', function(event) {
+    event.preventDefault();
+    /* Act on the event */
+
+    var id_codigo_xx = $("#agregar_detalle__por_paquete").val();
+    $.ajax({
+      url: window.location.href + "cargar_lista_paquete/",
+      type: 'POST',
+      data: {id_codigo_xx:id_codigo_xx},
+    })
+    .done(function(data) {
+      var resultado = JSON.parse(data);
+      var contenido = '';               
+      $.each(resultado, function(index, value) {
+        var rowid = Math.random();
+        var $sr = ($(".jdr1").length + 1);
+        contenido += `
+          <tr class="jdr1" id="${rowid}">  
+              <td class="text-center">
+                <input type="hidden" name="codigo[]" value="${value.codigo}"/><span>${value.codigo}</span>
+                <input type="hidden" name="count[]" value="${rowid}">
+              </td>
+              <td class="text-center"><input type="hidden" name="nombre_detalle[]" value="${value.nombre}"/>${value.nombre}</td>
+              <input type="hidden" name="categoria_detalle[]" value="${value.id_categoria}"/>
+          </tr>
+        `;
+      });
+      $("#evaristoescuderohuillcamascco_iddd tbody").html(contenido); 
+      $(".olo").html(contenido);
+    })
+    .fail(function() {
+      console.log("error");
+    })
+    .always(function() {
+      console.log("complete");
+    });
+
+  });
+
+
+
+  //aqui obtenemos el precio
+
+  $(document).on('change', '#agregar_detalle__por_paquete', function(event) {
+    event.preventDefault();
+    /* Act on the event */
+
+    var id_codigo_xx = $("#agregar_detalle__por_paquete").val();
+    $.ajax({
+        url: window.location.href + "cargar_lista_precio/",
+      type: 'POST',
+      dataType: 'json',
+      data: {id_codigo_xx:id_codigo_xx},
+    })
+    .done(function(data) {
+      
+        $("#total_id_xx").text("S/."+ data.precio);
+        $("input[name=total]").val(data.precio);
+        
+      })
+    .fail(function() {
+      console.log("error");
+    })
+    .always(function() {
+      console.log("complete");
+    });
+
+  });
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   function sumar() {
     subtotal = 0;
     $("#evaristoescuderohuillcamascco tbody tr").each(function() {
@@ -20,67 +855,57 @@
 }
 
 $(document).ready(function() {
+
+  // Para registrar una orden clinica/pedido despues que se ha dado a registrar
   $(document).on('submit', '#registrar_datos_generales', function(event) {
     event.preventDefault();
-    /* Act on the event */
 
 
-      var sexo = $("sexo").val();
-      var agregar_detalle__por_paquete = $("agregar_detalle__por_paquete").val();
-      var tipo_pago = $("tipo_pago").val();
+    var sexo = $("sexo").val();
+    var agregar_detalle__por_paquete = $("agregar_detalle__por_paquete").val();
+    var tipo_pago = $("tipo_pago").val();
 
-      sexo = document.getElementById("sexo").selectedIndex;
-      if( sexo == null || sexo == 0 ) {
-          Swal.fire({
-            title: 'Sexo',
-            text: "Sleccione Sexo",
-            icon: 'error',
-            showCancelButton: false,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'ok'
-          }).then((result) => {
-            if (result.value) {
-              
-            }
-          })
-        return false;
-      }
-      
-      tipo_pago = document.getElementById("tipo_pago").selectedIndex;
-      if( tipo_pago == null || tipo_pago == 0 ) {
-          Swal.fire({
-            title: 'Tipo Pago',
-            text: "Seleccione Tipo Pago",
-            icon: 'error',
-            showCancelButton: false,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'ok'
-          }).then((result) => {
-            if (result.value) {
-              
-            }
-          })
-        return false;
-      }
-      tipocomprobante = document.getElementById("tipocomprobante").selectedIndex;
-      if( tipocomprobante == null || tipocomprobante == 0 ) {
-          Swal.fire({
-            title: 'Paquete',
-            text: "Seleccione Tipo Comprobante",
-            icon: 'error',
-            showCancelButton: false,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'ok'
-          }).then((result) => {
-            if (result.value) {
-              
-            }
-          }) 
-        return false;
-      }
+    sexo = document.getElementById("sexo").selectedIndex;
+    if( sexo == null || sexo == 0 ) {
+      Swal.fire({
+        title: 'Sexo',
+        text: "Sleccione Sexo",
+        icon: 'error',
+        showCancelButton: false,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'ok'
+      });
+      return false;
+    }
+    
+    tipo_pago = document.getElementById("tipo_pago").selectedIndex;
+    if( tipo_pago == null || tipo_pago == 0 ) {
+      Swal.fire({
+        title: 'Tipo Pago',
+        text: "Seleccione Tipo Pago",
+        icon: 'error',
+        showCancelButton: false,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'ok'
+      });
+      return false;
+    }
+
+    tipocomprobante = document.getElementById("tipocomprobante").selectedIndex;
+    if( tipocomprobante == null || tipocomprobante == 0 ) {
+      Swal.fire({
+        title: 'Paquete',
+        text: "Seleccione Tipo Comprobante",
+        icon: 'error',
+        showCancelButton: false,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'ok'
+      });
+      return false;
+    }
 
     $.ajax({
       url: `${window.location.origin}/Examenes/Examenes/registrar_datos/`,
@@ -89,35 +914,26 @@ $(document).ready(function() {
       contentType:false,  
       processData:false,  
       statusCode: {
-            400: function(xhr) {
-                var json = JSON.parse(xhr.responseText);
-                if (json.error) {
-                    Swal.fire({
-                        title: 'Lo siento mucho',
-                        text: "" + json.error + "",
-                        icon: 'error',
-                        showCancelButton: false,
-                        confirmButtonColor: '#3085d6',
-                        cancelButtonColor: '#d33',
-                        confirmButtonText: 'OK'
-                    }).then((result) => {
-                        if (result.value) {
-
-                        }
-                    })
-
-
-                }
-
-            }
+        400: function(xhr) {
+          var json = JSON.parse(xhr.responseText);
+          if (json.error) {
+            Swal.fire({
+              title: 'Lo siento mucho',
+              text: "" + json.error + "",
+              icon: 'error',
+              showCancelButton: false,
+              confirmButtonColor: '#3085d6',
+              cancelButtonColor: '#d33',
+              confirmButtonText: 'OK'
+            });
+          }
         }
-
+      }
     })
     .done(function() {
       console.log("success");
-        let timerInterval
+      let timerInterval
       Swal.fire({
-        // icon : 'warning',
         title: 'Registrando...',
         html: 'Nuevo registro <b> </b> en proceso espere.',
         timer: 3000,
@@ -148,15 +964,15 @@ $(document).ready(function() {
             toast.addEventListener('mouseenter', Swal.stopTimer)
             toast.addEventListener('mouseleave', Swal.resumeTimer)
           }
-        })
+        });
 
         Toast.fire({
           icon: 'success',
           title: 'Nuevo Registro agregado'
-        })
-          reload_table();
-          //table.ajax.reload(null,false); 
-          // table.ajax.reload();
+        });
+
+        reload_table();
+
         $('#registrar_datos_generales')[0].reset();  
         $('#collapseExample').collapse('hide').delay(1000);
         $("#general_poaquetes_id").hide(800);
@@ -166,382 +982,369 @@ $(document).ready(function() {
         $('#dvOcultar_iddd').hide();
         $("#agregar_nav_link").html("");
 
-      })
+      });
 
     
-
-      //alert("se registro de manera correcta");
     })
     .fail(function(jqXHR, textStatus, errorThrown) {
-          console.log("error");
-          if (jqXHR.status === 0) {
-              const Toast = Swal.mixin({
-                  toast: true,
-                  position: 'top-end',
-                  showConfirmButton: false,
-                  timer: 3000,
-                  timerProgressBar: true,
-                  onOpen: (toast) => {
-                      toast.addEventListener('mouseenter', Swal.stopTimer)
-                      toast.addEventListener('mouseleave', Swal.resumeTimer)
-                  }
-              })
-
-              Toast.fire({
-                  icon: 'error',
-                  title: 'No tienes Conexion a Internet: Verifique la red.'
-              })
-
-          } else if (jqXHR.status == 404) {
-              const Toast = Swal.mixin({
-                  toast: true,
-                  position: 'top-end',
-                  showConfirmButton: false,
-                  timer: 3000,
-                  timerProgressBar: true,
-                  onOpen: (toast) => {
-                      toast.addEventListener('mouseenter', Swal.stopTimer)
-                      toast.addEventListener('mouseleave', Swal.resumeTimer)
-                  }
-              })
-
-              Toast.fire({
-                  icon: 'error',
-                  title: 'Página solicitada no encontrada [404].'
-              })
-
-          } else if (jqXHR.status == 500) {
-              const Toast = Swal.mixin({
-                  toast: true,
-                  position: 'top-end',
-                  showConfirmButton: false,
-                  timer: 3000,
-                  timerProgressBar: true,
-                  onOpen: (toast) => {
-                      toast.addEventListener('mouseenter', Swal.stopTimer)
-                      toast.addEventListener('mouseleave', Swal.resumeTimer)
-                  }
-              })
-
-              Toast.fire({
-                  icon: 'error',
-                  title: 'Error interno del servidor [500].'
-              })
-
-
-          } else if (textStatus === 'parsererror') {
-
-              const Toast = Swal.mixin({
-                  toast: true,
-                  position: 'top-end',
-                  showConfirmButton: false,
-                  timer: 3000,
-                  timerProgressBar: true,
-                  onOpen: (toast) => {
-                      toast.addEventListener('mouseenter', Swal.stopTimer)
-                      toast.addEventListener('mouseleave', Swal.resumeTimer)
-                  }
-              })
-
-              Toast.fire({
-                  icon: 'error',
-                  title: 'El análisis JSON solicitado ha fallado'
-              })
-
-          } else if (textStatus === 'timeout') {
-
-              const Toast = Swal.mixin({
-                  toast: true,
-                  position: 'top-end',
-                  showConfirmButton: false,
-                  timer: 3000,
-                  timerProgressBar: true,
-                  onOpen: (toast) => {
-                      toast.addEventListener('mouseenter', Swal.stopTimer)
-                      toast.addEventListener('mouseleave', Swal.resumeTimer)
-                  }
-              })
-
-              Toast.fire({
-                  icon: 'error',
-                  title: 'Error de tiempo de espera.'
-              })
-
-          } else if (textStatus === 'abort') {
-
-              const Toast = Swal.mixin({
-                  toast: true,
-                  position: 'top-end',
-                  showConfirmButton: false,
-                  timer: 3000,
-                  timerProgressBar: true,
-                  onOpen: (toast) => {
-                      toast.addEventListener('mouseenter', Swal.stopTimer)
-                      toast.addEventListener('mouseleave', Swal.resumeTimer)
-                  }
-              })
-
-              Toast.fire({
-                  icon: 'error',
-                  title: 'Solicitud de Ajax abortada'
-              })
-
-          } else {
-
-              const Toast = Swal.mixin({
-                  toast: true,
-                  position: 'top-end',
-                  showConfirmButton: false,
-                  timer: 3000,
-                  timerProgressBar: true,
-                  onOpen: (toast) => {
-                      toast.addEventListener('mouseenter', Swal.stopTimer)
-                      toast.addEventListener('mouseleave', Swal.resumeTimer)
-                  }
-              })
-
-              Toast.fire({
-                  icon: 'error',
-                  title: 'Solicitud de Ajax abortada ' + jqXHR.responseText + ''
-              })
-
-
+      console.log("error");
+      if (jqXHR.status === 0) {
+        const Toast = Swal.mixin({
+          toast: true,
+          position: 'top-end',
+          showConfirmButton: false,
+          timer: 3000,
+          timerProgressBar: true,
+          onOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer)
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
           }
-      })
+        });
+
+
+        Toast.fire({
+          icon: 'error',
+          title: 'No tienes Conexion a Internet: Verifique la red.'
+        });
+
+      } else if (jqXHR.status == 404) {
+        const Toast = Swal.mixin({
+          toast: true,
+          position: 'top-end',
+          showConfirmButton: false,
+          timer: 3000,
+          timerProgressBar: true,
+          onOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer)
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
+          }
+        });
+
+        Toast.fire({
+          icon: 'error',
+          title: 'Página solicitada no encontrada [404].'
+        });
+      } else if (jqXHR.status == 500) {
+        const Toast = Swal.mixin({
+          toast: true,
+          position: 'top-end',
+          showConfirmButton: false,
+          timer: 3000,
+          timerProgressBar: true,
+          onOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer)
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
+          }
+        });
+
+        Toast.fire({
+          icon: 'error',
+          title: 'Error interno del servidor [500].'
+        })
+      } else if (textStatus === 'parsererror') {
+
+        const Toast = Swal.mixin({
+          toast: true,
+          position: 'top-end',
+          showConfirmButton: false,
+          timer: 3000,
+          timerProgressBar: true,
+          onOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer)
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
+          }
+        });
+
+        Toast.fire({
+          icon: 'error',
+          title: 'El análisis JSON solicitado ha fallado'
+        })
+
+      } else if (textStatus === 'timeout') {
+
+        const Toast = Swal.mixin({
+          toast: true,
+          position: 'top-end',
+          showConfirmButton: false,
+          timer: 3000,
+          timerProgressBar: true,
+          onOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer)
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
+          }
+        });
+
+        Toast.fire({
+          icon: 'error',
+          title: 'Error de tiempo de espera.'
+        });
+
+      } else if (textStatus === 'abort') {
+
+        const Toast = Swal.mixin({
+          toast: true,
+          position: 'top-end',
+          showConfirmButton: false,
+          timer: 3000,
+          timerProgressBar: true,
+          onOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer)
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
+          }
+        });
+
+        Toast.fire({
+          icon: 'error',
+          title: 'Solicitud de Ajax abortada'
+        });
+
+      } else {
+
+        const Toast = Swal.mixin({
+          toast: true,
+          position: 'top-end',
+          showConfirmButton: false,
+          timer: 3000,
+          timerProgressBar: true,
+          onOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer)
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
+          }
+        });
+
+        Toast.fire({
+          icon: 'error',
+          title: 'Solicitud de Ajax abortada ' + jqXHR.responseText + ''
+        });
+      }
+    })
     .always(function() {
       console.log("complete");
+    });
+    
+    
+  });
+
+
+  // Para registrar a una nueva empresa en el sistema desde un modal en Examenes
+  $(document).on('submit', '#registrar_nuevo_proveedor_sunat', function(event) {
+    event.preventDefault();
+
+    var nruc = $("#usuario").val();
+    if (nruc =="") {
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Ingrese Ruc y precione "Enter"!',
+        footer: '<a href>Si es un error comunicase con Área de Sistemas?</a>'
+      })
+      return false;
+    }
+
+    $.ajax({
+      url: `${window.location.origin}/Inventario/Proveedores/Nuevo_registro/`,
+      type: 'POST',
+      data:$("form").serialize(),
+      statusCode: {
+        400: function(xhr) {
+          var json = JSON.parse(xhr.responseText);
+          if (json.error) {
+            Swal.fire({
+              title: 'Lo siento mucho',
+              text: "" + json.error + "",
+              icon: 'error',
+              footer: '<a href>Si es un error comunicase con Área de Sistemas?</a>',
+              showCancelButton: false,
+              confirmButtonColor: '#3085d6',
+              cancelButtonColor: '#d33',
+              confirmButtonText: 'OK'
+            }).then((result) => {
+              if (result.value) {
+                $('#registrar_nuevo_proveedor_sunat')[0].reset();  
+                $("#usuario").val("");
+                $("#rucx").val("");
+                $("#direccionx").val("");
+                $("#txt_telefono").val("");
+                $("#usuarioxx").text("");
+                $("#rucxxx").text("");
+                $("#txt_telefonoxx").text("");
+                $("#direccionxxx").text("");
+                $("#nruc").val("");
+                $('.bd-example-modal-lgs').modal('hide')
+              }
+            });
+          }
+        }
+      } 
+    })
+    .done(function() {
+      console.log("success");
+      Swal.fire({
+        title: 'Muy bien',
+        text: "Se registro de manera exitosa",
+        icon: 'success',
+        showCancelButton: false,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Muy bien!'
+      }).then((result) => {
+        if (result.value) {
+          $('#registrar_nuevo_proveedor_sunat')[0].reset();  
+          $('.bd-example-modal-lgs').modal('hide')
+          $("#usuario").val("");
+          $("#rucx").val("");
+          $("#direccionx").val("");
+          $("#txt_telefono").val("");
+          $("#usuarioxx").text("");
+          $("#rucxxx").text("");
+          $("#txt_telefonoxx").text("");
+          $("#direccionxxx").text("");
+          $("#nruc").val("");                                
+        }
+      });
+    })
+    .fail(function(jqXHR, textStatus, errorThrown) {
+        console.log("error");
+        if (jqXHR.status === 0) {
+          const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            onOpen: (toast) => {
+              toast.addEventListener('mouseenter', Swal.stopTimer)
+              toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+          });
+
+          Toast.fire({
+            icon: 'error',
+            title: 'No tienes Conexion a Internet: Verifique la red.'
+          });
+
+        } else if (jqXHR.status == 404) {
+          const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            onOpen: (toast) => {
+              toast.addEventListener('mouseenter', Swal.stopTimer)
+              toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+          });
+
+          Toast.fire({
+            icon: 'error',
+            title: 'Página solicitada no encontrada [404].'
+          })
+        } else if (jqXHR.status == 500) {
+
+          const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            onOpen: (toast) => {
+              toast.addEventListener('mouseenter', Swal.stopTimer)
+              toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+          });
+
+          Toast.fire({
+            icon: 'error',
+            title: 'Error interno del servidor [500].'
+          })
+        } else if (textStatus === 'parsererror') {
+
+          const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            onOpen: (toast) => {
+              toast.addEventListener('mouseenter', Swal.stopTimer)
+              toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+          });
+
+          Toast.fire({
+            icon: 'error',
+            title: 'El análisis JSON solicitado ha fallado'
+          });
+
+        } else if (textStatus === 'timeout') {
+
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+                onOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
+
+            Toast.fire({
+                icon: 'error',
+                title: 'Error de tiempo de espera.'
+            })
+
+        } else if (textStatus === 'abort') {
+
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+                onOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
+
+            Toast.fire({
+                icon: 'error',
+                title: 'Solicitud de Ajax abortada'
+            })
+
+        } else {
+
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+                onOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
+
+            Toast.fire({
+                icon: 'error',
+                title: 'Solicitud de Ajax abortada ' + jqXHR.responseText + ''
+            })
+
+
+        }
+    })
+    .always(function() {
+        console.log("complete");
     });
     
   });
 
 
-  
-  $(document).on('submit', '#registrar_nuevo_proveedor_sunat', function(event) {
-      event.preventDefault();
-      /* Act on the event */
-
-      var nruc = $("#usuario").val();
-      if (nruc =="") {
-        Swal.fire({
-            icon: 'error',
-            title: 'Oops...',
-            text: 'Ingrese Ruc y precione "Enter"!',
-            footer: '<a href>Si es un error comunicase con Área de Sistemas?</a>'
-          })
-        return false;
-      }
-      $.ajax({
-          url: `${window.location.origin}Inventario/Proveedores/Nuevo_registro/`,
-          type: 'POST',
-          data:$("form").serialize(),
-          statusCode: {
-            400: function(xhr) {
-                var json = JSON.parse(xhr.responseText);
-                if (json.error) {
-                    Swal.fire({
-                        title: 'Lo siento mucho',
-                        text: "" + json.error + "",
-                        icon: 'error',
-                        footer: '<a href>Si es un error comunicase con Área de Sistemas?</a>',
-                        showCancelButton: false,
-                        confirmButtonColor: '#3085d6',
-                        cancelButtonColor: '#d33',
-                        confirmButtonText: 'OK'
-                    }).then((result) => {
-                        if (result.value) {
-                          $('#registrar_nuevo_proveedor_sunat')[0].reset();  
-                          $("#usuario").val("");
-                          $("#rucx").val("");
-                          $("#direccionx").val("");
-                          $("#txt_telefono").val("");
-                          $("#usuarioxx").text("");
-                          $("#rucxxx").text("");
-                          $("#txt_telefonoxx").text("");
-                          $("#direccionxxx").text("");
-                              $("#nruc").val("");
-                            $('.bd-example-modal-lgs').modal('hide')
-                        }
-                    })
-
-
-                }
-
-            }
-        } 
-      })
-      .done(function() {
-          console.log("success");
-            Swal.fire({
-                title: 'Muy bien',
-                text: "Se registro de manera exitosa",
-                icon: 'success',
-                showCancelButton: false,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Muy bien!'
-              }).then((result) => { 
-                if (result.value) {
-                  $('#registrar_nuevo_proveedor_sunat')[0].reset();  
-                  $('.bd-example-modal-lgs').modal('hide')
-                  $("#usuario").val("");
-                  $("#rucx").val("");
-                  $("#direccionx").val("");
-                  $("#txt_telefono").val("");
-                  $("#usuarioxx").text("");
-                  $("#rucxxx").text("");
-                  $("#txt_telefonoxx").text("");
-                  $("#direccionxxx").text("");
-                  $("#nruc").val("");
-                
-                  
-                }
-              })
-      })
-      .fail(function(jqXHR, textStatus, errorThrown) {
-          console.log("error");
-          if (jqXHR.status === 0) {
-              const Toast = Swal.mixin({
-                  toast: true,
-                  position: 'top-end',
-                  showConfirmButton: false,
-                  timer: 3000,
-                  timerProgressBar: true,
-                  onOpen: (toast) => {
-                      toast.addEventListener('mouseenter', Swal.stopTimer)
-                      toast.addEventListener('mouseleave', Swal.resumeTimer)
-                  }
-              })
-
-              Toast.fire({
-                  icon: 'error',
-                  title: 'No tienes Conexion a Internet: Verifique la red.'
-              })
-
-          } else if (jqXHR.status == 404) {
-              const Toast = Swal.mixin({
-                  toast: true,
-                  position: 'top-end',
-                  showConfirmButton: false,
-                  timer: 3000,
-                  timerProgressBar: true,
-                  onOpen: (toast) => {
-                      toast.addEventListener('mouseenter', Swal.stopTimer)
-                      toast.addEventListener('mouseleave', Swal.resumeTimer)
-                  }
-              })
-
-              Toast.fire({
-                  icon: 'error',
-                  title: 'Página solicitada no encontrada [404].'
-              })
-
-          } else if (jqXHR.status == 500) {
-              const Toast = Swal.mixin({
-                  toast: true,
-                  position: 'top-end',
-                  showConfirmButton: false,
-                  timer: 3000,
-                  timerProgressBar: true,
-                  onOpen: (toast) => {
-                      toast.addEventListener('mouseenter', Swal.stopTimer)
-                      toast.addEventListener('mouseleave', Swal.resumeTimer)
-                  }
-              })
-
-              Toast.fire({
-                  icon: 'error',
-                  title: 'Error interno del servidor [500].'
-              })
-
-
-          } else if (textStatus === 'parsererror') {
-
-              const Toast = Swal.mixin({
-                  toast: true,
-                  position: 'top-end',
-                  showConfirmButton: false,
-                  timer: 3000,
-                  timerProgressBar: true,
-                  onOpen: (toast) => {
-                      toast.addEventListener('mouseenter', Swal.stopTimer)
-                      toast.addEventListener('mouseleave', Swal.resumeTimer)
-                  }
-              })
-
-              Toast.fire({
-                  icon: 'error',
-                  title: 'El análisis JSON solicitado ha fallado'
-              })
-
-          } else if (textStatus === 'timeout') {
-
-              const Toast = Swal.mixin({
-                  toast: true,
-                  position: 'top-end',
-                  showConfirmButton: false,
-                  timer: 3000,
-                  timerProgressBar: true,
-                  onOpen: (toast) => {
-                      toast.addEventListener('mouseenter', Swal.stopTimer)
-                      toast.addEventListener('mouseleave', Swal.resumeTimer)
-                  }
-              })
-
-              Toast.fire({
-                  icon: 'error',
-                  title: 'Error de tiempo de espera.'
-              })
-
-          } else if (textStatus === 'abort') {
-
-              const Toast = Swal.mixin({
-                  toast: true,
-                  position: 'top-end',
-                  showConfirmButton: false,
-                  timer: 3000,
-                  timerProgressBar: true,
-                  onOpen: (toast) => {
-                      toast.addEventListener('mouseenter', Swal.stopTimer)
-                      toast.addEventListener('mouseleave', Swal.resumeTimer)
-                  }
-              })
-
-              Toast.fire({
-                  icon: 'error',
-                  title: 'Solicitud de Ajax abortada'
-              })
-
-          } else {
-
-              const Toast = Swal.mixin({
-                  toast: true,
-                  position: 'top-end',
-                  showConfirmButton: false,
-                  timer: 3000,
-                  timerProgressBar: true,
-                  onOpen: (toast) => {
-                      toast.addEventListener('mouseenter', Swal.stopTimer)
-                      toast.addEventListener('mouseleave', Swal.resumeTimer)
-                  }
-              })
-
-              Toast.fire({
-                  icon: 'error',
-                  title: 'Solicitud de Ajax abortada ' + jqXHR.responseText + ''
-              })
-
-
-          }
-      })
-      .always(function() {
-          console.log("complete");
-      });
-      
-  });
-
-
   $("#mostramos_datos_rdes").click(function(event) {
-    /* Act on the event */
     event.preventDefault();
 
     $("#collapseExampdle").append(``);
@@ -926,11 +1729,9 @@ img.src = URL.createObjectURL(uploadFile);
 
 function edit_person(id)
 {
-//$('#registrar_historial_xx')[0].reset(); // reset form on modals
 $('#registrar_datos_generales').trigger("reset");
 
 
-//Ajax Load data from ajax
 $.ajax({
     url : `${window.location.origin}/Examenes/Examenes/Obtener_registros/${id}`,
     type: "GET",
@@ -949,8 +1750,8 @@ $.ajax({
         }
 
         $("#dvOcultar").hide(800);
-        $("#ocultar_iddddddd").hide(800);
-        $(".evaristoescuderohuillcamascco").attr('Id', 'actualizar_registro_por_id_datos_generales');
+        $("#prg_otra_fecha_btn").hide(800);
+        $(".evaristoescuderohuillcamascco").attr('Id', 'actualizar_registro_por_id_datos_generales'); // PENDIENTEEEEEEE
         $("#fecha_atencion_id").val(data.Id);
         $("#mdatex").val(data.fecha_atencion);
         $("#hora_atemncion_update").val(data.hora);
@@ -975,7 +1776,6 @@ $.ajax({
         // $("#tipo_pago  option[value="+ data.id_pago +"]").attr('selected', 'selected');
         //agregamos agregaer_detalle_por paquete
 
-        //tiupo comromprante
 
         var selkecttipocomprobnate = $("select#tipocomprobante");
         selkecttipocomprobnate.val(data.tipocomprobante).attr("selected", "selected");
@@ -1011,7 +1811,7 @@ $.ajax({
         
 
         $("#cambio_nombre_boton").html("<i class='fas fa-check-circle'></i>&nbsp;Actualizar Registro");
-        $("#agregar_nav_link").html(`<li class="nav-item"> <a  class="nav-link" id="registrar_datos_xxxxxxxxx"><span class="hidden-sm-up"></span> <span class="hidden-xs-down font-weight-bold btn-dark btn btn-rounded" ><i class="fas fa-plus-circle"></i>&nbsp;Agregar Nuevo</span></a> </li>`);
+        $("#agregar_nav_link").html(`<li class="nav-item"> <a  class="nav-link" id="nuevo_examen_btn"><span class="hidden-sm-up"></span> <span class="hidden-xs-down font-weight-bold btn-dark btn btn-rounded" ><i class="fas fa-plus-circle"></i>&nbsp;Agregar Nuevo</span></a> </li>`);
 
         //MOSTRAMOS LOS DETALLES DE LOS CAMPOS onchange="return limpiar_campos_de_todos()"
 
@@ -1056,7 +1856,7 @@ if (nombre_tipo_pago=="" || nombre_tipo_pago==0) {
 }
 
 $.ajax({
-  url: `${window.location.origin}Examenes/Examenes/registrar_tipo_pago_ajax/`,
+  url: `${window.location.origin}/Examenes/Examenes/registrar_tipo_pago_ajax/`,
   type: 'POST',
   // dataType: 'default: Intelligent Guess (Other values: xml, json, script, or html)',
   data: $("#registrar_nuevo_tipo_pago").serialize(),
@@ -1120,7 +1920,7 @@ $(document).on('submit', '#actualizar_registro_por_id_tipo_pago', function(event
 event.preventDefault();
 /* Act on the event */
 $.ajax({
-  url: `${window.location.origin}Examenes/Examenes/actualizar_tipo_pago_idd/`,
+  url: `${window.location.origin}/Examenes/Examenes/actualizar_tipo_pago_idd/`,
   type: 'POST',
   // dataType: 'default: Intelligent Guess (Other values: xml, json, script, or html)',
   data: $("#actualizar_registro_por_id_tipo_pago").serialize(),
@@ -1304,7 +2104,7 @@ if (nuevo_precio=="" || nuevo_precio==0) {
 }
 
 $.ajax({
-  url: `${window.location.origin}Examenes/Examenes/registrar_paquete_ajax/`,
+  url: `${window.location.origin}/Examenes/Examenes/registrar_paquete_ajax/`,
   type: 'POST',
   // dataType: 'default: Intelligent Guess (Other values: xml, json, script, or html)',
   data: $("#registrar_nuevo_paquete").serialize(),
@@ -1368,7 +2168,7 @@ $(document).on('submit', '#actualizar_registro_por_id_paquete', function(event) 
 event.preventDefault();
 /* Act on the event */
 $.ajax({
-  url: `${window.location.origin}Examenes/Examenes/actualizar_paquete_idd/`,
+  url: `${window.location.origin}/Examenes/Examenes/actualizar_paquete_idd/`,
   type: 'POST',
   // dataType: 'default: Intelligent Guess (Other values: xml, json, script, or html)',
   data: $("#actualizar_registro_por_id_paquete").serialize(),
@@ -1641,7 +2441,7 @@ if (categoria_tipo_asociar=="" || categoria_tipo_asociar==0) {
 }
 
 $.ajax({
-  url: `${window.location.origin}Examenes/Examenes/registrar_tipo_paquete_asociado/`,
+  url: `${window.location.origin}/Examenes/Examenes/registrar_tipo_paquete_asociado/`,
   type: 'POST',
   // dataType: 'default: Intelligent Guess (Other values: xml, json, script, or html)',
   data: $("#registrar_tipo_paquete_asociado").serialize(),
@@ -1708,7 +2508,7 @@ $(document).on('submit', '#actualizar_registro_por_id_paquete_asociado', functio
 event.preventDefault();
 /* Act on the event */
 $.ajax({
-  url: `${window.location.origin}Examenes/Examenes/actualizar_paquete_idd_asociado/`,
+  url: `${window.location.origin}/Examenes/Examenes/actualizar_paquete_idd_asociado/`,
   type: 'POST',
   // dataType: 'default: Intelligent Guess (Other values: xml, json, script, or html)',
   data: $("#actualizar_registro_por_id_paquete_asociado").serialize(),
@@ -1913,7 +2713,7 @@ if (categoria_tipo_examen=="" || categoria_tipo_examen==0) {
 }
 
 $.ajax({
-  url: `${window.location.origin}Examenes/Examenes/registrar_tipo_examen_por_ajax/`,
+  url: `${window.location.origin}/Examenes/Examenes/registrar_tipo_examen_por_ajax/`,
   type: 'POST',
   // dataType: 'default: Intelligent Guess (Other values: xml, json, script, or html)',
   data: $("#registrar_tipo_exmaen").serialize(),
@@ -1980,7 +2780,7 @@ $(document).on('submit', '#actualizar_registro_por_id_paquete_tipoexmaen', funct
 event.preventDefault();
 /* Act on the event */
 $.ajax({
-  url: `${window.location.origin}Examenes/Examenes/actualizar_paquete_idd_tipoexamen/`,
+  url: `${window.location.origin}/Examenes/Examenes/actualizar_paquete_idd_tipoexamen/`,
   type: 'POST',
   // dataType: 'default: Intelligent Guess (Other values: xml, json, script, or html)',
   data: $("#actualizar_registro_por_id_paquete_tipoexmaen").serialize(),
@@ -2161,7 +2961,7 @@ $(document).ready(function() {
     /* Act on the event */
     var user_id = $(this).attr("id");
     $.ajax({
-      url: `${window.location.origin}Examenes/Examenes/mostrar_datos_a_imprimir/`,
+      url: `${window.location.origin}/Examenes/Examenes/mostrar_datos_a_imprimir/`,
       type: 'POST',
       dataType: "JSON",
       data: {user_id:user_id},
@@ -2277,7 +3077,7 @@ $(document).ready(function() {
     /* Act on the event */
     var user_id = $(this).attr("id");
     $.ajax({
-      url: `${window.location.origin}Examenes/Examenes/mostrar_datos_a_imprimir_detalles/`,
+      url: `${window.location.origin}/Examenes/Examenes/mostrar_datos_a_imprimir_detalles/`,
       type: 'POST',
       // dataType: "JSON",
       data: {user_id:user_id},
@@ -2319,7 +3119,7 @@ $(document).ready(function() {
     /* Act on the event */
     var user_id = $(this).attr("id");
     $.ajax({
-      url: `${window.location.origin}Examenes/Examenes/mostrar_datos_a_imprimir_detalles_laboratorio/`,
+      url: `${window.location.origin}/Examenes/Examenes/mostrar_datos_a_imprimir_detalles_laboratorio/`,
       type: 'POST',
       // dataType: "JSON",
       data: {user_id:user_id},
@@ -2365,5 +3165,63 @@ $("#add_exam_trigger").click(function(event) {
 
 
 
+/*
+-------------------------------------------------------------------------------------
+FORMS
+-------------------------------------------------------------------------------------
+*/
+
+// Cambio de atributo
+const tipo_documento = document.getElementById("tipo_documento");
+const dni_input = document.getElementById("dni_evaristo");
+
+// Si no es dni el documento se eliminan las restricciones para ingresar datos
+tipo_documento.addEventListener("change", function() {
+
+    if(tipo_documento.value!="dni") {   
+        dni_input.removeAttribute("pattern");
+        dni_input.removeAttribute("maxlength");
+    } else {
+        dni_input.setAttribute("maxlength", "8");
+        dni_input.setAttribute("pattern", "[0-9]{8}");
+        dni_input.value = "";
+    }    
+    
+});
+
+
+// Validacion de del input DNI
+const help_message = document.getElementById("dni_help_message");
+
+dni_input.addEventListener("keyup", function() {
+
+    var patt = new RegExp("[^\\d]");
+
+    if (patt.test(dni_input.value)) {
+        help_message.innerHTML="Ingrese solo numeros y presione Enter";
+        help_message.style.color ="red";
+    } else {
+        help_message.innerHTML='Ingrese el Nª de documento y presione "Enter"';
+        help_message.style.color ="black";
+    }
+
+});
+
+
+/*---------------------------------------------------------------------------------------------------------------------*/
+
+
+
+
+
+
+
+
+$(document).ready(() => {
+  $("#prg_otra_fecha_btn").show(800);
+})
+
+
 console.log("end without problems");
+
 

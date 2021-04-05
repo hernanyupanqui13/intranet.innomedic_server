@@ -61,7 +61,11 @@
             <td><?php echo $item->edad; ?></td>
             <td><?php echo $item->dni; ?></td>
             <td><?php echo $item->sexo; ?></td>
-            <td><?php echo "INNOMEDIC INTERNATIONAL E.I.R.L"; ?></td>
+            <td><?php if ($item->empresa == "") {
+                echo "INNOMEDIC INTERNATIONAL E.I.R.L"; 
+            } else {
+                echo $item->empresa;
+            }?></td>
             <td><?php echo "PERFIL ANTIGENO CUANTITATIVO"; ?></td>
             <td><?php echo "VISITA"; ?></td>
             <td><?php echo $item->fecha_de_atencion;?></td>

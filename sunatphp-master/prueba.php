@@ -16,7 +16,7 @@
 	);
 	$sunat = new \Sunat\ruc( $config );
 	
-	$ruc = "20169004359";
+	$ruc = "20505469420";
 	$dni = "44274795";
 	
 	$search1 = $sunat->consulta( $ruc );
