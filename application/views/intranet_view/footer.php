@@ -155,9 +155,10 @@
 
                 $.ajax({
                 type:'GET',
-                url:url,
+                url: `${window.location.origin}/assets_sistema/dni-peru-consult/entry_point.php?dni=${dni}`,
                 //data:'dni='+dni,
                 success: function(datos_dni){
+                  datos_dni = JSON.parse(datos_dni);
                   var datos = eval(datos_dni);
                   $('#dni_mostrar_dni').val(datos_dni.dni);
                   $('#apellido_paterno_x').val(datos_dni.first_name);
@@ -185,9 +186,10 @@
                 var url = `https://dni.optimizeperu.com/api/persons/${dni}`;
                 $.ajax({
                 type:'GET',
-                url:url,
+                url: `${window.location.origin}/assets_sistema/dni-peru-consult/entry_point.php?dni=${dni}`,
                 
                 success: function(datos_dni){
+                  datos_dni = JSON.parse(datos_dni);
                     console.log(datos_dni);
                     
                         
@@ -213,9 +215,9 @@
                         
                     }else{
                         $('#dni_mostrar_dni').val(datos_dni.dni);
-                        $('#apellido_paterno_x').val(datos_dni.first_name);
-                        $('#apellido_materno').val(datos_dni.last_name);
-                        $('#nombres_completos').val(datos_dni.name);
+                        $('#apellido_paterno_x').val(datos_dni.apellidoPaterno);
+                        $('#apellido_materno').val(datos_dni.apellidoMaterno);
+                        $('#nombres_completos').val(datos_dni.nombres);
                         $('#apellido_paterno_x').removeAttr("readonly");
                         $('#apellido_materno').removeAttr("readonly");
                         $('#nombres_completos').removeAttr("readonly");
