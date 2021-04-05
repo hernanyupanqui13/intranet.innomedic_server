@@ -33,6 +33,7 @@ class ComposerStaticInitd611d9570fb5014f6c4ac57f82a0592a
         array (
             'Psr\\Log\\' => 8,
             'Prophecy\\' => 9,
+            'Peru\\' => 5,
             'PHPMailer\\PHPMailer\\' => 20,
         ),
         'M' => 
@@ -77,6 +78,10 @@ class ComposerStaticInitd611d9570fb5014f6c4ac57f82a0592a
         array (
             0 => __DIR__ . '/..' . '/phpspec/prophecy/src/Prophecy',
         ),
+        'Peru\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/giansalex/peru-consult/src/Peru',
+        ),
         'PHPMailer\\PHPMailer\\' => 
         array (
             0 => __DIR__ . '/..' . '/phpmailer/phpmailer/src',
@@ -106,6 +111,7 @@ class ComposerStaticInitd611d9570fb5014f6c4ac57f82a0592a
     );
 
     public static $classMap = array (
+        'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
         'File_Iterator' => __DIR__ . '/..' . '/phpunit/php-file-iterator/src/Iterator.php',
         'File_Iterator_Facade' => __DIR__ . '/..' . '/phpunit/php-file-iterator/src/Facade.php',
         'File_Iterator_Factory' => __DIR__ . '/..' . '/phpunit/php-file-iterator/src/Factory.php',
