@@ -7,5 +7,8 @@
     >
     </iframe>
 </div>
+<div style="dispay:none" class="data_container"
+    data-document_number="<?= $nombre_documento;?>"
+></div>
 
-<script src="<?=base_url();?>/application/views/sst/document_viewer-script.js"></script>
+<script type="module" src="<?=base_url();?>/application/views/sst/document_viewer-script.js"></script>

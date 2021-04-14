@@ -16,11 +16,10 @@ class Sst extends CI_Controller {
             redirect(base_url());
         }
 
-
-
         $data = array(
             'title' =>array("estas viendo SST","SST","","<a target='_blank' href='javascript:void(0)' title=''>Area de Sistemas</a>"),
-            "reglamento_file_path"=>base_url()."upload/archivos/sst/politicas_sst.pdf"
+            "reglamento_file_path"=>base_url()."upload/archivos/sst/politicas_sst.pdf",
+            "nombre_documento" => "Politica Integrada de SST"
         );
           
         $this->load->view("intranet_view/head",$data);
@@ -59,7 +58,8 @@ class Sst extends CI_Controller {
 
         $data = array(
             'title' =>array("estas viendo SST","SST","","<a target='_blank' href='javascript:void(0)' title=''>Area de Sistemas</a>"),
-            "reglamento_file_path"=>base_url()."upload/archivos/sst/riss.pdf"
+            "reglamento_file_path"=>base_url()."upload/archivos/sst/riss.pdf",
+            "nombre_documento" => "Reglamento Interno de SST"
         );
           
         $this->load->view("intranet_view/head",$data);
@@ -70,6 +70,7 @@ class Sst extends CI_Controller {
 
 
     public function planProgramasSst() {
+        
         if($this->session->userdata('session_id')==''){
             redirect(base_url());
         }
@@ -78,6 +79,7 @@ class Sst extends CI_Controller {
         $data = array(
             'title' =>array("estas viendo SST","SST","","<a target='_blank' href='javascript:void(0)' title=''>Area de Sistemas</a>"),
             "reglamento_file_path"=>base_url()."/upload/archivos/sst/politicas_sst.pdf"
+
         );
 
         $this->load->view("intranet_view/head",$data);
@@ -94,7 +96,7 @@ class Sst extends CI_Controller {
             echo "No se encontro un documento con ese nombre";
         } else {
             echo $this->Sst_model->checkIfWasConfirmed($user_id, $document_id); 
-        }        
+        }
     }
 
 
