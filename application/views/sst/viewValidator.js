@@ -1,3 +1,8 @@
+/*
+Esta funcion valida si es que el documentos ha sido visto y confirmado en la base de datos
+Llama a las demas funciones en este documento para lograrlo
+*/
+
 export function viewValidator(document_name) {
     let data = new FormData;
     data.append("document_name", document_name);
@@ -16,6 +21,7 @@ export function viewValidator(document_name) {
 
 };
 
+// Esta funcion se encarga de solicitar la confirmacion al cliente y comunicar si fue confirmado o no
 export function requestConfirmation(the_document_name) {
     Swal.fire({
         title: 'Confirmacion de lectura',
@@ -67,7 +73,7 @@ export function requestConfirmation(the_document_name) {
 }
 
 
-
+// Esta funcion confirma que un usuario recibio el documento en la base de datos
 export async function confirmViewedDocument(document_name) {
     let document_id;
     let formData_1 = new FormData();
@@ -103,5 +109,4 @@ export async function confirmViewedDocument(document_name) {
 
     return the_feth;
     
-
 }
