@@ -33,7 +33,7 @@ foreach ($query_users->result() as $xx) {
           <div class="col-md-6">
             <?php 
               $date = date("w");
-              if (/*$date==1 ||  $date==3 || $date==4 || $date==6*/ true) { ?>
+              if ($date==3 || $date==4) { ?>
                 <a href="<?php echo base_url().'Mantenimiento/Pedidos/Nuevo_pedido_users/' ?>"  class="btn btn-outline-success btn-rounded btn-md"><i class=" fas fa-plus-circle"></i>&nbsp;Nuevo Pedido</a>
               <?php 
               } else if ($date==0 ||  $date==2  || $date==5 ) { ?>
