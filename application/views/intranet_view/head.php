@@ -384,6 +384,8 @@
                                 <li><a href="<?php echo base_url();?>sst/sst/politicas"><i class="fas fa-hard-hat"></i>&nbsp;Politicas</a></li>
                                 <li><a href="<?php echo base_url();?>sst/sst/reglamentos"><i class="fas fa-book"></i></i>&nbsp;Reglamentos</a></li>
                                 <li><a href="<?php echo base_url();?>sst/sst/planProgramasSst"><i class="fas fa-thumbtack"></i>&nbsp;Plan y Programas de SST</a></li>
+                                <!--<li><a href="<?php echo base_url();?>sst/sst/objetivos_sst"><i class="fas fa-bullseye"></i>&nbsp;Objetivos de SST</a></li>-->
+
                             </ul>
                         </li>
 

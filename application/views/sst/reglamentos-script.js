@@ -53,8 +53,8 @@ function viewDocument(the_url, event_target)  {
     event_target.classList.remove("list-group-item-action");
     activated_template = event_target;
 
-    console.log(document.querySelector("iframe"));
-    document.querySelector("iframe").src = the_url;
+    console.log(document.querySelector("embed"));
+    document.querySelector("embed").src = the_url;
 }
 
 

@@ -58,7 +58,7 @@ export function requestConfirmation(the_document_name) {
           
         } else {
             console.log("canceled");
-            document.querySelector("iframe").src = "";
+            document.querySelector("embed").src = "";
         }
     })
     .catch(e => {

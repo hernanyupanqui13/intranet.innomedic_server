@@ -88,6 +88,10 @@ class Sst extends CI_Controller {
         $this->load->view("intranet_view/footer",$data);
     }
 
+    public function objetivos_sst() {
+        // To complete 
+    }
+
     public function checkIfWasConfirmed() {
         $user_id = $this->session->userdata('session_id');
         $document_id = $this->getDocumentIdByName($_POST["document_name"]);

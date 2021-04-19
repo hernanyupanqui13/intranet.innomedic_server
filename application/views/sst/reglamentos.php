@@ -6,13 +6,13 @@
     </div>
 
     <div class="document_container">
-        <iframe id="reglamentos_sst_viewer"
+        <embed id="reglamentos_sst_viewer"
             title="Reglamentos SST"
             style="position: relative; height: calc(100vh - 210px); width: 100%;"
             src=""
             frameborder="0"
         >
-        </iframe>
+        </embed>
     </div>
 
 
