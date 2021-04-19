@@ -382,7 +382,7 @@
                         <li><a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="ti-layout-grid2"></i><span class="hide-menu">Seguridad y Salud en el Trabajo</span></a>
                             <ul  aria-expanded="false" class="collapse">
                                 <li><a href="<?php echo base_url();?>sst/sst/politicas"><i class="fas fa-hard-hat"></i>&nbsp;Politicas</a></li>
-                                <li><a href="<?php echo base_url();?>sst/sst/reglamentos"><i class="fas fa-book"></i></i>&nbsp;Reglamentos</a></li>
+                                <li><a href="<?php echo base_url();?>sst/sst/reglamentos"><i class="fas fa-book"></i></i>&nbsp;Reglamento Interno de SST</a></li>
                                 <li><a href="<?php echo base_url();?>sst/sst/planProgramasSst"><i class="fas fa-thumbtack"></i>&nbsp;Plan y Programas de SST</a></li>
                                 <!--<li><a href="<?php echo base_url();?>sst/sst/objetivos_sst"><i class="fas fa-bullseye"></i>&nbsp;Objetivos de SST</a></li>-->
 
