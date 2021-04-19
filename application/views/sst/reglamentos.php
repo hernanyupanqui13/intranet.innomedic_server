@@ -50,6 +50,16 @@
     color: white;
 }
 
+@media (max-width: 1050px) {
+    .reglamentos_container {
+        grid-template-columns: 1fr;
+    }
+
+    .sst_document_item_container {
+        width: fit-content;
+    }
+}
+
 
 
 
