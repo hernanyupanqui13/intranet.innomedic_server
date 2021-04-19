@@ -6,8 +6,8 @@
     </div>
 
     <div class="document_container">
-        <iframe id="reglamentos_sst_viewer" class="pdf_document"
-            title="Reglamentos SST"
+        <iframe class="pdf_document"
+            title=""
             style="position: relative; height: calc(100vh - 210px); width: 100%;"
             src=""
             frameborder="0"
@@ -66,4 +66,4 @@
     
 </style>
 
-<script type="module" src="<?=base_url();?>/application/views/sst/reglamentos-script.js"></script>
+<script type="module" src="<?=base_url();?>/application/views/sst/many_documents_viewer-script.js?v=4"></script>

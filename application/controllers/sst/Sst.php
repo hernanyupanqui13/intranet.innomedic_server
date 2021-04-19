@@ -24,7 +24,7 @@ class Sst extends CI_Controller {
           
         $this->load->view("intranet_view/head",$data);
         $this->load->view("intranet_view/title",$data);
-        $this->load->view('sst/document_viewer',$data);
+        $this->load->view('sst/one_document_viewer',$data);
         $this->load->view("intranet_view/footer",$data);
         
     }
@@ -64,7 +64,7 @@ class Sst extends CI_Controller {
           
         $this->load->view("intranet_view/head",$data);
         $this->load->view("intranet_view/title",$data);
-        $this->load->view('sst/document_viewer',$data);
+        $this->load->view('sst/one_document_viewer',$data);
         $this->load->view("intranet_view/footer",$data);
     }
 
@@ -84,7 +84,7 @@ class Sst extends CI_Controller {
 
         $this->load->view("intranet_view/head",$data);
         $this->load->view("intranet_view/title",$data);
-        $this->load->view('sst/reglamentos',$data);
+        $this->load->view('sst/many_documents_viewer',$data);
         $this->load->view("intranet_view/footer",$data);
     }
 

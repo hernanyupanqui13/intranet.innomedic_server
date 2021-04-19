@@ -1,5 +1,5 @@
 /*
-Esta funcion valida si es que el documentos ha sido visto y confirmado en la base de datos
+Esta funcion valida si es que un documento de SST ha sido visto y confirmado en la base de datos
 Llama a las demas funciones en este documento para lograrlo
 */
 
@@ -36,10 +36,8 @@ export function requestConfirmation(the_document_name) {
         confirmButtonText: 'Continuar',
         cancelButtonText: 'Cancelar'
       }).then(async (result) => {
-        console.log(result);
         if (result.value) {
             let ajax_state = await confirmViewedDocument(the_document_name);
-            console.log(ajax_state);
             
             // Si se guardo la informacion correctamente o si hubo un problema
             if(ajax_state) {  // Nombre completo del documento en la db
@@ -57,13 +55,10 @@ export function requestConfirmation(the_document_name) {
             }
           
         } else {
-            console.log("canceled");
             document.querySelector(".pdf_document").src = "";
         }
     })
     .catch(e => {
-        console.log("Hubo un error");
-        console.log(e);
         Swal.fire(
             'Chispas!',
             'Lo sentimos, ha ocurrido un problema. Por favor reportalo al administrador de T.I',
@@ -85,7 +80,6 @@ export async function confirmViewedDocument(document_name) {
         })
     .then(response => response.text()) 
     .then(data => {
-        console.log(data);
         document_id = data;
         let formData = new FormData();
         formData.append("document_id", document_id);
@@ -98,7 +92,6 @@ export async function confirmViewedDocument(document_name) {
     .then(response_2 => response_2.text())
     .then( data => 
     {
-        console.log(data);
         if(data==1) {
             return true;
         } else {

@@ -3,7 +3,10 @@ import {viewValidator, requestConfirmation, confirmViewedDocument} from './viewV
 
 
 /*
-
+Aqui se tiene toda la informacion sobre el documento de SST y su ubicacion
+Ident_name es el nombre con el que el archivo es guardado en la base de datos. Ahi tambien esta nuevamente el nombre del pdf
+Sin emabargo, no se usa esa informacion aun. Debidoa  que hay pocos documentos se usa esta lista
+De incrementar el numero se puede hacer el pedido a la bd
 
 */
 let data = [
@@ -34,16 +37,17 @@ function renderTemplateItem(item, main_container) {
     
     one_item.addEventListener("click", () => {
         viewValidator(item.ident_name);
-        viewDocument(item.url, one_item);
+        viewDocument(item.url, item.nombre, one_item);
     
     });
     
     main_container.appendChild(one_item);
+    
 }
 
 
 
-function viewDocument(the_url, event_target)  {
+function viewDocument(the_url, nombre_documento, event_target)  {
     
     if(activated_template!= null && activated_template != undefined) {
         activated_template.classList.remove("active_document");
@@ -53,8 +57,9 @@ function viewDocument(the_url, event_target)  {
     event_target.classList.remove("list-group-item-action");
     activated_template = event_target;
 
-    console.log(document.querySelector(".pdf_document"));
     document.querySelector(".pdf_document").src = the_url;
+    document.querySelector(".pdf_document").title = nombre_documento;
+
 }
 
 
