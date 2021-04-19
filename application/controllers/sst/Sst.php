@@ -58,7 +58,7 @@ class Sst extends CI_Controller {
 
         $data = array(
             'title' =>array("estas viendo SST","SST","","<a target='_blank' href='javascript:void(0)' title=''>Area de Sistemas</a>"),
-            "reglamento_file_path"=>base_url()."upload/archivos/sst/riss.pdf",
+            "reglamento_file_path"=>base_url()."upload/archivos/sst/RISST.pdf",
             "nombre_documento" => "Reglamento Interno de SST"
         );
           

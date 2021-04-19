@@ -6,7 +6,7 @@
     </div>
 
     <div class="document_container">
-        <iframe id="reglamentos_sst_viewer"
+        <iframe id="reglamentos_sst_viewer" class="pdf_document"
             title="Reglamentos SST"
             style="position: relative; height: calc(100vh - 210px); width: 100%;"
             src=""
