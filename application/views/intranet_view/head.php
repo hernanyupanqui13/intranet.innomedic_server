@@ -384,8 +384,10 @@
                                 <li><a href="<?php echo base_url();?>sst/sst/politicas"><i class="fas fa-hard-hat"></i>&nbsp;Politicas</a></li>
                                 <li><a href="<?php echo base_url();?>sst/sst/reglamentos"><i class="fas fa-book"></i></i>&nbsp;Reglamento Interno de SST</a></li>
                                 <li><a href="<?php echo base_url();?>sst/sst/planProgramasSst"><i class="fas fa-thumbtack"></i>&nbsp;Plan y Programas de SST</a></li>
-                                <!--<li><a href="<?php echo base_url();?>sst/sst/objetivos_sst"><i class="fas fa-bullseye"></i>&nbsp;Objetivos de SST</a></li>-->
-
+                                <!--<li><a href="<?php echo base_url();?>sst/sst/objetivos_sst"><i class="fas fa-bullseye"></i>&nbsp;Objetivos de SST</a></li>-->                                
+                                <?php if ( in_array($this->session->userdata("session_perfil"), array(40, 1))) { ?>
+                                    <li><a href="<?php echo base_url();?>sst/sst/sstAdminPanel"><i class="fas fa-user-lock"></i>&nbsp;Admin Panel</a></li>
+                                <?php } ?>
                             </ul>
                         </li>
 

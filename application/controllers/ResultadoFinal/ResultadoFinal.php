@@ -544,7 +544,7 @@ class ResultadoFinal extends CI_Controller {
 
         $template = $exam_with_template[$tipo_de_examen];
 
-        $data = array("lista" => $_POST["data"]);
+        $data = array("lista" => $_POST["data"]); // Lista ya contiene los datos para poner al excel en formato JSON. Viene del cliete esta informacion 
 
         $this->load->view("excel/$template", $data);
     }

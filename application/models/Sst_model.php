@@ -59,6 +59,25 @@ class Sst_model extends CI_Model
 
         return $query->row()->result;
     }
+
+    public function getFullReportData() {
+        $query = $this->db->query('SELECT std.nombre AS tipo_documento
+                , tu.nombre, tu.apellido_paterno
+                , tu.apellido_materno, tdp.nro_documento
+                , fecha_visto
+            FROM sst_document_users sdu
+                INNER JOIN ts_usuario tu 
+                    ON sdu.user_id = tu.Id
+                INNER JOIN sst_tipo_documentos std
+                    ON std.Id = sdu.sst_document_id
+                INNER JOIN ts_datos_personales tdp
+                    ON tdp.Id = tu.Id
+            WHERE tu.Id != 89 AND tu.`status` != 2'
+        );
+
+        return $query->result();
+
+    }
     
 
 

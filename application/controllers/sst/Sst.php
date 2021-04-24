@@ -92,6 +92,8 @@ class Sst extends CI_Controller {
         // To complete 
     }
 
+
+    /*Funcion para ser llamada por AJAX */
     public function checkIfWasConfirmed() {
         $user_id = $this->session->userdata('session_id');
         $document_id = $this->getDocumentIdByName($_POST["document_name"]);
@@ -101,6 +103,33 @@ class Sst extends CI_Controller {
         } else {
             echo $this->Sst_model->checkIfWasConfirmed($user_id, $document_id); 
         }
+    }
+
+    public function SstAdminPanel() {
+
+        if($this->session->userdata('session_id')==''){
+            redirect(base_url());
+        }
+        $data = array(
+            'title' =>array("estas viendo SST","SST","","<a target='_blank' href='javascript:void(0)' title=''>Area de Sistemas</a>"),
+        );
+
+        $this->load->view("intranet_view/head",$data);
+        $this->load->view("intranet_view/title",$data);
+        $this->load->view('sst/sst_admin_panel',$data);
+        $this->load->view("intranet_view/footer",$data);
+    }
+
+
+    public function downloadFullReportExcel() {
+        if($this->session->userdata('session_id')==''){
+            redirect(base_url());
+        }
+
+        $data =array("data" => $this->Sst_model->getFullReportData());
+
+        $this->load->view("excel/reporte_completo_sst", $data);
+
     }
 
 
