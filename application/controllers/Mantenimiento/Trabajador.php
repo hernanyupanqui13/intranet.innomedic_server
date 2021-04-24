@@ -119,10 +119,8 @@ class Trabajador extends CI_Controller
 					'puesto' =>$this->input->post("puesto"),
 					'email' =>$this->input->post("correo"),
 					'fecha_ingreso' =>$this->input->post("fecha_ingreso"),
-
 					'celular' =>$this->input->post("celular"),
-					'id_perfil' =>$this->input->post("id_perfil"),
-
+					'id_perfil' =>$this->input->post("id_perfil")
 				);
 			}else{
 				$data = array(
@@ -131,25 +129,46 @@ class Trabajador extends CI_Controller
 					'fecha_ingreso' =>$this->input->post("fecha_ingreso"),
 					'status' => $estado,
 					'fecha_cesado_activo' => $fecha_cesado_activo,
-
 					'celular' =>$this->input->post("celular"),
-					'id_perfil' =>$this->input->post("id_perfil"),
-					
+					'id_perfil' =>$this->input->post("id_perfil"),					
+					'celular' =>$this->input->post("celular"),
 				);
 			}
+			// Revisando si el usuario tiene permisos para cambiar esta informacion. Normalmente solo el Admin deberia 
+			if($this->session->userdata("session_perfil") == 1) {
+				
+				$data["nombres"] = $this->input->post("nombre");
+				$data["apellido_paterno"] = $this->input->post("apellido_paterno");
+				$data["apellido_materno"] = $this->input->post("apellido_materno");
 
-			// Preparando para cambiar la otra table. We must change this to be just one table. There are redundant data
+			}
+
+
+
+
+
+
+
+			// Preparando para cambiar la otra tabla. Deberiamos cambiar sto para que sea una sola tabla. Es rebundante
 			if ($estado == "" || $fecha_cesado_activo === "") {
 				$t_suaurio = array(
-				'email' =>$this->input->post("correo"),
-
+					'email' => $this->input->post("correo"),
+					"nombre" => $this->input->post("nombre"),
+					"apellido_paterno" => $this->input->post("apellido_paterno"),
+					"apellido_materno" => $this->input->post("apellido_materno"),
 				);
 			}else{
 				$t_suaurio = array(
-				'email' =>$this->input->post("correo"),
-				'status' => $estado,
-
+					'email' =>$this->input->post("correo"),
+					'status' => $estado,
 				);
+			}
+			// Revisando si el usuario tiene per
+			if($this->session->userdata("session_perfil")) {
+				$t_suaurio["nombre"] = $this->input->post("nombre");
+				$t_suaurio["apellido_paterno"] = $this->input->post("apellido_paterno");
+				$t_suaurio["apellido_materno"] = $this->input->post("apellido_materno");
+				$t_suaurio["usuario"] = $this->input->post("usuario");
 			}
 			
 

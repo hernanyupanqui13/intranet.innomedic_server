@@ -20,6 +20,10 @@ foreach ($query->result() as $xx) {
     </div>
   </div>
 </div>
+<!-- This is to check if the user has ermission to edit other things using JavaScript-->
+<div style="visibility: hidden;" class="data-container" 
+  data-session_perfil=<?= $this->session->userdata("session_perfil") ?>>
+</div>
 
 
 <!-- Registrar nuevo colaborador -->

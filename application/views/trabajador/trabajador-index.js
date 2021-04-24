@@ -676,7 +676,21 @@ function sololetrasnumeros(e) {
 
 
 $(document).on('click', '.btn_actualizar_colaborador', function(event) {
+  console.log("emepzando");
     event.preventDefault();
+
+    const perfil_id = document.querySelector(".data-container").dataset.session_perfil;
+
+
+    // Dando permiso al administrador para que pueda editar lo que necesite
+    if(perfil_id == 1) {
+      $("#usuario-actualizar").removeAttr("disabled");
+      //$("#clave-actualizar").removeAttr("disabled");
+      //$("#repeat_clave-actualizar").removeAttr("disabled");
+      $("#nombres_completos-actualizar").removeAttr("readonly");
+      $("#apellido_paterno_x-actualizar").removeAttr("readonly");
+      $("#apellido_materno-actualizar").removeAttr("readonly");
+    }
 
     var user_id = $(this).attr("id"); 
     $.ajax({
