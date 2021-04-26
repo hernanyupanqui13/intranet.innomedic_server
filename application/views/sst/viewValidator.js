@@ -24,7 +24,7 @@ export function viewValidator(document_name, user) {
 // Esta funcion se encarga de solicitar la confirmacion al cliente y comunicar si fue confirmado o no
 export function requestConfirmation(the_document_name, user) {
     let current_date = new Date();
-    current_date = `${current_date.getDate()}/${current_date.getMonth()}/${current_date.getFullYear()}`;
+    current_date = `${current_date.getDate()}/${current_date.getMonth() + 1}/${current_date.getFullYear()}`;
 
 
     let confirmation_message = "";
@@ -40,10 +40,12 @@ export function requestConfirmation(the_document_name, user) {
 
     } else {
 
-        confirmation_message = `<p>Al dar click en firmar aceptas que has recibido este documento, 
-            el cual quedara registrado en nuestra base de datos</p>
-        `;        
-        confirmation_title = `Confirmacion de Lectura "${the_document_name}"`;
+        confirmation_message = `<p>Conste por el presente documento, que, he recibido y se me ha capacitado 
+            sobre el ${the_document_name} de INNOMEDIC INTERNATIONAL 
+            E.I.R.L. El cual me comprometo a cumplir estrictamente en todas sus normas y dispositivos, 
+            para lo cual firmo el presente cargo.</p>
+        `;       
+        confirmation_title = `CARGO DE RECEPCIÓN DE "${the_document_name.toUpperCase()}"`;
 
     }
      
