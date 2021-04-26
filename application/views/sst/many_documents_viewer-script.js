@@ -15,6 +15,8 @@ let data = [
     , {nombre: "Programa Anual de Seguridad y Salud en Trabajo", url: `${window.location.origin}/upload/archivos/sst/plan_anual_sst.pdf`, ident_name:"Programa Anual de SST"}
 ];
 
+const user_data = JSON.parse(document.querySelector('.data_container').dataset.user_data);
+
 let activated_template;
 
 // Rendering items
@@ -36,9 +38,8 @@ function renderTemplateItem(item, main_container) {
     one_item.classList.add("list-group-item-action");
     
     one_item.addEventListener("click", () => {
-        viewValidator(item.ident_name);
+        viewValidator(item.ident_name, user_data);
         viewDocument(item.url, item.nombre, one_item);
-    
     });
     
     main_container.appendChild(one_item);

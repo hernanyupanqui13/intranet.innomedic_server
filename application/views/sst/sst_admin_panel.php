@@ -3,11 +3,17 @@
         <h2>Reportes</h2>
         <ul class="list-group">
             <li class="list-group-item item_with_options">
-                <span class="description">Descargar Reporte completo</span>
-                <button type="button" class="btn btn-primary option" id="full_report-download-btn">
-                    <i class="fas fa-file-download"></i>
+                <span class="description">Descargar Reporte completo - Excel</span>
+                <button type="button" class="btn btn-primary option" id="full_report-download-excel-btn">
+                    <i class="fas fa-file-excel"></i>
                 </button>
-            </li>            
+            </li>
+            <li class="list-group-item item_with_options">
+                <span class="description">Descargar Reporte completo - Pdf</span>
+                <button type="button" class="btn btn-primary option" id="full_report-download-pdf-btn">
+                    <i class="fas fa-file-pdf"></i>
+                </button>
+            </li>   
         </ul>
     </div>
 </div>

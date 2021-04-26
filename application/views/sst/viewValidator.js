@@ -22,18 +22,48 @@ export function viewValidator(document_name) {
 };
 
 // Esta funcion se encarga de solicitar la confirmacion al cliente y comunicar si fue confirmado o no
-export function requestConfirmation(the_document_name) {
+export function requestConfirmation(the_document_name, user = {nombres: "Hernan", puesto: "Administrador", nro_documento: "78945612"}) {
+    let current_date = new Date();
+    current_date = `${current_date.getDate()}/${current_date.getMonth()}/${current_date.getFullYear()}`;
+
+
+    let confirmation_message = "";
+    let confirmation_title = "";
+    if(the_document_name == "Reglamento Interno de SST") {
+        confirmation_message = `<p>Conste por el presente documento, que, he recibido y se me ha capacitado 
+            sobre el Reglamento Interno de Seguridad y Salud en el Trabajo de INNOMEDIC INTERNATIONAL 
+            E.I.R.L. El cual me comprometo a cumplir estrictamente en todas sus normas y dispositivos, 
+            para lo cual firmo el presente cargo.</p>
+        `;
+
+        confirmation_title = "CARGO DE RECEPCIÓN DE RISST";
+    } else {
+        confirmation_message = `<p>Al dar click en firmar aceptas que has recibido este documento, 
+            el cual quedara registrado en nuestra base de datos</p>
+        `;
+        
+        confirmation_title = "Confirmacion de Lectura"
+    }
+     
+
     Swal.fire({
-        title: 'Confirmacion de lectura',
-        text: `Estas a punto de leer "${the_document_name}". 
-            Al dar click en continuar confirmas las recepcion y lectura 
-            de este documento, el cual quedara registrado en el sistema. Si
-            das click en cancelar no podras leer el documento`,
+        title: `${confirmation_title}`,
+        html: `<p>Estas a punto de leer "${the_document_name}".</p>
+        ${confirmation_message}
+        <div><strong>Nombre: </strong>
+            <span>${!user.nombres ? "": user.nombres} 
+                ${!user.apellido_paterno ? "": user.apellido_paterno} 
+                ${!user.apellido_materno ? "": user.apellido_materno}
+            </span>
+        </div>
+        <div><strong>Puesto de trabajo: </strong><span>${user.puesto}</span></div>
+        <div><strong>DNI: </strong><span>${user.nro_documento}</span></div>
+        <div><strong>Fecha: </strong><span>${current_date}</span></div>`,
         icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
-        confirmButtonText: 'Continuar',
+        confirmButtonText: 'Firmar',
         cancelButtonText: 'Cancelar'
       }).then(async (result) => {
         if (result.value) {

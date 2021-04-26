@@ -78,6 +78,22 @@ class Sst_model extends CI_Model
         return $query->result();
 
     }
+
+    public function getCurrentUserData() {
+        $user_id = $this->session->userdata('session_id');
+
+        $query = $this->db->query("SELECT nombres, tu.apellido_paterno, tu.apellido_materno
+                , tdp.nro_documento, tdp.puesto
+            FROM ts_usuario tu
+                INNER JOIN ts_datos_personales tdp
+                    ON tdp.Id = tu.Id
+            WHERE tu.Id = $user_id
+        ");
+
+        return $query->row();
+
+
+    }
     
 
 

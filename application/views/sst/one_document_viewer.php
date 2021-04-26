@@ -7,8 +7,9 @@
     >
     </iframe>
 </div>
-<div style="dispay:none" class="data_container"
+<div class="data_container"
     data-document_name="<?= $nombre_documento;?>"
+    data-user_data = '<?=$user_data;?>'
 ></div>
 
-<script type="module" src="<?=base_url() . '/application/views/sst/one_document_viewer-script.js?v=4';?>"></script>
+<script type="module" src="<?=base_url() . '/application/views/sst/one_document_viewer-script.js?v=5';?>"></script>

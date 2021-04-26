@@ -15,16 +15,13 @@
         </iframe>
     </div>
 
-
-
-
-
-
-
-
-
-
 </div>
+<div class="data_container"
+    data-user_data = '<?=$user_data;?>'
+></div>
+
+
+
 <style>
 .view_list {
     list-style:none;
@@ -66,4 +63,4 @@
     
 </style>
 
-<script type="module" src="<?=base_url();?>/application/views/sst/many_documents_viewer-script.js?v=4"></script>
+<script type="module" src="<?=base_url();?>/application/views/sst/many_documents_viewer-script.js?v=5"></script>

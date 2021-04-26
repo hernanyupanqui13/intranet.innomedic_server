@@ -19,7 +19,9 @@ class Sst extends CI_Controller {
         $data = array(
             'title' =>array("estas viendo SST","SST","","<a target='_blank' href='javascript:void(0)' title=''>Area de Sistemas</a>"),
             "reglamento_file_path"=>base_url()."upload/archivos/sst/politicas_sst.pdf",
-            "nombre_documento" => "Politica Integrada de SST"
+            "nombre_documento" => "Politica Integrada de SST",
+            "user_data" => json_encode($this->Sst_model->getCurrentUserData())
+
         );
           
         $this->load->view("intranet_view/head",$data);
@@ -59,7 +61,9 @@ class Sst extends CI_Controller {
         $data = array(
             'title' =>array("estas viendo SST","SST","","<a target='_blank' href='javascript:void(0)' title=''>Area de Sistemas</a>"),
             "reglamento_file_path"=>base_url()."upload/archivos/sst/RISST.pdf",
-            "nombre_documento" => "Reglamento Interno de SST"
+            "nombre_documento" => "Reglamento Interno de SST",
+            "user_data" => json_encode($this->Sst_model->getCurrentUserData())
+
         );
           
         $this->load->view("intranet_view/head",$data);
@@ -78,8 +82,8 @@ class Sst extends CI_Controller {
 
         $data = array(
             'title' =>array("estas viendo SST","SST","","<a target='_blank' href='javascript:void(0)' title=''>Area de Sistemas</a>"),
-            "reglamento_file_path"=>base_url()."/upload/archivos/sst/politicas_sst.pdf"
-
+            "reglamento_file_path"=>base_url()."/upload/archivos/sst/politicas_sst.pdf",
+            "user_data" => json_encode($this->Sst_model->getCurrentUserData())
         );
 
         $this->load->view("intranet_view/head",$data);
@@ -112,6 +116,7 @@ class Sst extends CI_Controller {
         }
         $data = array(
             'title' =>array("estas viendo SST","SST","","<a target='_blank' href='javascript:void(0)' title=''>Area de Sistemas</a>"),
+            "user_data" => json_encode($this->Sst_model->getCurrentUserData())
         );
 
         $this->load->view("intranet_view/head",$data);
@@ -129,6 +134,41 @@ class Sst extends CI_Controller {
         $data =array("data" => $this->Sst_model->getFullReportData());
 
         $this->load->view("excel/reporte_completo_sst", $data);
+
+    }
+
+    public function downloadFullReportPdf() {
+        
+        $data =array("data" => $this->Sst_model->getFullReportData());
+
+		$this->load->view('pdf/reporte_completo_sst',$data);
+
+		$html = $this->output->get_output();
+        
+        // Load pdf library
+        $this->load->library('pdf');
+
+		// Load HTML content
+		$this->pdf->loadHtml($html);//loadHtml
+
+		$this->pdf->set_option('isRemoteEnabled', true);
+		// (Optional) Setup the paper size and orientation or portrait
+		$this->pdf->setPaper('A4', 'orientation');
+
+		// Render the HTML as PDF
+		$this->pdf->render();
+
+		// Output the generated PDF (1 = download and 0 = preview)
+        $this->pdf->stream("ReporteSst.pdf", array("Attachment"=>1));
+    }
+    /*
+    Obtiene la informacion actual del usuario para mostrarla en la confirmacion de lectura
+    */
+    public function getCurrentUserData() {        
+
+        $current_user_data = $this->Sst_model->getCurrentUserData();
+
+        echo json_encode($current_user_data);
 
     }
 
