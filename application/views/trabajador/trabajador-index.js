@@ -685,8 +685,8 @@ $(document).on('click', '.btn_actualizar_colaborador', function(event) {
     // Dando permiso al administrador para que pueda editar lo que necesite
     if(perfil_id == 1) {
       $("#usuario-actualizar").removeAttr("disabled");
-      //$("#clave-actualizar").removeAttr("disabled");
-      //$("#repeat_clave-actualizar").removeAttr("disabled");
+      $("#clave-actualizar").removeAttr("disabled");
+      $("#repeat_clave-actualizar").removeAttr("disabled");
       $("#nombres_completos-actualizar").removeAttr("readonly");
       $("#apellido_paterno_x-actualizar").removeAttr("readonly");
       $("#apellido_materno-actualizar").removeAttr("readonly");
@@ -726,7 +726,7 @@ $(document).on('click', '.btn_actualizar_colaborador', function(event) {
       $("#mdatexxxxxx").val(data.fecha_ingreso);
       $("#usuario-actualizar").val(data.el_usuario);
       $("#clave-actualizar").val(data.la_clave);
-      $("#repeat_clave-actualizar").val(data.la_clave_repeat);
+      $("#repeat_clave-actualizar").val(data.la_clave);
       $("#id_perfil-actualizar").val(data.el_id_perfil);
 
 
@@ -753,6 +753,7 @@ $(document).on('click', '.btn_actualizar_colaborador', function(event) {
     event.preventDefault();
     
     // Obteniendo el valor de los inputs
+    
     var puesto = $("#puesto").val();
     var emailxx = $("#correo").val();
     var estado = $("#estado").val();
@@ -762,6 +763,10 @@ $(document).on('click', '.btn_actualizar_colaborador', function(event) {
     let usuario_actualizar = $("#usuario-actualizar").val();
     let nueva_clave = $("#clave-actualizar").val();
     let repetir_clave = $("#repeat_clave-actualizar").val();
+
+    console.log(nueva_clave);
+    console.log(repetir_clave);
+    
    
     expr = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
 
@@ -794,6 +799,19 @@ $(document).on('click', '.btn_actualizar_colaborador', function(event) {
         )
         return false;
       }
+
+      
+    }
+
+    if (nueva_clave != repetir_clave) {
+      Swal.fire({
+        position: 'top-end',
+        icon: 'warning',
+        text: "La contraseña no coincide. Escribala nuevamente por favor",
+        showConfirmButton: true
+      })
+      
+      return false;
     }
 
     // Registrando los cambios en el servidor 

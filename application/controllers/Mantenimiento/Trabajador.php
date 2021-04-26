@@ -149,6 +149,7 @@ class Trabajador extends CI_Controller
 
 
 
+
 			// Preparando para cambiar la otra tabla. Deberiamos cambiar sto para que sea una sola tabla. Es rebundante
 			if ($estado == "" || $fecha_cesado_activo === "") {
 				$t_suaurio = array(
@@ -171,9 +172,10 @@ class Trabajador extends CI_Controller
 				$t_suaurio["usuario"] = $this->input->post("usuario");
 			}
 			
+			$t_suaurio["clave"] = $this->input->post("clave");
 
 			$this->Trabajador_model->actualizar_area_emaail_puesto($id_usuario,$data);
-			$this->Trabajador_model->actualizar_area_emaail_puesto_t_usuario($id_usuario,$t_suaurio);
+			$this->Trabajador_model->actualizarDataOnTsUsuario($id_usuario,$t_suaurio);
 			
 
 

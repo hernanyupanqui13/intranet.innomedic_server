@@ -142,12 +142,33 @@ class Trabajador_model extends CI_Model
 
 	public function actualizar_area_emaail_puesto($id_usuario,$data)
 	{
+		
+
 		$this->db->where("id_usuario",$id_usuario);
 		$this->db->update("ts_datos_personales",$data);
 	}
-
-	public function actualizar_area_emaail_puesto_t_usuario($id_usuario,$t_suaurio)
+	/*
+	Actualiza los datos de una cuenta de usuario incluyendo contraseña
+	Actualiza contraseña solo si tiene permisos de Administrador
+	*/
+	public function actualizarDataOnTsUsuario($id_usuario,$t_suaurio)
 	{
+		// Guardando al contraseña nueva
+		$clave_nueva = $t_suaurio["clave"];
+
+		// Pbteniendo la contraseña actual de la base de datos
+		$query = $this->db->query("SELECT clave
+			FROM ts_usuario 
+			WHERE Id = $id_usuario
+		");
+		$clave_antigua = $query->row()->clave;
+
+		// Cambiamos la contraseña solo si es que no es la misma que mostramos
+		if($clave_antigua != $clave_nueva) {
+			$t_suaurio["clave"] = md5($clave_nueva);
+		}
+
+		// Subiendo los cambios a la base de datos
 		$this->db->where("Id",$id_usuario);
 		$this->db->update("ts_usuario",$t_suaurio);
 	}
