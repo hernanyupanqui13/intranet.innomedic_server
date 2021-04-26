@@ -35,4 +35,4 @@
 }
 
 </style>
-<script src="<?=base_url() . '/application/views/sst/sst_admin_panel-script.js?';?>"></script>
+<script src="<?=base_url() . '/application/views/sst/sst_admin_panel-script.js?v=2';?>"></script>

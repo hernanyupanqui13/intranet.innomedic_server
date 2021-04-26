@@ -23,5 +23,5 @@ function downloadFullReportExcel() {
 
 function downloadFullReportPdf() {
     console.log("pdf");
-    window.location = `${window.location.origin}/Sst/sst/downloadFullReportPdf`;
+    window.location = `${window.location.origin}/sst/sst/downloadFullReportPdf`;
 }
