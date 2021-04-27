@@ -23,6 +23,7 @@ export function viewValidator(document_name, user) {
 
 // Esta funcion se encarga de solicitar la confirmacion al cliente y comunicar si fue confirmado o no
 export function requestConfirmation(the_document_name, user) {
+    
     let current_date = new Date();
     current_date = `${current_date.getDate()}/${current_date.getMonth() + 1}/${current_date.getFullYear()}`;
 

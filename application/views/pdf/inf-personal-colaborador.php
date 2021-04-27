@@ -60,7 +60,7 @@
 
     <h1 class="h1 my_heading text-center">INFORMACION PERSONAL</h1>
     <div class="text-center img-perfil">
-        <img src="<?= base_url() . "upload/images/". $impr->imagen ?>" class="rounded" alt="Imagen perfil">    </div>
+        <img src="<?= base_url() . "upload/images/". $impr->imagen ?>" class="rounded" alt="Imagen perfil"></div>
 
     <table class="table-information">      
       <tbody>

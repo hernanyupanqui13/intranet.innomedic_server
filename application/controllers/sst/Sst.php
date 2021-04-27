@@ -20,10 +20,10 @@ class Sst extends CI_Controller {
             'title' =>array("estas viendo SST","SST","","<a target='_blank' href='javascript:void(0)' title=''>Area de Sistemas</a>"),
             "reglamento_file_path"=>base_url()."upload/archivos/sst/politicas_sst.pdf",
             "nombre_documento" => "Politica Integrada de SST",
-            "user_data" => json_encode($this->Sst_model->getCurrentUserData())
-
+            "user_data" => json_encode($this->Sst_model->getDataOfUser())
         );
-          
+        
+
         $this->load->view("intranet_view/head",$data);
         $this->load->view("intranet_view/title",$data);
         $this->load->view('sst/one_document_viewer',$data);
@@ -62,7 +62,7 @@ class Sst extends CI_Controller {
             'title' =>array("estas viendo SST","SST","","<a target='_blank' href='javascript:void(0)' title=''>Area de Sistemas</a>"),
             "reglamento_file_path"=>base_url()."upload/archivos/sst/RISST.pdf",
             "nombre_documento" => "Reglamento Interno de SST",
-            "user_data" => json_encode($this->Sst_model->getCurrentUserData())
+            "user_data" => json_encode($this->Sst_model->getDataOfUser())
 
         );
           
@@ -83,7 +83,7 @@ class Sst extends CI_Controller {
         $data = array(
             'title' =>array("estas viendo SST","SST","","<a target='_blank' href='javascript:void(0)' title=''>Area de Sistemas</a>"),
             "reglamento_file_path"=>base_url()."/upload/archivos/sst/politicas_sst.pdf",
-            "user_data" => json_encode($this->Sst_model->getCurrentUserData())
+            "user_data" => json_encode($this->Sst_model->getDataOfUser())
         );
 
         $this->load->view("intranet_view/head",$data);
@@ -116,7 +116,7 @@ class Sst extends CI_Controller {
         }
         $data = array(
             'title' =>array("estas viendo SST","SST","","<a target='_blank' href='javascript:void(0)' title=''>Area de Sistemas</a>"),
-            "user_data" => json_encode($this->Sst_model->getCurrentUserData())
+            "user_data" => json_encode($this->Sst_model->getDataOfUser())
         );
 
         $this->load->view("intranet_view/head",$data);
@@ -135,6 +135,27 @@ class Sst extends CI_Controller {
 
         $this->load->view("excel/reporte_completo_sst", $data);
 
+    }
+
+    public function getFullReportRows() {
+        $full_report_data = $this->Sst_model->getFullReportData();
+        $data = [];
+        $counter = 0;
+        foreach($full_report_data as $item) {
+            $counter++;
+            $row=[];
+            $row["counter"] = $counter;
+            $row["tipo_documento"] = $item->tipo_documento;
+            $row["nombre"] = $item->nombre;
+            $row["apellido_paterno"] = $item->apellido_paterno;
+            $row["apellido_materno"] = $item->apellido_materno;
+            $row["fecha_visto"] = $item->fecha_visto;
+            $row['opciones'] = "<a class='btn btn-success' href='javascript:void(0)' title='Actualizar' onclick='dowloadIndividualReport($item->Id)'><i class='fas fa-file-download'></i></a>";
+
+            $data[] = $row;
+        }
+
+        echo json_encode($data);
     }
 
     public function downloadFullReportPdf() {
@@ -161,15 +182,47 @@ class Sst extends CI_Controller {
 		// Output the generated PDF (1 = download and 0 = preview)
         $this->pdf->stream("ReporteSst.pdf", array("Attachment"=>1));
     }
+
+
     /*
     Obtiene la informacion actual del usuario para mostrarla en la confirmacion de lectura
     */
-    public function getCurrentUserData() {        
+    public function getDataOfUser($user_id = null) {
 
-        $current_user_data = $this->Sst_model->getCurrentUserData();
+        if($user_id == null) {
+            $user_id = $this->session->userdata('session_id');
+        }
+
+        $current_user_data = $this->Sst_model->getDataOfUser($user_id);
 
         echo json_encode($current_user_data);
 
+    }
+
+    public function downloadIndividualReport($user_id) {
+
+        $data = array("user_data" => $this->Sst_model->getIndividualReport($user_id));
+
+
+        $this->load->view('pdf/cargo_individual_sst', $data);
+
+		$html = $this->output->get_output();
+        
+        // Load pdf library
+        $this->load->library('pdf');
+
+		// Load HTML content
+		$this->pdf->loadHtml($html);//loadHtml
+
+		$this->pdf->set_option('isRemoteEnabled', true);
+		// (Optional) Setup the paper size and orientation or portrait
+		$this->pdf->setPaper('A4', 'orientation');
+
+		// Render the HTML as PDF
+		$this->pdf->render();
+
+		// Output the generated PDF (1 = download and 0 = preview)
+        $this->pdf->stream("ReporteSstIndividual.pdf", array("Attachment"=>1));
     }
 
 

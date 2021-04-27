@@ -17,6 +17,11 @@
         </ul>
     </div>
 </div>
+<div class="row">
+    <div class="col" id="main_table_container">
+        <table id="sst-reportes-table" class="table" data-paging="true" data-sorting="true" data-filtering="true"></table>
+    </div>
+</div>
 
 <style>
 .item_with_options {
@@ -34,5 +39,9 @@
     grid-column: 3/4;
 }
 
+#main_table_container > table > tr > td:nth-child(1) {
+    background-color: red;
+}
+
 </style>
-<script src="<?=base_url() . '/application/views/sst/sst_admin_panel-script.js?v=2';?>"></script>
+<script src="<?=base_url() . '/application/views/sst/sst_admin_panel-script.js?v=3';?>"></script>

@@ -25,3 +25,46 @@ function downloadFullReportPdf() {
     console.log("pdf");
     window.location = `${window.location.origin}/sst/sst/downloadFullReportPdf`;
 }
+
+
+const footable_columns = [
+    { "name": "counter", "title": "#", "breakpoints": "xs", "sorted": "true" },
+    { "name": "tipo_documento", "title": "Tipo Documento" },
+    { "name": "nombre", "title": "Nombre" },
+    { "name": "apellido_paterno", "title": "Apellido Paterno" },
+    { "name": "apellido_materno", "title": "Apellido Materno" },
+    { "name": "fecha_visto", "title": "Fecha Visto" ,"breakpoints": "xs"},
+    { "name": "opciones", "title": "Opciones" ,"breakpoints": "xs"},
+];
+
+jQuery(function($) {
+	// init the plugin and hold a reference to the instance
+	var ft = FooTable.init('#sst-reportes-table', {
+		// we only load the column definitions as the row data is loaded through the button clicks
+		"columns": footable_columns,
+        "rows": getRowsData(),
+
+	});
+});
+
+
+function getRowsData() {
+
+    return jQuery.get({
+        "url": `${window.location.origin}/sst/sst/getFullReportRows/`,
+        "dataType": "json"		
+    })
+    .then(r => {
+
+        // This is a global variable to store the data when we want to download
+        console.log(r);
+        return r;
+
+    });
+
+}
+
+function dowloadIndividualReport(userId) {
+    window.location = `${window.location.origin}/sst/sst/downloadIndividualReport/${userId}`;
+
+}
