@@ -141,7 +141,7 @@
         <tr>
             <td width="20%" rowspan="4">
                 <div class="img_container">
-                    <img src="<?php echo base_url().'assets/';?>images/logo.png">
+                    <img src="<?php echo base_url().'assets/';?>images/logo.jpg">
                 </div>
             </td>
             <td rowspan="2" width="55%" class="table-headtext">GESTION ORGANIZACIONAL</td>
@@ -172,26 +172,26 @@
 
 <ul class="user_data">
     <li>
-        <strong>Nombres y Apellidos</strong>
-        <span><?=$user_data->nombre
+        <strong style="font-weight: bold;">Nombres y Apellidos</strong>
+        <span><?=ucwords(strtolower($user_data->nombre
             . " " . $user_data->apellido_paterno 
-            . " " . $user_data->apellido_materno?>
+            . " " . $user_data->apellido_materno))?>
         </span>
     </li>
     <li>
-        <strong>Puesto de Trabajo</strong>
+        <strong style="font-weight: bold;">Puesto de Trabajo</strong>
         <span><?=$user_data->puesto?></span>
     </li>
     <li>
-        <strong>DNI:</strong>
+        <strong style="font-weight: bold;">DNI:</strong>
         <span><?=$user_data->nro_documento?></span>
     </li>
     <li>
-        <strong>Fecha</strong>
+        <strong style="font-weight: bold;">Fecha</strong>
         <span><?= $user_data->fecha_visto?></span>
     </li>
     <li>
-        <strong>Firma</strong>
+        <strong style="font-weight: bold;">Firma</strong>
         <table width="100%" class="confirmation_table">
             <tr>
                 <td><input type="checkbox" class="confirm_checkbox" style="position: relative; top:20px;" checked onclick="event.preventDefault()"></td>
