@@ -29,7 +29,7 @@
 
     .table-headtext {
         text-align: center;
-        font-weight: bold;
+        font-weight: bold !important;
         padding:  0 5px;
     }
 
@@ -42,7 +42,7 @@
         text-align: justify;
     }
 
-    .user_data strong, .user_data span {
+    .user_data b, .user_data span {
         display: block;
         font-size: 1.3rem;
     }
@@ -153,7 +153,7 @@
             <td>1</td>
         </tr>
         <tr>
-            <td rowspan="2" class="table-headtext">CARGO DE RECPECION DEL REGLAMENTO INTERNO DE SEGURIDAD Y SALUD EN EL TRABAJO</td>
+            <td rowspan="2" class="table-headtext">CARGO DE RECEPCION DEL REGLAMENTO INTERNO DE SEGURIDAD Y SALUD EN EL TRABAJO</td>
             <td class="table-headtext">Codigo</td>
             <td>CAR_RC_RISST 001 -2020</td>
         </tr>
@@ -172,26 +172,26 @@
 
 <ul class="user_data">
     <li>
-        <strong style="font-weight: bold;">Nombres y Apellidos</strong>
-        <span><?=ucwords(strtolower($user_data->nombre
+        <b style="font-weight: bold;">Nombres y Apellidos</b>
+        <span><?=ucwords(mb_strtolower($user_data->nombre
             . " " . $user_data->apellido_paterno 
             . " " . $user_data->apellido_materno))?>
         </span>
     </li>
     <li>
-        <strong style="font-weight: bold;">Puesto de Trabajo</strong>
+        <b style="font-weight: bold;">Puesto de Trabajo</b>
         <span><?=$user_data->puesto?></span>
     </li>
     <li>
-        <strong style="font-weight: bold;">DNI:</strong>
+        <b style="font-weight: bold;">DNI:</b>
         <span><?=$user_data->nro_documento?></span>
     </li>
     <li>
-        <strong style="font-weight: bold;">Fecha</strong>
+        <b style="font-weight: bold;">Fecha</b>
         <span><?= $user_data->fecha_visto?></span>
     </li>
     <li>
-        <strong style="font-weight: bold;">Firma</strong>
+        <b style="font-weight: bold;">Firma</b>
         <table width="100%" class="confirmation_table">
             <tr>
                 <td><input type="checkbox" class="confirm_checkbox" style="position: relative; top:20px;" checked onclick="event.preventDefault()"></td>
