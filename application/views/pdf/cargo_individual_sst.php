@@ -11,9 +11,14 @@
 <title>Informacion Personal - Colaborador</title>
 
 <style>
+
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@700&display=swap');
+
+
     * {
         font-family: Arial, Helvetica, sans-serif;
     }
+
     .head_table, .head_table th,.head_table td {        
         border: 1px solid black;
         border-collapse: collapse;
@@ -31,6 +36,7 @@
         text-align: center;
         font-weight: bold !important;
         padding:  0 5px;
+        font-family: "Noto Sans KR";
     }
 
     .main_title {
@@ -132,6 +138,10 @@
 
     .confirmation_table {
         font-size: 1.3rem;
+    }
+
+    b {
+        font-family: "Noto Sans KR";
     }
 </style>
 </head>

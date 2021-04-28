@@ -225,6 +225,16 @@ class Sst extends CI_Controller {
         $this->pdf->stream("ReporteSstIndividual.pdf", array("Attachment"=>1));
     }
 
+    public function test($user_id = null) {
+        
+        $data = array("user_data" => $this->Sst_model->getIndividualReport($user_id));
+
+        $this->load->view('pdf/cargo_individual_sst', $data);
+
+    }
+
+
+
 
 
 
