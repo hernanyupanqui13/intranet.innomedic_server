@@ -12,17 +12,13 @@
 
 <style>
 
-    @font-face {
-        font-family: "arialbold";
-        src: url(<?= base_url("application/libraries/dompdf/lib/fonts/arial-bold.ttf"); ?>);
+    body{
+        font-family: Arial, Helvetica, sans-serif;
     }
-
-    * {
-        font-family: Arial, Helvetica, sans-serif
-    }
-
+    
     .strongbold {
-        font-family: "arialbold", Helvetica, sans-serif !important;
+        font-family: Arial;
+        font-weight: bold;
     }
 
 
@@ -37,11 +33,17 @@
         align-items: center;
     }
 
+
+    img {
+        max-width: 100%;
+        width: 130px;
+    }
+
     
 
     .table-headtext {
         text-align: center;
-        font-family: "arialbold";
+        font-family: Arial, Helvetica, sans-serif;
         padding:  0 2px;
     }
 
@@ -54,77 +56,13 @@
         text-align: justify;
     }
 
-    .user_data strong, .user_data span {
+    .user_data div {
         display: block;
         font-size: 1.3rem;
     }
 
     .user_data li {
         margin-bottom: 10px;
-    }
-
-    .container {
-        display: block;
-        padding-left: 35px;
-        margin-bottom: 12px;
-        cursor: pointer;
-        font-size: 1.3rem;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-    }
-
-    .container input {
-        position: absolute;
-        opacity: 0;
-        cursor: pointer;
-        height: 0;
-        width: 0;
-    }
-
-    .checkmark {
-        position: absolute;
-        top: 0;
-        left: 0;
-        height: 25px;
-        width: 25px;
-        background-color: #eee;
-    }
-
-    /* On mouse-over, add a grey background color */
-    .container:hover input ~ .checkmark {
-        background-color: #ccc;
-    }
-
-    /* When the checkbox is checked, add a blue background */
-    .container input:checked ~ .checkmark {
-        background-color: #2196F3;
-    }
-
-    /* Create the checkmark/indicator (hidden when not checked) */
-    .checkmark:after {
-        content: "";
-        position: absolute;
-        display: none;
-    }
-
-    /* Show the checkmark when checked */
-    .container input:checked ~ .checkmark:after {
-        display: block;
-    }
-
-    /* Style the checkmark/indicator */
-    .container .checkmark:after {
-        left: 9px;
-        top: 5px;
-        width: 5px;
-        height: 10px;
-        border: solid white;
-        border-width: 0 3px 3px 0;
-        -webkit-transform: rotate(45deg);
-        -ms-transform: rotate(45deg);
-        transform: rotate(45deg);
     }
 
     .head_table {
@@ -181,26 +119,26 @@
 
 <ul class="user_data">
     <li>
-        <strong class="strongbold" >Nombres y Apellidos</strong>
-        <span><?=ucwords(mb_strtolower($user_data->nombre
+        <div class="strongbold" >Nombres y Apellidos</div>
+        <div><?=ucwords(mb_strtolower($user_data->nombre
             . " " . $user_data->apellido_paterno 
             . " " . $user_data->apellido_materno))?>
-        </span>
+        </div>
     </li>
     <li>
-        <strong class="strongbold" >Puesto de Trabajo</strong>
-        <span><?=$user_data->puesto?></span>
+        <div class="strongbold" >Puesto de Trabajo</div>
+        <div><?=$user_data->puesto?></div>
     </li>
     <li>
-        <strong class="strongbold" >DNI:</strong>
-        <span><?=$user_data->nro_documento?></span>
+        <div class="strongbold" >DNI:</div>
+        <div><?=$user_data->nro_documento?></div>
     </li>
     <li>
-        <strong class="strongbold" >Fecha</strong>
-        <span><?= $user_data->fecha_visto?></span>
+        <div class="strongbold" >Fecha</div>
+        <div><?= $user_data->fecha_visto?></div>
     </li>
     <li>
-        <strong class="strongbold" >Firma</strong>
+        <div class="strongbold" >Firma</div>
         <table width="100%" class="confirmation_table">
             <tr>
                 <td><input type="checkbox" class="confirm_checkbox" checked onclick="event.preventDefault()"></td>

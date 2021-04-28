@@ -231,11 +231,11 @@ class Sst extends CI_Controller {
     public function test($user_id = null) {
 
         $data = array("user_data" => $this->Sst_model->getIndividualReport($user_id));
-        $this->load->view('pdf/cargo_individual_sst', $data);
+        $html = $this->load->view('pdf/cargo_individual_sst', $data, true);
 
         //$path = (getenv('MPDF_ROOT')) ? getenv('MPDF_ROOT') : __DIR__;
         //require_once $path . '\..\..\..\vendor\autoload.php';
-        /*
+        
         $mpdf = new \Mpdf\Mpdf([
             'margin_left' => 10,
             'margin_right' => 10,
@@ -250,10 +250,7 @@ class Sst extends CI_Controller {
         $mpdf->SetDisplayMode('fullpage');
 
         $mpdf->WriteHTML($html);
-        $mpdf->Output();*/
-
-        
-        
+        $mpdf->Output("test.pdf", "D");
 
     }
 
