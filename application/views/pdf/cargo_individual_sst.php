@@ -12,12 +12,19 @@
 
 <style>
 
-    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@700&display=swap');
-
+    @font-face {
+        font-family: "arialbold";
+        src: url(<?= base_url("application/libraries/dompdf/lib/fonts/arial-bold.ttf"); ?>);
+    }
 
     * {
-        font-family: Arial, Helvetica, sans-serif;
+        font-family: Arial, Helvetica, sans-serif
     }
+
+    .strongbold {
+        font-family: "arialbold", Helvetica, sans-serif !important;
+    }
+
 
     .head_table, .head_table th,.head_table td {        
         border: 1px solid black;
@@ -34,9 +41,8 @@
 
     .table-headtext {
         text-align: center;
-        font-weight: bold !important;
-        padding:  0 5px;
-        font-family: "Noto Sans KR";
+        font-family: "arialbold";
+        padding:  0 2px;
     }
 
     .main_title {
@@ -48,7 +54,7 @@
         text-align: justify;
     }
 
-    .user_data b, .user_data span {
+    .user_data strong, .user_data span {
         display: block;
         font-size: 1.3rem;
     }
@@ -59,7 +65,6 @@
 
     .container {
         display: block;
-        position: relative;
         padding-left: 35px;
         margin-bottom: 12px;
         cursor: pointer;
@@ -131,18 +136,12 @@
         align-items: center;
     }
 
-    .confirm_checkbox {
-        position: relative;
-        bottom: -10px;
-    }
-
     .confirmation_table {
         font-size: 1.3rem;
     }
 
-    b {
-        font-family: "Noto Sans KR";
-    }
+
+    
 </style>
 </head>
 <body>
@@ -172,7 +171,7 @@
         </tr>
     </table>
 </header>
-<h1 class="main_title">Cargo de recepcion de RISST</h1>
+<h1 class="main_title">CARGO DE RECEPCION DE RISST</h1>
 <p class="body_text-p">Conste por el presente documento, que, he recibido y se me ha 
     capacitado sobre el Reglamento Interno de Seguridad 
     y Salud en el Trabajo de INNOMEDIC INTERNATIONAL E.I.R.L.
@@ -182,29 +181,29 @@
 
 <ul class="user_data">
     <li>
-        <b style="font-weight: bold;">Nombres y Apellidos</b>
+        <strong class="strongbold" >Nombres y Apellidos</strong>
         <span><?=ucwords(mb_strtolower($user_data->nombre
             . " " . $user_data->apellido_paterno 
             . " " . $user_data->apellido_materno))?>
         </span>
     </li>
     <li>
-        <b style="font-weight: bold;">Puesto de Trabajo</b>
+        <strong class="strongbold" >Puesto de Trabajo</strong>
         <span><?=$user_data->puesto?></span>
     </li>
     <li>
-        <b style="font-weight: bold;">DNI:</b>
+        <strong class="strongbold" >DNI:</strong>
         <span><?=$user_data->nro_documento?></span>
     </li>
     <li>
-        <b style="font-weight: bold;">Fecha</b>
+        <strong class="strongbold" >Fecha</strong>
         <span><?= $user_data->fecha_visto?></span>
     </li>
     <li>
-        <b style="font-weight: bold;">Firma</b>
+        <strong class="strongbold" >Firma</strong>
         <table width="100%" class="confirmation_table">
             <tr>
-                <td><input type="checkbox" class="confirm_checkbox" style="position: relative; top:20px;" checked onclick="event.preventDefault()"></td>
+                <td><input type="checkbox" class="confirm_checkbox" checked onclick="event.preventDefault()"></td>
                 <td style="padding-left: 15px;">Firmado Digitalmente el <?=$user_data->fecha_visto?></td>
             </tr>
         </table>

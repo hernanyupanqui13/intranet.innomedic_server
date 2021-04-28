@@ -1,4 +1,7 @@
 <?php
+
+use Mpdf\Tag\Tr;
+
 defined('BASEPATH') OR exit('No direct script access allowed');
 class Sst extends CI_Controller {
     
@@ -226,10 +229,31 @@ class Sst extends CI_Controller {
     }
 
     public function test($user_id = null) {
-        
-        $data = array("user_data" => $this->Sst_model->getIndividualReport($user_id));
 
+        $data = array("user_data" => $this->Sst_model->getIndividualReport($user_id));
         $this->load->view('pdf/cargo_individual_sst', $data);
+
+        //$path = (getenv('MPDF_ROOT')) ? getenv('MPDF_ROOT') : __DIR__;
+        //require_once $path . '\..\..\..\vendor\autoload.php';
+        /*
+        $mpdf = new \Mpdf\Mpdf([
+            'margin_left' => 10,
+            'margin_right' => 10,
+            'margin_top' => 10,
+            'margin_bottom' => 10,
+            'margin_header' => 10,
+            'margin_footer' => 10
+        ]);
+
+        $mpdf->showWatermarkText = true;
+        $mpdf->watermarkTextAlpha = 0.1;
+        $mpdf->SetDisplayMode('fullpage');
+
+        $mpdf->WriteHTML($html);
+        $mpdf->Output();*/
+
+        
+        
 
     }
 

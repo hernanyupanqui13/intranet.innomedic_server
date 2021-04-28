@@ -122,4 +122,7 @@
   'material icons' => array(
     'normal' => $fontDir . '\a83785ccbfc5713b63b97bbf71e6fa23',
   ),
+  'arialbold' => array(
+    'normal' => $fontDir . '\dc92c3ca78daa5bc5de56de12e4c9782',
+  ),
 ) ?>
