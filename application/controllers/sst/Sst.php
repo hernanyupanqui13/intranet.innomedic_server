@@ -202,39 +202,16 @@ class Sst extends CI_Controller {
 
     }
 
-    public function downloadIndividualReport($user_id) {
 
-        $data = array("user_data" => $this->Sst_model->getIndividualReport($user_id));
+    public function downloadIndividualReport($user_id=null) {
 
-
-        $this->load->view('pdf/cargo_individual_sst', $data);
-
-		$html = $this->output->get_output();
-        
-        // Load pdf library
-        $this->load->library('pdf');
-
-		// Load HTML content
-		$this->pdf->loadHtml($html);//loadHtml
-
-		$this->pdf->set_option('isRemoteEnabled', true);
-		// (Optional) Setup the paper size and orientation or portrait
-		$this->pdf->setPaper('A4', 'orientation');
-
-		// Render the HTML as PDF
-		$this->pdf->render();
-
-		// Output the generated PDF (1 = download and 0 = preview)
-        $this->pdf->stream("ReporteSstIndividual.pdf", array("Attachment"=>1));
-    }
-
-    public function test($user_id = null) {
+        if($user_id == null) {
+            echo "No se ingreso correctamente";
+            return false;
+        }
 
         $data = array("user_data" => $this->Sst_model->getIndividualReport($user_id));
         $html = $this->load->view('pdf/cargo_individual_sst', $data, true);
-
-        //$path = (getenv('MPDF_ROOT')) ? getenv('MPDF_ROOT') : __DIR__;
-        //require_once $path . '\..\..\..\vendor\autoload.php';
         
         $mpdf = new \Mpdf\Mpdf([
             'margin_left' => 10,

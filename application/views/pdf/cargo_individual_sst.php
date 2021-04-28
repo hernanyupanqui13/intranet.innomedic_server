@@ -6,7 +6,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-
+<script src="https://kit.fontawesome.com/dc5ae8b9ac.js" crossorigin="anonymous"></script>
 
 <title>Informacion Personal - Colaborador</title>
 
@@ -69,13 +69,9 @@
         text-align: center;
     }
 
-    .confirm_container {
-        display: flex;
-        align-items: center;
-    }
 
-    .confirmation_table {
-        font-size: 1.3rem;
+    .check_icon {
+        width: 20px ;
     }
 
 
@@ -139,16 +135,10 @@
     </li>
     <li>
         <div class="strongbold" >Firma</div>
-        <table width="100%" class="confirmation_table">
-            <tr>
-                <td><input type="checkbox" class="confirm_checkbox" checked onclick="event.preventDefault()"></td>
-                <td style="padding-left: 15px;">Firmado Digitalmente el <?=$user_data->fecha_visto?></td>
-            </tr>
-        </table>
-        <!--<label class="container">Firmado digitalmente el 12/04/2021
-            <input type="checkbox" checked="checked">
-            <span class="checkmark"></span>
-        </label>-->
+        <div>
+            <img class="check_icon" src="<?php echo base_url().'assets/';?>images/check.png">
+            <span>Firmado Digitalmente el <?=$user_data->fecha_visto?></span>
+        </div> 
     </li>
 </ul>
 
