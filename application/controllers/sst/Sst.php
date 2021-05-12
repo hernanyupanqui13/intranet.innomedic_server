@@ -202,9 +202,9 @@ class Sst extends CI_Controller {
 
     }
 
-
+    // Se uso una nueva libreria porque la anterior tenia problemas con bolts font
     public function downloadIndividualReport($user_id=null) {
-
+        // En caso no se ingrese el ID del usuario
         if($user_id == null) {
             echo "No se ingreso correctamente";
             return false;
@@ -229,6 +229,10 @@ class Sst extends CI_Controller {
         $mpdf->WriteHTML($html);
         $mpdf->Output("test.pdf", "D");
 
+    }
+
+    public function test() {
+        echo json_encode($this->Sst_model->test());
     }
 
 

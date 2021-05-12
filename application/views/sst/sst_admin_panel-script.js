@@ -4,11 +4,9 @@ download_button_excel.addEventListener("click", downloadFullReportExcel);
 const download_button_pdf = document.querySelector("#full_report-download-pdf-btn");
 download_button_pdf.addEventListener("click", downloadFullReportPdf);
 
-console.log("loading const");   
 
 function downloadFullReportExcel() {
 
-    console.log("excel");
     let my_form = document.createElement("form");
     my_form.action = `${window.location.origin}/sst/sst/downloadFullReportExcel/`;
     my_form.method = "post";
@@ -22,7 +20,6 @@ function downloadFullReportExcel() {
 }
 
 function downloadFullReportPdf() {
-    console.log("pdf");
     window.location = `${window.location.origin}/sst/sst/downloadFullReportPdf`;
 }
 
@@ -40,31 +37,24 @@ const footable_columns = [
 jQuery(function($) {
 	// init the plugin and hold a reference to the instance
 	var ft = FooTable.init('#sst-reportes-table', {
-		// we only load the column definitions as the row data is loaded through the button clicks
+		// we only load the column definitions as the row data is loaded through the function
 		"columns": footable_columns,
         "rows": getRowsData(),
 
 	});
 });
 
-
+// Obtiene las filas para el footble de SST
 function getRowsData() {
 
     return jQuery.get({
         "url": `${window.location.origin}/sst/sst/getFullReportRows/`,
         "dataType": "json"		
     })
-    .then(r => {
-
-        // This is a global variable to store the data when we want to download
-        console.log(r);
-        return r;
-
-    });
+    .then(r => r);
 
 }
-
+// Descarga un pdf con el cargo individual
 function dowloadIndividualReport(userId) {
     window.location = `${window.location.origin}/sst/sst/downloadIndividualReport/${userId}`;
-
 }

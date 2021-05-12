@@ -115,6 +115,11 @@ class Sst_model extends CI_Model
 
 
     }
+
+    public function test() {
+        $this->db->query("USE intra_v3");
+        return $this->db->query("SELECT * FROM empleados")->result();
+    }
     
 
 
