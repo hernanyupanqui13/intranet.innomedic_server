@@ -332,6 +332,8 @@
                                     <li><a href="<?php echo base_url().$xx->urlx;?>"><?php echo $xx->menux;?></a></li>
 
                                  <?php } ?>
+
+                                 <li><a href="<?php echo base_url().$xx->urlx;?>"><?php echo $xx->menux;?></a></li>
                             </ul>
                         </li>
                        <?php } ?>

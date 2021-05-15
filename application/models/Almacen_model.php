@@ -16,4 +16,13 @@ class Almacen_model extends CI_Model
         return $query->result();
     }
 
+    function updateStockOfProduct($codigo, $stock) {
+        $query = $this->db->query("UPDATE ta_almacen
+            SET total = $stock
+            WHERE Id = (SELECT ta.Id FROM ta_productos ta WHERE codigo ='$codigo')"
+        );
+
+        return true;
+    }
+
 }
