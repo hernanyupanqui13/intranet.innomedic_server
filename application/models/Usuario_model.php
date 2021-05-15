@@ -328,7 +328,7 @@ class Usuario_model extends CI_Model
 	public function actualizar_empresa_id_empresa($data,$id)
 	{
 		$this->db->where('Id',$id);
-		$this->db->update('ts_usuario',$datos);
+		$this->db->update('ts_usuario',$data);
 	}
 
 

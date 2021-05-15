@@ -25,4 +25,13 @@ class Almacen_model extends CI_Model
         return true;
     }
 
+    public function corregirCodigo($antiguo, $nuevo) {
+        $this->db->query("SET @id = (SELECT Id FROM ta_productos ta WHERE codigo ='$antiguo')");
+        
+    
+        $this->db->query("UPDATE ta_productos SET codigo = '$nuevo' WHERE Id = @id");
+
+        
+    }
+
 }
