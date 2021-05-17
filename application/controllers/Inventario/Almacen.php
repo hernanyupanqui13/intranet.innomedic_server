@@ -226,5 +226,44 @@ class Almacen extends CI_Controller {
 
         echo "sucess 2";
     }
+
+    function test() {
+        $data = array(
+            'title' =>array("estas viendo la lista de almacen","Almacen","","<a target='_blank' href='https://www.facebook.com/escudero05' title=''>Evaristo Escudero Huillcamascco</a>"),
+            'lista'  =>   $this->Almacen_model->lista(),
+        );
+
+        $this->load->view("inventario/test", $data);
+    }
+
+    function almacenTableEditor() {
+
+        $numero = array_keys($_POST["data"])[0];     // Valor de la columna numero. Es el identificador unico de cada row del DataTable
+
+        $data = $_POST["data"][$numero];
+
+        $producto = $data["producto"];
+        $codigo_barra = $data["codigo_barra"];
+        $stock = $data["stock"];
+
+        switch ($_POST["action"]) {
+            case 'edit':
+                $this->Almacen_model->updateStockOfProduct($codigo_barra, $stock);
+                echo json_encode(array("data"=> 
+                    array(array(
+                        "numero"=>$numero
+                        , "producto"=> $producto
+                        , "codigo_barra"=>$codigo_barra
+                        , "stock"=>$stock)
+                    )
+                ));
+                
+                break;
+            
+            default:
+                # code...
+                break;
+        }
+    }
     
 }

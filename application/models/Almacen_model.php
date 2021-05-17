@@ -34,4 +34,10 @@ class Almacen_model extends CI_Model
         
     }
 
+    public function actualizarAlmacen() {
+        
+    }
+
+
+
 }
