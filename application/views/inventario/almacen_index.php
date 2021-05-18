@@ -1,8 +1,8 @@
-<iframe src="<?= base_url() . 'Inventario/Almacen/Test'?>" 
+<iframe src="<?= base_url() . 'Inventario/Almacen/iframeTableEditor'?>" 
     frameborder="0"
     width="100%"
     style="height: 65vh;">
-    </iframe>
+</iframe>
 
 <!--
 <div class="row">
@@ -26,7 +26,7 @@
                             <tbody>
                                <?php $count=0;?>
                                 <?php foreach($lista as $x){ ?>
-                                   <?php $count+=1;?>
+                                   <?php $x->Id;?>
                                     <tr>
                                         <td>-></td>
                                         <td>
@@ -34,7 +34,7 @@
                                                  $queryx = $this->db->query("select * from ta_productos where Id='".$x->producto."' ");
                                                  foreach ($queryx->result() as $xx)
                                                  {
-                                                     echo $xx->nombre." (".$xx->description.")";
+                                                     echo $xx->nombre;
                                                  }
                                             ?>
                                         </td>

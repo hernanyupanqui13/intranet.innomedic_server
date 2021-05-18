@@ -15,7 +15,14 @@ $(document).ready(function() {
                 label: "Stock",
                 name: "stock"
             }
-        ]
+        ], 
+        i18n: {
+            edit: {
+                button:"Editar",
+                title: "Editar Producto",
+                submit: "Actualizar"
+            }
+        }
     } );
 
     $('#almacenTable').DataTable( {
@@ -28,9 +35,15 @@ $(document).ready(function() {
         ],
         select: true,
         buttons: [
-            { extend: "create", editor: editor },
-            { extend: "edit",   editor: editor },
-            { extend: "remove", editor: editor }
-        ]
+            { extend: "edit",   editor: editor }
+        ], 
+        language: {
+            paginate:{
+                next: "Siguiente",
+                previous: "Anterior",
+            },
+            search: "Busqueda"
+        }
+
     } );
 });
