@@ -903,24 +903,33 @@ class Pedidos extends CI_Controller
 
 	public function Nuevo_pedido_users()
 	{
-		if ($this->session->userdata("session_id")=="") {
-			redirect(base_url().'Inicio/Zona_roja/'); 
-			
-		}
-		$this->load->model("Inventario_model");
- 
-		$data = array(
-			'title' =>array("estas en Pedidos ","Nuevo Pedido"," ","Evaristo Escudero Huillcamascco"),
-			'correlativo_numer_venta' => $this->Inventario_model->pedido_view_number(),
-			//'mostrar_pedidos_por_usuariuo_fecha' => $this->Pedidos_model->mostrar_pedidos_por_usuariuo_fecha($id),
+		$userId = $this->session->userdata("session_id");
+		
+		if ($this->Inventario_model->pedidosAlDia($userId) == "1") {
+			redirect(base_url().'Mantenimiento/Pedidos/');
+		} else {
+			if ($this->session->userdata("session_id")=="") {
+				redirect(base_url().'Inicio/Zona_roja/'); 
+				
+			}
+			$this->load->model("Inventario_model");
+	 
+			$data = array(
+				'title' =>array("estas en Pedidos ","Nuevo Pedido"," ","Evaristo Escudero Huillcamascco"),
+				'correlativo_numer_venta' => $this->Inventario_model->pedido_view_number(),
+				//'mostrar_pedidos_por_usuariuo_fecha' => $this->Pedidos_model->mostrar_pedidos_por_usuariuo_fecha($id),
+		
 	
-
-			
-		);
-		$this->load->view('intranet_view/head',$data);
-		$this->load->view('intranet_view/title',$data);
-		$this->load->view('pedidos/new_pedido_users',$data);
-		$this->load->view('intranet_view/footer',$data);
+				
+			);
+			$this->load->view('intranet_view/head',$data);
+			$this->load->view('intranet_view/title',$data);
+			$this->load->view('pedidos/new_pedido_users',$data);
+			$this->load->view('intranet_view/footer',$data);
+		}
+		
+		
+		
 	}
 
 	public function correlativo_numer_venta()
@@ -1225,6 +1234,14 @@ class Pedidos extends CI_Controller
         $this->db->delete('ta_detalles_venta', array('producto' => $id, 'id_venta' => $registro));
         redirect(base_url().'Mantenimiento/Pedidos/editar_pedidos/'.$registro);
     }
+
+
+	public function pedidosAlDia() {
+
+		$userId = $this->session->userdata("session_id");
+
+		echo $this->Inventario_model->pedidosAlDia($userId)->total;
+	}
 
 
 

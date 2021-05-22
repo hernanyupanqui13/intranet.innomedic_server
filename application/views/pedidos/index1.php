@@ -34,10 +34,10 @@ foreach ($query_users->result() as $xx) {
             <?php 
               $date = date("w");
               if ($date==3 || $date==4) { ?>
-                <a href="<?php echo base_url().'Mantenimiento/Pedidos/Nuevo_pedido_users/' ?>"  class="btn btn-outline-success btn-rounded btn-md"><i class=" fas fa-plus-circle"></i>&nbsp;Nuevo Pedido</a>
+                <a href="javascript:void(0)" id="pedidos-btn"  class="btn btn-outline-success btn-rounded btn-md"><i class=" fas fa-plus-circle"></i>&nbsp;Nuevo Pedido</a>
               <?php 
-              } else if ($date==0 ||  $date==2  || $date==5 ) { ?>
-                <a href="javascript:void(0)"  class="btn btn-outline-success btn-rounded btn-md" onclick="return mensaje_valitor();"><i class=" fas fa-plus-circle"></i>&nbsp;Nuevo Pedido</a>
+              } else { ?>
+                <a href="javascript:void(0)"  class="btn btn-outline-success btn-rounded btn-md" id="pedidos-btn" onclick="return mensaje_valitor();"><i class=" fas fa-plus-circle"></i>&nbsp;Nuevo Pedido</a>
             <?php } ?>      
           </div>
           <div class="col-md-6">
@@ -1043,7 +1043,31 @@ foreach ($query_users->result() as $xx) {
                   
               });
 
-                </script> 
+                </script>
+                <script>
+                document.getElementById("pedidos-btn").addEventListener("click", event => {
+                    console.log("si se puede dos vexces");
+                    event.preventDefault();
+                    fetch(`${window.location.origin}/Mantenimiento/Pedidos/pedidosAlDia`)
+                      .then( response => response.text())
+                      .then( data => {
+                        if(data==1) {
+                          Swal.fire({
+                            title: 'Lo sentimos',
+                            text: "Solo puedes hacer un pedido por dia y ya tenemos registrado un pedido a tu nombre. Para más información comunicate con el Área de Logistica",
+                            icon: 'warning',
+                            showCancelButton: false,
+                            allowOutsideClick: false,
+                            confirmButtonColor: '#3085d6',
+                            cancelButtonColor: '#d33',
+                            confirmButtonText: 'Esta bien!'
+                          });
+                        } else {
+                          window.location = `${window.location.origin}/Mantenimiento/Pedidos/Nuevo_pedido_users`;
+                        }
+                      })
+                  })
+                </script>
 
 
 

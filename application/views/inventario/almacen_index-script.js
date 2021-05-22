@@ -15,7 +15,8 @@ $(document).ready(function() {
                 label: "Stock",
                 name: "stock"
             }
-        ], 
+        ],
+
         i18n: {
             edit: {
                 button:"Editar",
@@ -44,6 +45,5 @@ $(document).ready(function() {
             },
             search: "Busqueda"
         }
-
     } );
 });

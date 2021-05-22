@@ -409,6 +409,16 @@ class Inventario_model extends CI_Model
         return $query->result();
     }
 
+	function pedidosAlDia($userId) {
+		$query = $this->db->query("SELECT COUNT(*) AS total
+			FROM ta_ventas
+			WHERE usuario = $userId
+				AND DATE(fecha) = DATE(NOW())"
+		);
+
+		return $query->row();
+	}
+
 
 
 
