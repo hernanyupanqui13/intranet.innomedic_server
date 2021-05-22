@@ -34,7 +34,7 @@ foreach ($query_users->result() as $xx) {
             <?php 
               $date = date("w");
               if ($date==3 || $date==4) { ?>
-                <a href="javascript:void(0)" id="pedidos-btn"  class="btn btn-outline-success btn-rounded btn-md"><i class=" fas fa-plus-circle"></i>&nbsp;Nuevo Pedido</a>
+                <a href="javascript:void(0)" id="pedidos-btn"  class="btn btn-outline-success btn-rounded btn-md" onclick="redirigirParaPedir()"><i class=" fas fa-plus-circle"></i>&nbsp;Nuevo Pedido</a>
               <?php 
               } else { ?>
                 <a href="javascript:void(0)"  class="btn btn-outline-success btn-rounded btn-md" id="pedidos-btn" onclick="return mensaje_valitor();"><i class=" fas fa-plus-circle"></i>&nbsp;Nuevo Pedido</a>
@@ -1045,10 +1045,8 @@ foreach ($query_users->result() as $xx) {
 
                 </script>
                 <script>
-                document.getElementById("pedidos-btn").addEventListener("click", event => {
-                    console.log("si se puede dos vexces");
-                    event.preventDefault();
-                    fetch(`${window.location.origin}/Mantenimiento/Pedidos/pedidosAlDia`)
+                function redirigirParaPedir() {
+                  fetch(`${window.location.origin}/Mantenimiento/Pedidos/pedidosAlDia`)
                       .then( response => response.text())
                       .then( data => {
                         if(data==1) {
@@ -1065,8 +1063,8 @@ foreach ($query_users->result() as $xx) {
                         } else {
                           window.location = `${window.location.origin}/Mantenimiento/Pedidos/Nuevo_pedido_users`;
                         }
-                      })
-                  })
+                      });
+                }
                 </script>
 
 
