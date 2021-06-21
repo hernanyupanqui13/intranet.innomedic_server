@@ -16,7 +16,7 @@ class Pedidos extends CI_Controller
 	}
 
 	public function fake() {
-		echo json_encode($this->Pedidos_model->get_datatables());
+		echo "Roger"; 	
 	}
 
 	public function index()
@@ -116,6 +116,39 @@ class Pedidos extends CI_Controller
 			$count = $this->input->post('count');
 			$estado = "1";
 			$cod = $this->input->post('codigo');
+			$area = $this->input->post("areaDelUsuario");
+			$areas_list = [
+				"ESPIROMETRIA",
+				"PLAZA NORTE",
+				"AUDIOMETRIA",
+				"PSICOLOGIA",
+				"OFTALMOLOGIA",
+				"RADIOLOGIA",
+				"ADMISION",
+				"ELECTRO",
+				"MANTENIMIENTO",
+				"CANADA",
+				"RECURSOS HUMANOS",
+				"FACTURACION",
+				"GERENCIA",
+				"VENTAS",
+				"TESORERIA",
+				"FISIOTERAPIA",
+				"MEDICINA",
+				"SST",
+				"CALIDAD",
+				"LOGISTICA",
+				"COORDINACION",
+				"RAYOS X",
+				"TECNOLOGIA DE LA INF.",
+				"REGULARIZADOR",
+				"AUXILIAR GENERAL",
+				"ADMINISTRACION",
+				"LABORATORIO",
+				"TRIAJE",
+				"CAMPAÑA",
+				"PROCESOS FINALES"
+			];
 
 			//verificamos el stock antes de registrar el producto
 
@@ -130,6 +163,7 @@ class Pedidos extends CI_Controller
 				'telefono' => $telefono_movil,
 				'url_view' => $url,
 				'estado' => "0",
+				'area'=>$area
 			);
 
 			
@@ -913,14 +947,44 @@ class Pedidos extends CI_Controller
 				
 			}
 			$this->load->model("Inventario_model");
-	 
+			$areas_list = [
+				"ESPIROMETRIA",
+				"PLAZA NORTE",
+				"AUDIOMETRIA",
+				"PSICOLOGIA",
+				"OFTALMOLOGIA",
+				"RADIOLOGIA",
+				"ADMISION",
+				"ELECTRO",
+				"MANTENIMIENTO",
+				"CANADA",
+				"RECURSOS HUMANOS",
+				"FACTURACION",
+				"GERENCIA",
+				"VENTAS",
+				"TESORERIA",
+				"FISIOTERAPIA",
+				"MEDICINA",
+				"SST",
+				"CALIDAD",
+				"LOGISTICA",
+				"COORDINACION",
+				"RAYOS X",
+				"TECNOLOGIA DE LA INF.",
+				"REGULARIZADOR",
+				"AUXILIAR GENERAL",
+				"ADMINISTRACION",
+				"LABORATORIO",
+				"TRIAJE",
+				"CAMPAÑA",
+				"PROCESOS FINALES"
+			];
 			$data = array(
 				'title' =>array("estas en Pedidos ","Nuevo Pedido"," ","Evaristo Escudero Huillcamascco"),
 				'correlativo_numer_venta' => $this->Inventario_model->pedido_view_number(),
+				'areas_lista' => $areas_list
 				//'mostrar_pedidos_por_usuariuo_fecha' => $this->Pedidos_model->mostrar_pedidos_por_usuariuo_fecha($id),
-		
 	
-				
 			);
 			$this->load->view('intranet_view/head',$data);
 			$this->load->view('intranet_view/title',$data);

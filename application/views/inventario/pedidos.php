@@ -63,7 +63,7 @@
                                         <th data-breakpoints="xs">ID</th>
                                         <th data-breakpoints="xs sm">Fecha</th>
                                         <th data-breakpoints="xs">Numero de comprobante</th>
-		                                <th data-breakpoints="xs sm ">Tipo de comprobante</th>
+		                                <th data-breakpoints="xs sm ">Area</th>
                                         <th data-breakpoints="xs">Trabajador</th>
                                         <th data-breakpoints="xs sm ">Estado</th>
                                         <th data-title="Opciones">Opciones</th>
@@ -82,10 +82,10 @@
                                     <td>
                                     <?php 
                                    // $queryx = $this->db->query("select * from ta_correlativo where Id='2' and  numero='".$x->tipocomprobante."'");
-                                    $queryx = $this->db->query("select * from ta_correlativo where Id='2'");
-                                    foreach ($queryx->result() as $xx)
-                                    {
-                                        echo $xx->nombre;
+                                    if($x->area == null) {
+                                        echo "No definida";
+                                    } else {
+                                        echo $x->area;
                                     }
                                     ?>
                                     </td>
