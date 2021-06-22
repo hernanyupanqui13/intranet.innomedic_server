@@ -79,6 +79,15 @@
                            <?php echo $telefono;?>
                        </div>
                 </div>
+
+                
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label><b>Area:</b></label>
+                        <br>
+                        <?php echo ucfirst($listaprevia[0]->el_area); ?>
+                    </div>
+                </div>
            
             </div>
             

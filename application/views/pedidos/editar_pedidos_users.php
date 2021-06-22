@@ -63,13 +63,13 @@
                     </div>
                 </div>
                 
-                   <div class="col-md-2">
-                       <div class="form-group">
-                           <label class="control-label"><b>D.N.I: </b></label>
-                           <br>
-                           <?php echo $dni;?>
-                       </div>
-                   </div>
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label class="control-label"><b>D.N.I: </b></label>
+                        <br>
+                        <?php echo $dni;?>
+                    </div>
+                </div>
              
                
                <div class="col-md-2">
@@ -78,6 +78,14 @@
                            <br>
                            <?php echo $telefono;?>
                        </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label><b>Area:</b></label>
+                        <br>
+                        <?php echo $listaprevia[0]->el_area; ?>
+                    </div>
                 </div>
            
             </div>

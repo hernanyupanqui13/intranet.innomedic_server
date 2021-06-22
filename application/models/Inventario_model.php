@@ -359,7 +359,12 @@ class Inventario_model extends CI_Model
 
     public function lista_detalle_pedido_general($url)
     {
-    	$query = $this->db->query("select * from ta_detalles_venta where identificador='".$url."'");
+    	$query = $this->db->query(
+				"SELECT *
+					, (SELECT v.area FROM ta_ventas v WHERE v.Id = id_venta ) AS el_area 
+				FROM ta_detalles_venta 
+				WHERE identificador='".$url."'"
+			);
     	return $query->result();
     } 
     public function listar_por_codigo($id)
@@ -405,7 +410,14 @@ class Inventario_model extends CI_Model
     }
 
     function listavistarevia($id){
-        $query = $this->db->query("select Id,id_venta,cantidad,producto,precio,importe,estado,unidad, (select total from ta_almacen where producto=a.producto ) as stock from ta_detalles_venta a where id_venta='".$id."' order by id asc");
+        $query = $this->db->query("SELECT Id,id_venta
+						,cantidad,producto,precio,importe
+						,estado,unidad
+						, (select total from ta_almacen where producto=a.producto ) as stock 
+						, (SELECT v.area FROM ta_ventas v WHERE v.Id = id_venta) AS el_area
+					FROM ta_detalles_venta a 
+					WHERE id_venta='".$id."' order by id asc"
+				);
         return $query->result();
     }
 

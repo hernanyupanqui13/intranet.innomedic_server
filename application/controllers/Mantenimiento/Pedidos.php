@@ -949,13 +949,12 @@ class Pedidos extends CI_Controller
 			$this->load->model("Inventario_model");
 			$areas_list = [
 				"ESPIROMETRIA",
-				"PLAZA NORTE",
 				"AUDIOMETRIA",
 				"PSICOLOGIA",
 				"OFTALMOLOGIA",
 				"RADIOLOGIA",
 				"ADMISION",
-				"ELECTRO",
+				"ELECTROCARDIOGRAMA",
 				"MANTENIMIENTO",
 				"CANADA",
 				"RECURSOS HUMANOS",
@@ -971,7 +970,6 @@ class Pedidos extends CI_Controller
 				"COORDINACION",
 				"RAYOS X",
 				"TECNOLOGIA DE LA INF.",
-				"REGULARIZADOR",
 				"AUXILIAR GENERAL",
 				"ADMINISTRACION",
 				"LABORATORIO",

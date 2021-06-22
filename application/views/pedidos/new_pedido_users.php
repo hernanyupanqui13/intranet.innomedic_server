@@ -50,8 +50,8 @@
 											<div class="form-group">
 												<label  for="">Area</label>
 												<select name="areaDelUsuario" id="areaDelUsuario" class="form-control btn btn-rounded"  style="width: 100%; height: 50px;" required>
-													<option value="no seleccionada">--Seleccione-- </option>		
-													<?php foreach($areas_lista  as $one_area) {?> 											  
+													<option value="NO SELECCIONADA">--Seleccione-- </option>		
+													<?php foreach($areas_lista  as $one_area) {?>
 
 														<option value="<?php echo $one_area ?>"><?php echo $one_area ?></option>			   
 													<?php }?>         					

@@ -164,7 +164,7 @@
                                        <!-- <p>Sub - Total amount: $13,848</p>
                                         <p>vat (10%) : $138 </p>
                                         <hr>-->
-                                        <h3><b>Entregado por :</b> <?php echo $entregado;?></h3>
+                                        <h3><b>Entregado por:</b> <?php echo $entregado;?></h3>
                                     </div>
                                     <div class="clearfix"></div>
                                     <hr>
@@ -187,7 +187,7 @@
                                       <br>  
                                      <span class="text-center"> __________________________________</span>
                                       <p><?php echo  $entregado; ?></p>
-                                      <p>Aréa Logistica</p>
+                                      <p>Area Logistica</p>
                                   </div>
                               </div></td>
                               <td>
@@ -200,7 +200,7 @@
                                       <br>
                                        <span class="text-center"> __________________________________</span>
                                       <p><?php echo  $data; ?></p>
-                                      <p>DNI: <?php echo  $dni; ?></p>
+                                      <p>Area: <?php echo $lista_detalle_pedido_general[0]->el_area; ?></p>
                                   </div>
                               </div>
                               </td>
