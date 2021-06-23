@@ -111,7 +111,7 @@
 	
 	<!-- External Script -->
 	<script src=<?= base_url().'application/JavaScript/imprimir.js'?>></script>
-	<script src=<?= base_url().'application/JavaScript/orden-index.js'?>></script>
+	<script src=<?= base_url().'application/views/orden/orden-index.js'?>></script>
 
 	<style>
 		.centrado{ 

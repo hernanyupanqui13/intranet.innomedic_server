@@ -33,6 +33,7 @@ jQuery(function($){
 $(document).ready(function() {
 
     $(document).on('click', '#buscar_registro_por_ajax', function(event) {
+        console.log("hola okokok");
         event.preventDefault();
 
         // Obteniendo la fecha y dando formato para que sea complatible con MySql

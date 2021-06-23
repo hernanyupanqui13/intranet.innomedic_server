@@ -173,7 +173,7 @@
 				 	 })
 				 	 .done(function(data) {
 				 	 	
-				 	 	var $html =`<tr class="jdr1" id="` + rowid + `">
+				 	 	var $html =`<tr class="jdr1" id="${rowid}"`>
 	                 	<td><span class="btn btn-sm btn-default"></span>` + $sr + `</span><input type="hidden" name="count[]" value="6437"></td>'</td>
 	                 	<td><input type="hidden" name="codigo[]" value="`+data.codigo+`" />`+data.codigo+`</td>
 	                 	<td><input type="hidden" name="nombre[]" value="`+data.nombre+`" />`+data.nombre+`</td>
