@@ -173,7 +173,7 @@ class Pedidos extends CI_Controller
 	            $this->actualizar_comprobante();
 	            $this->actualiazar_trabajador($usuario,$dni,$telefono_movil);
 	            $this->save_detalle($count,$fecha,$idventa,$cantidad,$id_producto,$url,$unidad);
-	            echo json_encode(array("registro" => "Se registro de menera correcta"));
+	            echo json_encode(array("registro" => "Se registro de manera correcta"));
 			}else{
 				echo json_encode(array("error_registro" => "No se puedo registrar la venta"));
 				$this->output->set_status_header(400);
@@ -949,6 +949,7 @@ class Pedidos extends CI_Controller
 			$this->load->model("Inventario_model");
 			$areas_list = [
 				"ESPIROMETRIA",
+				"COMUNICACION",
 				"AUDIOMETRIA",
 				"PSICOLOGIA",
 				"OFTALMOLOGIA",

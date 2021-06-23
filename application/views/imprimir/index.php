@@ -127,7 +127,6 @@
                                                     <th class="text-center">DESCRIPCIÓN</th>
                                                     <th>UNIDAD MEDIDA</th>
                                                     <th class="text-right">FECHA PEDIDO</th>
-                                                    
                                                 </tr>
                                             </thead>
                                             <tbody>

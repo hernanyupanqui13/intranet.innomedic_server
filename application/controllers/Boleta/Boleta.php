@@ -466,7 +466,7 @@ class Boleta extends CI_Controller {
                 $id_boleta = $this->Boleta_model->lastID();
                 $this->actualizar_comprobante();
                 $this->save_detalle($count,$fecha,$id_boleta,$nombres,$id_usuario,$boleta,$ano,$mes, $archivo,$estado);
-                echo json_encode(array("registro" => "Se registro de menera correcta"));
+                echo json_encode(array("registro" => "Se registro de manera correcta"));
             }else{
                 echo json_encode(array("error_registro" => "No se puedo registrar la venta"));
                 $this->output->set_status_header(400);

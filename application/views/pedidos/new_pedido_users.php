@@ -527,7 +527,7 @@
 	      	$("#ocultar___").show();
 
 	      	
-					if( document.querySelector("#areaDelUsuario").value == "no seleccionada" ) {
+					if( document.querySelector("#areaDelUsuario").value == "NO SELECCIONADA" ) {
 							console.log("si esta ");
 							return Swal.fire({
 								title: 'Hubo un problema',
