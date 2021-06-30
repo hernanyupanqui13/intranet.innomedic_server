@@ -81,7 +81,7 @@ foreach ($query_users->result() as $xx) {
         icon: 'info',
         html:
           'No se puede enviar pedido <b>Por el sistema </b>, ' +
-          'Hacercate al Aréa de Logistica para que pueda Solicitarlo ' +
+          'Acércate al Área de Logística para que pueda solicitarlo ' +
           '<a href="mailto:lsilva@innomedic.pe">lsilva@innomedic.pe</a>; <a href="mailto:htoscano@innomedic.pe">htoscano@innomedic.pe</a>' 
           ,
         showCloseButton: true,
