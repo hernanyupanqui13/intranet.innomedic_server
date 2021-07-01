@@ -320,6 +320,7 @@ class Pedidos extends CI_Controller
             'estado' => 2,
             'entregado_por' => $this->session->userdata("nombre").' '.$this->session->userdata("apellido_paterno").' '.$this->session->userdata("apellido_materno"),
             'fecha_entregado' => date('Y-m-d h:i:s'),
+            'area' => $this->input->post("areaDelUsuario")
         );
         $where = array(
             'Id'    =>  $this->uri->segment(4,0),
@@ -616,8 +617,39 @@ class Pedidos extends CI_Controller
         $data['producto']       =   $this->Inventario_model->producto();
         $data['listaprevia']    =   $this->Inventario_model->listavistarevia($id);
         
+        $areas_list = [
+            "ESPIROMETRIA",
+            "COMUNICACION",
+            "AUDIOMETRIA",
+            "PSICOLOGIA",
+            "OFTALMOLOGIA",
+            "RADIOLOGIA",
+            "ADMISION",
+            "ELECTROCARDIOGRAMA",
+            "MANTENIMIENTO",
+            "CANADA",
+            "RECURSOS HUMANOS",
+            "FACTURACION",
+            "GERENCIA",
+            "VENTAS",
+            "TESORERIA",
+            "FISIOTERAPIA",
+            "MEDICINA",
+            "SST",
+            "CALIDAD",
+            "LOGISTICA",
+            "COORDINACION",
+            "RAYOS X",
+            "TECNOLOGIA DE LA INF.",
+            "AUXILIAR GENERAL",
+            "ADMINISTRACION",
+            "LABORATORIO",
+            "TRIAJE",
+            "CAMPAÑA",
+            "PROCESOS FINALES"
+        ];
 
-
+        $data["areas_list"] = $areas_list;
         $this->load->view("intranet_view/head",$data);
 		$this->load->view("intranet_view/title",$data);
 		$this->load->view("inventario/editar_pedidos",$data);

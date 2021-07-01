@@ -85,7 +85,14 @@
                     <div class="form-group">
                         <label><b>Area:</b></label>
                         <br>
-                        <?php echo ucfirst($listaprevia[0]->el_area); ?>
+                        <!--<?php echo ucfirst($listaprevia[0]->el_area); ?>-->
+                        <select name="areaDelUsuario" id="areaDelUsuario" class="form-control btn btn-rounded"  style="width: 100%; height: 50px;" required>
+                            <option value="NO SELECCIONADA">--Seleccione-- </option>		
+                            <?php foreach($areas_list  as $one_area) {?>
+
+                                <option value="<?php echo $one_area ?>"><?php echo $one_area ?></option>			   
+                            <?php }?>         					
+                        </select>	
                     </div>
                 </div>
            
@@ -356,9 +363,18 @@ function validar(e){
     }
     
     $('#boton').val(e);
-    
+    const areasInput = document.createElement("input");
+    areasInput.value = document.querySelector("#areaDelUsuario").value;
+    areasInput.setAttribute("type", "hidden");
+    areasInput.setAttribute("name", "areaDelUsuario");
+
+    areasInput.id = "tempInput";
+
+    console.log(areasInput);
     if(e==2){
+        document.formulario.appendChild(areasInput);
         document.formulario.action = '<?php echo base_url().'Inventario/Pedidos/finalizar/'.$this->uri->segment(4,0);?>/'+document.getElementById("pagomixto").value;
+        document.formulario.removeChild(areasInput);
     }
     document.formulario.submit();
 }

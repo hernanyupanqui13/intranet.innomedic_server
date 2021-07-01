@@ -298,17 +298,20 @@ class ResultadoFinal extends CI_Controller {
         // Configuracion para el servidor local
         
         $mail->isSMTP();
-        $mail->Host = 'smtp.gmail.com';
-        $mail->SMTPSecure = "ssl";
-        $mail->SMTPAuth = true;
-        $mail->SMTPDebug  = 3;
-        $mail->Username = 'sistemas.innomedic@gmail.com';
-        $mail->Password = 's1st3m4s2411';
-        $mail->Port = 465; 
-        $mail->CharSet = 'UTF-8';
+		$mail->Host     = 'localhost';
+		$mail->SMTPSecure = false;
+		$mail->SMTPDebug  = 3;
+		$mail->Username = 'pagina_web@innomedic.pe';
+		$mail->Password = '';
+		$mail->SMTPAuth = false;
+		$mail->SMTPAutoTLS = false; 
+		$mail->SMTPSecure = '';   
+		$mail->Port     = 25;
+		$mail->CharSet = 'UTF-8';        
+		$mail->AllowEmpty = true;
 
         // De: 
-        $mail->setFrom('sistemas.innomedic@gmail.com', 'Innomedic.pe | Resultados de la Clinica Innomedic International E.I.R.L');
+        $mail->setFrom('pagina_web@innomedic.pe', 'Innomedic.pe | Resultados de la Clinica Innomedic International E.I.R.L');
 
         // Archivo a adjuntar en el correo. El archivo ya fue subido
         $archivo1 = 'upload/Resultado_analisis/'.$archivo1_xx;
