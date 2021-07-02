@@ -442,7 +442,7 @@
             function salir_users(event) {
                 Swal.fire({
                   title: '¿Estás seguro?',
-                  text: "Estas a punto de cerrar sesión",
+                  text: "Estas apunto de cerrar sesión",
                   icon: 'warning',
                   showCancelButton: true,
                   allowOutsideClick: false,
