@@ -72,7 +72,8 @@ class Sst_model extends CI_Model
                     ON std.Id = sdu.sst_document_id
                 INNER JOIN ts_datos_personales tdp
                     ON tdp.Id = tu.Id
-            WHERE tu.Id != 89 AND tu.`status` != 2'
+            WHERE tu.Id != 89 AND tu.`status` != 2
+                AND sst_document_id IN(1,2,3,4)'
         );
 
         return $query->result();

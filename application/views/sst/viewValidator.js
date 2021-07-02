@@ -42,7 +42,7 @@ export function requestConfirmation(the_document_name, user) {
     } else {
 
         confirmation_message = `<p>Conste por el presente documento, que, he recibido y se me ha capacitado 
-            sobre el ${the_document_name} de INNOMEDIC INTERNATIONAL 
+            sobre el documento llamado  "${the_document_name}" de INNOMEDIC INTERNATIONAL 
             E.I.R.L. El cual me comprometo a cumplir estrictamente en todas sus normas y dispositivos, 
             para lo cual firmo el presente cargo.</p>
         `;       

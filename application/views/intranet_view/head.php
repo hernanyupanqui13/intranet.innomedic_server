@@ -383,7 +383,7 @@
                         <!-- Seguridad y Salud en el Trabajo -->
                         <li><a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="ti-layout-grid2"></i><span class="hide-menu">Seguridad y Salud en el Trabajo</span></a>
                             <ul  aria-expanded="false" class="collapse">
-                                <li><a href="<?php echo base_url();?>sst/sst/politicas"><i class="fas fa-hard-hat"></i>&nbsp;Politicas</a></li>
+                                <li><a href="<?php echo base_url();?>sst/sst/politicas"><i class="fas fa-hard-hat"></i>&nbsp;Políticas</a></li>
                                 <li><a href="<?php echo base_url();?>sst/sst/reglamentos"><i class="fas fa-book"></i></i>&nbsp;Reglamento Interno de SST</a></li>
                                 <li><a href="<?php echo base_url();?>sst/sst/planProgramasSst"><i class="fas fa-thumbtack"></i>&nbsp;Plan y Programas de SST</a></li>
                                 <!--<li><a href="<?php echo base_url();?>sst/sst/objetivos_sst"><i class="fas fa-bullseye"></i>&nbsp;Objetivos de SST</a></li>-->                                
@@ -393,6 +393,13 @@
                             </ul>
                         </li>
 
+                        <!-- Area de Sistemas  -->
+                        <!--<li><a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="ti-layout-grid2"></i><span class="hide-menu">Área de Sistemas</span></a>
+                            <ul  aria-expanded="false" class="collapse">
+                                <li><a href="<?php echo base_url();?>areaSistemas/areaSistemas/politicas"><i class="fas fa-hard-hat"></i>&nbsp;Políticas</a></li>
+                            </ul>
+                        </li>-->
+
                         <?php 
                             if ($this->session->userdata("session_perfil")==14 || $this->session->userdata("session_perfil")==23 || $this->session->userdata("session_perfil")==38 || $this->session->userdata("session_perfil")==1 || $this->session->userdata("session_perfil")==12) {?>
                                 <li> <a class="waves-effect waves-dark" href="<?php echo base_url().'Examenes/Examenes/' ?>" aria-expanded="false"><i class="far fa-circle text-success"></i><span class="hide-menu">Exámenes Clínicos</span></a></li>
@@ -400,7 +407,7 @@
                          ?>
                         
                         <?php if ($this->session->userdata("session_perfil")==37 || $this->session->userdata("session_perfil")==38 || $this->session->userdata("session_perfil")==39 || $this->session->userdata("session_perfil")==1 || $this->session->userdata("session_perfil")==12) {?>
-                            <li> <a class="waves-effect waves-dark" href="<?php echo base_url().'Examenes/Ordenes/' ?>" aria-expanded="false"><i class="far fa-circle text-warning"></i><span class="hide-menu">Ordenes de Atención</span></a></li>
+                            <li> <a class="waves-effect waves-dark" href="<?php echo base_url().'Examenes/Ordenes/' ?>" aria-expanded="false"><i class="far fa-circle text-warning"></i><span class="hide-menu">Órdenes de Atención</span></a></li>
                         <?php } ?>
 
                         <?php if ($this->session->userdata("session_perfil")==38 || $this->session->userdata("session_perfil")==1 || $this->session->userdata("session_perfil")==12) {?>
