@@ -441,15 +441,15 @@
          <script>
             function salir_users(event) {
                 Swal.fire({
-                  title: '¿Estas seguro?',
-                  text: "Estas apunto de cerrar session",
+                  title: '¿Estás seguro?',
+                  text: "Estas a punto de cerrar sesión",
                   icon: 'warning',
                   showCancelButton: true,
                   allowOutsideClick: false,
 
                   confirmButtonColor: '#3085d6',
                   cancelButtonColor: '#d33',
-                  confirmButtonText: 'Yes, salir ahora!',
+                  confirmButtonText: 'Sí, salir ahora!',
                   cancelButtonText: 'No, Cancelar!'
                 }).then((result) => {
                   if (result.value) {
