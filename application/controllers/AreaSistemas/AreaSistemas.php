@@ -22,7 +22,7 @@ class AreaSistemas extends CI_Controller {
     $data = array(
       'title' =>array("estas viendo Area Sistemas","Sistemas","","<a target='_blank' href='javascript:void(0)' title=''>Area de Sistemas</a>"),
       "reglamento_file_path"=>base_url()."upload/archivos/sistemas/politicas_sistemas.pdf",
-      "nombre_documento" => "Política de Seguridad Informática",
+      "nombre_documento" => "Políticas de Seguridad Informática",
       "user_data" => json_encode($this->Sst_model->getDataOfUser())
     );
     

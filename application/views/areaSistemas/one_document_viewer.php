@@ -12,4 +12,4 @@
     data-user_data = '<?=$user_data;?>'
 ></div>
 
-<script type="module" src="<?=base_url() . '/application/views/areaSistemas/one_document_viewer.js';?>"></script>
+<script type="module" src="<?=base_url() . '/application/views/areaSistemas/one_document_viewer.js?v=2';?>"></script>

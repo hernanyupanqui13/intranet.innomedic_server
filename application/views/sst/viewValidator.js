@@ -39,6 +39,13 @@ export function requestConfirmation(the_document_name, user) {
         `;
         confirmation_title = "CARGO DE RECEPCIÓN DE RISST";
 
+    } else if(the_document_name = ""){
+        confirmation_message = `<p>Conste por el presente documento que he recibido y se me ha capacitado sobre el tema 
+            "Políticas de Seguridad Informática" de INNOMEDIC INTERNATIONAL E.I.R.L. 
+            El cual me comprometo a cumplir estrictamente en todas sus normas y dispositivos, 
+            para lo cual firmo el presente cargo.</p>
+        `;
+        confirmation_title = "CARGO DE RECEPCIÓN DE POLÍTICAS DE SEGURIDAD INFORMÁTICA";
     } else {
 
         confirmation_message = `<p>Conste por el presente documento, que, he recibido y se me ha capacitado 
