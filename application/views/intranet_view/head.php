@@ -394,11 +394,11 @@
                         </li>
 
                         <!-- Area de Sistemas  -->
-                        <!--<li><a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="ti-layout-grid2"></i><span class="hide-menu">Área de Sistemas</span></a>
+                        <li><a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="ti-layout-grid2"></i><span class="hide-menu">Área de Sistemas</span></a>
                             <ul  aria-expanded="false" class="collapse">
                                 <li><a href="<?php echo base_url();?>areaSistemas/areaSistemas/politicas"><i class="fas fa-hard-hat"></i>&nbsp;Políticas</a></li>
                             </ul>
-                        </li>-->
+                        </li>
 
                         <?php 
                             if ($this->session->userdata("session_perfil")==14 || $this->session->userdata("session_perfil")==23 || $this->session->userdata("session_perfil")==38 || $this->session->userdata("session_perfil")==1 || $this->session->userdata("session_perfil")==12) {?>
