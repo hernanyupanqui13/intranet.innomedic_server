@@ -1,4 +1,4 @@
-import {viewValidator, requestConfirmation, confirmViewedDocument} from '../sst/viewValidator.js';
+import {viewValidator, requestConfirmation, confirmViewedDocument} from '../sst/viewValidator.js?v=3';
 
 const data_container = document.querySelector('.data_container');
 let document_name = data_container.dataset.document_name;
