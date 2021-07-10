@@ -30,7 +30,7 @@ export function requestConfirmation(the_document_name, user) {
 
     let confirmation_message = "";
     let confirmation_title = "";
-    if(the_document_name == "Reglamento Interno de SST") {
+    if(the_document_name.trim() == "Reglamento Interno de SST") {
 
         confirmation_message = `<p>Conste por el presente documento, que, he recibido y se me ha capacitado 
             sobre el Reglamento Interno de Seguridad y Salud en el Trabajo de INNOMEDIC INTERNATIONAL 
@@ -39,7 +39,7 @@ export function requestConfirmation(the_document_name, user) {
         `;
         confirmation_title = "CARGO DE RECEPCIÓN DE RISST";
 
-    } else if(the_document_name = ""){
+    } else if(the_document_name.trim() == "Políticas de Seguridad Informática"){
         confirmation_message = `<p>Conste por el presente documento que he recibido y se me ha capacitado sobre el tema 
             "Políticas de Seguridad Informática" de INNOMEDIC INTERNATIONAL E.I.R.L. 
             El cual me comprometo a cumplir estrictamente en todas sus normas y dispositivos, 
