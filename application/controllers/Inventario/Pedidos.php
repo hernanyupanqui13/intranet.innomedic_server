@@ -319,8 +319,7 @@ class Pedidos extends CI_Controller
         $data = array(
             'estado' => 2,
             'entregado_por' => $this->session->userdata("nombre").' '.$this->session->userdata("apellido_paterno").' '.$this->session->userdata("apellido_materno"),
-            'fecha_entregado' => date('Y-m-d h:i:s'),
-            'area' => $this->input->post("areaDelUsuario")
+            'fecha_entregado' => date('Y-m-d h:i:s')
         );
         $where = array(
             'Id'    =>  $this->uri->segment(4,0),

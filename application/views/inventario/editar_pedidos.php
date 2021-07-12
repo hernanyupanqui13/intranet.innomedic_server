@@ -372,9 +372,9 @@ function validar(e){
 
     console.log(areasInput);
     if(e==2){
-        document.formulario.appendChild(areasInput);
+        //document.formulario.appendChild(areasInput);
         document.formulario.action = '<?php echo base_url().'Inventario/Pedidos/finalizar/'.$this->uri->segment(4,0);?>/'+document.getElementById("pagomixto").value;
-        document.formulario.removeChild(areasInput);
+        //document.formulario.removeChild(areasInput);
     }
     document.formulario.submit();
 }
