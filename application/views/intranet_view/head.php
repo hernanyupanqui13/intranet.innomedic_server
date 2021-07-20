@@ -400,6 +400,12 @@
                             </ul>
                         </li>
 
+                        <!-- Area de Sistemas  -->
+                        <li><a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="ti-layout-grid2"></i><span class="hide-menu">Área de Comunicaciones</span></a>
+                            <ul  aria-expanded="false" class="collapse">
+                            </ul>
+                        </li>
+
                         <?php 
                             if ($this->session->userdata("session_perfil")==14 || $this->session->userdata("session_perfil")==23 || $this->session->userdata("session_perfil")==38 || $this->session->userdata("session_perfil")==1 || $this->session->userdata("session_perfil")==12) {?>
                                 <li> <a class="waves-effect waves-dark" href="<?php echo base_url().'Examenes/Examenes/' ?>" aria-expanded="false"><i class="far fa-circle text-success"></i><span class="hide-menu">Exámenes Clínicos</span></a></li>
