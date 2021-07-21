@@ -63,4 +63,4 @@
     
 </style>
 
-<script type="module" src="<?=base_url();?>/application/views/sst/many_documents_viewer-script.js?v=5"></script>
+<script type="module" src="<?=base_url();?>/application/views/sst/many_documents_viewer-script.js?v=6"></script>

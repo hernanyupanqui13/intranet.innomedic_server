@@ -30,6 +30,8 @@ export function requestConfirmation(the_document_name, user) {
 
     let confirmation_message = "";
     let confirmation_title = "";
+
+    // Esta se seccino es de los mensajes que salen en la confirmacion de lectura
     if(the_document_name.trim() == "Reglamento Interno de SST") {
 
         confirmation_message = `<p>Conste por el presente documento, que, he recibido y se me ha capacitado 

@@ -13,6 +13,7 @@ let data = [
     {nombre: "Plan de Capacitacion de Seguridad y Salud en el Trabajo", url: `${window.location.origin}/upload/archivos/sst/plan_programa_sst.pdf`, ident_name: "Plan de Capacitacion de SST"}
     , {nombre: "Plan de Seguridad y Evacuacion en caso de Emergencia", url: `${window.location.origin}/upload/archivos/sst/plan_evacuacion.pdf`, ident_name: "Plan de Evacuacion"}
     , {nombre: "Programa Anual de Seguridad y Salud en Trabajo", url: `${window.location.origin}/upload/archivos/sst/plan_anual_sst.pdf`, ident_name:"Programa Anual de SST"}
+    , {nombre: "Plan para la Vigilancia, Prevención y Control de Salud de los Trabajadores con Riesgo de Exposición al Covid-19", url: `${window.location.origin}/upload/archivos/sst/plan_trabajadores_riesgo_covid19.pdf`, ident_name:"Plan para la Vigilancia, Prevención y Control de Salud de los Trabajadores con Riesgo de Exposición al Covid-19"}
 ];
 
 const user_data = JSON.parse(document.querySelector('.data_container').dataset.user_data);
