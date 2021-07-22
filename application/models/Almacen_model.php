@@ -20,7 +20,7 @@ class Almacen_model extends CI_Model
         
         $this->db->query("UPDATE ta_almacen
             SET total = $stock
-            WHERE Id = $codigo"
+            WHERE Id = (SELECT tp.Id FROM ta_productos tp WHERE tp.codigo = '$codigo')"
         );
 
         return true;
