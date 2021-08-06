@@ -167,7 +167,7 @@ class Pedidos extends CI_Controller
 			);
 
 			
-			if ($this->Inventario_model->agregar_producto($data_number)) {
+			if ($this->Inventario_model->agregar_producto($data_number)) { 
 				 
 				$idventa = $this->Inventario_model->lastID();
 	            $this->actualizar_comprobante();
