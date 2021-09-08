@@ -403,6 +403,7 @@
                         <!-- Area de Sistemas  -->
                         <li><a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="ti-layout-grid2"></i><span class="hide-menu">Área de Comunicaciones</span></a>
                             <ul  aria-expanded="false" class="collapse">
+                            <li><a href="<?php echo base_url();?>AreaComunicaciones/AreaComunicaciones/politicas"><i class="fas fa-hard-hat"></i>&nbsp;Manual de Identidad</a></li>
                             </ul>
                         </li>
 
