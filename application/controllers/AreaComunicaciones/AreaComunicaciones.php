@@ -28,7 +28,7 @@ class AreaComunicaciones extends CI_Controller {
 
     $this->load->view("intranet_view/head",$data);
     $this->load->view("intranet_view/title",$data);
-    $this->load->view('areaSistemas/one_document_viewer',$data);
+    $this->load->view('comunicaciones/one_document_viewer',$data);
     $this->load->view("intranet_view/footer",$data);
     
   }
