@@ -312,8 +312,11 @@
                        <?php }else{?>
                             <li><a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="ti-layout-grid2"></i><span class="hide-menu">RRHH</span></a>
                                 <ul  aria-expanded="false" class="collapse">
-                                    <li><a href="<?php echo base_url().'Boleta/Boleta/';?>">Mis Boletas</a></li>
-                                    <li><a href="<?php echo base_url().'AreaRrhh/AreaRrhh/RIT/';?>">RIT</a></li>
+                                    <li><a href="<?php echo base_url().'Boleta/Boleta/';?>"><i class="fas fa-book"></i>&nbsp; Boletas</a></li>
+                                    <li><a href="javascript:void(0)"><i class="fas fa-book"></i>&nbsp; Politicas RRHH</a></li>
+                                    <li><a href="<?php echo base_url().'AreaRrhh/AreaRrhh/RIT/';?>"><i class="fas fa-book"></i>&nbsp; Reglamento Interno de Trabajo</a></li>
+
+
                                 </ul>
                             </li>
                        <?php } ?>

@@ -19,9 +19,9 @@ class AreaRrhh extends CI_Controller {
     }
 
     $data = array(
-      'title' =>array("estas viendo Area Sistemas","Sistemas","","<a target='_blank' href='javascript:void(0)' title=''>Area de Sistemas</a>"),
+      'title' =>array("estas viendo Area RRhh","RRhh","","<a target='_blank' href='javascript:void(0)' title=''>Area de Sistemas</a>"),
       "reglamento_file_path"=>base_url()."upload/archivos/rrhh/rit_2021.pdf",
-      "nombre_documento" => "RIT",
+      "nombre_documento" => "Reglamento Interno de Trabajo",
       "user_data" => json_encode($this->Sst_model->getDataOfUser())
     );
     
