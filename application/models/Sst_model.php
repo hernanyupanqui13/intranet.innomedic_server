@@ -112,7 +112,25 @@ class Sst_model extends CI_Model
                     ON std.Id = sdu.sst_document_id
                 INNER JOIN ts_datos_personales tdp
                     ON tdp.Id = tu.Id
-            WHERE tu.Id = $user_id"
+            WHERE tu.Id = $user_id AND std.Id = 2" 
+        );
+
+        return $query->row();
+    }
+
+    public function getIndividualReportRrhh($user_id) {
+        $query = $this->db->query("SELECT std.nombre AS tipo_documento
+                , tu.nombre, tu.apellido_paterno
+                , tu.apellido_materno, tdp.nro_documento
+                , fecha_visto, tdp.puesto
+            FROM sst_document_users sdu
+                INNER JOIN ts_usuario tu 
+                    ON sdu.user_id = tu.Id
+                INNER JOIN sst_tipo_documentos std
+                    ON std.Id = sdu.sst_document_id
+                INNER JOIN ts_datos_personales tdp
+                    ON tdp.Id = tu.Id
+            WHERE tu.Id = $user_id AND std.Id = 9" 
         );
 
         return $query->row();

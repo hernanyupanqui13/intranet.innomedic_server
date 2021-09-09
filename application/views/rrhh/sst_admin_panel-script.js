@@ -56,5 +56,5 @@ function getRowsData() {
 }
 // Descarga un pdf con el cargo individual
 function dowloadIndividualReport(userId) {
-    window.location = `${window.location.origin}/sst/sst/downloadIndividualReport/${userId}`;
+    window.location = `${window.location.origin}/sst/sst/downloadIndividualReportRrhh/${userId}`;
 }

@@ -289,6 +289,35 @@ class Sst extends CI_Controller {
 
     }
 
+    // Se uso una nueva libreria porque la anterior tenia problemas con bolts font
+    public function downloadIndividualReportRrhh($user_id=null) {
+        // En caso no se ingrese el ID del usuario
+        if($user_id == null) {
+            echo "No se ingreso correctamente";
+            return false;
+        }
+
+        $data = array("user_data" => $this->Sst_model->getIndividualReportRrhh($user_id));
+        $html = $this->load->view('pdf/cargo_individual_rrhh', $data, true);
+        
+        $mpdf = new \Mpdf\Mpdf([
+            'margin_left' => 10,
+            'margin_right' => 10,
+            'margin_top' => 10,
+            'margin_bottom' => 10,
+            'margin_header' => 10,
+            'margin_footer' => 10
+        ]);
+
+        $mpdf->showWatermarkText = true;
+        $mpdf->watermarkTextAlpha = 0.1;
+        $mpdf->SetDisplayMode('fullpage');
+
+        $mpdf->WriteHTML($html);
+        $mpdf->Output("cargoRrhh.pdf", "D");
+
+    }
+
     public function test() {
         echo json_encode($this->Sst_model->test());
     }
