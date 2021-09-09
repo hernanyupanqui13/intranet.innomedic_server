@@ -34,6 +34,24 @@ class AreaRrhh extends CI_Controller {
   }
 
 
+  public function SstAdminPanel() {
+
+    if($this->session->userdata('session_id')==''){
+        redirect(base_url());
+    }
+    $data = array(
+        'title' =>array("estas viendo SST","SST","","<a target='_blank' href='javascript:void(0)' title=''>Area de Sistemas</a>"),
+        "user_data" => json_encode($this->Sst_model->getDataOfUser())
+    );
+
+    $this->load->view("intranet_view/head",$data);
+    $this->load->view("intranet_view/title",$data);
+    $this->load->view('rrhh/sst_admin_panel',$data);
+    $this->load->view("intranet_view/footer",$data);
+  }
+
+
+
 }
 
 ?>

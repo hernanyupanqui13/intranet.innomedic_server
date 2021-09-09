@@ -140,6 +140,17 @@ class Sst extends CI_Controller {
 
     }
 
+    public function downloadFullReportExcelRrhh() {
+        if($this->session->userdata('session_id')==''){
+            redirect(base_url());
+        }
+
+        $data =array("data" => $this->Sst_model->getFullReportDataRrhh());
+
+        $this->load->view("excel/reporte_completo_sst", $data);
+
+    }
+
     public function getFullReportRows() {
         $full_report_data = $this->Sst_model->getFullReportData();
         $data = [];
@@ -161,8 +172,29 @@ class Sst extends CI_Controller {
         echo json_encode($data);
     }
 
-    public function downloadFullReportPdf() {
-        
+    public function getFullReportRowsRrhh() {
+        $full_report_data = $this->Sst_model->getFullReportDataRrhh();
+        $data = [];
+        $counter = 0;
+        foreach($full_report_data as $item) {
+            $counter++;
+            $row=[];
+            $row["counter"] = $counter;
+            $row["tipo_documento"] = $item->tipo_documento;
+            $row["nombre"] = $item->nombre;
+            $row["apellido_paterno"] = $item->apellido_paterno;
+            $row["apellido_materno"] = $item->apellido_materno;
+            $row["fecha_visto"] = $item->fecha_visto;
+            $row['opciones'] = "<a class='btn btn-success' href='javascript:void(0)' title='Actualizar' onclick='dowloadIndividualReport($item->Id)'><i class='fas fa-file-download'></i></a>";
+
+            $data[] = $row;
+        }
+
+        echo json_encode($data);
+    }
+
+    public function downloadFullReportPdf($options=null) {
+
         $data =array("data" => $this->Sst_model->getFullReportData());
 
 		$this->load->view('pdf/reporte_completo_sst',$data);
@@ -185,6 +217,32 @@ class Sst extends CI_Controller {
 		// Output the generated PDF (1 = download and 0 = preview)
         $this->pdf->stream("ReporteSst.pdf", array("Attachment"=>1));
     }
+
+    public function downloadFullReportPdfRrhh() {
+
+        $data =array("data" => $this->Sst_model->getFullReportDataRrhh());
+
+		$this->load->view('pdf/reporte_completo_sst',$data);
+
+		$html = $this->output->get_output();
+        
+        // Load pdf library
+        $this->load->library('pdf');
+
+		// Load HTML content
+		$this->pdf->loadHtml($html);//loadHtml
+
+		$this->pdf->set_option('isRemoteEnabled', true);
+		// (Optional) Setup the paper size and orientation or portrait
+		$this->pdf->setPaper('A4', 'orientation');
+
+		// Render the HTML as PDF
+		$this->pdf->render();
+
+		// Output the generated PDF (1 = download and 0 = preview)
+        $this->pdf->stream("ReporteSst.pdf", array("Attachment"=>1));
+    }
+
 
 
     /*

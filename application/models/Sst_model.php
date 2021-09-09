@@ -80,6 +80,26 @@ class Sst_model extends CI_Model
 
     }
 
+    public function getFullReportDataRrhh() {
+        $query = $this->db->query('SELECT std.nombre AS tipo_documento
+                , tu.nombre, tu.apellido_paterno
+                , tu.apellido_materno, tdp.nro_documento
+                , fecha_visto, tu.Id
+            FROM sst_document_users sdu
+                INNER JOIN ts_usuario tu 
+                    ON sdu.user_id = tu.Id
+                INNER JOIN sst_tipo_documentos std
+                    ON std.Id = sdu.sst_document_id
+                INNER JOIN ts_datos_personales tdp
+                    ON tdp.Id = tu.Id
+            WHERE tu.Id != 89 AND tu.`status` != 2
+                AND sst_document_id IN(9)'
+        );
+
+        return $query->result();
+
+    }
+
     public function getIndividualReport($user_id) {
         $query = $this->db->query("SELECT std.nombre AS tipo_documento
                 , tu.nombre, tu.apellido_paterno

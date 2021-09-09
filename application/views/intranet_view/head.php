@@ -315,6 +315,9 @@
                                     <li><a href="<?php echo base_url().'Boleta/Boleta/';?>"><i class="fas fa-book"></i>&nbsp; Boletas</a></li>
                                     <li><a href="javascript:void(0)"><i class="fas fa-book"></i>&nbsp; Politicas RRHH</a></li>
                                     <li><a href="<?php echo base_url().'AreaRrhh/AreaRrhh/RIT/';?>"><i class="fas fa-book"></i>&nbsp; Reglamento Interno de Trabajo</a></li>
+                                    <?php if ( in_array($this->session->userdata("session_perfil"), array(40, 1))) { ?>
+                                        <li><a href="<?php echo base_url();?>AreaRrhh/AreaRrhh/sstAdminPanel"><i class="fas fa-user-lock"></i>&nbsp;Admin Panel</a></li>
+                                    <?php } ?>
 
 
                                 </ul>
