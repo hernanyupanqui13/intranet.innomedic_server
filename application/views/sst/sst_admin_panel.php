@@ -17,6 +17,9 @@
         </ul>
     </div>
 </div>
+<div class="row justify-content-end">
+    <a href="javascript:void(0)" class="btn btn-primary mb-2" onclick="downloadAll()">Descargar Grupo</a>
+</div>
 <div class="row">
     <div class="col" id="main_table_container">
         <table id="sst-reportes-table" class="table" data-paging="true" data-sorting="true" data-filtering="true"></table>
