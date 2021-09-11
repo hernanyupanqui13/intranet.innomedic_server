@@ -164,7 +164,7 @@ class Sst extends CI_Controller {
             $row["apellido_paterno"] = $item->apellido_paterno;
             $row["apellido_materno"] = $item->apellido_materno;
             $row["fecha_visto"] = $item->fecha_visto;
-            $row['opciones'] = "<a class='btn btn-success' href='javascript:void(0)' title='Actualizar' onclick='dowloadIndividualReport($item->Id, \"$item->tipo_documento\")'><i class='fas fa-file-download'></i></a>";
+            $row['opciones'] = "<a class='btn btn-success downloadReportBtn' href='javascript:void(0)' title='Actualizar' onclick='dowloadIndividualReport($item->Id, \"$item->tipo_documento\")'><i class='fas fa-file-download'></i></a>";
 
             $data[] = $row;
         }
