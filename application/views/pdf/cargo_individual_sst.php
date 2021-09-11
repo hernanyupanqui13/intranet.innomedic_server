@@ -88,27 +88,26 @@
                 </div>
             </td>
             <td rowspan="2" width="55%" class="table-headtext">GESTION ORGANIZACIONAL</td>
-            <td class="table-headtext">Fecha de Emision</td>
-            <td>30 Septiembre 2020-1</td>
+            <td class="table-headtext">Fecha de Emisión</td>
+            <td><?php echo date("d-m-Y"); ?></td>
         </tr>
         <tr>
             <td class="table-headtext">Pagina</td>
             <td>1</td>
         </tr>
         <tr>
-            <td rowspan="2" class="table-headtext">CARGO DE RECEPCION DEL REGLAMENTO INTERNO DE SEGURIDAD Y SALUD EN EL TRABAJO</td>
+            <td rowspan="2" class="table-headtext">CARGO DE RECEPCIÓN DEL <?php echo $documentName; ?></td>
             <td class="table-headtext">Codigo</td>
-            <td>CAR_RC_RISST 001 -2020</td>
+            <td>CAR_SST 2021</td>
         </tr>
         <tr>
             <td colspan="2" style="text-align: center;">Version 1</td>
         </tr>
     </table>
 </header>
-<h1 class="main_title">CARGO DE RECEPCION DE RISST</h1>
+<h1 class="main_title">CARGO DE RECEPCIÓN DE <?php echo $documentName;?></h1>
 <p class="body_text-p">Conste por el presente documento, que, he recibido y se me ha 
-    capacitado sobre el Reglamento Interno de Seguridad 
-    y Salud en el Trabajo de INNOMEDIC INTERNATIONAL E.I.R.L.
+    capacitado sobre el <?php echo $documentName;?> de INNOMEDIC INTERNATIONAL E.I.R.L.
     El cual me comprometo a cumplir estrictamente en todas sus normas y dispositivos, 
     para lo cual firmo el presente cargo
 </p>

@@ -55,6 +55,28 @@ function getRowsData() {
 
 }
 // Descarga un pdf con el cargo individual
-function dowloadIndividualReport(userId) {
-    window.location = `${window.location.origin}/sst/sst/downloadIndividualReport/${userId}`;
+function dowloadIndividualReport(userId, theDocumentName) {
+
+    const documentName = theDocumentName.toUpperCase();
+
+    const formData = new FormData();
+    formData.append("userId", userId);
+    formData.append("documentName", documentName);
+
+    console.log("here i am");
+    fetch(`${window.location.origin}/sst/sst/downloadIndividualReport/${userId}`, {
+        method: "post",
+        body: formData
+    })
+    .then(r => r.blob())
+    .then( blob => {
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `Cargo ${documentName}.pdf`;
+        document.body.appendChild(a); // we need to append the element to the dom -> otherwise it will not work in firefox
+        a.click();    
+        a.remove();
+    });
+    
 }

@@ -164,7 +164,7 @@ class Sst extends CI_Controller {
             $row["apellido_paterno"] = $item->apellido_paterno;
             $row["apellido_materno"] = $item->apellido_materno;
             $row["fecha_visto"] = $item->fecha_visto;
-            $row['opciones'] = "<a class='btn btn-success' href='javascript:void(0)' title='Actualizar' onclick='dowloadIndividualReport($item->Id)'><i class='fas fa-file-download'></i></a>";
+            $row['opciones'] = "<a class='btn btn-success' href='javascript:void(0)' title='Actualizar' onclick='dowloadIndividualReport($item->Id, \"$item->tipo_documento\")'><i class='fas fa-file-download'></i></a>";
 
             $data[] = $row;
         }
@@ -261,14 +261,18 @@ class Sst extends CI_Controller {
     }
 
     // Se uso una nueva libreria porque la anterior tenia problemas con bolts font
-    public function downloadIndividualReport($user_id=null) {
-        // En caso no se ingrese el ID del usuario
-        if($user_id == null) {
-            echo "No se ingreso correctamente";
-            return false;
-        }
+    public function downloadIndividualReport() {
+        
+        $user_id = $_POST["userId"];
+        $documentName = $_POST["documentName"];
+        $shortDocumentName = $_POST["shortDocumentName"];
 
-        $data = array("user_data" => $this->Sst_model->getIndividualReport($user_id));
+        $data = array(
+            "user_data" => $this->Sst_model->getIndividualReport($user_id),
+            "documentName" => $documentName,
+            "shortDocumentName" => $shortDocumentName
+        );
+
         $html = $this->load->view('pdf/cargo_individual_sst', $data, true);
         
         $mpdf = new \Mpdf\Mpdf([
@@ -318,8 +322,10 @@ class Sst extends CI_Controller {
 
     }
 
-    public function test() {
-        echo json_encode($this->Sst_model->test());
+    public function test($a, $b, $c) {
+        echo "<div>$a</div>";
+        echo "<div>$b</div>";
+        echo "<div>$c</div>";
     }
 
 
