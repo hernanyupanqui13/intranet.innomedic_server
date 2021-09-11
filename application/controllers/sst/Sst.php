@@ -268,7 +268,7 @@ class Sst extends CI_Controller {
         $shortDocumentName = $_POST["shortDocumentName"];
 
         $data = array(
-            "user_data" => $this->Sst_model->getIndividualReport($user_id),
+            "user_data" => $this->Sst_model->getIndividualReport($user_id, $documentName),
             "documentName" => $documentName,
             "shortDocumentName" => $shortDocumentName
         );

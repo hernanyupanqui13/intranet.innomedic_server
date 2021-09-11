@@ -80,3 +80,12 @@ function dowloadIndividualReport(userId, theDocumentName) {
     });
     
 }
+
+function downloadAll() {
+    const allReports = [...document.querySelectorAll(".downloadReportBtn")];
+
+    for(let oneReport of allReports) {
+        oneReport.click();
+    }
+    
+}

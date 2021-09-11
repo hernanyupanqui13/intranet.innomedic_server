@@ -100,7 +100,7 @@ class Sst_model extends CI_Model
 
     }
 
-    public function getIndividualReport($user_id) {
+    public function getIndividualReport($user_id, $documentName) {
         $query = $this->db->query("SELECT std.nombre AS tipo_documento
                 , tu.nombre, tu.apellido_paterno
                 , tu.apellido_materno, tdp.nro_documento
@@ -112,7 +112,7 @@ class Sst_model extends CI_Model
                     ON std.Id = sdu.sst_document_id
                 INNER JOIN ts_datos_personales tdp
                     ON tdp.Id = tu.Id
-            WHERE tu.Id = $user_id AND std.Id = 2" 
+            WHERE tu.Id = $user_id AND std.Id = (SELECT td.Id FROM sst_tipo_documentos td WHERE nombre = UPPER('$documentName'));" 
         );
 
         return $query->row();
