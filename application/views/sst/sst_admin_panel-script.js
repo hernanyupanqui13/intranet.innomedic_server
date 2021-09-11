@@ -39,7 +39,7 @@ jQuery(function($) {
 	var ft = FooTable.init('#sst-reportes-table', {
 		// we only load the column definitions as the row data is loaded through the function
 		"columns": footable_columns,
-        "rows": getRowsData(),
+        "rows": getRowsData()
 
 	});
 });

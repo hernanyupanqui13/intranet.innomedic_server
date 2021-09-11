@@ -19,7 +19,7 @@
 </div>
 <div class="row">
     <div class="col" id="main_table_container">
-        <table id="sst-reportes-table" class="table" data-paging="true" data-sorting="true" data-filtering="true" data-paging-limit="500"></table>
+        <table id="sst-reportes-table" class="table" data-paging="true" data-sorting="true" data-filtering="true"></table>
     </div>
 </div>
 
